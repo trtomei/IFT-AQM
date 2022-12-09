@@ -1,0 +1,130 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=1.8cm,bottom=2cm,right=2.7cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+
+\title{Advanced Quantum Mechanics\\Exercises Set 3\vspace{-0.5em}}
+%\author{The Author}
+\date{Due date: September 29\textsuperscript{th}, 2022}
+
+\begin{document}
+\maketitle
+
+
+\textbf{Exercise 1:} Show that a state \(|\Psi\rangle\) of a bipartite system is a product state if and only if it has Schmidt number 1.
+
+
+\textbf{Exercise 2:} Show that a state \(|\Psi(1,2)\rangle\) of a bipartite system is a product state if and only if \(\rho^{(1)}=\)
+\(\operatorname{Tr}_{2}|\Psi(1,2)\rangle\) (and thus also \(\left.\rho^{(2)}=\operatorname{Tr}_{1}|\Psi(1,2)\rangle\right)\) is a pure state.
+
+
+\textbf{Exercise 3:} Let \(\rho^{(1)}\) be a state operator in Hilbert space \({H}_{1}\) written in terms of normalized state vectors
+\(\left\{\left|\varphi_{i}\right\rangle, i=1, \cdots, n\right\}\) as
+\be
+\rho^{(1)}=\sum_{i=1}^{n} p_{i}\left|\varphi_{i}\right\rangle\left\langle\varphi_{i}\right| \quad \text{ with }\quad p_{i} \geq 0 \quad \text{ and } \quad \sum_{i=1}^{n} p_{i}=1
+\ee
+Use a set of mutually orthogonal and normalized vectors \(\left\{\left|\chi_{i}\right\rangle, i=1, \cdots, n\right\}\) from a Hilbert space
+\({H}_{2}\) to construct an entangled pure bipartite state \(|\Psi(1,2)\rangle\) in \({H}_{1} \otimes {H}_{2}\) such that
+\be
+\hat{\rho}^{(1)}=\operatorname{Tr}_{2} \rho^{(12)}, \quad \text { with } \quad \rho^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|
+\ee
+\(\rho^{(12)}\) is then an extension of \(\rho^{(1)}\).
+
+
+\textbf{Exercise 4:} Show that two purifications \(|\Psi(1,2)\rangle\) and \(|\Phi(1,2)\rangle\) in \({H}_{1} \otimes {H}_{2}\) differ by a unitary operator.
+
+
+\textbf{Exercise 5:} Let \(\hat{\rho}^{(12)}\) be a general state operator (\emph{not necessarily pure}) in a tensor-product Hilbert space
+\({H}_{1} \otimes {H}_{2}\). Show that if \(\hat{\rho}^{(1)}\) is a pure state, then \(\hat{\rho}^{(12)}\) is a product \(\rho^{(1)} \otimes \hat{\rho}^{(2)}\), with \(\rho^{(2)}\) in \({H}_{2}\)
+(where \(\rho^{(2)}\) can be mixed). Hint: Choose an arbitrary purification of \(\hat{\rho}^{(12)}\) and make use of
+the result of Exercise 2.
+
+
+\textbf{Exercise 6 (Monogamy of entanglement):} 
+Suppose that \(\rho^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|\) is an entangled state of
+particles 1 and 2 . Use the result of Exercise 5 to show that an extension \(\rho^{(123)}\) of \(\rho^{(12)}\) would imply
+that particles 1 and 2 are both uncorrelated with particle 3, that is, if particles 1 and 2 are
+entangled, each of then cannot be entangled with particle 3.
+
+Monogamy of entanglement is valid even when \(\rho^{(12)}\) is not pure; but we will not deal with
+entanglement for general quantum states (\textit{i.e.} not necessarily pure).
+
+\textbf{Exercise 7 -- No faster-than-light communication, no-cloning theorem:}
+
+\emph{Preamble:} the aim of this exercise is to show that the possibility of cloning an unknown state would
+allow faster-than-light information transmission. To exemplify what we mean by that, let us
+suppose that Alice and Bob share a two-level entangled state; for definiteness, consider an
+ensemble of two spin-1/2 particles prepared in the maximally entangled \(\left|\Psi_{-}\right\rangle\) Bell state (recall
+an exercise of a previous list):
+
+\be
+\left|\Psi_{-}\right\rangle=\frac{1}{\sqrt{2}}(|+\otimes-\rangle-|-\otimes+\rangle)
+\ee
+where \(|+\rangle\) and \(|-\rangle\) are the eigenstates of the \(\sigma_{z}\) Pauli matrix. One of the particles is analysed
+in Alice's laboratory and the other in Bob's laboratory; both laboratories can be light-years
+apart.
+
+Alice wants to send a message to Bob through a binary string, combinations of zeros (0)
+and ones (1). Alice's idea to send the message is to perform measurements on her spins,
+measuring \(\sigma_{x}\) for sending the digit 0 and \(\sigma_{z}\) for sending digit 1 (of course, for this to work in
+principle Alice and Bob must share at least as many entangled pairs as digits in the message).
+If Alice measures \(\sigma_{x}\), Bob's state collapses to \(|\pm 1, \hat{x}\rangle\) (he receives the digit 0), if she measures \(\sigma_{z}\),
+Bob's state collapses to \(|\pm 1, \hat{z}\rangle\) (he receives digit 1 ). The problem with Alice's idea is that the
+states \(|\pm 1, \hat{x}\rangle\) and \(|\pm 1, \hat{z}\rangle\) are not orthogonal; hence Bob cannot obtain any information about
+Alice's measurements (and therefore the sequence of digits 0 and 1). You will prove all of this
+below.
+
+Now, if Bob could make as many copies as he wishes of his states, he could distinguish
+between \(|\pm 1, \hat{x}\rangle\) and \(|\pm 1, \hat{z}\rangle\). Why? Because an arbitrary qubit, \(|\varphi\rangle=\lambda|+\rangle+\mu|-\rangle\), can be
+reconstructed (i.e. \(\lambda\) and \(\mu\) determined) once we have a large number of copies of the state
+upon which to perform measurements. Therefore, Bob could determine whether the state is
+\(|\pm 1, \hat{x}\rangle\) or \(|\pm 1, \hat{z}\rangle\), even when Alice's and Bob's measurements have no causal connection,\textit{i.e.}
+even when their measurements are spacelike separated, a situation characterizing faster-than-
+light communication.
+
+The point is: independently of Alice's choice of axis to measure the spin of the particle in
+her laboratory, Bob obtains with probabilities equal to 1/2 the values \(\pm 1\) in his measurements in
+his laboratory, whatever axis he uses. Therefore, Bob always obtains randomly \(\pm 1\), indicating
+that no information has been transmitted from Alice (\textit{i.e.} the axis she used) to Bob.
+
+\textbf{(a)} First, express \(\left|\Psi_{-}\right\rangle\)in the basis \(\{|+, \hat{n}\rangle,|-, \hat{n}\rangle\}\) of spin-1/2 projection on an arbitrary axis \(\hat{n}-\) see Eq.~(3.56) of Le~Bellac. You should find (up to a global phase):
+\be
+\left|\Psi_{-}\right\rangle=\frac{1}{\sqrt{2}}(|+\otimes-\rangle-|-\otimes+\rangle)=\frac{1}{\sqrt{2}}(|+, \hat{n} \otimes-, \hat{n}\rangle-|-, \hat{n} \otimes+, \hat{n}\rangle)
+\ee
+
+\textbf{(b)} Let \(\hat{a}\) indicate Alice's axis and \(\hat{b}\) Bob's axis. Eq. (4) shows that when Alice measures the
+spin projection along the direction \(\hat{a}\), she finds \(\pm 1\) with probability 1/2, and Bob's particle
+state is then one of the two qubits
+\be
+|\text{Bob}\rangle=|\mp, \hat{a}\rangle
+\ee
+where the \(\mp\) sign corresponds to the \(\pm 1\) Alice's result -- note that Bob obtains these states
+with probability 1/2. Given this, show that the probability of Bob finding \(+1\) or \(-1\) when he
+measures in his laboratory the spin along an axis \(\hat{b}\) is equal to 1/2. This proves that there is
+no information exchange between Alice and Bob, as mentioned above.
+
+\textbf{(c)} Finally, suppose that Bob could make clones of states \(|\text{Bob}\rangle=\), \textit{i.e.} make as many copies as
+he wishes of his particle's state. Is it clear to you that this would allow him to instantly know
+the axis Alice used, even if their measurements are spacelike separated?
+\end{document}

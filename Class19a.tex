@@ -1,0 +1,520 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+
+\title{Advanced Quantum Mechanics\\Class 19 (a)}
+%\author{The Author}
+\date{October 13, 2022}                                           % Activate to display a given date or no date
+
+\setcounter{section}{6}
+\setcounter{subsection}{5}
+\setcounter{equation}{107}
+
+\begin{document}
+\maketitle
+
+%%% 01 OKAY
+
+\subsection{Addition of two angular momenta \(\vec{J_{1}}\) and \(\vec{J_{2}}\)}
+
+Let 
+\(\vec{J_{1}} \in \varepsilon\left(j_{1}\right)\) and \(\vec{J_{2}} \in \varepsilon\left(j_{2}\right)\)
+and
+\be
+\hat{\vec{J}}=\vec{J}_{1} \otimes \mathbf{1}_{2}+\mathbf{1}_{1} \otimes \hat{J}_{2} \in \varepsilon=\varepsilon\left(j_{1}\right) \otimes \varepsilon\left(j_{2}\right)
+\ee
+
+\(\hat{\vec{J}}_{1}\) and \(\hat{\vec{J}}_{2}\) commute in \(\varepsilon=\varepsilon\left(j_{1}\right) \otimes \varepsilon\left(j_{2}\right)\) :
+\be
+\left[\hat{J}_{1 i}, \hat{J}_{2 j}\right]=0, \quad \text{for all } i, j
+\ee
+In $\varepsilon$, $\vec{J}$ satisfies the angular momentum
+commutation relations:
+\be
+\begin{aligned} 
+{\left[\hat{J}_{i}, \hat{J}_j\right] } 
+&=\left[\hat{J}_{1 i}+\hat{J}_{2 i}, \hat{J}_{1 j}+\hat{J}_{2 j}\right] \\ 
+&=i \hbar \varepsilon_{i j k}\left(\hat{J}_{1 k}+\hat{J}_{2 k}\right)=i \hbar \varepsilon_{i j k} \hat{J}_{k} \end{aligned}
+\ee
+%%% 02 OKAY
+From this algebra alone:
+\be
+\begin{aligned}
+\vec{J}^{2}|j m\rangle
+&=j(j+1) \hbar^{2}|j m\rangle \\ 
+\hat{J}_{0}|j m\rangle
+&=m \hbar|j m\rangle,\quad j \leqslant m \leqslant j
+\end{aligned}
+\ee
+\emph{But}, we need to elaborate a little more to get
+its connections with the states $\ket{j_1m_1}$ and $\ket{j_2m_2}$ -- can have at least two orthonormal basis in $\varepsilon:$
+
+\begin{enumerate}
+\item
+\be
+\ket{j_1 m_1} \otimes \ket{j_2 m_2} = \ket{j_1 j_2 m_1 m_2}
+\ee
+This basis corresponds to the complete set of
+commuting operators
+\be
+\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \hat{J}_{1z}, \hat{J}_{2z}\right\}
+\ee
+%
+\item
+\be
+\ket{j_1 j_2 j m} \equiv \ket{jm}
+\ee
+which corresponds to
+\be
+\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \vec{J}^{2}, \hat{J}_{z}\right\}
+\ee
+\end{enumerate}
+The analysis of these bases leads to the following results:
+\begin{enumerate}
+\item the possible values of $j$ are
+\be
+\left|j_{1}-j_{2}\right|,\left|j_{1}-j_{2}\right|+1, \cdots, j_{1}+j_{2}-1, j_{1}+j_{2}
+\ee
+%
+\item the dimension of $\varepsilon$ is 
+\be
+\operatorname{dim}\varepsilon = (2j_1+1)(2j_2+1)
+\ee
+\end{enumerate}
+
+%%% 03 OKAY
+
+\subsubsection{Change of basis}
+
+One can switch from one basis to the other, \textit{e.g.}
+from the $\ket{j_1 j_2 m_1 m_2}$ to the $\ket{jm}$:
+\[
+\begin{aligned}
+|j m\rangle
+&=\sum_{m_{1} m_{2}}\left|j_{1} j_{2} m_{1} m_{2}\right\rangle\left\langle j_{1} j_{2} m_{1} m_{2} |j m\right\rangle\\
+&=\sum_{m_{1} m_{2}}\left\langle j_{1} j_{2} m_{1} m_{2} | j m\right\rangle\left|j_{1} j_{2} m_{1} m_{2}\right\rangle
+\end{aligned}
+\]
+where the sum cannot be over all $m_1$,$m_2$.
+In fact
+\[
+\begin{aligned}
+\hat{J}_{0}|j m\rangle
+&=m \hbar \sum_{m_{1} m_{2}}\left\langle j_{1} j_{2} m_{1} m_{2} | j m\right\rangle\left|j_{1} j_{2} m_{1} m_{2}\right\rangle\\
+\left(\hat{J}_{10}+\hat{J}_{20}\right)|j m\rangle
+&=\sum_{m_{1} m_{2}}\left(m_{1}+m_{2}\right) \hbar\left\langle j_{1} j_{2} m_{1} m_{2} | j m\right\rangle\left|j_{1} j_{2} m_{1} m_{2}\right\rangle
+\end{aligned}
+\]
+whence
+\be
+\sum_{m_1 m_2}
+[(m-(m1+m2)]\op{\ldots}\ket{j_1j_2m_1m_2} = 0
+\Rightarrow m = m_1+m_2
+\ee
+%%% 04 OKAY
+so finally
+\be
+\boxed{
+\ket{jm} = \sum_{m_1+m_2=m}
+C^{j_1j_2}_{m_1,m_2;jm} %%% Clebsh-Gordan (CG) coefficients
+\ket{j_1j_2m_1m_2}
+}
+\ee
+where we see the Clebsch-Gordan (CG) coefficients
+\be
+C^{j_1j_2}_{m_1,m_2;jm} = 
+\bra{j_1j_2m_1m_2}\ket{jm} =
+\bra{jm}\ket{j_1j_2m_1m_2}^*
+\ee
+%
+\begin{align}
+&\text{- nonzero for } |j_1-j_2| \leqslant j \leqslant j_1+j_2 \text{ and } m = m_1+m_2\\
+&\text{- convention: } C^{j_1j_2}_{m_1,m_2;jm=j} \text{\emph{ are real } > 0}
+\end{align}
+
+\emph{Exercise:} with the above convention, show that the CG are \emph{real}.
+
+\emph{Example:} sum of two spin-1/2
+\be
+j_1 = j_2 = 1/2,
+\quad
+j = 0,1
+\begin{cases}
+\begin{aligned}
+C^{1/2\,1/2}_{1/2\,1/2;11} &\,=  C^{1/2\,1/2}_{-1/2\,-1/2;1-1} &\quad=& \quad 1\\
+C^{1/2\,1/2}_{1/2\,-1/2;10} &\,=  C^{1/2\,1/2}_{1/2\,-1/2;00} &\quad=& \quad 1/\sqrt{2}\\ 
+C^{1/2\,1/2}_{-1/2\,1/2;10} &\,=  -C^{1/2\,1/2}_{-1/2\,1/2;00} &\quad=& \quad 1/\sqrt{2}
+\end{aligned}
+\end{cases}
+\ee
+so
+\be
+T\,
+\begin{cases}
+\begin{aligned}
+\ket{1,\phantom{-}1} &= \ket{1/2,1/2,1/2,1/2}\\
+\ket{1,\phantom{-}0} &= \frac{1}{\sqrt 2}
+\left[\ket{1/2,1/2,1/2,-1/2} + \ket{1/2,1/2,-1/2,1/2}\right]\\
+\ket{1,-1} &= \ket{1/2,1/2,-1/2,-1/2}\\
+\end{aligned}
+\end{cases}
+\ee
+and
+\be
+S:\,
+\ket{0,\phantom{-}0} = \frac{1}{\sqrt 2}
+\left[\ket{1/2,1/2,1/2,-1/2} - \ket{1/2,1/2,-1/2,1/2}\right]
+\ee
+$T$: triplet, $S$: singlet.
+
+%%% 05 (SKIP)
+
+%%% 06 OKAY
+
+\emph{Exercise:} consider the case $j_1 = 1$, $j_2 = 1/2$.
+Possible $j$'s: $j$ = 1/2, 3/2.
+$j$=1/2, $m$ = $\pm$1/2;  
+$j$=3/2, $m$ = $\pm$1/2, $\pm$3/2
+$\Rightarrow$ total of six states.
+Use the CG table\footnote{\url{https://pdg.lbl.gov/2022/reviews/rpp2022-rev-clebsch-gordan-coefs.pdf}}
+to construct these six states.
+
+To conclude, we note that since the CG coefficients
+are the elements of a unitary real matrix with
+indices $(m_1m_2)$ and $(jm)$, they satisfy the following
+orthogonality relations:
+\be
+\sum_{m_{1}=-j_{1}}^{j_{1}} \sum_{m_{2}=-j_{2}}^{j_{2}} C_{m_{1} m_{2} ; j m}^{j_{1} j_{2}} C_{m_{1} m_{2} ; j^\prime m^\prime}^{j_{1} j_{2}}=\delta_{j j^{\prime}} \delta_{m m^\prime}
+\ee
+\be
+\sum_{j=\left|j_{1}-j_{2}\right|}^{j_{1}+j_{2}} \sum_{m=-j}^{+j} C_{m_{1} m_{2} ; j m}^{j_{1} j_{2}} C_{m_{1} m_{2} ; j m}^{j_{1} j_{2}}=\delta_{m_{1} m_{1}^{\prime}} \delta_{m_{2} m_{2}^\prime}
+\ee
+After this review, we are equipped to construct all irreducible representations $D^{(j)}$ from the $D^{(1/2)}$
+representation.
+
+%% 07 OKAY
+
+\subsubsection{Kronecker product}
+\setcounter{equation}{125}
+
+Let us consider the unitary representation of a spatial
+rotation in the space \(\varepsilon=\varepsilon\left(j_{1}\right) \otimes \varepsilon\left(j_{2}\right)\)
+\be
+\hat{U}[\mathcal{R}(\theta, \phi)]=e^{-i / \hbar \phi \hat{J}_{z}} e^{-i / \hbar \theta \hat{J}_{y}}=e^{\ldots \hat{J}_{1} \ldots} \times e^{\ldots \hat{J}_{2} \ldots}
+\ee
+where $\vec{J} = \vec{J_1} + \vec{J_2}$.
+The corresponding Wigner matrix is
+\[
+\begin{gathered}
+\left\langle j m|\hat{U}[R]| j m^{\prime}\right\rangle=D_{m m^{\prime}}^{(j)}[R]\\
+=
+\sum_{m_1+m_2=m}\sum_{m_1^\prime+m_2^\prime=m^\prime}\bra{jm}\ket{j_1j_2m_1m_2}\\
+\times
+\underbrace{\bra{j_1j_2m_1m_2}\hat{U}[R]\ket{j_1j_2m_1^\prime m_2^\prime}}%
+_{\Circled{1}}
+\bra{j_1j_2m_1^\prime m_2^\prime}\ket{jm^\prime}
+\end{gathered}
+\]
+where
+\[
+\Circled{1} = 
+\bra{j_1j_2m_1m_2} 
+e^{\ldots \hat{J}_{1} \ldots} \times e^{\ldots \hat{J}_{2} \ldots}
+\ket{j_1j_2m_1^\prime m_2^\prime}
+\]
+is the Kronecker product of representations. Finally
+\be
+D^{(j)}_{mm^\prime}[R] =
+\sum_{m_1m_2}\sum_{m_1^\prime m_2^\prime}
+C^{j_1j_2}_{m_1m_2;jm}
+C^{j_1j_2}_{m_1^\prime m_2^\prime;jm}
+D^{(j_1)}_{m_1m_1^\prime}[R]
+D^{(j_2)}_{m_2m_2^\prime}[R]
+\label{eq:g127}
+\ee
+One gets a transparent interpretation of this product
+writing it in terms of matrices instead of in terms
+%%% 08 OKAY
+of matrix elements, namely:
+\begin{itemize}
+\item The tensor product of the matrices \(D^{(j_{1})}[R]\) and \(D^{\left(j_{2}\right)}[R]\)
+gives rise to a matrix \(\Delta[R]\) in the space \(\varepsilon\left(j_{1}\right) \otimes \varepsilon\left(j_{2}\right)\)
+whose matrix elements are as
+\be
+\Delta_{m_{1} m_{2}, m_{1}^{\prime} m_{2}^{\prime}}[R]=D_{m_{1} m_{1}^{\prime}}^{\left(j_{1}\right)}[R] \,D_{m_{2} m_{2}^{\prime}}^{\left(j_{2}\right)}[R]
+\ee
+%
+\item Eq.~\eqref{eq:g127} is then in the form of a change of
+basis performed by a unitary (actually an orthogonal) matrix \(C\) with elements given by the CG
+coefficients:
+\be
+\Delta[R] \rightarrow \Delta^\prime[R]=C \Delta[R] C^{-1}
+\label{eq:g129}
+\ee
+%
+\item Note that the matrix \(C\) \emph{does not} depend
+on the parameters of the rotation matrix \((\theta, \phi)\).
+%
+\item The really important feature of the unitary
+transformation in Eq.~\eqref{eq:g129} is that the
+matrix \(\Delta[R]\) is brought into a block-ortogonal form.
+More specifically, when considering the
+matrices \(D^{(j)}=C D^{\left(j_{1}\right)} \otimes D^{\left(j_{2}\right)} C^{-1}\) for all
+\(j\) in the range \(\left|j_{1}-j_{2}\right| \leqslant j \leqslant j_{1}+j_{2}\) in a
+%%% 09 OKAY
+single big matrix, that matrix is of the form
+\be
+\small
+\begin{gathered}
+\begin{matrix}
+\hspace{5em} j_1+j_2 \hspace{3em} & j_1+j_2-1 \hspace{3em} & \cdots \hspace{3em} & |j_1-j_2|
+\end{matrix}\\
+\begin{matrix}
+j_1+j_2 \\ j_1+j_2-1 \\ \vdots \\ |j_1-j_2|
+\end{matrix}
+\overbrace{\begin{pmatrix}
+\left[D^{\left(j_{1}\right)} \otimes D^{\left(j_{2}\right)}\right]^{j=j_{1}+j_{2}} & \bigzero & \cdots   & \bigzero\\
+\bigzero & \left[D^{\left(j_{1}\right)} \otimes D^{\left(j_{2}\right)}\right]^{j=j_{1}+j_{2}-1} & \cdots & \bigzero\\
+\vdots & \vdots & \ddots & \vdots\\
+\bigzero & \bigzero & \bigzero & \ddots\\
+\end{pmatrix}}
+\end{gathered}
+\ee
+where the zero-blocks represent matrices
+with elements of the kind
+\be
+\langle j=j_{1}+j_{2}|
+\underbrace{\cdots}%
+_{\mathrlap{\text{commutes with } \hat{\vec{J}}^2}\quad}
+| j \neq j_{1}+j_{2}\rangle=0
+\ee
+%
+\item One denotes this diagonalization as producing
+a sum of irreducible representations
+\be
+D^{\left(j_{1}\right)} \otimes D^{\left(j_{2}\right)}=D^{\left(j_{1}+j_{2}\right)} \oplus
+ D^{\left(j_{1}+j_{2}-1\right)} \oplus 
+ \cdots \oplus 
+ D^{\left(|j_{1}-j_{2}|\right)}
+\ee
+%
+\item Why are they irreducible; that is, whey cannot
+they be broken up into smaller blocks?
+$\Rightarrow$ 
+Each of such blocks is a matrix with
+elements of an operator
+\be
+e^{-i / \hbar \phi \tilde{J}_{x}} e^{-i / \hbar \theta \tilde{J_{y}}}
+\label{eq:g133}
+\ee
+%%% 10 OKAY
+with \(\tilde{j}\) being or \(j_{1}+j_{2}\) or \(j_{1}+j_{2}-1\), or \ldots .
+When Eq.~\eqref{eq:g133} is expanded in powers of \(\tilde{J}_{y}\), the
+expansion terminates with \((\tilde{J}_{y} \sim \tilde{J}_{+}-\tilde{J}_{-})^{2 \tilde{j}}\).
+Therefore, the operator \eqref{eq:g133} has just enough
+raising \((\tilde{J}_{+})\)and lowering \((\tilde{J}_{-})\) operators so that
+in acting on any state $\ket{\tilde{j}\tilde{m}}$ it will produce
+a linear combination of all \((2 \tilde{j}+1)\) states and
+thus populating the \emph{entire block}.\\
+Moreover, \(D^{(j_1)} \otimes D^{(j_2)}\) was brought to a
+block-diagonal form by a matrix \(C\)
+that \emph{does not} depend on the parameters
+of the rotation \(R\), \textit{i.e.} it does not depend
+on \(\theta\) and \(\phi\).
+\end{itemize}
+
+To conclude this discussion, that Eq.~\eqref{eq:g127} can be inverted,
+\(D^{(j_{1})} \otimes D^{(j_{2})}\) can be expressed in terms of \(D^{(j)}\):
+\be
+D_{m_{1} m_{1}^{\prime}}^{\left(j_{1}\right)} D_{m_{2} m_{2}^{\prime}}^{\left(j_{2}\right)}=\sum_{m, m^{\prime}=-j}^{+j} 
+C_{m_{1} m_{1}^{\prime} ; j m}^{j_{1} j_{2}} 
+C_{m_{2} m_{2}^{\prime} ; j m^{\prime}}^{j_{1} j_{2}}
+D_{m m^{\prime}}^{(j)}
+\ee
+where in this sum 
+\(\left|j_{1}-j_{2}\right| \leqslant j \leqslant j_{1}+j_{2}\)
+
+Next, we explore properties of physical quantities
+under spatial rotation: this will be important for
+constraining dynamics under symmetry requirements.
+
+%%% 11 OKAY
+\subsection{Spherical tensors}
+
+(a.k.a. irreducible tensors).
+
+Let $\hat{S}$ be an operator that is invariant under a
+spatial rotation; namely, let $\ket{\varphi_R}$ be
+\be
+\ket{\varphi_R} = \hat{U}(R)\ket{\varphi}
+\ee
+then, invariance of $\hat{S}$ under rotation means
+\be
+\ev*{\hat{S}}{\varphi_R} = \ev*{\hat{U}^{-1}\hat{S}\hat{U}} {\varphi}= \ev*{\hat{S}}{\varphi}
+\ee
+which implies (for, \textit{e.g.} rotation angle $\theta$ around $\hat{n}$)
+\be
+e^{i / \hbar \theta \hat{n} \cdot \vec{J}} \hat{S} e^{-i / \hbar \theta \hat{n} \cdot \hat{J}}=\hat{S}
+\ee
+therefore
+\be
+\left[\hat{S},\hat{\vec{J}}\,\right] = 0
+\ee
+$\hat{S}$ is said to be a \emph{scalar} under rotations.
+
+Similarly, one can obtain the behavior of a \emph{vector}
+$\hat{\vec{V}} = (\hat{V_x},\hat{V_y},\hat{V_z})$ under a spatial rotation by
+demanding that its expected value under an
+arbitrary state vector transforms like its classical
+%%% 12 OKAY
+counterpart, \textit{i.e.}
+\be
+\ev*{\hat{V_i}}{\varphi_R} = [R_{\hat n}]_{ij}\ev*{\hat{V_j}}{\varphi}
+\ee
+so, with a rotation $\theta$ around $\hat{n}$
+\be
+e^{i / \hbar \theta \hat{n} \cdot \vec{J}} \hat{V_i} e^{-i / \hbar \theta \hat{n} \cdot \hat{J}}=
+[R_{\hat n}(\theta)]_{ij}\hat{V_j}
+\ee
+$\theta \to 0$:
+\be
+[R_{\hat n}(\theta)]_{ij}\hat{V_j}
+\simeq V_i + \theta \varepsilon_{i j k} \hat{n}_{j} \hat{V}_{k}
+\ee
+\[
+\begin{gathered}
+\left(I+i / \hbar \theta \hat{n}_{k} \hat{J}_{k}\right) \hat{V}_{i}\left(I-i / \hbar \theta \hat{n}_{l} \hat{J}_{l}\right) \simeq V_{i}+\theta \varepsilon_{i j k} \hat{n}_{j} \cdot \hat{V}_{l} \to\\
+i / \hbar\left(\hat{n}_{k} \hat{J}_{k} V_{i}-\hat{V}_{i} \hat{n}_{l} \hat{J}_{l}\right)=\varepsilon_{i j k} n_{j} \hat{V}_{k} \to\\
+\hat{J}_{j} \hat{V}_{i}-V_{i} \hat{J}_{j}=-i \hbar \varepsilon_{i j k} V_{k} \xrightarrow{{i\leftrightarrow j}}
+\end{gathered}
+\]
+\be
+\boxed{
+\left[\hat{J_{i}}, \hat{V_{j}}\right]=i \hbar \varepsilon_{i j k} V_{k}
+}
+\ee
+\be
+\text{Examples of } \hat{\vec{V}}: \hat{\vec{R}}, \hat{\vec{P}}, \underbrace{\vec{E}, \vec{B}}_{\text{e.m. fields}}
+\ee
+
+%%% 13 OKAY
+There exist physical quantities with more than one
+spatial index $i$; an example is the quadrupole moment
+of a change distribution \(\rho(\vec{r})\), which carries indices $i,j$:
+\be
+Q_{i j}=\int d^{3} r\left(3 r_{i} r_{j}-|\vec{r}|^{2} \delta_{i}\right) \rho(\vec{r})
+\ee
+Such objects are known as \emph{tensors}. A generic
+tensor operator \(\hat{T}\) has \emph{cartesian} components \(i, j, k, \ldots\) :
+\be
+\hat{T}_{i j k\ldots}
+\ee
+Their transformation properties under a spatial rotation are
+obtained by postulating that their expectation
+values $\ev*{\hat{T}_{ijk\ldots}}{\varphi_R}$ transform like their classical
+counterparts, \textit{i.e.} for each \emph{cartesian} index one associates
+a rotation matrix \(R\) like for the cartesian index of
+a vector, \textit{i.e.}
+\be
+\ev*{\hat{T}_{ijk\ldots}}{\varphi_R} = R_{ii^\prime}R_{jj^\prime}R_{kk^\prime}\cdots
+\ev*{\hat{T}_{i^\prime j^\prime k^\prime\ldots}}{\varphi}
+\ee
+Since $\ket{\varphi}$ is arbitrary:
+\be
+e^{i/\hbar \hat{n}\cdot\hat{\vec{J}}}
+\hat{T}_{ij\ldots}
+e^{-i/\hbar \hat{n}\cdot\hat{\vec{J}}}
+=
+R_{ii^\prime}R_{jj^\prime}\ldots\hat{T}_{i^\prime j^\prime\ldots}
+\ee
+The analysis of such on expression is facilitated by
+employing ``spherical'' components \(\Rightarrow\) \emph{spherical tensors}.
+
+%%% 14 OKAY
+
+$T_q^{(k)}$: spherical tensor (or irreducible tensor, or Racah tensor).
+\begin{itemize}
+\item $k$: \emph{rank} (or order), $T_{kq}$ has $2k+1$ \emph{components} $q$
+\item $q$: $-k, -k+1, \ldots, k-1, k$
+\item $k$: integer or half-integer
+\item $\hat{T}_q^{(k)}$ transforms under a spatial rotation as
+\be
+\hat{T}_q^{(k)\prime} = \hat{U}_{\hat{n}}^{-1} \hat{T}_q^{(k)} \hat{U}_{\hat{n}} = \sum_{q^\prime} D_{q^\prime q}^{(k)} \hat{T}_{q^\prime}^{(k)}
+\label{eq:g148}
+\ee
+\end{itemize}
+with $D_{q^\prime q}^{(k)}$ given by
+\[
+\begin{aligned}
+D_{q^\prime q}^{(k)}
+&= \bra{kq^\prime}\hat{U}_{\hat{n}}[R]\ket{kq}\\
+&= \bra{kq^\prime}e^{-i\hbar\theta\hat{n}\cdot\vec{J}}[R]\ket{kq}\\
+\end{aligned}
+\]
+where $\ket{kq}$ are the eigenstates of $\hat{\vec{J}}^2$ and $\hat{J_0}$
+\begin{align}
+\hat{\vec{J}}^2 \ket{kq} &= k(k+1) \hbar^2 \ket{kq}\\
+\hat{J_0} \ket{kq} &= q\hbar \ket{kq}
+\end{align}
+\textit{i.e.} $k \sim j $ and $q \sim m$. 
+For an infinitesimal $\theta$
+\be
+[\hat{n}\cdot\hat{\vec{J}}, \hat{T}_q^{(k)}]
+= \sum_{q^\prime} \hat{T}_q^{(k)}
+\bra{kq^\prime}\hat{n}\cdot\hat{\vec{J}}\ket{kq}
+\ee
+in terms of the components of $\hat{\vec{J}} = (\hat{J}_\pm, \hat{J}_0)$, this is:
+\begin{align}
+[\hat{J}_0, \hat{T}_q^{(k)}]   &= \hbar q\,\hat{T}_q^{(k)}\\
+[\hat{J}_\pm, \hat{T}_q^{(k)}] &= \hbar \sqrt{k(k+1)-q(q \pm 1)}\,\hat{T}_{q\pm1}^{(k)}\label{eq:g152}
+\end{align}
+
+%%% 15 OKAY
+
+Note that the definition in Eq.~\eqref{eq:g148} that the states $\ket{\tau,jm}$ are themselves spherical tensors, as
+\be
+\begin{aligned}
+\ket{jm}^\prime = \hat{U}[R]\ket{jm}
+&=\sum_{m^\prime}\op{jm^\prime}\hat{U}[R]\ket{jm}\\
+&=D_{m^{\prime}m}^{(j)}[R]\ket{jm^\prime}
+\end{aligned}
+\ee
+\emph{Note also} that Eq.~\eqref{eq:g152} provides a selection rule:
+\[
+\begin{aligned}
+\bra{\tau,jm}[\hat{J}_0, \hat{T}_q^{(k)}]\ket{j^\prime m^\prime}
+&=\hbar q \bra{\tau,jm}\hat{T}_q^{(k)}\ket{j^\prime m^\prime}\\
+&= \hbar(m-m^\prime)\bra{\tau,jm}\hat{T}_q^{(k)}\ket{j^\prime m^\prime}
+\end{aligned}
+\]
+therefore
+\be
+m-m^\prime=q
+\ee
+important, \textit{e.g.} in electromagnetic transitions in atoms.
+\end{document}

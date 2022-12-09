@@ -1,0 +1,453 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Advanced Quantum Mechanics\\Class 02}
+%\author{The Author}
+\date{August 11, 2022}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{3}
+\setcounter{equation}{16}
+
+%%% 1 OK
+
+\subsection{Heisenberg inequalities}
+
+Let A and B be incompatible properties,
+\[
+[\hat{A}, \hat{B}] \neq 0
+\]
+
+Suppose measurement of A gives $a$. Immediately
+measuring B will give $b$ (and suppose $b$ is nondegenerate). 
+In general, $b \neq a$, i.e.
+it is not possible in general to find states for which A and B are known exactly. 
+
+%%% 2 OK
+
+This, with
+\[
+p(x \rightarrow b)=|\langle b \mid a\rangle|^{2}
+\]
+implies that there will be a \emph{dispersion} in values of A and B.
+
+\emph{Definition:}
+
+\begin{enumerate}
+\item Suppose the system is in state $|\varphi\rangle$. The
+\emph{dispersions} in A and B are defined,
+assuming 
+$\hat{A}=\hat{A}^{\dagger}$ and $\hat{B}=\hat{B}^{\dagger}$,
+as
+\begin{equation}
+\left(\Delta_{\varphi} \hat{A}\right)^{2}=\left\langle\hat{A}^{2}\right\rangle_{\varphi}-\left(\langle\hat{A}\rangle_{\varphi}\right)^{2}=\left\langle\left(\hat{A}-\langle\hat{A}\rangle_{\varphi}\right)^{2}\right\rangle
+\end{equation}
+and likewise for $\hat{B}$
+%
+\item Suppose:
+\begin{equation}
+[\hat{A}, \hat{B}]=i \hat{C}
+\end{equation}
+then $\hat{C} = \hat{C}^{\dagger}$:
+\begin{equation}
+\begin{gathered}
+[\hat{A}, \hat{B}]^{\dagger}=\left[\hat{B}^{\dagger},\hat{A}^{\dagger}\right]=[\hat{B}, \hat{A}]=-[\hat{A}, \hat{B}] = - i\hat{C}\\ 
+[\hat{A}, \hat{B}]^{\dagger} = (i \hat{C})^{\dagger} = -i \hat{C}^{\dagger} 
+\therefore \hat{C}=\hat{C}^{\dagger} 
+\end{gathered}
+\end{equation}
+%
+\item Define
+\begin{equation}
+\begin{array}{l}\hat{A}_{0}^{\varphi}=\hat{A}-\langle\hat{A}\rangle_{\varphi} \\ \hat{B}_{0}^{\varphi}=\hat{B}-\langle\hat{B}\rangle_{\varphi}\end{array}
+\end{equation}
+which implies
+\begin{equation}
+\left[\hat{A}_{0}^{\varphi}, \hat{B}_{0}^{\varphi}\right]=[\hat{A}, \hat{B}]=i \hat{C}
+\end{equation}
+%
+\item Consider the \emph{squared norm} of the state
+\begin{equation}
+\left(\hat{A}_{0}^{\varphi}+i \lambda \hat{B}_{0}^{\varphi}\right)|\varphi\rangle, \lambda \textrm { real }
+\end{equation}
+which is necessarily positive:
+%%% 3 OK
+\begin{equation}
+\|\left(\hat{A}_{0}^{\varphi}+i \lambda \hat{B}_{0}^{\varphi}\right)|\varphi\rangle \|^{2} \geqslant 0
+\label{eq:g23}
+\end{equation}
+%
+Then, it can be shown (exercise) that
+\begin{equation}
+\lambda^{2}\left\langle\hat{B}_{0}^{\varphi^2}\right\rangle_{\varphi}-
+\lambda\langle\hat{C}\rangle_{\varphi}+
+\left\langle\hat{A}_{0}^{\varphi^{2}}\right\rangle_{\varphi} \geqslant 0
+\label{eq:g24}
+\end{equation}
+and that must not have a real root, then discriminant negative:
+\begin{equation}
+\langle\hat{C}\rangle_{\varphi}^{2}-4
+\left\langle\hat{A}_{0}^{\varphi^{2}}\right\rangle_{\varphi}
+\left\langle\hat{B}_{0}^{\varphi^{2}}\right\rangle_{\varphi} \leqslant 0
+\label{eq:g25}
+\end{equation}
+%
+\end{enumerate}
+
+But:
+\begin{equation}
+\left\langle\left(\hat{A}_{0}^{\varphi}\right)^{2}\right\rangle_{\varphi}
+=\left(\Delta_{\varphi} \hat{A}\right)^{2}
+\quad,\quad
+\left\langle\left(\hat{B}_{0}^{\varphi}\right)^{2}\right\rangle_{\varphi}
+=\left(\Delta_{\varphi} \hat{B}\right)^{2}
+\end{equation}
+which leads to the \emph{Heisenberg inequality}:
+\begin{equation}
+\boxed{
+\left(\Delta_{\varphi} \hat{A}\right)\left(\Delta_{\varphi} \hat{B}\right) \geqslant \frac{1}{2}\left|\langle\hat{C}\rangle_{\varphi}\right|
+}
+\label{eq:heisenberineq}
+\end{equation}
+
+Equality in Eq.~\ref{eq:g23} $\to$ Eq.~\ref{eq:g25}: solve for $\lambda$ and replace in Eq.~\ref{eq:g23},
+then find Eq.~\ref{eq:heisenberineq} with equality.
+
+\emph{Exercise:} 
+$\Delta_\varphi \hat{A}=0 \textrm{ iff } \hat{A}|\varphi\rangle=a|\varphi\rangle$; 
+for finite-dimension $H$ that implies 
+$\langle\hat{C}\rangle_{\varphi}=0$.
+
+Correct interpretation of Eq.~\ref{eq:heisenberineq}:
+$N$ measurements of A, B and C (measured in different
+experiments, of course), all prepared in same $|\varphi\rangle$,
+%%% 4 OK
+one obtains (ideally) accurate experimental values for 
+$\Delta_{\varphi} \hat{A}$ and 
+$\Delta_{\varphi} \hat{B}$ and
+$\langle\hat{C}\rangle_{\varphi}$,
+which then obey Eq.~\ref{eq:heisenberineq}. 
+Notice that this is in \emph{no way} related to experimental errors.
+If errors are $\delta A$ and $\delta B$, for an accurate
+determination of the dispersion, one needs
+\begin{equation}
+\delta A \ll \Delta_{\varphi} \hat{A} \textrm { and } \delta B \ll \Delta_{\varphi} \hat{B}.
+\end{equation}
+
+
+
+
+\section{Time evolution}
+
+\emph{Postulate IV:} the Schrödinger equation
+\begin{equation}
+\boxed{
+i \hbar \frac{d|\varphi(t)\rangle}{d t} = 
+\hat{H}(t) |\varphi(t)\rangle
+}
+\label{eq:schrodinger}
+\end{equation}
+where $\hat{H} = \hat{H}^{\dagger}$ is the Hamiltonian.
+
+Remarks:
+\begin{enumerate}
+\item Valid for a \emph{closed system}, i.e. a system that is \emph{not part} of a larger system.
+\item Valid for a system interacting with a classical 
+system $\to$ \emph{not} necessarily isolated (e.g. spin-$\frac{1}{2}$
+%%% 5 OK
+under the influence of a magnetic field);
+\emph{not valid} when interacting with a \emph{quantized}
+e.m field $\to$ $H = H_\textrm{atom} + H_\textrm{field}$. 
+\end{enumerate}
+
+Notice that Eq.~\ref{eq:schrodinger} is 1\textsuperscript{st} order in time, and evolution is deterministic: given \mbox{$|\varphi(t=0)\rangle$}, $|\varphi(t)\rangle$ is predictable with certainty. Evolution is reversible.
+
+\bigskip
+
+\emph{Assumption:} duration of measurement much shorter
+than ``characteristic time of the evolution''.
+
+Time evolution is unitary, since $\hat{H} = \hat{H}^{\dagger}$ $\to$ norm is conserved under the evolution.
+\begin{equation}
+\begin{aligned} \frac{d}{d t} \||\varphi(t)\rangle \|^{2} &=\frac{d}{d t}\langle\varphi(t) \mid \varphi(t)\rangle \\ &=\left\langle\frac{d \varphi}{d t} \mid \varphi\right\rangle+\left\langle\varphi \mid \frac{d \varphi}{d t}\right\rangle\\
+%%% 6 OK
+&=\left\langle\varphi \left|\left(-\frac{i}{\hbar} \hat{H}\right)^{\dagger}\right|\varphi\right\rangle+\left\langle\varphi\left|\left(-\frac{i}{\hbar} \hat{H}\right)\right| \varphi\right\rangle
+=0
+\end{aligned}
+\end{equation}
+
+Alternative, assuming \emph{conservation of probability}.
+If $|\varphi\rangle$ is expanded as
+\begin{equation}
+|\varphi(t)\rangle=\sum_{n, r}|n, r\rangle
+\underbrace{\langle n, r| \varphi(t)\rangle}_{C_{n, r}(t)}
+=\sum_{n, r} C_{n, r}(t)|n, r\rangle
+\end{equation}
+the $C_{n, r}(t)$ satisfy
+\begin{equation}
+\begin{aligned} \frac{d}{d t}\| |\varphi(t)\rangle \|^{2} &=\frac{d}{d t} \sum_{n, r}\left|C_{n, r}(t)\right|^{2}=\frac{d}{d t} \sum_{n} 
+\underbrace{\sum_r \left|C_{n, r}(t)\right|^{2}}_{p\left(a_{n}, t\right)} \\ 
+&=\frac{d}{d t}\left(\sum_{n} p_{n}\left(a_{n}, t\right)\right)=0 
+\end{aligned}
+\end{equation}
+
+Matrix form of the evolution, for the practical calculations: 
+let $\{|\alpha\rangle\}$ be an arbitrary basis of $H$. So
+\[
+i\hbar \frac{d}{d t} \underbrace{\langle\alpha | \varphi(t)\rangle}_{C_{\alpha}(t)}=
+\langle\alpha|\hat{H}(t)| \varphi\rangle=
+\sum_\beta
+\underbrace{\langle\alpha|\hat{H}|\beta\rangle}_{H_{\alpha \beta}(t)}
+\underbrace{\langle\beta|\varphi(t)\rangle}_{C_\beta(t)}
+\]
+which leads to
+\begin{equation}
+\boxed{i \hbar \dot{C}_{\alpha}(t)=\sum_{\beta} H_{\alpha \beta}(t) C_{\beta}(t)}
+\end{equation}
+
+%%% 7 OK
+
+\subsection{Evolution operator}
+
+Instead of a \emph{differential} evolution equation,
+Eq.~\ref{eq:schrodinger}, one can postulate an integral equation
+for an evolution operator $\hat{U}(t,t_0)$.
+
+\emph{Postulate IV$\,^\prime$:} the state vector $|\varphi(t)\rangle$ at time $t$
+is derived from the state $|\varphi(t_0)\rangle$ at
+time $t_0$ by applying a unitary operator $\hat{U}(t, t_0)$ on $|\varphi(t_0)\rangle$:
+\begin{equation}
+\boxed{
+|\varphi(t)\rangle = \hat{U}(t, t_0)|\varphi(t_0)\rangle
+}
+\label{eq:postulate4prime}
+\end{equation} 
+and $\hat{U}(t, t_0)$ is the \emph{evolution operator}. 
+Of course, it still needs a dynamical equation $\to$ see below.
+
+Notice that $\hat{U} \hat{U}^{\dagger} = \hat{U}^{\dagger}\hat{U} = I \to$ at any $t$, norm is conserved:
+\begin{equation}
+\begin{aligned}
+\langle\varphi(t) | \varphi(t)\rangle 
+&=\left\langle\hat{U} \varphi\left(t_{0}\right) \mid \hat{U} \varphi\left(t_{0}\right)\right\rangle \\ 
+&=\left\langle\varphi\left(t_{0}\right)\left|\hat{U}^{\dagger} \hat{U}\right| \varphi\left(t_{0}\right)\right\rangle \\ 
+&=\left\langle\varphi\left(t_{0}\right) | \varphi\left(t_{0}\right)\right\rangle 
+\end{aligned}
+\end{equation}
+Also, from conservation of norm: $\hat{U} \hat{U}^{\dagger} = I$, but we need some caution for infinite dimension $H$.
+
+%%% 8 OK
+
+\subsection{Properties of $\hat{U}$}
+
+\begin{enumerate}
+\item group property
+\begin{equation}
+\hat{U}\left(t, t_{1}\right) \hat{U}\left(t_{1}, t_{0}\right)=\hat{U}\left(t, t_{0}\right)
+\label{eq:Ugroup}
+\end{equation}
+Indeed:
+\[
+|\varphi(t)\rangle=
+\hat{U}\left(t, t_{1}\right)\underbrace{|\varphi\left(t_{1}\right)\rangle}%
+_{\hat{U}\left(t_{1}, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle}
+=\hat{U}\left(t, t_{1}\right) \hat{U}\left(t_{1}, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle
+\]
+but also 
+\[
+|\varphi(t)\rangle = \hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle
+\]
+leading to Eq.~\ref{eq:Ugroup}.
+%
+\item identity: 
+\begin{equation}
+\hat{U}(t_0,t_0) = I
+\end{equation}
+%
+\item inverse:
+\begin{equation}
+\hat{U}^{-1}\left(t, t_{0}\right)=\hat{U}\left(t_{0}, t\right)
+\end{equation}
+Since $t_1$ is arbitrary in Eq.~\ref{eq:Ugroup}:
+\[
+|\varphi(t)\rangle=\hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle,
+\]
+and
+\[
+\left|\varphi\left(t_{0}\right)\right\rangle=\hat{U}\left(t_{0}, t\right)|\varphi(t)\rangle
+\]
+but
+\[
+|\varphi(t_0)\rangle = \underbrace{\hat{U}\left(t, t_{0}\right) \hat{U}\left(t_{0}, t\right)}%
+_{I}%
+|\varphi(t)\rangle
+\]
+so
+\[
+\hat{U}^{-1}\left(t, t_{0}\right) I=\hat{U}\left(t_{0}, t\right) \rightarrow \hat{U}^{-1}\left(t, t_{0}\right)=\hat{U}\left(t_{0}, t\right)
+\]
+\end{enumerate}
+
+
+\subsection{Dynamical equation for $\hat{U}$}
+
+Postulates IV and IV$^\prime$ are not independent, one needs
+one of them only. What is the dynamical equation?
+%%% 9 OK
+We postulate it is
+\begin{equation}
+\boxed{
+\hat{H}\left(t^{\prime}\right) \hat{U}\left(t^{\prime}, t\right)=i \hbar \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)
+}
+\label{eq:dynEqU}
+\end{equation}
+
+Is this correct? Differentiate Eq.~\ref{eq:postulate4prime} (make $t \to t^\prime, t_0\to t)$
+\begin{equation}
+i \hbar \frac{d}{d t^\prime}|\varphi(t^\prime)\rangle =
+i \hbar\left(\frac{d}{d t^\prime} \hat{U}\left(t^{\prime},t\right) \right) |\varphi(t)\rangle	
+\label{eq:g40}
+\end{equation}
+but again, by Eq.~\ref{eq:postulate4prime} itself, we have
+\begin{equation}
+\hat{H}\left(t^{\prime}\right)\left|\varphi\left(t^{\prime}\right)\right\rangle=
+\hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle
+\label{eq:g41}
+\end{equation}
+The Schrödinger equation says that the the left-hand sides of Eqs.~\ref{eq:g40} and \ref{eq:g41} are the same.
+So, to be consistent with it, the right-hand sides should also be equal:
+\[
+\hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle = 
+i \hbar\left(\frac{d}{d t^\prime} \hat{U}\left(t^{\prime},t\right) \right) |\varphi(t)\rangle
+\]
+Since $|\varphi(t)\rangle$ is arbitrary, Eq.~\ref{eq:dynEqU} follows.
+
+
+Way back from Eq.~\ref{eq:dynEqU} to Schrödinger equation. Take the limit on the left-hand side of Eq.~\ref{eq:dynEqU}:
+\[
+\lim _{t^{\prime} \rightarrow t} 
+\hat{H} (t^{\prime}) \hat{U}(t^{\prime}, t)=\hat{H}(t) \hat{U}(t, t)=\hat{H}(t)
+\]
+and therefore it reduces to
+\begin{equation}
+\hat{H}(t)=\left.i \hbar \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)\right|_{t^{\prime}=t}
+\label{eq:g42}
+\end{equation}
+Again, differentiate Eq.~\ref{eq:postulate4prime} with respect to $t^\prime$, and take the limit $t^\prime \to t$:
+\begin{equation}
+i \hbar \frac{d}{d t^\prime}|\varphi(t^\prime)\rangle = 
+\underbrace{i \hbar \lim _{t^{\prime} \rightarrow t} \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)}%
+_{\hat{H}(t)}%
+|\varphi(t^\prime)\rangle
+\end{equation}
+therefore
+\[
+i \hbar \frac{d}{d t}|\varphi(t)\rangle=\hat{H}(t)|\varphi(t)\rangle
+\]
+as we said.
+
+Equation~\ref{eq:g41} is not easy to integrate in general,
+when $\hat{H}(t) \neq$ constant in time.
+%%% 10 OK
+When $\hat{H}(t)$ is constant:
+\begin{equation}
+i \hbar \frac{d U\left(t, t_{0}\right)}{d t}=\hat{H} \hat{U}\left(t, t_{0}\right)
+\to
+\hat{U}\left(t, t_{0}\right)=e^{-i \hat{H}\left(t-t_{0}\right) / t}
+\label{eq:g44}
+\end{equation}
+as can be easily verified.
+
+When $\hat{H}(t)$ is not constant, it can be proved (left as exercise) that:
+\begin{equation}
+\hat{U}\left(t, t_{0}\right)=T e^{-i} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
+\end{equation} 
+where T is the \emph{time ordering}.
+\begin{equation}
+\begin{gathered}
+T e^{-i \int_{t_{0}}^{t} d t^{\prime} \cdots} = 1 
+-i / \hbar \int_{t_{0}}^{t} dt^{\prime} \hat{H}\left(t^{\prime}\right)\\
++
+\frac{1}{2 !}\left(\frac{i}{\hbar}\right)^{2} \int_{t_{0}}^{t} d t^{\prime} \int_{t_{0}}^{t} d t^{\prime \prime} T\left[\hat{H}\left(t^{\prime}\right) H\left(t^{\prime \prime}\right)\right]+\cdots
+\end{gathered}
+\end{equation}
+
+\subsection{Stationary states}
+
+Suppose a system completely isolated from 
+external influences $\to$ description \emph{cannot} depend
+on the time origin, only time differences matter.
+\begin{equation}
+\hat{U}\left(t, t_{0}\right)=\hat{U}\left(t-t_{0}\right)
+\end{equation}
+
+%%% 11 OK
+
+Therefore, Eq.~\ref{eq:g42} implies:
+\begin{equation}
+\begin{aligned} 
+\hat{H}\left(t_{0}\right) 
+&=\left.i \hbar \frac{d}{d t} \hat{U}\left(t, t_{0}\right)\right|_{t=t_{0}}
+\quad\textrm{call }\tau=t-t_{0} \\ 
+&=\left.i \hbar \frac{d}{d t} \hat{U}\left(t-t_{0}\right)\right|_{t=t_{0}}
+=\left.\underbrace{\frac{i}{h} \frac{d}{d \tau} \hat{U}(\tau)}_{\textrm{independent of }t_0}\right|_{\tau=0}
+\end{aligned}
+\end{equation}
+So, $\hat{H}$ is independent of time.
+In this case, Eq.~\ref{eq:g44} applies:
+\begin{equation}
+\hat{U}\left(t, t_{0}\right)=e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}
+\end{equation}
+where $\hat{U}\left(t, t_{0}\right)$ implements a time translation $t-t_0$
+on the state vector.
+For $t-t_0 = \varepsilon$ infinitesimal
+\begin{equation}
+\hat{U}\left(t, t_{0}\right)=1-i / \hbar \cdot \varepsilon \hat{H}
+\end{equation}
+meaning that $\hat{H}$ is the \emph{generator} of infinitesimal time translations.
+And for an isolated system, the most
+general definition of a Hamiltonian is
+precisely that of an infinitesimal time-translation
+generator (more to come when studying symmetry in quantum physics).
+
+%%% 12
+
+Let $|n,r\rangle$ be eigenvector of $\hat{H}$ with eigenvalue 
+$E_n$: $\hat{H}|n, r\rangle=E_{n}|n, r\rangle$. Its time evolution
+is simply: $\left.|\varphi(t_{0})\right\rangle=|n, r\rangle$ $\to$
+\begin{equation}
+|\varphi(t)\rangle=e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}|n, r\rangle=e^{-i / \hbar\left(t-t_{0}\right) E_{n}}|n, r\rangle
+\end{equation}
+The probability of finding $|\varphi(t)\rangle$ in any
+state $|\chi\rangle$ is independent of time:
+\begin{equation}
+\begin{aligned}|\langle x \mid \varphi(t)\rangle|^{2} &=\left|e^{-i / \hbar\left(t-t_{0}\right) E_{n}}\langle x \mid n, r\rangle\right|^{2} \\ &=\left|\left.\langle x \mid n, r\rangle\right|^{2}=\left|\left\langle x \mid \varphi\left(t_{0}\right)\right\rangle\right|^{2}\right.
+\end{aligned}
+\end{equation}
+Independent of time $\to$ ``stationary'' and we call
+$|n,r\rangle$ a \emph{stationary state}.
+
+For the time evolution of expansion coefficients:
+\begin{equation}
+\left|\varphi\left(t_{0}\right)\right\rangle=\sum_{n, r} C_{n, r}(n, r\rangle
+\end{equation}
+evolves to
+\begin{equation}
+\mid \varphi(t)\rangle=\sum_{n, r}C_{n, r} e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}|n, r\rangle
+\end{equation}
+where $\left\langle n, r\left|\varphi\left(t_{0}\right)\right\rangle \rightarrow C_{n, r}\left(t_{0}\right)\right.$.
+
+\end{document}  

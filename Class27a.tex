@@ -1,0 +1,457 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\vecrp}{\ensuremath{\vec{r}^{\,\prime}}}
+\newcommand{\vecnr}{\ensuremath{\vec{\nabla}_{\!r}}}
+
+\title{Advanced Quantum Mechanics\\Class 27 (a)}
+%\author{The Author}
+\date{December 01, 2022}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{8}
+
+%%% 01 OKAY
+
+\section{Many-particle systems}
+\setcounter{subsection}{2}
+Reminder:
+\begin{gather*}
+\ket{\vec{r}_1\ldots\vec{r}_N} = \hat{\psi}^{\dagger}(\vec{r}_1)\ldots\hat{\psi}^{\dagger}(\vec{r}_N) \ket{0}\label{eq:g50}\\
+\hat{\psi}(\vec{r})\ket{0} = 0\label{eq:g51}\\
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}(\vec{r}^{\,\prime})
+\right]_\mp 
+= 0 = 
+\left[
+\hat{\psi}^{\dagger}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp\label{eq:g52}\\
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp = \delta(\vec{r} - \vec{r}^{\,\prime})\label{eq:g53}
+\end{gather*}
+\rule{\textwidth}{1pt}
+
+\subsection{Fock space -- observables}
+
+We will express observables in terms of $\hat{\psi}$ and $\hat{\psi}^\dagger$.
+Let us consider first the Hermitian operator
+\setcounter{equation}{56}
+\be
+\hat{\rho}(\vec{r})=\hat{\psi}^{\dagger}(\vec{r}) \hat{\psi}(\vec{r})
+\ee
+which is easier to work with -- same for bosons and fermions -- and examine its action on a many particle state:
+\be
+\begin{aligned}
+\hat{\rho}(\vec{r})\ket{\vec{r}_{1} \ldots \vec{r}_{n}}
+&=\hat{\rho}(\vec{r}) \hat{\psi}^{\dagger}\left(\vec{r}_{1}\right) \ldots \hat{\psi}^\dagger\left(\vec{r}_{1}\right)|0\rangle\to\\
+&\to\text{move $\hat{\psi}$ until it hits }\ket{0}\to\\
+&\left([\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{1})]+
+\hat{\psi}^{\dagger}(\vec{r}_{1}) \hat{\rho}(\vec{r})\right) 
+\hat{\psi}^{\dagger}(\vec{r}_{2}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
+&=[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{1})]
+\hat{\psi}^{\dagger}(\vec{r}_{2}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
+&+\hat{\psi}^{\dagger}(\vec{r}_{1})
+[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{2})]
+\hat{\psi}^{\dagger}(\vec{r}_{3}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
+&+\hat{\psi}^{\dagger}(\vec{r}_{1})\hat{\psi}^{\dagger}(\vec{r}_{2})
+[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{3})]
+\hat{\psi}^{\dagger}(\vec{r}_{4}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
+%%% 02 OKAY
+\ldots\\
+&+\hat{\psi}^{\dagger}(\vec{r}_{1})\ldots\hat{\psi}^{\dagger}(\vec{r}_{N-1})
+[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{N})]\ket{0}\\
+&+\hat{\psi}^{\dagger}(\vec{r}_{1})\ldots\hat{\psi}^{\dagger}(\vec{r}_{N})\underbrace{\hat{\rho}\ket{0}}_{=0}
+\end{aligned}
+\label{eq:g58}
+\ee
+We need the commutator $[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}^{\,\prime})]$ $\to$ Exercise:
+\be
+[\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}^{\,\prime})] = \delta(\vec{r}-\vec{r}^{\,\prime})\hat{\psi}^\dagger(\vec{r})
+\ee
+independently if we're referring to bosons or fermions.
+Using this into Eq.~\eqref{eq:g58}, one obtains:
+\be
+\begin{gathered}
+\hat{\rho}(\vec{r})\ket{\vec{r}_{1} \ldots \vec{r}_{N}}
+= \delta(\vec{r}-\vec{r}_1)
+\hat{\psi}^{\dagger}(\vec{r})\hat{\psi}^{\dagger}(\vec{r}_{2}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
++ \delta(\vec{r}-\vec{r}_2)
+\hat{\psi}^{\dagger}(\vec{r}_1)\hat{\psi}^{\dagger}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r}_{3}) \ldots \hat{\psi}^{\dagger}(\vec{r}_{N}) \ket{0}\\
++\ldots+\delta(\vec{r}-\vec{r}_N)
+\hat{\psi}^{\dagger}(\vec{r}_1)\ldots \hat{\psi}^{\dagger}(\vec{r}_{N-1}) \hat{\psi}^{\dagger}(\vec{r})\ket{0}\\
+= \sum_{a=1}^N \delta(\vec{r}-\vec{r}_a) \ket{\vec{r}_1\ldots\vec{r}_N}
+\end{gathered}
+\ee
+therefore
+\be
+\boxed{
+\rho(\vec{r}) = \sum_{a=1}^N \delta(\vec{r}-\vec{r}_a)
+}
+\ee
+%%% 03 OKAY
+When one integrates $\rho(\vec{r})$ over the volume:
+\be
+\int d^3r \rho(\vec{r}) = \sum_{a=1}^N \int d^3r \delta(\vec{r}-\vec{r}_a) = N \to \text{ \# of particles}
+\label{eq:g62}
+\ee
+That is, $\hat{\rho}(\vec{r})$ is the density operator. It leads
+to the definition of the \emph{number} operator
+\be
+\hat{N} = \int d^3r \hat{\rho}(\vec{r}) = \int d^3r \hat{\psi}^\dagger(\vec{r}) \hat{\psi} (\vec{r})
+\ee
+$\Rightarrow$ number of particles
+\be
+\boxed{
+\hat{N}\ket{\vec{r}_1\ldots\vec{r}_N} = N\ket{\vec{r}_1\ldots\vec{r}_N}
+}
+\ee
+$\ket{\vec{r}_1\ldots\vec{r}_N}$ is an eigenstate of the number operator.
+Note that
+\be
+\begin{aligned}
+[\hat{N},\hat{\psi}^\dagger(\vec{r})]
+&=\int d^3r^\prime[\hat{\rho}(\vec{r}^{\,\prime}),\hat{\psi}^\dagger(\vec{r})]\\
+&=\int d^3r^\prime\delta(\vec{r}^{\,\prime}-\vec{r}) \hat{\psi}^\dagger (\vec{r}^{\,\prime}) =\hat{\psi}^\dagger(\vec{r})
+\end{aligned}
+\ee
+which implies
+%%% 04 OKAY
+\be
+\hat{N}\hat{\psi}^\dagger(\vec{r}) = \hat{\psi}^\dagger(\vec{r})\hat{N} + \hat{\psi}^\dagger(\vec{r}) = 
+\hat{\psi}^\dagger(\vec{r})(\hat{N}+1)
+\ee
+Also (exercise):
+\be
+\hat{N}\hat{\psi}(\vec{r}) = \hat{\psi}(\vec{r})(\hat{N}-1)
+\ee
+
+\subsubsection{Momentum operator}
+
+We will verify that the operator
+\be
+\hat{\vec{P}}=\int d^{3}\vec{r} \hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r})
+\ee
+satisfies the common properties one expects from the
+momentum operator. First, we show that $\hat{\vec{P}}$ is Hermitean: $\hat{\vec{P}}^\dagger = \hat{\vec{P}}$
+%
+\be
+\begin{aligned}
+\hat{\vec{P}}^{\dagger}
+&=\left[\int d^{3}\vec{r} \hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r})\right]^{\dagger}
+%%% 05 OKAY
+=\int d^{3} \vec{r} \left[\hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r})\right]^{\dagger}\\
+&=i\hbar \int d^{3}\vec{r} \left[\hat{\psi}^{\dagger}(\vec{r})\vecnr \hat{\psi}(\vec{r})\right]^{\dagger}
+ =i\hbar \int d^{3}\vec{r} \left[\vecnr\hat{\psi}(\vec{r})\right]^\dagger \left[\hat{\psi}^\dagger(\vec{r})\right]^\dagger\\
+&=i\hbar \int d^{3}\vec{r} \underbrace{\left(\vecnr\hat{\psi}^\dagger(\vec{r}\right) \hat{\psi}(\vec{r})}%
+_{\vecnr(\hat\psi^\dagger\hat\psi) - \psi^\dagger\vecnr\hat\psi}\\
+&=i\hbar \int d^{3}\vec{r}
+\Big\{
+\underbrace{\vecnr\left[\hat{\psi}^{\dagger}(\vec{r})\hat{\psi}(\vec{r})\right]}%
+_{\mathrlap{\text{zero for localized systems}}\quad}%
+- \hat{\psi}^{\dagger}(\vec{r})\vecnr\hat{\psi}(\vec{r})
+\Big\}\\
+&=\int d^{3}\vec{r} \hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r}) = \hat{\vec{P}}
+\end{aligned}
+\ee
+In addition, we have to calculate the following commutator:
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{P}\right] = 
+\int d^3r^\prime
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^\dagger(\vecrp)(-i\hbar\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp))
+\right]\\
+=-i\hbar \int d^3r^\prime
+\bigg[
+\underbrace{\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp)}_{\Circled{1}} \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) -
+\hat{\psi}^\dagger (\vecrp)\vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) 
+\bigg]
+\end{gathered}
+\]
+but 
+\[
+\Circled{1}=\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp) =
+\left[
+\hat{\psi}(\vec{r}), \hat{\psi}^\dagger(\vecrp)
+\right]_\mp \pm  \hat{\psi}^\dagger(\vecrp)\hat{\psi}(\vec{r})
+\]
+so
+%%% 06
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{P}\right] = -i\hbar \int d^3r^\prime \times
+\bigg\{
+    \delta(\vec{r}-\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right)\\ 
+	\pm \underbrace{\hat{\psi}^{\dagger}(\vecrp) \hat{\psi}(\vec{r}) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right)}%
+	_{\Circled{2}}
+	- \underbrace{\hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r})}%
+	_{\Circled{3}}
+\bigg\}\\
+\end{gathered}
+\]
+but $\Circled{2} = \pm \hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r}) = \pm\Circled{3}$; so, the two $\pm$ signs combine, and we are left only with the subtraction in the middle,
+\textit{i.e.} $\pm \Circled{2} - \Circled{3} = 0$. So
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{P}\right]
+= -i\hbar \int d^3r^\prime \delta(\vec{r}-\vecrp) \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) = 
+-i\hbar \vecnr \hat{\psi}(\vec{r})
+\end{gathered}
+\]
+therefore %
+\setcounter{equation}{70}
+\be
+\left[\hat{\psi}(\vec{r}),\hat{P}\right] = -i\hbar \vecnr \hat{\psi}(\vec{r})
+\ee
+and that also implies
+\be
+\left[\hat{\psi}^\dagger(\vec{r}),\hat{P}\right] = -i\hbar \vecnr \hat{\psi}^\dagger(\vec{r})
+\ee
+Since $\hat{\psi}\ket{0} = 0$, one has that the zero-particle
+state, the ``vacuum'', has zero momentum:
+\be
+\boxed{\vec{P}\ket{0}=0}
+\ee
+
+\emph{Exercise:}
+\be
+\begin{gathered}
+\bra{\vec{r}_1\ldots\vec{r}_N} \hat{\vec{P}}\ket{\Psi} =
+\int d^{3} r_{1}^{\prime} \cdots d^{3} r_{N}^{\prime}
+\bra{\vec{r}_1\ldots\vec{r}_N} \hat{\vec{P}} \ket{\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}
+\bra{\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}\ket{\Psi}\\
+\int d^{3} r_{1}^{\prime} \cdots d^{3} r_{N}^{\prime}
+\bra{0}\hat{\psi}(\vec{r}_1)\ldots\hat{\psi}(\vec{r}_N)
+\hat{\vec{P}}
+\hat{\psi}^\dagger(\vec{r}_1^{\,\prime})\ldots\hat{\psi}^\dagger(\vec{r}_N^{\,\prime})\ket{0}\\
+\ldots\\
+=\sum_{a=1}^{N}\left(-i \hbar \vec{\nabla}_{r_{a}}\right) \Psi\left(\vec{r}_{1}, \ldots, \vec{r}_{N}\right)
+\end{gathered}
+\ee
+that is, the first-quantized the total momentum of an $N$-particle system.
+
+%%% 07 OKAY
+\subsection{Fock space -- one-body operators}
+
+The Fock-space representation of an \emph{one-body} operator
+$\hat{O}_1(\hat{\vec{r}})$, whose elements in first quantization
+are given by
+\be
+\bra{\vecrp}\hat{O}_1(\hat{\vec{r}})\ket{\vec{r}} = 
+O_1(\vec{r}) \delta(\vecrp-\vec{r})
+\ee
+It is a diagonal operator, for we are taking the matrix elements, 
+in between $\bra{\vecrp}$ and $\ket{\vec{r}}$,
+of operators that are written as functions of the first-quantized operator $\hat{\vec{r}}$ itself.
+After we take the matrix elements, these are numbers,
+so they lose their operator status ($\hat{O} \to O$, lose their ``hats'').
+In Fock space the second-quantized operator is then represented by
+\be
+\begin{aligned}
+\hat{O}_1
+&=\int d^3r^\prime d^3r\, \psi^\dagger(\vecrp)
+\bra{\vecrp}\hat{O}_1(\hat{\vec{r}})\ket{\vec{r}}\psi{\vec{r}}\\
+&=\int d^3r\, \psi^\dagger(\vec{r}) O_1(\vec{r}) \psi(\vec{r})
+\end{aligned}
+\ee
+Note that  the momentum operator, introduced
+above, is consistent with this, since
+\[
+\begin{aligned}
+\hat{\vec{P}} 
+&= \int d^3r^\prime d^3r\, 
+\hat{\psi}^\dagger(\vecrp) \underbrace{\bra{\vecrp}\vec{P}\ket{\vec{r}}}%
+_{-i\hbar\vec{\nabla}_{\vec{r}^{\,\prime}}\delta(\vecrp-\vec{r})}
+\hat{\psi}(\vec{r})\\
+&= \int d^3r^\prime d^3r\,
+\hat{\psi}^\dagger(\vecrp)
+\left[-i\hbar\vec{\nabla}_{\vec{r}^{\,\prime}}\delta(\vecrp-\vec{r})\right]
+\hat{\psi}(\vec{r})\\
+&= \int d^3r\,
+\hat{\psi}^\dagger(\vec{r})\left(-i\hbar\vecnr\right)\hat{\psi}(\vec{r})
+\end{aligned}
+\]
+which is the same expression as given in Eq.~\eqref{eq:g62}.
+
+%%% 08 OKAY
+
+The rule is: 
+\begin{itemize}
+\item sandwich the matrix element in first
+quantization between $\hat{\psi}^{\dagger}$and $\hat{\psi}$.
+\end{itemize}
+For the important case of a single-particle
+Hamiltonian, this leads to:
+\be
+\hat{H}_1(\vec{r}) = \int d^3r\,
+\hat{\psi}^\dagger(\vec{r})
+\left[
+\underbrace{-\frac{\hbar^2}{2m}\vecnr^2}_{\text{kinetic energy}} 
++ 
+\underbrace{V_1(\vec{r})}_{\text{external potential}} 
+\right]
+\hat{\psi}(\vec{r})
+\ee
+leading to the following properties:
+\begin{enumerate}
+\item $\hat{H}_1(\vec{r})$ is Hermitian
+%
+\item $\hat{H}_1(\vec{r})\ket{0}=0$
+%
+\item
+\be
+\bra{\vec{r}_1\ldots\vec{r}_N}\hat{H}_1\ket{\Psi} =
+\sum_{a=1}^n
+\left[
+-\frac{\hbar^2}{2m} \vec{\nabla}_{r_a} + V_1(\vec{r}_a)
+\right]
+\Psi(\vec{r}_1\ldots\vec{r}_N)\,\to\,\text{Exercise}
+\ee
+\end{enumerate}
+The eigenvalue equation
+\[
+\hat{H}_1\ket{\Psi} = E\ket{\Psi}
+\]
+leads to the traditional expression:
+\be
+\sum_{a=1}^n
+\left[
+-\frac{\hbar^2}{2m} \vec{\nabla}_{r_a} + V_1(\vec{r}_a)
+\right] \Psi(\vec{r}_1\ldots\vec{r}_N)
+= E \Psi(\vec{r}_1\ldots\vec{r}_N)
+\ee
+Notice that here all the particles have are their kinetic energies 
+and interaction with an external potential $V_1(\vec{r})$.
+In other words, we are disregarding mutual interactions between the particles;
+that is the subject of the next subsection.
+
+\subsection{Fock space -- two-body operators}
+
+Mutual interaction: $\hat{V}_2 = \hat{V}_2(\hat{\vec{r}}^{\,\prime},\hat{\vec{r}})$
+$\to$ Hermitian, symmetric in $\vecrp \leftrightarrow \vec{r}$.
+
+%%% 09 OKAY
+
+Matrix elements in first quantization is
+\be
+\bra{\vec{r}_1^{\,\prime} \vec{r}_1^{\,\prime}} \hat{V}_2(\vecrp,\vec{r})\ket{\vec{r}_1 \vec{r}_2}
+\delta(\vec{r}_1^{\,\prime} - \vec{r}_1)\delta(\vec{r}_2^{\,\prime} - \vec{r}_2) V_2(\vec{r}_1, \vec{r}_2)
+\ee 
+where $V_2(\vec{r}_1, \vec{r}_2)$ is real. 
+The above sandwich rule leads to
+\be
+\begin{aligned}
+\hat{V}_2 
+&= 1/2 \int d^3r_1^\prime\ldots d^3r_2\,
+\hat{\psi}^\dagger(\vec{r}_1^{\,\prime})\hat{\psi}^\dagger(\vec{r}_2^{\,\prime}) 
+\bra{\vec{r}_1^{\,\prime} \vec{r}_2^{\,\prime}} \hat{V}_2\ket{\vec{r}_1 \vec{r}_2}
+\hat{\psi}(\vec{r}_2)\hat{\psi}(\vec{r}_1)\\
+&= 1/2 \int d^3r^\prime d^3r^\prime\,
+\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp) 
+V_2(\vec{r},\vecrp)
+\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})
+\end{aligned}
+\ee
+%
+This operator is Hermitean
+\be
+\begin{aligned}
+&\left(\int d^3r d^3r^\prime\,
+\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp) 
+V_2(\vec{r},\vecrp)
+\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})\right)^\dagger\\
+&= \int d^3r d^3r^\prime\,
+\left(\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})\right)^\dagger
+V_2(\vec{r},\vecrp)
+\left(\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp)\right)^\dagger\\
+&=\int d^3r d^3r^\prime\,
+\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp) 
+V_2(\vec{r},\vecrp)
+\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})
+\end{aligned}
+\ee
+\begin{quote}
+\emph{OBS:} Note the order of $\vec{r}$ and $\vecrp$ in $\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp)$
+and $\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})$ $\to$ this order of the
+operators is absolutely essential.
+\end{quote}
+A Hamiltonian containing the interaction with
+%%% 10
+an external potential and the mutual interaction
+can be written as
+\be
+\begin{gathered}
+\hat{H}_2 = \hat{H}_1 + \hat{V}_2 \\
+= 
+\int d^3r\,
+\hat{\psi}^\dagger(\vec{r})
+\left[
+-\frac{\hbar^2}{2m}\vecnr^2 + V_1(\vec{r}) 
+\right]\hat{\psi}(\vec{r})
+\\
++1/2 \int d^3r d^3r^\prime\,
+\hat{\psi}^\dagger(\vec{r})\hat{\psi}^\dagger(\vecrp) 
+V_2(\vec{r},\vecrp)
+\hat{\psi}(\vecrp)\hat{\psi}(\vec{r})
+\end{gathered}
+\ee
+
+Let us check the eigenvalue equation
+\[
+\hat{H}_2 \ket{\Psi} = (\hat{H}_1 + \hat{V}_2)\ket{\Psi}
+\]
+that is, the first-quantized version is:
+\[
+\begin{gathered}
+\sum_{a=1}^{N} \left(
+-\frac{\hbar^{2}}{2 m} \vec{\nabla}_{a}^{2}+V_{1}\left(\vec{r}_{a}\right)\right) 
+\Psi\left(\vec{r}_{1}, \ldots, \vec{r}_{N}
+\right)\\
++1 / 2 \sum_{a, b} V_{2}\left(\vec{r}_{a}, \vec{r}_{b}\right) \Psi\left(\vec{r}_{1}, \ldots, \vec{r}_{N}\right) 
+= E \Psi\left(\vec{r}_{1}, \ldots, \vec{r}_{N}\right)
+\end{gathered}
+\]
+
+\begin{quote}
+Note that one has to do large calculation to get to the first-quantized version shown above. 
+This is left as an exercise.
+\end{quote}
+
+
+
+
+
+
+
+
+\end{document}

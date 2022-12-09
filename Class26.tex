@@ -1,0 +1,678 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+
+\title{Advanced Quantum Mechanics\\Class 26}
+%\author{The Author}
+\date{November 29, 2022}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{8}
+
+%%% 01 OKAY
+
+\section{Many-particle systems}
+
+\begin{itemize}
+\item Identical particles
+\item Fock space (second quantization)
+\end{itemize}
+
+\subsection{Identical particles}
+
+Inexistency of \emph{intrinsic} properties that allow us to
+identify them individually.
+
+\begin{itemize}
+\item This feature has profound consequences in QM
+\item Not so much in classical mechanics: it is always possible
+to follow the trajectory $(\vec{r}, \vec{p})$ of a particle in phase space;
+if a label is given to a particle at $t=0$, say $\left(\vec{r}_{1}(0), \vec{p}_{1}(0)\right)$,
+nothing in principle forbids us to follow it closely
+until its final destination $\left(\vec{r}_{1}(t), \vec{p}_{1}(t)\right)$.
+\end{itemize}
+
+Same with two particles:
+\be
+\begin{aligned}
+(\vec{r}_1(0), \vec{p}_1(0))\\
+(\vec{r}_2(0), \vec{p}_2(0))
+\end{aligned}
+\xrightarrow{\text{evolution}}
+\begin{aligned}
+(\vec{r}_1(t), \vec{p}_1(t))\\
+(\vec{r}_2(t), \vec{p}_2(t))
+\end{aligned}
+\ee
+Exchange of labels $1 \leftrightarrow 2$, leads to a final state
+that is indistinguishable from the one in (1), because
+%%% 02 OKAY
+the equations of motion, from a Hamiltonian $H(1,2)$
+or Lagrangian $L(1,2)$, are symmetric under
+$1 \leftrightarrow 2$, because $H(1,2)=H(2,1)$ (same for $L(1,2)$).
+$\Rightarrow$ It \emph{must be} $H(1,2)=H(2,1)$; 
+otherwise the nonsymmetry
+would provide a dynamical criterion
+to distinguish the two particles.
+
+Let us analise such a situation in QM. Consider two
+\emph{different} particles, $a$ and $b$, prepared in some
+state $|\Psi\rangle$ at some distant time. Long after that time,
+when the particles are not in interaction anymore,
+they will be tested by two well-separated detectors $D_{1}$
+and $D_{2}: D_{1}$ tests for energy $E_{1}$ and $D_{2}$ for energy $E_{2}$.
+
+$\Rightarrow$ The probability of $D_{1}$ finding in $|\Psi\rangle$ particle $a$
+in the state $|a\rangle=\left|E_{1}\right\rangle$ and $D_{2}$ particle $b$ in the
+state $|b\rangle=\left|E_{2}\right\rangle$, that is, the probability of
+finding in $|\Psi\rangle$ the state $|a \otimes b\rangle=\left|E_{1} \otimes E_{2}\right\rangle$
+is given by
+%%% 03 OKAY
+\be
+P_{\Psi \rightarrow[E_{1}, E_{2}]}=|\langle 
+\overset{\substack{a\\\downarrow}}{E_{1}}\otimes 
+\overset{\substack{b\\\downarrow}}{E_{2}} | \Psi\rangle|^{2}
+\ee
+
+The opposite configuration, $D_1$ tests $|b\rangle=\left|E_{1}\right\rangle$ and
+$D_{2}$ tests $|a\rangle=\left|E_{2}\right\rangle$ leads to a \emph{different} probability
+\be
+P_{\Psi \rightarrow[E_{2}, E_{1}]}=|\langle 
+\overset{\substack{a\\\downarrow}}{E_{2}}\otimes 
+\overset{\substack{b\\\downarrow}}{E_{1}} | \Psi\rangle|^{2}
+\ee
+
+That these probabilities are indeed in general different
+can be seen in an extreme example: $D_{1}$ cannot detect
+neutrinos, only $D_{2}$, but one of the particles is a neutrino;
+therefore one of the results could be zero.
+
+Now, when the particles are identical, it makes no physical
+sense to write \textit{e.g.} $\left|E_{1} \otimes E_{2}\right\rangle$, because one cannot tell
+whether it is particle 1 that has energy $E_{1}$, as it could
+well be that it is particle 2 that has that energy and
+the state should be written as $\left|E_{2} \otimes E_{1}\right\rangle$. But they
+correspond to the same physical situation: the two states
+must differ by a phase $\Rightarrow$
+%%% 04 OKAY
+\be
+\left.
+\begin{aligned}
+\ket{a\otimes b} &= e^{i\theta_{ab}}\ket{b \otimes a}\\
+\ket{b\otimes a} &= e^{i\theta_{ba}}\ket{a \otimes b}
+\end{aligned}
+\right\}
+e^{i(\theta_{ab} + \theta_{ba})}=1
+\label{eq:g4}
+\ee
+Let us define two new states
+\be
+\begin{aligned}
+\ket{a\otimes b}^\prime &= e^{-i\theta_{ab}/2}\ket{a \otimes b}\\
+\ket{b\otimes a}^\prime &= e^{-i\theta_{ba}/2}\ket{b \otimes a}
+\end{aligned}
+\ee
+Now, using Eq.~\eqref{eq:g4}, one obtains
+\be
+\begin{gathered}
+\ket{b\otimes a}^\prime = e^{-i\theta_{ba}/2}\ket{b \otimes a} =  e^{-i\theta_{ba}/2} e^{i\theta_{ba}} \ket{a\otimes b}\\
+= e^{i\theta_{ba}/2} \ket{a \otimes b} = e^{i\theta_{ba}/2}  e^{i\theta_{ab}/2} \ket{a\otimes b}^\prime 
+= e^{i\left(\theta_{a b}+\theta_{b a}\right) / 2} \ket{a\otimes b}^\prime 
+\end{gathered}
+\ee
+But, from Eq.~\eqref{eq:g4}
+\[
+\left[
+e^{i(\theta_{ab}+\theta_{ba})/2}
+\right]^2 = e^{i(\theta_{ab}+\theta_{ba})} = 1 \Rightarrow
+\]
+\be
+e^{i(\theta_{ab}+\theta_{ba})/2} = \pm 1 \Rightarrow
+\ket{b\otimes a}^\prime = \pm \ket{a\otimes b}^\prime
+\ee
+Indistinguibility demands that states must be
+either symmetric or antisymmetric cunder
+the exchange $a \leftrightarrow b$ $\Rightarrow$
+%%% 05 OKAY
+\be
+\text{amplitudes } \bra{a\otimes b}\ket{\Psi} = \pm \bra{b\otimes a}\ket{\Psi}
+\ee
+More importantly: this exchange symmetry is a
+characteristic of the two particles, must be valid
+for any state:
+\begin{itemize}
+\item suppose that for one state $\ket{\Phi_1}$ we have
+\be
+\bra{a\otimes b}\ket{\Phi_1} = + \bra{b\otimes a}\ket{\Phi_1}
+\label{eq:g9}
+\ee
+and for another state, $\ket{\Phi_2}$, we have
+\be
+\bra{a\otimes b}\ket{\Phi_2} = - \bra{b\otimes a}\ket{\Phi_2}
+\label{eq:g10}
+\ee
+\item the linearity of QM means that $\ket{\Psi}$ can be
+written as
+\be
+\ket{\Psi} = c_1 \ket{\Phi_1} + c_2 \ket{\Phi_2} 
+\ee
+which implies
+\be
+\bra{a\otimes b}\ket{\Psi} = c_1 \bra{a\otimes b}\ket{\Phi_1} + c_2 \bra{a\otimes b}\ket{\Phi_2} 
+\ee
+$\Rightarrow$ \emph{not} acceptable.
+It would nevertheless be acceptable if \textit{e.g.}
+$c_{1}=0 \Rightarrow$ no transitions $|\Psi\rangle \rightarrow\left|\Phi_{1}\right\rangle$,
+$\left|\Phi_{1}\right\rangle$ does not belong to the $H$ of the two particles.
+\end{itemize}
+
+%%% 06 OKAY
+
+\emph{Experimental fact:}
+\begin{itemize}
+\item half-integer spin particles $\rightarrow$ antisymmetric amplitudes $\Rightarrow$ Fermions.
+\item integer spin particles $\rightarrow$ symmetric amplitudes $\Rightarrow$ Bosons.
+\end{itemize}
+
+\emph{Two-particles states}: convenient to use labels 1 and 2
+for the particles, exchange symmetry
+in the indices 1 and 2
+\be
+\ket{a\otimes b}_{\substack{B\\F}} = \frac{1}{\sqrt{2}}
+\left[
+\ket{a_1 \otimes b_2} \pm \ket{a_2 \otimes b_1} 
+\right]
+\label{eq:g13}
+\ee
+Coordinate representation (bosons):
+\be
+\begin{aligned}
+\Psi_{a b}^{B}\left(\vec{r}_{1}, \vec{r}_{2}\right)
+&=\left\langle\vec{r}_{1}, \vec{r}_{2} \mid a \otimes b\right\rangle_{B}\\
+&=\frac{1}{\sqrt{2}}\left[\varphi_{a}\left(\vec{r}_{1}\right) \varphi_{b}\left(\vec{r}_{2}\right)+\varphi_{a}\left(\vec{r}_{2}\right) \varphi_{b}\left(\vec{r}_{1}\right)\right]
+\end{aligned}
+\label{eq:g14}
+\ee
+%
+Fermions, need to include an extra coordinate, \emph{spin}
+\be
+\begin{gathered}
+|\vec{r}\rangle \rightarrow|\vec{r} s\rangle,\quad|a\rangle \rightarrow| a, s m\rangle,\quad s=\pm1/2\\
+\langle\vec{r} s | a, s m\rangle=\varphi_{a}(\vec{r}) \chi_{m}(s)
+\end{gathered}
+\ee
+with
+\[
+\chi_{m}(s)=\delta_{m s}\left\{
+\begin{pmatrix}1 \\ 0\end{pmatrix} \text{ and }
+\begin{pmatrix}0 \\ 1\end{pmatrix}\right.
+\]
+%%% 07
+\be
+\begin{aligned}
+&\Psi_{a m, b m^{\prime}}^{F}\left(\vec{r}_{1} s_{1}, \vec{r}_{2} s_{2}\right) = \\
+&=\frac{1}{\sqrt{2}}
+\left[\varphi_{a}\left(\vec{r}_{1}\right) \chi_{m}\left(s_{1}\right) \varphi_{b}\left(\vec{r}_{2}\right) \chi_{m^{\prime}}\left(s_{2}\right)\right.
+\left.-\varphi_{a}\left(\vec{r}_{2}\right) \chi_{m}\left(s_{2}\right) \varphi_{b}\left(\vec{r}_{1}\right) \chi_{m^{\prime}}\left(s_{1}\right)\right]\\
+&=
+\begin{vmatrix}
+\varphi_{a}\left(\vec{r}_{1}\right) \chi_{m}\left(s_{1}\right)  & 
+\varphi_{a}\left(\vec{r}_{2}\right) \chi_{m}\left(s_{2}\right) \\
+\varphi_{b}\left(\vec{r}_{1}\right) \chi_{m^{\prime}}\left(s_{1}\right)&
+\varphi_{b}\left(\vec{r}_{2}\right) \chi_{m^{\prime}}\left(s_{2}\right)
+\end{vmatrix}
+\rightarrow\text{ Slater determinant}
+\end{aligned}
+\ee
+
+In many situations one can write the amplitudes
+as a product
+\be
+\begin{aligned}
+\underbrace{\Psi_{a m, b m^{\prime}}\left(\vec{r}_{1} s_{1}, \vec{r}_{2} s_{2}\right)}%
+&=
+\underbrace{\Phi_{ab}\left(\vec{r}_{1}, \vec{r}_{2}\right)} & \times &%
+\underbrace{\chi_{mm^\prime}\left(s_{1}, s_{2}\right)}\\
+\text{antisymmetric}\quad & \quad\quad \substack{\text{symm}\\\\\text{antisymm}} 
+&\substack{\times\\\text{or}\\\times}& \quad \substack{\text{antisymm}\\\\\text{symm}} 
+\end{aligned}
+\ee
+Spin States: 2 Spin-1/2, example $S=0$, $M=0$
+\be
+\begin{aligned}
+\left|m m^{\prime}\right\rangle_{A} 
+&=\frac{1}{\sqrt{2}}
+\left[\ket{+_{1} \otimes-_{2}}-
+      \ket{+_{2} \otimes-_{1}}\right] \\
+&=\frac{1}{\sqrt{2}}
+\left[\ket{+_{1} \otimes-_{2}}-
+      \ket{-_{1} \otimes+_{2}}\right]
+\end{aligned}
+\ee
+Pauli principle: no two particles in the same state.
+This generalizes to $N$ particles:
+for bosons you use the permanent,
+for fermions you use the determinant.
+
+%%% 08 OKAY
+
+\subsection{Fock space -- second quantization}
+
+In the above discussion, the Hilbert space of $N$ identical
+particles was realized as the symmetric or antisymmetric 
+sectors of the $N$ one-particle Hilbert
+spaces.
+
+The number $N$ enters as a kinematic
+constraint (ingredient), associated \textit{a priori}
+with the system under study; that is,
+we have considered:
+\begin{itemize}
+\item \emph{OR} the space of one particle $\rightarrow N=1$
+\item \emph{OR} the space of two particles $\rightarrow N=2$
+\[\vdots\]
+\end{itemize}
+
+This works well when the number of particles is
+conserved; when this \emph{is not} the case (like \textit{e.g.} in open
+systems, relativistic systems), it is necessary to change
+the framework:
+Fock-space methods, in which the number of
+particles is a \emph{dynamical} variable.
+
+%%% 09 OKAY
+
+Although the formalism was originally developed having
+in mind relativistic quantum fields, it finds natural
+applicability in nonrelativistic many-body problems in
+atomic, nuclear and particle physics.
+
+In this framework, instead of using or a space of
+one particle, OR the space of two particles, OR $\ldots$, one
+considers simultaneously:
+\begin{itemize}
+\item the space of one particle $\rightarrow N=1$
+\item \emph{AND} the space of two particles $\rightarrow N=2$
+\item \emph{AND} the space of two particles $\rightarrow N=2$
+\[\vdots\]
+\end{itemize}
+That is: one replaces the logic of the \emph{OR} by
+the logic of the \emph{AND}.
+
+Let us introduce the concepts in involved neglecting for
+the moment spin indices and work in coordinate
+space. We follow the presentation in the book of
+L.~S.~Brown, \href{https://www.cambridge.org/core/books/quantum-field-theory/276D2EE40D4929469FED764BFF57186D}{Quantum Field Theory}.
+
+%%% 10 OKAY
+
+Recall that for two identical particles, we arrived
+at Eqs.~\eqref{eq:g13} and \eqref{eq:g14}:
+\be
+\Psi\left(\vec{r}_{1}, \vec{r}_{2}\right)=\left\langle\vec{r}_{1}, \vec{r}_{2} \mid \Psi\right\rangle
+=
+\begin{cases}
++\Psi\left(\vec{r}_{2}, \vec{r}_{1}\right)=\phantom{-}\left\langle\vec{r}_{2}, \vec{r}_{1} \mid \Psi\right\rangle,\text{ bosons}\\
+-\Psi\left(\vec{r}_{2}, \vec{r}_{1}\right)=-\left\langle\vec{r}_{2}, \vec{r}_{1} \mid \Psi\right\rangle,\text{ fermions}
+\end{cases}
+\ee
+which follow from Eqs.~\eqref{eq:g9} and \eqref{eq:g10}:
+\be
+\left|\vec{r}_{1}, \vec{r}_{2}\right\rangle=\pm\left|\vec{r}_{2}, \vec{r}_{1}\right\rangle\to\text{ upper: Boson, lower: Fermion}
+\ee
+Orthonormality is given as
+\be
+\left\langle\vec{r}_{1}, \vec{r}_{2} \mid \vec{r}_{1}^{\prime}, \vec{r}_{2}^{\prime}\right\rangle=\delta\left(\vec{r}_{1}-\vec{r}_{1}^{\prime}\right) \delta\left(\vec{r}_{2}-\vec{r}_{2}^{\prime}\right) \pm \delta\left(\vec{r}_{1}-\vec{r}_{2}^{\prime}\right) \delta\left(\vec{r}_{2}-\vec{r}_{1}^{\prime}\right)
+\ee
+and completeness
+\be
+\int d^{3} r_{1} d^{3} r_{2}\left|\vec{r}_{1} \vec{r}_{2}\right\rangle\left\langle\vec{r}_{1} \vec{r}_{2}\right|=1
+\ee
+For $N$ particles, this generalizes to:
+\begin{gather}
+\left|\vec{r}_{1} \ldots \vec{r}_{a} \ldots \vec{r}_{b} \ldots \vec{r}_{N}\right\rangle=\pm\left|\vec{r}_{1} \ldots \vec{r}_{b} \ldots \vec{r}_{a} \ldots \vec{r}_{N}\right\rangle\\
+%
+\left\langle\vec{r}_{1} \ldots \vec{r}_{N} \mid \vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}\right\rangle=\sum_{p}(\pm 1)^{P} \prod_{\alpha=1}^{N} \delta\left(\vec{r}_{a}-\vec{r}_{\pi(a)}^{\,\prime}\right)
+\end{gather}
+where
+\be
+P = \begin{cases}
+\begin{gathered}
+\text{0 for an even permutation}\\
+\text{1 for an odd permutation}\\
+\end{gathered}
+\end{cases}
+\ee
+$\pi(a)$: permutation (associated with index $a$)
+and the completeness relation is
+\be
+\int d^{3} r_{1} \ldots d^{3} r_{N}\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle\left\langle\vec{r}_{1} \ldots \vec{r}_{N}\right|=1
+\ee
+
+%%% 11 OKAY
+
+The idea is to consider all the states $\left\{|0\rangle,|\vec{r}\rangle,\left|\vec{r}_{1} \vec{r}_{2}\right\rangle \ldots\right\}$
+simultaneously. Here, $|0\rangle$ is the state with zero particles
+
+\emph{Note that}: there is neither new physics, nor new
+postulates; rather, it is an extension of
+of the mathematics of QM used so far.
+
+The space of states $\left\{|0\rangle,|\vec{r}\rangle,\left|\vec{r}_{1} \vec{r}_{2}\right\rangle, \ldots\right\}$ is known
+as the \emph{Fock space}. Scalar products in this space
+are defined as:
+\begin{align}
+&\langle 0 | 0\rangle=1, 
+\quad\langle 0 | \vec{r}\rangle=0\\
+&\langle\vec{r} | 0\rangle=0,
+\quad\left\langle\vec{r} | \vec{r}^{\,\prime}\right\rangle=\delta\left(\vec{r}-\vec{r}^{\,\prime}\right)\\
+&\quad\quad\vdots\nonumber\\
+&\left\langle\vec{r}_{1} \ldots \vec{r}_{N} | \vec{r}_{1} \ldots \vec{r}_{N^{\prime}}\right\rangle=\delta_{NN^{\prime}}\left\langle\vec{r}_{1} \ldots \vec{r}_{N} | \vec{r}_{1} \ldots \vec{r}_{N}\right\rangle\label{eq:g29}
+\end{align}
+
+Let us define the operator
+\be
+\hat{\psi}^{\dagger}(\vec{r})=\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1} \ldots d^{3} r_{N}\left|\vec{r} \vec{r}_{1} \ldots \vec{r}_{N}\right\rangle\left\langle\vec{r}_{1} \ldots \vec{r}_{N}\right|
+\label{eq:g30}
+\ee
+and consider its action on the states $|0\rangle,\left|\vec{r}_{1}\right\rangle, \ldots$:
+
+%%% 12 OKAY
+\be
+\begin{aligned}
+\hat{\psi}^{\dagger}(\vec{r})\ket{0}
+&=\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1}^\prime \ldots d^{3} r_{N}^\prime \left|\vec{r}\, \vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}\right\rangle
+\underbrace{\left\langle\vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}|0\right\rangle}%
+_{\text{Eq:~\eqref{eq:g29}}:\,\delta_{N0}\bra{0}\ket{0}}\\
+&=\ket{\vec{r}} \to \text{1-particle state}
+\end{aligned}
+\ee
+%
+\be
+\begin{aligned}
+\hat{\psi}^{\dagger}(\vec{r})\ket{\vec{r}_1}
+&=\sum_{N=0}^{\infty} \ldots
+\underbrace{\left\langle\vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}|\vec{r}_1\right\rangle}%
+_{\delta_{N1}\bra{\vec{r}_{1}^{\,\prime}}\ket{\vec{r}_{1}}}
+= \int d^{3} r_{1}^\prime \ket{\vec{r}\, \vec{r}_{1}^{\,\prime}}\bra{\vec{r}_{1}^{\,\prime}}\ket{\vec{r}_{1}}\\
+&= \int d^{3} r_{1}^\prime \ket{\vec{r}\, \vec{r}_{1}^{\,\prime}}\delta(\vec{r}_{1}^{\,\prime}-\vec{r}_{1})
+= \ket{\vec{r}\,\vec{r}_{1}} \to \text{2-particle state}
+\end{aligned}
+\ee
+and in general
+\be
+\begin{aligned}
+\hat{\psi}^{\dagger}(\vec{r})\ket{\vec{r}_1\ldots\vec{r}_N}
+&=\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1}^\prime \ldots d^{3} r_{N}^\prime \left|\vec{r}\, \vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}\right\rangle\\
+&\hspace{6em}\times\langle\vec{r}_{1}^{\,\prime} \ldots \vec{r}_{N}^{\,\prime}\ket{\vec{r}_1\ldots\vec{r}_N}\\%
+&= \text{ (Exercise) }\ket{\vec{r}\,\vec{r}_1\ldots\vec{r}_N} \to \text{(N+1)-particle state}
+\end{aligned}
+\ee
+so
+\[
+\boxed{
+\begin{aligned}
+\hat{\psi}^{\dagger}(\vec{r}):
+&\text{ increases the number of}\\
+&\text{ particles by one unit}
+\end{aligned}
+}\rightarrow \text{It is a \emph{creation} operator.}
+\]
+
+%% 13 OKAY
+\mbox{All of the many-particle states can be constructed
+from the zero-particle state $\ket{0}$:}
+\begin{align}
+\ket{\vec{r}} &= \hat{\psi}^\dagger(\vec{r})\ket{0}\\
+\ket{\vec{r}_1,\vec{r}_2} &= \hat{\psi}^\dagger(\vec{r}_1)\ket{\vec{r}_2} = 
+\hat{\psi}^\dagger(\vec{r}_1)\hat{\psi}^\dagger(\vec{r}_2)\ket{0}\\
+\vdots\nonumber\\
+\ket{\vec{r}_1,\ldots,\vec{r}_N} &= \hat{\psi}^\dagger(\vec{r}_1)\ldots\hat{\psi}^\dagger(\vec{r}_N)\ket{0}
+\end{align}
+
+The adjoint of $\hat{\psi}^\dagger(\vec{r})$, $\hat{\psi}(\vec{r})$ is
+\be
+\hat{\psi}(\vec{r})=\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1} \ldots d^{3} r_{N}\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle\left\langle\vec{r}\,\vec{r}_{1} \ldots \vec{r}_{N}\right|
+\label{eq:g37}
+\ee
+The action of $\hat{\psi}(\vec{r})$ on the $\ket{0}$, $\ket{\vec{r}_1}$, \ldots is:
+\be
+\hat{\psi}(\vec{r})\ket{0} = \sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1}\ldots \underbrace{\bra{\vec{r}\,\vec{r}_1\ldots\vec{r}_N}\ket{0}}_{=0} = 0
+\ee
+%
+\be
+\begin{aligned}
+\hat{\psi}(\vec{r})\ket{\vec{r}_1}
+& =\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1}^\prime\ldots
+\ket{\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}
+\underbrace{\bra{\vec{r}\,\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}\ket{\vec{r}_1}}_{\delta_{N0}}\\
+&= \ket{0}\bra{\vec{r}}\ket{\vec{r}_1} = \delta\left(\vec{r}-\vec{r}_{1}\right)\ket{0}
+\end{aligned}
+\ee
+%%% 14 OKAY
+\be
+\begin{aligned}
+\hat{\psi}(\vec{r})\ket{\vec{r}_1,\vec{r}_2}
+& =\sum_{N=0}^{\infty} \frac{1}{N !} \int d^{3} r_{1}\ldots
+\ket{\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}
+\underbrace{\bra{\vec{r}\,\vec{r}_1^{\,\prime}\ldots\vec{r}_N^{\,\prime}}\ket{\vec{r}_1\vec{r}_2}}_{N=1\text{ only contributes}}\\
+&= \int d^{3} r_{1}^\prime \ket{\vec{r}_1^{\,\prime}} \,\, \times
+\underbrace{\bra{\vec{r}\,\vec{r}_1^{\,\prime}}\ket{\vec{r}_1\vec{r}_2}}%
+_{\mathrlap{\delta(\vec{r}-\vec{r}_1)\delta(\vec{r}_1^{\,\prime}-\vec{r}_2) \pm \delta(\vec{r}-\vec{r}_2)\delta(\vec{r}_1^{\,\prime}-\vec{r}_1)}\hspace{5em}}\\
+&= \delta(\vec{r}-\vec{r}_1)\ket{\vec{r}_2}\pm\delta(\vec{r}-\vec{r}_2)\ket{\vec{r}_1}
+\end{aligned}
+\label{eq:g40}
+\ee
+and finally
+\be
+\begin{aligned}
+\hat{\psi}(\vec{r})
+&=      \delta(\vec{r}-\vec{r}_1) \ket{\vec{r}_2\vec{r}_3\ldots\vec{r}_N}
++ (\pm) \delta(\vec{r}-\vec{r}_2) \ket{\vec{r}_2\vec{1}_3\ldots\vec{r}_N}\\
+&+      \delta(\vec{r}-\vec{r}_3) \ket{\vec{r}_1\vec{1}_2\ldots\vec{r}_N} + \ldots\to
+\text{(Exercise)}\\
+&=\sum_{a=1}^N(\pm1)^{a+1}\delta(\vec{r}-\vec{r}_a)\ket{\vec{r}_1\ldots\vec{r}_{a-1}\vec{r}_{a+1}\ldots\vec{r}_N} 
+\end{aligned}
+\label{eq:g41}
+\ee
+\[
+\boxed{
+\begin{aligned}
+\hat{\psi}(\vec{r}):
+&\text{ decreases the number of}\\
+&\text{ particles by one unit}
+\end{aligned}
+}
+\rightarrow \text{It is an \emph{annihilation} operator.}
+\]
+%%% 15 OKAY
+Let us now consider the action of two operators $\hat{\psi}(\vec{r})$ and 
+$\hat{\psi}^{\dagger}(\vec{r})$ on an $N$-particle state. 
+Start with two creation operators $\psi^\dagger\psi^\dagger$:
+\be
+\begin{aligned} 
+\hat{\psi}^{\dagger}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r}^{\,\prime})\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle 
+&=\hat{\psi}^{\dagger}(\vec{r})\left|\vec{r}^{\,\prime} \vec{r}_{1} \ldots \vec{r}_{N}\right\rangle \\ 
+&=\left|\vec{r}\,\vec{r}^{\,\prime} \vec{r}_{1} \ldots \vec{r}_{N}\right\rangle \\ 
+&=\pm\left|\vec{r}^{\,\prime}\,\vec{r}\,\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle \\ 
+&=\pm \hat{\psi}^\dagger\left(\vec{r}^{\,\prime}\right) \hat{\psi}^\dagger(\vec{r})\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle 
+\end{aligned}
+\ee
+which, in view of the completeness of the state, implies
+\be
+\hat{\psi}^{\dagger}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r}^{\,\prime}) \mp \hat{\psi}^{\dagger}(\vec{r}^{\,\prime}) \hat{\psi}^{\dagger}(\vec{r}) = 0
+\ee
+so
+\be
+\left[\hat{\psi}^{\dagger}\left(\vec{r}\right), \hat{\psi}^{\dagger}\left(\vec{r}^{\,\prime}\right)\right]_{\mp}=0
+\ee
+
+Consider now the action of $\hat{\psi} \hat{\psi}^{\dagger}$
+\be
+\begin{aligned} 
+\hat{\psi}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle 
+&=\hat{\psi}(\vec{r})\left|\vec{r}^{\,\prime}\,\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle 
+\to\text{Eq.~\eqref{eq:g41}}\\ 
+&=\delta\left(\vec{r}, \vec{r}^{\,\prime}\right)\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle \\ 
+&+(\pm) \sum_{a=1}^{N}(\pm1)^{a+1} \delta\left(\vec{r}-\vec{r}_{a}\right)
+\ket{\vec{r}^{\,\prime}\vec{r}_1\ldots\vec{r}_{a-1}\vec{r}_{a+1}\ldots\vec{r}_N}
+\end{aligned}
+\label{eq:g45}
+\ee
+%%% 16 OKAY
+The action of $\hat{\psi}^{\dagger} \hat{\psi}$  is given by:
+\be
+\begin{aligned} 
+\hat{\psi}^{\dagger}(\vec{r}^{\,\prime}) \hat{\psi}(\vec{r}) 
+\left|\vec{r}_{1} \ldots \vec{r}_{N}\right\rangle 
+&=\hat{\psi}^{\dagger}(\vec{r}^{\,\prime}) 
+   \sum_{a=1}^{N}(\pm1)^{a+1} \delta\left(\vec{r}-\vec{r}_{a}\right)
+\ket{\vec{r}_1\ldots\vec{r}_{a-1}\vec{r}_{a+1}\ldots\vec{r}_N}\\
+&= \sum_{a=1}^{N}(\pm1)^{a+1} \delta\left(\vec{r}-\vec{r}_{a}\right)
+\ket{\vec{r}^{\,\prime}\,\vec{r}_1\ldots\vec{r}_{a-1}\vec{r}_{a+1}\ldots\vec{r}_N}
+\end{aligned}
+\label{eq:g46}
+\ee
+Subtracting \eqref{eq:g46} from \eqref{eq:g45} for the case of Bosons and
+adding those equations for the Fermion case:
+\setcounter{equation}{47}
+\be
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp
+\ket{\vec{r}_1\ldots\vec{r}_N} = \delta(\vec{r} - \vec{r}^{\,\prime}) 
+\ket{\vec{r}_1\ldots\vec{r}_N}
+\ee
+so
+\be
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp = \delta(\vec{r} - \vec{r}^{\,\prime})
+\ee
+One can also easily make the calculation for $\psi\psi$. In summary:
+\begin{gather}
+\ket{\vec{r}_1\ldots\vec{r}_N} = \hat{\psi}^{\dagger}(\vec{r}_1)\ldots\hat{\psi}^{\dagger}(\vec{r}_N) \ket{0}\label{eq:g50}\\
+\hat{\psi}(\vec{r})\ket{0} = 0\label{eq:g51}\\
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}(\vec{r}^{\,\prime})
+\right]_\mp 
+= 0 = 
+\left[
+\hat{\psi}^{\dagger}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp\label{eq:g52}\\
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^{\dagger}(\vec{r}^{\,\prime})
+\right]_\mp = \delta(\vec{r} - \vec{r}^{\,\prime})\label{eq:g53}
+\end{gather}
+%%% 17
+\setcounter{equation}{54}
+A traditional alternative notation for $[\hat{A},\hat{B}]_\pm$:
+\be
+\begin{aligned}
+[\hat{A} \hat{B}]_- \equiv \, [ \,\hat{A}, \hat{B} \,]   &=\hat{A} \hat{B}-\hat{B} \hat{A}, \text{ the usual commutator}\\
+[\hat{A} \hat{B}]_+ \equiv \{\hat{A}, \hat{B}\} &=\hat{A} \hat{B}-\hat{B} \hat{A}, \text{ the anti-commutator}
+\end{aligned}
+\ee
+From now on, we will not need anymore to use
+the definition of the operators $\hat{\psi}^{\dagger}$ and $\hat{\psi}$, given by
+Eqs.~\eqref{eq:g30} and \eqref{eq:g37}: all that is needed is encoded
+by Eqs.~\eqref{eq:g50}--\eqref{eq:g53}.
+$\Rightarrow$
+Properties of states (and observables, to
+be discussed shortly ahead) follow from the
+(anti) commutation relations of $\hat{\psi}$ and $\hat{\psi}^\dagger$.
+
+\emph{Example:}
+\be
+\begin{gathered}
+\hat{\psi}(\vec{r}) \ket{\vec{r}_1\vec{r}_2} = 
+\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vec{r}_1) \hat{\psi}^\dagger(\vec{r}_2) \ket{0}\\
+= \left(
+[\hat{\psi}(\vec{r}),\hat{\psi}^\dagger(\vec{r}_1)] + 
+(\pm)\hat{\psi}^\dagger(\vec{r}_1)\hat{\psi}(\vec{r})
+\right)\hat{\psi}^\dagger(\vec{r}_2) \ket{0}\\
+= \delta(\vec{r}-\vec{r}_1)\ket{\vec{r}_2} + (\pm)\delta(\vec{r}-\vec{r}_2)\ket{\vec{r}_1}
++ \hat{\psi}^\dagger(\vec{r}_1)\hat{\psi}^\dagger(\vec{r}_2)\underbrace{\hat{\psi}(\vec{r})\ket{0}}_{=0} \Rightarrow\\
+\hat{\psi}(\vec{r}) \ket{\vec{r}_1\vec{r}_2} = 
+\delta(\vec{r}-\vec{r}_1)\ket{\vec{r}_2} \pm \delta(\vec{r}-\vec{r}_2)\ket{\vec{r}_1}
+\end{gathered}
+\ee
+$\to$ same result as that obtained in Eq.~\eqref{eq:g40}
+by using the definition of $\hat{\psi}$.
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

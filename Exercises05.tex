@@ -1,0 +1,105 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=1.8cm,bottom=2cm,right=2.7cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+
+\title{Advanced Quantum Mechanics\\Exercises Set 5\vspace{-0.5em}}
+%\author{The Author}
+\date{Due date: November 3\textsuperscript{rd}, 2022}
+
+\begin{document}
+\maketitle
+
+
+\textbf{Exercise 1.} If \(S_{q}^{(k)}\) and \(T_{q}^{(k)}\) are two spherical tensor operators of rank \(k\) prove that the con%
+tracted operator
+\[
+\sum_{q=-k}^{k}(-1)^{q} S_{q}^{(k)} T_{-q}^{(k)}
+\]
+is a scalar operator. For \(k=1\), show that this scalar operator is just the scalar product \(\vec{S} \cdot \vec{T}\).
+
+
+\textbf{Exercise 2.} Wigner-Eckart theorem \textit{ad nauseam}: let $\ket{j,m}$ be the eigentstates of $\hat{\vec{J}}^2$ and $\hat{J}_0 = \hat{J}_z$,
+and let
+\[
+\chi=\langle 2,2|\hat{x} \hat{y}| 0,0\rangle
+\] 
+Using the Wigner-Eckart theorem, calculate as a function of $\chi$ the matrix elements:
+\[
+\langle 2, m|\hat{\mathcal{O}}| 0,0\rangle
+\]
+for $\mathcal{O} = $
+a) $\hat{x}\hat{y}$ b) $\hat{x} \hat{z}$, c) $\hat{y} \hat{z}$, d) $\hat{x}^{2}$ e) $\hat{y}^{2}$ and f) $\hat{z}^{2}$.
+Note that in principle one could evaluate the matrix elements
+directly, but the point of the exercise is to employ the Wigner-Eckart theorem over and over.
+
+
+\textbf{Exercise 3.} Consider the two-particle operator
+\[
+\hat{S}(1,2)=2\left[3 \frac{\left(\vec{S}_{1} \cdot \vec{r}\right)\left(\vec{S}_{2} \cdot \vec{r}\right)}{r^{2}}-\vec{S}_{1} \cdot \vec{S}_{2}\right]
+\]
+where $r = |\vec{r}|$ and $\hat{r} = \vec{r}/r$. Rewrite this operator in terms of the spherical components of $\vec{S}_{1}$, $\vec{S}_{2}$ and $\vec{r}$.
+
+
+\textbf{Exercise 4.} In this exercise you will derive a very useful expression for matrix elements of
+vector operators in the basis of the total angular momentum operator. We have seen that the
+Wigner-Eckart theorem asserts that the matrix element of a component $T_q^{(k)}$ of a spherical
+tensor $T$ in the basis $\ket{\tau,jm}$, where $j$ and $m$ refer to the eigenvalues of the angular momentum
+$\hat{\vec{J}}^2$ and $\hat{J}_0$ operators and $\tau$ stands for the eigenvalues of all compatible observables other than
+angular momentum, is given by
+\[
+\left\langle\tau^{\prime}, j^{\prime} m^{\prime}\left|T_{q}^{(k)}\right| \tau, j m\right\rangle=\frac{C_{q m ; j^{\prime} m^{\prime}}^{k j}}{\sqrt{2 j^{\prime}+1}}\left\langle\tau^{\prime}, j^{\prime}\left\|T^{(k)}\right\| \tau, j\right\rangle
+\]
+where \(C_{q m ; j^{\prime} m^{\prime}}^{k j}\) are the Clebsh-Gordan coefficients.
+
+a) Use the fact that \(C_{0 j ; j j}^{1 j}=\sqrt{j /(j+1)}\) and determine the reduced matrix element of the
+operator \(\hat{\vec{J}}\), i.e. \(\left\langle\tau^{\prime}, j^{\prime}\|J\| \tau, j\right\rangle\).
+
+b) Use the Wigner-Eckart theorem to show that for any vector operator $\hat{\vec{V}}$:
+\[
+\left\langle\tau^{\prime}, j^{\prime} m^{\prime}\left|V_{q}\right| \tau, j m\right\rangle=\frac{\left\langle\tau^{\prime}, j^{\prime}\|V\| \tau, j\right\rangle}{\left\langle\tau^{\prime}, j^{\prime}\|j\| \tau, j\right\rangle}\left\langle\tau^{\prime}, j^{\prime} m^{\prime}\left|J_{q}\right| \tau, j m\right\rangle
+\]
+
+c) Next, show that for \(j^{\prime}=j\), the ratio of the reduced matrix elements in item b) can be
+eliminated in favour of the matrix element \(\langle\tau^{\prime}, j m|\vec{J} \cdot \vec{V}| \tau, j m\rangle\), so that it can be written as
+\[
+\left\langle\tau^{\prime}, j m^{\prime}\left|V_{q}\right| \tau, j m\right\rangle=\frac{\left\langle\tau^{\prime}, j m|\vec{J} \cdot \vec{V}| \tau, j m\right\rangle}{j(j+1) \hbar^{2}}\left\langle j m^{\prime}\left|J_{q}\right| j m\right\rangle
+\]
+
+
+\textbf{Exercise 5.} Suppose exact isospin symmetry of the strong interaction to show that the ratio of
+the cross sections of the following processes
+\[
+\begin{aligned}
+p+p &\rightarrow d+\pi^{+}\\
+p+n &\rightarrow d+\pi^{0}
+\end{aligned}
+\]
+is equal to two (under, of course, identical kinematical conditions). In the above $d$ is the
+deuteron (a bound state of a proton and a neutron), an isospin singlet.
+
+
+
+
+\end{document}

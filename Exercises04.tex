@@ -1,0 +1,79 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=1.8cm,bottom=2cm,right=2.7cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+
+\title{Advanced Quantum Mechanics\\Exercises Set 4\vspace{-0.5em}}
+%\author{The Author}
+\date{Due date: October 27\textsuperscript{th}, 2022}
+
+\begin{document}
+\maketitle
+
+
+\textbf{Exercises 1 and 2:} exercises from Le~Bellac 8.5.2 and 8.5.6.
+
+\textbf{Exercise 3.}
+ So far we have considered Galilean boosts by a speed \(v\) (in one spatial dimension)
+at \(t=0\) and obtained, by demanding that the expectation values of the position \(\hat{X}\), speed
+\(d \hat{X} / d t\) and momentum \(\hat{P}\) transform like their classical counterparts, that the unitary operator
+\(\hat{U}(v)\) that implements such boosts in a Hilbert space is given by (employing the active point
+of view of the boost)
+
+\[\hat{U}(v)=e^{i m v \hat{X} / \hbar}\]
+
+where \(m\) is the mass of the particle. Show that this generalizes for an arbitrary time \(t\) to
+
+\[\hat{U}(v)=e^{i m v \hat{X} / \hbar} e^{-i t v \hat{P} / \hbar} e^{-i m v^{2} t / 2 \hbar}=e^{-i t v \hat{P} h} e^{i m v \hat{X} / \hbar} e^{i m v^{2} t / 2 \hbar}\]
+
+Show also that the last result generalizes in three dimensions to
+
+\[\hat{U}(v)=e^{i m \vec{v} \cdot \hat{\vec{X}} / h} e^{-i t \vec{v} \cdot \hat{\vec{P}} / h} e^{-i m \vec{v}^{2} t / 2 h}=e^{-i t \vec{v} \cdot \hat{\vec{P}} / h} e^{i m \vec{v} \cdot \hat{\vec{X}} / h} e^{i m \vec{v}^{2} t / 2 h}\]
+
+\textbf{Exercise 4.} The Galilean boosts, \textit{a.k.a.} pure Galilean transformations, form a subgroup of a
+larger, 10-dimensional group named Galilei (or Galileo) group of space-time transformations:
+
+\[
+\begin{aligned}
+\vec{x} \rightarrow \vec{x}^{\,\prime}&=R \vec{x}+\vec{a}+\vec{v} t \\ 
+t \rightarrow t^{\prime}&=t+s
+\end{aligned}
+\]
+
+where in the addition to the displacement \(\vec{a}\) and boost velocity \(\vec{v}\) studied so far, one also has
+a spatial rotation \(R\) and time displacement \(s\). Let \(g=(R, \vec{a}, \vec{v}, s)\) denote such a transformation.
+
+Show that the composition law for \(g_{3}=g_{2} g_{1}\), with \(g_{3}=\left(R_{3}, a_{3}, v_{3}, s_{3}\right)\) is:
+\[
+\begin{aligned} 
+R_{3} &=R_{2} R_{1} \\ 
+\vec{a}_{3} &=\vec{a}_{2}+R_{2} \vec{a}_{1}+\vec{v}_{2} s_{1} \\ 
+\vec{v}_{3} &=\vec{v}_{2}+R_{2} \vec{v}_{1} \\ 
+s_{3} &=s_{2}+s_{1} 
+\end{aligned}
+\]
+
+\textbf{Exercises 5--7:} exercises from Le~Bellac 10.7.1, 10.7.2, and 10.7.4.
+
+\end{document}

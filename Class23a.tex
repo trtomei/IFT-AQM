@@ -1,0 +1,367 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+
+\title{Advanced Quantum Mechanics\\Class 23 (a)}
+%\author{The Author}
+\date{November 1, 2022}                                           % Activate to display a given date or no date
+
+\setcounter{section}{6}
+
+\begin{document}
+\maketitle
+
+%%% 01 OKAY
+\section{Approximation Methods}
+
+\subsection{Time-independent perturbation theory}
+
+\subsubsection{Non-degenerate case}
+
+Suppose one can break up the Hamiltonian of the
+problem of interest into two pieces:
+\be
+\hat{H}=\hat{H}_{0}+\lambda \hat{W}
+\ee
+where $\lambda$ is a parameter.
+
+%%% 02 OKAY
+
+Let $\{\ket*{\varphi_{n}^{(0)}}\}$ be a complete set of eigenstates of $\hat{H}_{0}$,
+with eigenvalues $E_{n}^{(0)}$ :
+\be
+\left(H_{0}-E_{n}^{(0)}\right)\left|\varphi_{n}^{(0)}\right\rangle= 0
+\ee
+The aim is to find the eigenstates $\left\{\left|\varphi_{N}\right\rangle\right\}$ and eigenvalues
+$E_{N}$ of the complete Hamiltonian:
+\be
+\left(\hat{H}-E_{N}\right)\left|\varphi_{N}\right\rangle=0
+\label{eq:g3}
+\ee
+where $n,m,\ldots$ unperturbed; $N,M,\ldots$: perturbed
+
+The exact values of $E_{N}$ can be found by solving
+the secular equation in the unperturbed basis:
+\be
+\left|\varphi_{N}\right\rangle=\sum c_{n}\left|\varphi_{n}^{(0)}\right\rangle
+\ee
+
+%%% FIXME
+(Missing steps)
+\setcounter{equation}{6}
+
+\be
+\operatorname{det}\left[\delta_{mn}\left(E_{N}-E_{n}^{(0)}\right)-\lambda\left\langle\varphi_{m}^{(0)}|\hat{W}|\varphi_{n}^{(m)}\right\rangle\right]=0
+\ee
+In general, this turns out to be impractical, matrices are too big.
+
+%%% 03 OKAY
+
+A more practical method is needed:
+Consider first the situation that the spectrum of
+$\hat{H_{0}}$ is \emph{nondegenerate}.
+In such a case, in general, perturbed and unperturbed
+quantities are in one-to-one correspondence:
+\be
+\left|\varphi_{N}\right\rangle \leftrightarrow\left|\varphi_{n}^{(0)}\right\rangle, E_{N} \leftrightarrow E_{n}^{(0)} \quad \text{ as }\lambda \rightarrow 0
+\ee
+and one can expand the perturbed states $\left|\varphi_{n}\right\rangle$
+in terms of the unperturbed $|\varphi_{n}^{(0)}\rangle$:
+\be
+\left|\varphi_{N}\right\rangle=c_{n}\left|\varphi_{n}^{(0)}\right\rangle
++
+\sum_{m \neq n} d_{m}\left|\varphi_{m}^{(0)}\right\rangle
+\label{eq:g9}
+\ee
+therefore
+\be
+\left|c_{n}\right|^{2}+\sum_{m \neq n}\left|d_{m}\right|^{2}=1
+\label{eq:g10}
+\ee
+Perturbation theory aims at calculating $E_{N}$ and the
+$c_n$ and $d_n$ as a power series in $\lambda$ by requiring
+that the expansion for $\left|\varphi_{N}\right\rangle$ satisfies the
+eigenvalue equation.
+Inserting the expansion into $\langle\varphi_{k}^{(0)}|(\hat{H}-E_{N})|\varphi_{N}\rangle=0$,
+%%% 04 OKAY
+with $k\neq n$, one obtains
+
+%%% FIXME
+(Missing steps)
+\setcounter{equation}{12}
+
+\be
+d_{k} =\lambda c_{n} \frac{\left\langle\varphi_{k}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle}{E_{N}-E_{k}^{(0)}}+\mathcal{O}\left(\lambda^{2}\right)
+\label{eq:g13}
+\ee
+This then means that Eq.~\eqref{eq:g10} implies
+\be
+\left|c_{n}\right|^{2}=1-\sum_{m \neq n}\left|d_{m}\right|^{2}=1-\mathcal{O}\left(\lambda^{2}\right)
+\ee
+which gives (up to a phase)
+\be
+c_{n}=1-\mathcal{O}\left(\lambda^{2}\right)
+\ee
+so $c_n$ in the development and, finally, in Eq.~\eqref{eq:g13} can be replaced by 1:
+%%% 05 OKAY
+\be
+d_{k}=\lambda \frac{\left\langle\varphi_{k}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle}{E_{N}-E_{k}^{(0)}}
+\ee
+
+Since $E_{N}$ will be obtained as a power series in $\lambda$,
+to leading order in $\lambda$, $E_{N}$ can be replaced by $E_{n}^{(0)}$ :
+\be
+d_{k}=\lambda \frac{\left\langle\varphi_{k}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle}{E_{n}^{(0)}-E_{k}^{(0)}}
+\ee
+Using this result into the expansion in Eq.~\eqref{eq:g9}, one
+obtains the order $\lambda$ correction to the state vector:
+\be
+\boxed{%
+\left|\varphi_{N}\right\rangle=\left|\varphi_{n}^{(0)}\right\rangle+\lambda \sum_{m \neq n} \frac{\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle}{E_{n}^{(0)}-E_{m}^{(0)}}\left|\varphi_{n}^{(0)}\right\rangle+O\left(\lambda^{2}\right)
+}
+\label{eq:g18}
+\ee
+Validity of such a formula requires:
+\be
+\left|\lambda \frac{\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle}{E_{n}^{(0)}-E_{m}^{(0)}}\right| \ll 1\hspace{5em}%
+\begin{aligned}
+&\text{\rule[0.5ex]{5em}{1pt}}\quad E_n^{(0)}\\
+&\rotatebox[origin=c]{90}{\ensuremath{\xleftrightarrow{\hspace{3em}}}}\\
+&\text{\rule[0.5ex]{5em}{1pt}}\quad E_m^{(0)}
+\end{aligned}
+\ee
+This gets \emph{better and better} as $|E_{n}^{(0)}-E_{m}^{(0)}|$ increases
+while the off-diagonal matrix elements of $\hat{W}$
+do not grow. On the contrary, the expansion fails
+when $|E_{n}^{(0)}-E_{m}^{(0)}|$ $\rightarrow 0$ (near degeneracy).
+
+%%% 06 OKAY
+The perturbed energies are obtained from
+\[
+\left\langle\varphi_{n}^{(0)}\left|\left(\hat{H}-E_{N}\right)\right| \varphi_{N}\right\rangle=0
+\]
+
+%%% FIXME
+(Missing steps)
+\setcounter{equation}{21}
+
+\be
+\boxed{
+\begin{aligned} 
+E_{N} &=E_{n}^{(0)}+\lambda\left\langle\varphi_{n}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle \\ 
+&+\lambda^{2} \sum_{m \neq n} \frac{\left|\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{n}^{(0)}\right\rangle\right|^{2}}{E_{n}^{(0)}-E_{n}^{(0)}}+
+\mathcal{O}\left(\lambda^{3}\right) 
+\end{aligned}
+\label{eq:g22}
+}
+\ee
+This is a typical characteristic of perturbation theory: using the same matrix elements
+-- $\bra*{\varphi_{n}^{(0)}}\hat{W}\ket*{\varphi_{n}^{(0)}}$ in this case --,
+one can determine the eigenvalues to one order better than the eigenstates:
+$\mathcal{O}(\lambda^2)$ in the former, $\mathcal{O}(\lambda)$ in the latter.
+
+%%% PULA O EXEMPLO
+
+%%% 08 (Começa a teoria de perturbação degenerada!) OKAY MENOS FIGURA
+
+\subsubsection{Degenerate case}
+
+From Eqs.~\eqref{eq:g18} and \eqref{eq:g22} one sees that one will
+encounter problems when perturbing levels
+that have nearby neighbors, \emph{even when} $\lambda$ is small
+$\Rightarrow$ \textit{i.e.} when the unperturbed spectrum
+is degenerate or nearly degenerate.
+In such a situation, \emph{degenerate} perturbation
+theory must be used.
+
+Suppose one has a $\hat{H}_0$ with a spectrum as in
+\[
+\begin{aligned}
+&\,\text{\rule[0.5ex]{10em}{1pt}}\quad m^\prime\\
+\\
+%
+\left.%
+\begin{gathered}
+\overline{H}^{(n)}\text{-- nearly}\\
+\text{degenerate multiplet}
+\end{gathered}
+\right\{
+%
+&\,\text{\rule[-10pt]{10em}{24pt}}\quad \bar{n}\\
+\\
+&\,\text{\rule[0.5ex]{10em}{1pt}}\quad m
+\end{aligned}
+\]
+
+Unperturbed spectrum $\to$ 
+use of a bar ($\overline{\phantom{x}}$)
+to indicate a level in $\overline{H}^{(n)}$.
+
+That is, $\hat{H}_0$ has a spectrum that contains a
+degenerate or nearly degenerate subspace $\overline{H}^{(n)}$ spanned
+by the unperturbed states $\{\ket{\overline{n}} \to \ket{\overline{n},r} \}$
+$\Rightarrow$ aim is to find the \emph{perturbed} spectrum \emph{in $\overline{H}^{(n)}$.}
+
+%%% 09
+
+It does not matter whether or not the levels outside
+$\overline{H}^{(n)}$ are degenerate: all that matters is that the
+unperturbed levels $m$ and $m^\prime$ are distant from
+$\overline{H}^{(n)}$, that is: %
+\setcounter{equation}{24} %
+\be
+|\lambda\langle\bar{n}|\hat{W}| m\rangle| \ll \left|E_{\bar{n}}^{(0)}-E_{m}^{(0)}\right|
+\ee
+Within $\overline{H}^{(n)}$ no constraint on $\langle n|\hat{W}| m\rangle$
+relative to energy splittings, which can actually
+vanish (degeneracy).
+
+The expansion in Eq.~\eqref{eq:g9} is changed to:
+\be
+\left|\varphi_{N}\right\rangle=\sum_{\bar{n}} c_{\bar{n}}\left|\varphi_{\bar{n}}^{(0)}\right\rangle+\sum_{m \neq \bar{n}} d_{m}\left|\varphi_{m}^{(0)}\right\rangle
+\label{eq:g26}
+\ee
+in which one expects $c_{n} \sim \mathcal{O}\left(\lambda^{0}\right)$ and presumably
+$d_m \sim \mathcal{O}(\lambda)$. Plugging the expression \eqref{eq:g26} into the
+eigenvalue equation \eqref{eq:g3}, one obtains:
+\be
+\begin{gathered}
+\sum_{\bar{n}} c_{\tilde{n}}\left(E_{\bar{n}}^{(0)}-E_{N}+\lambda \hat{W}\right)\left|\varphi_{\bar{n}}^{(0)}\right\rangle\\
++\sum_{m\neq\bar{n}} d_{m}\left(E_{m}-E_{N}+\lambda \hat{W}\right)\left|\varphi_{m}^{(0)}\right\rangle = 0\end{gathered}
+\label{eq:g27}
+\ee
+
+%%% 10
+
+First, let us project this equation onto some state $k$
+outside of $\overline{H}^{(n)}$, $\ket*{\varphi_k^{(0)}}$:
+\be
+\begin{gathered}
+\lambda \sum_{\bar{n}} c_{\bar{n}}\left\langle\varphi_{k}^{(0)}|\hat{W}| \varphi_{\bar{n}}^{(0)}\right\rangle+d_{k}\left(E_{k}^{(0)}-E_{N}\right)\\
++\lambda \sum_{m \neq \bar{n}} d_{m}\left\langle\varphi_{k}^{(0)}\right| \hat{W}\left|\varphi_{m}^{(0)}\right\rangle=0
+\end{gathered}
+\ee
+hence, remembering that $d_m \sim \mathcal{O}(\lambda)$
+\be
+d_{k}=\frac{\lambda}{E_{k}^{(0)}-E_{N}} \sum_{\bar{n}} c_{\bar{n}}\left\langle\varphi_{k}^{(0)}|\hat{W}| \varphi_{\bar{n}}^{(0)}\right\rangle
+\ee
+$E_{N}$ can be replaced by \emph{any} $E_{\bar{n}}^{(0)}$ of $\bar{H}^{(n)}$, since
+their mutual separation is negligible (zero in
+case of degeneracy) in comparison with $E_{k}^{(0)}-E$.
+We can replace it by $\overline{E}$ some mean energy in $\overline{H}^{n}$:
+\be
+d_{k}=\frac{\lambda}{\overline{E}-E_{k}^{(0)}} \sum_{\bar{n}} c_{\bar{n}}\left\langle\varphi_{k}^{(0)}\right| \hat{W}\left|\varphi_{\bar{n}}^{(0)}\right\rangle
+\ee
+
+Now, let us go back to Eq.~\eqref{eq:g27} and project it
+on a state $\bar{n}^\prime$ in $\overline{H}^{(n)}$:
+
+%%% FIXME
+(Missing steps)
+\setcounter{equation}{31}
+
+%%% 11
+
+\be
+\begin{gathered}
+c_{\bar{n}}\left(E_{\bar{n}}^{(0)}-E_{N}\right)+
+\sum_{\bar{m}} c_{\bar{m}}\left(\lambda\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle\right.\\
+\left.+\lambda^{2} \sum_{m \neq \bar{m}} \frac{\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{m}^{(0)}\right\rangle\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle}{\overline{E}-E_{m}^{(0)}}\right)=0
+\end{gathered}
+\label{eq:g32}
+\ee
+$\Rightarrow$ this is of the form
+\be
+c_{\bar{n}}\left(E_{\bar{n}}^{(0)}-E_{N}\right)+
+\sum_{\bar{m}} c_{\bar{m}}\left\langle\varphi_{\bar{n}}^{(0)}\left|\hat{H}_{\text {eff}}\right| \varphi_{\bar{m}}^{(0)}\right\rangle = 0
+\label{eq:g33}
+\ee
+with $\langle\varphi_{\bar{n}}^{(0)}|\hat{H}_{\text{eff}}|\varphi_{\bar{m}}^{(0)}\rangle$ given by the expression
+within the parenthesis in Eq.~\eqref{eq:g32}. In operator
+form, $\hat{H}_{\text{eff}}$ can be written as:
+\be
+\hat{H}_{\text{eff}} = \lambda \hat{\overline{P}} \hat{W} \hat{\overline{P}} +
+\lambda^{2}  \hat{\overline{P}} \hat{W} \frac{\hat{\overline{Q}}}{\overline{E} - \hat{H}_0} \hat{W}
+\hat{\overline{P}}
+\ee
+with 
+\be
+\hat{\overline{P}} = \sum_m \op*{\varphi_{\overline{n}}^{(0)}},\quad \hat{\overline{Q}} = 1 - \hat{\overline{P}}
+\ee
+
+Eq.~\eqref{eq:g33} is nothing but the eigenvalue problem in
+the subspace $\overline{H}^{(n)}$: 
+\emph{one cannot escape having to solve an eigenvalue problem,
+but now considering an effective Hamiltonian $H_{\text{eff}}$}.
+From this, one obtains the sought
+perturbed eigenvalues $E_a$.
+
+\emph{Simplest situation:} $W$ only has matrix elements
+within $\overline{H}^{(n)}$: the $\mathcal{O}(\lambda^2)$ term in (34) is zero, and the
+calculation amounts to diagonalizing the
+perturbation with $\overline{H}^{(n)}$.
+
+Example:
+
+\[
+\hat{H}
+=\begin{pmatrix}0 & 0 & \lambda w \\ 0 & 0 & \lambda w \\ \lambda w & \lambda w & E_{0}\end{pmatrix}
+=\begin{pmatrix}0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & E_{0}\end{pmatrix}
++\begin{pmatrix}0 & 0 & \lambda w \\ 0 & 0 & \lambda w \\ \lambda w & \lambda w & 0\end{pmatrix}
+\]
+=
+\[
+\begin{gathered}
+0\op{1} + 0\op{2} + E_{0}\op{3} \\ 
++\lambda w(\op{1}{3} + \op{2}{3} + \op{3}{1} + \op{3}{2})
+\end{gathered}
+\]
+
+$|1\rangle,|2\rangle, |3\rangle$ unperturbed eigenvectors.
+
+\end{document}
+
+
+$\overline{H}^{(n)}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

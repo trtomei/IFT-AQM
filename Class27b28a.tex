@@ -1,0 +1,512 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\vecrp}{\ensuremath{\vec{r}^{\,\prime}}}
+\newcommand{\vecnr}{\ensuremath{\vec{\nabla}_{\!r}}}
+
+\title{Advanced Quantum Mechanics\\Class 27 (b) + 28 (a)}
+%\author{The Author}
+\date{December 06, 2022}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{9}
+\setcounter{subsection}{5}
+
+%%% 14 OKAY
+
+\subsection{Heisenberg representation}
+\[
+\boxed{
+i \hbar \frac{\partial \hat{O}(t)}{\partial t}=[\hat{O}(t), \hat{H}]
+}
+\]
+
+The ``equation of motion'' of the field operator $\hat{\psi}(\vec{r}, t)$ is:
+\setcounter{equation}{88}
+\be
+i \hbar \frac{\partial}{\partial t} \hat{\psi}(\vec{r}, t)=[\hat{\psi}(\vec{r}, t), \hat{H}]
+\ee
+the solution is ($\hat{V}_2$ time-independent)
+\be
+\hat{\psi}(\vec{r}, t)=e^{i / \hbar \hat{H} t} \hat{\psi}(\vec{r}) e^{-i / \hbar \hat{H} t}
+\ee
+%
+This solution then leads us to find out that the \emph{equal-time} commutation relations are given by:
+\be
+\left[\hat{\psi}^\dagger(\vec{r}, t), \hat{\psi}^\dagger(\vecrp, t)\right]_{\mp} = 0 =
+\left[\hat{\psi}(\vec{r}, t), \hat{\psi}(\vecrp, t)\right]_{\mp}
+\ee
+\be
+\left[\hat{\psi}(\vec{r}, t), \hat{\psi}^\dagger\left(\vecrp, t\right)\right]_{\mp}=\delta\left(\vec{r}-\vecrp\right)
+\ee
+Notice that for \emph{different times}, in general, 
+one doesn't really have simple commutation relations.
+It is possible to find them, but it entails
+\emph{solving the problem in question}.
+This makes sense -- different-time commutation relations are related to
+``creating a particle and destroying it later'', for instance;
+so they are related to the \emph{dynamics} of the problem.
+
+Since $\hat{H}\ket{0}=0$ $\Rightarrow$ is time-independent.
+Let us now obtain the Schrödinger equation. For any
+time $t$, we have that:
+\be
+\hat{\psi}^\dagger(\vec{r}, t)|0\rangle=
+e^{i / \hbar \hat{H} t} \hat{\psi}^\dagger(\vec{r})
+\underbrace{e^{-i / \hbar \hat{H} t} | 0\rangle}_{\ket{0}}  =
+e^{i / \hbar \hat{H} t} \hat{\psi}^\dagger(\vec{r})| 0\rangle = 
+e^{i / \hbar \hat{H} t}|\vec{r}\rangle=|\vec{r}, t\rangle_{H}
+\ee
+(we are using the subscript $H$ to remind ourselves that these are kets in the Heisenberg representation)
+Clearly:
+\be
+\hat{\psi}^{\dagger}\left(\vec{r}_{1}, t\right) \ldots 
+\hat{\psi}^{\dagger}\left(\vec{r}_{N}, t\right)|0\rangle=
+\left|\vec{r}_{1} \ldots \vec{r}_{N}, t\right\rangle_H
+\ee
+%%% 15 OKAY
+Acting with $i\hbar \partial/\partial t$ on this last equation, we obtain:
+\be
+\begin{gathered}
+i\hbar \frac{\partial}{\partial t} \ket{\vec{r}_{1} \ldots \vec{r}_{N}; t}_H = 
+i\hbar \frac{\partial}{\partial t}
+\hat{\psi}^\dagger(\vec{r}_1, t)\ldots\hat{\psi}^\dagger(\vec{r}_N, t)\ket{0}\\
+= i\hbar \frac{\partial}{\partial t}
+\left(
+e^{i / \hbar \hat{H} t} \hat{\psi}^\dagger(\vec{r}_1) 
+  \cancel{e^{-i / \hbar \hat{H} t}} \cancel{e^{i / \hbar \hat{H} t}} \hat{\psi}^\dagger(\vec{r}_2)\ldots\psi^\dagger(\vec{r}_N)\ket{0}\right)\\
+= i\hbar \frac{\partial}{\partial t} 
+e^{i / \hbar \hat{H} t} 
+\hat{\psi}^\dagger(\vec{r}_1)\ldots\hat{\psi}^\dagger(\vec{r}_N)\ket{0}\\
+=-\hat{H} e^{i / \hbar \hat{H} t} \hat{\psi}^\dagger(\vec{r}_1)\ldots\hat{\psi}^\dagger(\vec{r}_N)\ket{0} = 
+-\hat{H} \ket{\vec{r}_1\ldots\vec{r}_N;t}_H \Rightarrow\\
+i\hbar \frac{\partial}{\partial t} \ket{\vec{r}_{1} \ldots \vec{r}_{N}; t}_H = -\hat{H} \ket{\vec{r}_1\ldots\vec{r}_N;t}_H
+\end{gathered}
+\ee
+From here, one clearly gets the Schrödinger equation
+\be
+\begin{aligned}
+i \hbar \frac{\partial}{\partial t}\left\langle\vec{r}_{1} \ldots \vec{r}_{N} ; t | \Psi\right\rangle
+&=\left\langle\vec{r}_{1} \ldots \vec{r}_{N} ; t|H| \Psi\right\rangle\Rightarrow\\
+i \hbar \frac{\partial}{\partial t} \Psi(\vec{r}_{1} \ldots \vec{r}_{N} ; t)
+&=H(\vec{r}_{1} \ldots \vec{r}_{N}) \Psi(\vec{r}_{1} \ldots \vec{r}_{N} ; t)
+\end{aligned} 
+\ee
+
+Because (anti) commutation relations involve the
+singular Dirac deltas, it is convenient to change basis
+$\rightarrow$ discrete basis: system in a box or self-bound systems
+naturally provide discrete basis.
+\be
+\{\phi_k(\vec{r})\}:\text{ basis, $k$ discrete quantum numbers}
+\ee
+($k$ may be energy, orbital angular momentum, \ldots)
+
+%%% 16 OKAY
+Orthonormality and completeness:
+\begin{gather}
+\int d^{3} r \phi_{k}^{*}(\vec{r}) \phi_{k^{\prime}}(\vec{r})=\delta_{k k^{\prime}}
+\label{eq:g98}\\
+\sum_{k} \phi_{k}(\vec{r}) \phi_{k}^{*}\left(\vec{r}^{\,\prime}\right)=\delta\left(\vec{r}-\vec{r}^{\,\prime}\right)
+\label{eq:g99}
+\end{gather}
+Use these to expand $\hat{\psi}(\vec{r})$ and $\hat{\psi}^\dagger(\vec{r})$ in terms of
+new operators $\hat{a}_{k}$ and $\hat{a}^\dagger_{k}$.
+\emph{Important:} these operators \emph{DO NOT} depend on 
+the coordinate ($\vec{r}$) anymore, 
+but they depend on the discrete index $k$:
+\begin{align}
+\hat{\psi}(\vec{r})&=\sum_{k} \phi_{k}(\vec{r}) \hat{a}_{k}\\
+\hat{\psi}^\dagger(\vec{r})&=\sum_{k} \phi_{k}^*(\vec{r}) \hat{a}^\dagger_{k}
+\end{align}
+%
+These can be inverted by making use of Eq.~\eqref{eq:g98}:
+\[
+\int d^{3} r \phi_{k^\prime}^{*}(\vec{r}) \hat{\psi}(\vec{r})=\sum_{k} \hat{a}_{k}  
+\underbrace{\int d^{3} r\phi^*_{k^\prime}(\vec{r}) \phi_{k}(\vec{r})}_{\delta_{k^\prime k}}
+\]
+which leads to
+\be
+\hat{a}_{k}=\int d^{3} r \phi_{k}^{*}(\vec{r}) \hat{\psi}(\vec{r})
+\ee
+Similarly:
+\be
+\hat{a}^\dagger_{k}=\int d^{3} r \phi_{k}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r})
+\ee
+Since $\psi(\vec{r})$ destroys the vacuum:
+\be
+\hat{\psi}(\vec{r})|0\rangle=0 \quad \longrightarrow \quad \hat{a}_{k}|0\rangle=0
+\label{eq:g104}
+\ee
+%%% 17 OKAY
+From the (anti) commutation relations of $\hat{\psi}$ and $\hat{\psi}^\dagger$,
+one obtains very easily:
+\be
+\Big[\hat{a}_{k}, \hat{a}_{k^{\prime}}\Big]_{\mp}=0=\left[\hat{a}_{k,}^{\dagger}, \hat{a}_{k^{\prime}}^{\dagger}\right]_{\mp}
+\label{eq:g105}
+\ee
+and
+\be
+\left[\hat{a}_{k}, \hat{a}_{k^{\prime}}^{\dagger}\right]_{\mp}=\delta_{k k^{\prime}}
+\label{eq:g106}
+\ee
+In a similar fashion, but now using the completeness
+of the $\phi_{k}(\vec{r})$, Eq.~\eqref{eq:g99}, one obtains:
+\be
+\hat{N}=\int d^{3}r \hat{\psi}^\dagger(\vec{r}) \hat{\psi}(\vec{r})=\sum_{k} \hat{N}_{k}
+\ee
+where
+\be
+\hat{N_{k}}=\hat{a}_{k}^{\dagger} \hat{a}_{k}
+\ee
+\emph{Note that}: The algebra of the $\hat{a}$ and $a^{\dagger}$ operators
+in Eqs.~\eqref{eq:g105} and \eqref{eq:g106} is the same of the ladder
+operators of the harmonic oscillator, but one
+oscillator for each $k$
+$\Rightarrow$
+one can then use all we know from
+the harmonic oscillator!
+
+%%% 18 OKAY
+Let $\ket{N_{k}}$ be the eigenvector of the number operator
+$\hat{N}_{k}$. From Eq.~\eqref{eq:g104}, $a_{k}\ket{0}=0$, and from what we
+know from the harmonic oscillator:
+\be
+\hat{N}_{k}\left|N_{k}\right\rangle=N_{k}\left|N_{k}\right\rangle, \quad N_{k}=0,1,2, \ldots
+\ee
+and
+\be
+\begin{aligned}
+\hat{a}_{k}\left|N_{k}\right\rangle          &=\sqrt{N_{k}}\left|N_{k}-1\right\rangle\\
+\hat{a}_{k}^{\dagger}\left|N_{k}\right\rangle&=\sqrt{N_{k}+1}\left|N_{k}+1\right\rangle
+\end{aligned}
+\ee
+\emph{Important}: these relations are valid for both
+bosons and \emph{fermions} (Exercise: check this)
+\emph{but}, for the case of fermions, because of
+\be
+\left\{\hat{a}_{k}^{\dagger}, \hat{a}_{k}^{\dagger}\right\} = 0 \,\therefore\left(a_{k}^{\dagger}\right)^{2}=0
+\ee
+one has
+\be
+\ket{k} = a_k^\dagger\ket{0} \,\therefore a_k^\dagger\ket{k} = 0
+\ee
+Again, the Pauli principle
+-- no two particles in a given state $k$.
+
+%%% 19 OKAY
+
+\subsection{Inclusion of spin}
+
+Extra coordinate $s$: $\hat{\psi}(\vec{r}) \rightarrow \hat{\psi}_{m}(\vec{r})$, and $m$ refers to a projection of $\vec{s}$ on some axis ($\equiv \hat{z}$)
+\[
+\hat{\psi}_{m}(\vec{r}) \ket{0} = \ket{\vec{r},sm}
+\]
+and, in the general case, $s \to m$.
+
+\setcounter{equation}{113}
+(Anti) commutation relations:
+\begin{gather}
+ [\hat{\psi}_{m}(\vec{r}), \hat{\psi}_{m^\prime}(\vecrp)]_\mp = 0 
+=[\hat{\psi}_{m}^\dagger(\vec{r}), \hat{\psi}_{m^\prime}^\dagger(\vecrp)]_\mp\\
+ [\hat{\psi}_{m}(\vec{r}), \hat{\psi}_{m^\prime}^\dagger(\vecrp)]_\mp =
+ \delta_{mm^\prime}\delta(\vec{r}-\vecrp)
+\end{gather}
+
+\emph{Observables}
+
+\emph{Density:}
+\be
+\hat{\rho}(\vec{r}) = \sum_m \hat{\rho}_m(\vec{r}),\quad
+\hat{\rho}_m(\vec{r}) = \hat{\psi}_{m}^\dagger(\vec{r})\hat{\psi}_{m}(\vec{r})
+\ee
+from which one obtains the number operator
+\be
+\hat{N} = \sum_m \hat{N}_m,\quad
+\hat{N}_m = \int d^3r \hat{\psi}_{m}^\dagger(\vec{r})\hat{\psi}_{m}(\vec{r})
+\ee
+
+\emph{Spin operator:}
+
+Recall that in the first-quantization formulation, the 
+spin of $N$ particles is the vector sum
+\be
+\hat{\vec{S}} = \sum_{\alpha=1}^N \hat{\vec{S}}_\alpha 
+\ee
+%%% 20 OKAY
+In Fock space, use the sandwich rule: the matrix element
+of $\vec{S}$ of first quantization is sandwiched between $\hat{\psi}^\dagger$ and $\hat{\psi}$:
+\be
+\hat{\vec{S}}=\sum_{mm^\prime} \int d^3 r \hat{\psi}_{m^{\prime}}^{\dagger}(\vec{r}) \vec{S}_{m^{\prime} m} \hat{\psi}_{m}(\vec{r})
+\ee
+where we use already that $\chi_m(s) = \delta_{ms}$ and
+\be
+\vec{S}_{m^\prime m} = \bra{sm^\prime}\vec{S}\ket{sm}
+\ee
+The $\hat{H}_2$ Hamiltonian, %Eq.~\eqref{eq:g83}, 
+Eq.~(83), 
+for spin-independent
+$V_1$ and $V_2$, that is
+\be
+\begin{gathered}
+\left\langle m^{\prime}\left|V_{1}\right| m\right\rangle \sim \delta_{m^{\prime} m}\\
+\left\langle m_{1}^{\prime} m_{2}^{\prime}\left|V_{2}\right| m_{1} m_{2}\right\rangle \sim \delta_{m_{1}^{\prime} m_{1}} \delta_{m_{2}^{\prime} m_{2}}
+\end{gathered}
+\ee
+is given by
+\be
+\begin{gathered}
+\hat{H}_2 = \sum_{m} \int d^{3} r \hat{\psi}_{m}^{\dagger}(\vec{r})\left[-\frac{\hbar^{2}}{2 M} \vecnr^{2}+V_{1}(\vec{r})\right] \hat{\psi}_{m}(\vec{r})\\
++ \sum_{m,m^\prime}
+\hat{\psi}_{m}^{\dagger}(\vec{r}) \hat{\psi}_{m^\prime}^{\dagger}(\vecrp)
+V_2(\vec{r},\vecrp)
+\hat{\psi}_{m^\prime}(\vecrp)\hat{\psi}_{m}(\vec{r})
+\end{gathered}
+\ee
+
+Consider now a spin-spin interaction $V_{SS}\sim\vec{S}^{(1)} \cdot \vec{S}^{(2)}$ which in
+first-quantization has matrix elements
+\be
+\begin{gathered}
+\bra{m_1^\prime m_2^\prime}\vec{S}^{(1)} \cdot \vec{S}^{(2)}\ket{m_1 m_2}
+= \vec{S}_{m_1^\prime m_1} \cdot \vec{S}_{m_2^\prime m_2}\\
+= \sum_{i=1}^3 \left(S_i\right)_{m_1^\prime m_1}\left(S_i\right)_{m_2^\prime m_2}
+\rightarrow \left(S_i\right)_{m_1^\prime m_1}\left(S_i\right)_{m_2^\prime m_2}\\
+\text{(sum over repeated indices)}
+\end{gathered}
+\ee
+%%% 21
+according to the sandwich rule is given by
+\be
+\begin{gathered}
+\hat{V}_{SS} =\frac{1}{2} \sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime} \int d^3r\,d^3r^\prime
+\hat{\psi}_{m_1^\prime}^{\dagger}(\vec{r}) \hat{\psi}_{m_2^\prime}^{\dagger}(\vecrp)
+V_2(\vec{r},\vecrp)\\
+\times 
+\left(\vec{S}_{m_1^\prime m_1} \cdot \vec{S}_{m_2^\prime m_2}\right)
+\hat{\psi}_{m_2}(\vecrp)\hat{\psi}_{m_1}(\vec{r})
+\end{gathered}
+\ee
+
+For generic $V_1$ and $V_2$ spin-dependent potential,
+the Hamiltonian is given as
+
+\be
+\begin{gathered}
+\hat{H}_2 = \sum_{mm^\prime} \int d^3r
+\hat{\psi}_{m^{\prime}}^{\dagger}(\vec{r})
+\left(
+-\delta_{mm^\prime}\frac{\hbar^2}{2M} + 
+[V_1(\vec{r},s)]_{m^\prime m}
+\right)
+\hat{\psi}_{m}(\vec{r})\\
++\frac{1}{2} \sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime} \int d^3r\,d^3r^\prime
+\hat{\psi}_{m_1^\prime}^{\dagger}(\vec{r}) \hat{\psi}_{m_2^\prime}^{\dagger}(\vecrp)
+\times\\
+[V_2(\vec{r},\vecrp,s)]_{m_1m_1^\prime m_2m_2^\prime}
+\times \hat{\psi}_{m_2}(\vecrp)\hat{\psi}_{m_1}(\vec{r})
+\end{gathered}
+\label{eq:g125}
+\ee
+
+\emph{Example:} two-body tensor force
+\be
+S_{12}=\frac{1}{\left|\vec{r}_{1}-\vec{r}_{2}\right|^{2}} 
+\left(\vec{S}^{(1)} \cdot\left(\vec{r}_{1}-\vec{r}_{2}\right)\right)
+\left(\vec{S}^{(2)} \cdot\left(\vec{r}_{1}-\vec{r}_{2}\right)\right)
+-\frac{1}{3} \vec{S}^{(1)} \cdot \vec{S}^{(2)}
+\ee
+Matrix elements in first-quantized notations, defining
+the relative distance as $\vec{z} = \vec{r}_1 - \vec{r}_2$:
+\be
+\bra{m_1^\prime m_2^\prime} S_{12} \ket{m_1m_2} =
+\frac{S_i^{(1)} z_i\,S_j^{(2)} z_j}{z^2} - \frac{1}{3} [S_i^{(1)}]_{m_1^\prime m_1} [S_i^{(2)}]_{m_2^\prime m_2}
+\ee
+%%% 22 OKAY
+In Fock space, this reads
+\be
+\begin{gathered}
+\hat{V}_T =
+\frac{1}{2} \sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime} \int d^3r\,d^3r^\prime
+\hat{\psi}_{m_1^\prime}^{\dagger}(\vec{r}) \hat{\psi}_{m_2^\prime}^{\dagger}(\vecrp)\times\\
+\bigg[
+\frac{1}{|\vec{r}-\vecrp|^2} (S_i)_{m_1^\prime m_1} (S_j)_{m_2^\prime m_2}
+(\vec{r}-\vecrp)^i (\vec{r}-\vecrp)^j\\
+- \frac{1}{3} (S_i)_{m_1^\prime m_1} (S_i)_{m_2^\prime m_2}
+\bigg]
+\hat{\psi}_{m_2}(\vecrp)\hat{\psi}_{m_1}(\vec{r})
+\end{gathered}
+\ee
+
+%%% Adiantando um pouco da Aula 28 aqui:
+%%% 01 OKAY
+
+\emph{Change of basis}: $\hat{\psi},\hat{\psi}^\dagger \to \hat{a},\hat{a}^\dagger$
+\be
+\begin{aligned}
+\hat{\psi}_{m}(\vec{r})=\sum_{k} \phi_{k m}(\vec{r}) \hat{a}_{k m} \\ 
+\hat{\psi}^\dagger_{m}(\vec{r})=\sum_{k} \phi_{k m}^{*}(\vec{r}) \hat{a}^\dagger_{k m}\end{aligned}
+\\
+\quad\left\{
+\begin{aligned}
+&k,\quad\vec{k}\\
+&k,\quad n\to\text{ energy}
+\end{aligned}
+\right.
+\label{eq:g129}
+\ee
+with orthogonality and completeness given by
+\begin{align}
+\int d^3 r\, \phi_{k, m}^{*}(\vec{r}) \phi_{k^{\prime} m^{\prime}}(\vec{r})&=\delta_{m m^{\prime}} \delta_{k, k^{\prime}}\\
+\sum_{m} \sum_{k} \phi_{k m}(\vec{r}) \phi_{k m}^{*}\left(\vecrp\right)&=\delta\left(\vec{r}-\vecrp\right)
+\end{align}
+The inverse relations are using the orthogonality relation.
+
+%%% 02 OKAY
+The $\phi_{k m}(\vec{r})$ can sometimes be written as
+\be
+\phi_{km}(\vec{r})=\varphi_{k}(\vec{r}) \chi_{m}(s) 
+\stackrel{s \rightarrow j}{\longrightarrow} 
+\varphi_{k}(\vec{r}) \chi_{m}(j)
+\ee
+Suppose one chooses the $\phi_{k m}(\vec{r})$ to be the eigenstates
+of the single-particle Hamiltonian $\hat{H}_{1}$, \textit{i.e.}
+\be
+\left[-\frac{\hbar^{2}}{2 M} \nabla_{\!r}^{2}+V_{1}(\vec{r})\right] \phi_{k m}(\vec{r})=\varepsilon_{k} \phi_{k m}(\vec{r})
+\ee
+where we consider $V_1(\vec{r})$ spin-independent, for simplicity.
+Then, using Eqs.~\eqref{eq:g129} into the first term of Eq.~\eqref{eq:g125}, one obtains
+\be
+\begin{gathered}
+\hat{H}_1 = \sum_{mm^\prime} \int d^3r\, \sum_{kk^\prime}
+\phi_{k^\prime m^\prime}^{*}(\vec{r})
+\left[
+-\frac{\hbar^{2}}{2 M} \delta_{m^{\prime} m} \vecnr^{2}+V_{1}(\vec{r}) \delta_{m^{\prime} m}
+\right]
+\phi_{km}(\vec{r}) \hat{a}^\dagger_{k^\prime m^\prime} \hat{a}_{k m}\\
+%
+\sum_{m} \int d^3r\, \sum_{kk^\prime}
+\phi_{k^\prime m}^{*}(\vec{r})
+\underbrace{\left[
+-\frac{\hbar^{2}}{2 M} \vecnr^{2}+V_{1}(\vec{r}) \phi_{km}(\vec{r})
+\right]}%
+_{\varepsilon_k \phi_{km}(\vec{r})}
+\hat{a}^\dagger_{k^\prime m} \hat{a}_{k m}\\
+%
+\sum_{m} \sum_{kk^\prime} \varepsilon_k 
+\underbrace{\int d^3r\,\phi_{k^\prime m}^{*}(\vec{r})\phi_{km}(\vec{r})}%
+_{\delta_{kk^\prime}}
+\hat{a}^\dagger_{k^\prime m} \hat{a}_{k m}
+\end{gathered}
+\ee
+so finally
+\be
+\hat{H}_{1}=
+\sum_{m} \sum_{k} \varepsilon_{k} \hat{a}_{k m}^{\dagger} \hat{a}_{k m}=\sum_{m} \sum_{k} \varepsilon_{k} \hat{N}_{km}
+\ee
+where we define $\hat{N}_{km} \equiv \hat{a}_{k m}^{\dagger} \hat{a}_{k m}$
+
+%%% 03 OKAY
+Let us express the two-body interaction in terms 
+of the $\hat{a}$ and $\hat{a}^\dagger$:
+\be
+\begin{gathered}
+\hat{V}_2 = \nicefrac{1}{2}
+\sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime} 
+\int d^3r\,d^3r^\prime
+\sum_{k_1k_1^\prime}\sum_{k_2k_2^\prime}
+\phi^*_{k_1^\prime m_1^\prime}(\vec{r})
+\phi^*_{k_2^\prime m_2^\prime}(\vecrp)\\
+\times
+[V_2(\vec{r},\vecrp)]_{m_1^\prime m_2^\prime, m_1 m_2}
+\phi_{k_2 m_2}(\vecrp)
+\phi_{k_1 m_1}(\vec{r})
+\times 
+\hat{a}_{k_1^\prime m_1^\prime}^{\dagger} \hat{a}_{k_2^\prime m_2^\prime}^{\dagger} 
+\hat{a}_{k_2 m_2} \hat{a}_{k_1 m_1}\\
+= \frac{1}{2}
+\sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime} 
+\sum_{k_1k_1^\prime}\sum_{k_2k_2^\prime}
+V_2(k_1^\prime m_1^\prime, k_2^\prime m_2^\prime, k_1 m_1, k_2 m_2)\\
+\times
+\hat{a}_{k_1^\prime m_1^\prime}^{\dagger} \hat{a}_{k_2^\prime m_2^\prime}^{\dagger}
+\hat{a}_{k_2 m_2} \hat{a}_{k_1 m_1}
+\end{gathered}
+\ee
+where 
+\be
+\begin{gathered}
+V_2(k_1^\prime m_1^\prime, k_2^\prime m_2^\prime, k_1 m_1, k_2 m_2)
+= 
+\int d^3r\,d^3r^\prime
+\phi^*_{k_1^\prime m_1^\prime}(\vec{r})
+\phi^*_{k_2^\prime m_2^\prime}(\vecrp)\times\\
+[V_2(\vec{r},\vecrp)]_{m_1^\prime m_2^\prime, m_1 m_2}
+\phi_{k_2 m_2}(\vecrp)
+\phi_{k_1 m_1}(\vec{r})
+\end{gathered}
+\ee
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

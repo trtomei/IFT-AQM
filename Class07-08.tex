@@ -1,0 +1,491 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Advanced Quantum Mechanics\\Class 07--08}
+%\author{The Author}
+\date{August 30, 2022}                                           % Activate to display a given date or no date
+
+\setcounter{section}{5}
+\setcounter{subsection}{4}
+\setcounter{equation}{49}
+
+\begin{document}
+\maketitle
+
+\subsection{Reduced State Operator}
+
+Consider \(\hat{\rho}\) acting in space \(H_{1} \otimes H_{2}\).
+What is the state vector of particle 1?
+Answer: let us examine a physical property \(C\)
+which depends only on particle 1: \(\hat{C}=\hat{A} \otimes I_{2}\).
+
+We want to find a \(\hat{\rho}_{1}\) such that
+\be
+\ev{A} = \Tr(\hat{\rho}_{1}\hat{A})
+\ee
+%%% \setcounter
+\setcounter{equation}{51}
+In \(H_{1} \otimes H_{2},\langle\hat{C}\rangle=\left\langle\hat{A} \otimes I_{2}\right\rangle\) is given by:
+\be
+\begin{aligned}
+\left\langle\hat{A} \otimes I_{2}\right\rangle
+&=\Tr\left[\left[\hat{A} \otimes I_{2}\right] \hat{\rho}\right]
+=\sum_{n, m}\langle n m|\hat{A} \hat{\rho}| n m\rangle\\
+&=\sum_{n, m} \sum_{n, m^{\prime}}\langle\underbrace{n m|\hat{A}| n^{\prime} m^{\prime}\rangle}%
+_{\delta_{mm^\prime}A_{nn^\prime}}
+\langle n^{\prime}m^{\prime}|\hat{\rho}| n m\rangle\\
+&=\sum_{n, n^{\prime}} A_{nn^{\prime}}%
+\underbrace{\sum_{m}\langle n^{\prime}m|\hat{\rho}| n m\rangle}%
+_{\mathrlap{\text{Traced over particle 2 ($m$ indices): }\left(\rho^{(1)}\right)_{n^{\prime}n}}}
+=\sum_{n,n^{\prime}} A_{nn^\prime} \rho_{n^{\prime}n}^{(1)}\\
+%&=\sum_{n}\langle n|\hat{A} \hat{\rho}^{(1)}| n\rangle
+%%% 2 OK
+%=\Tr_{1}\left(\hat{A} \rho^{(1)}\right)
+\end{aligned}
+\label{eq:g52}
+\ee
+We can rearrange the $\rho^{(1)}$ expression to make it more clear:
+\[
+\begin{aligned}
+\left(\rho^{(1)}\right)
+&=\sum_{m}\left\langle n^{\prime} m|\hat{\rho}| n m\right\rangle
+= \sum_{m}     \langle n^{\prime} \otimes m |\hat{\rho}| 
+\underbrace{n \otimes m \rangle}%
+_{\ket{n}\otimes\ket{m}}
+\\
+&=\sum_{m}\bra{n^\prime}\otimes\bra{m}\hat{\rho}\ket{m}\otimes\ket{n}\\
+&=\bra{n^\prime}\otimes
+\underbrace{\left(\sum_{m}\bra{m}\hat{\rho}\ket{m}\right)}%
+_{\Tr_2 \hat{\rho}}
+\otimes\ket{n}\\
+\end{aligned}
+\]
+so we define the \emph{reduced} state operator of particle 1:
+\be
+\boxed{
+\hat{\rho}^{(1)} = \Tr_2 \hat{\rho}
+}\to\,\text{partial trace, trace on }H_2
+\ee
+Substitute back in Eq.~\ref{eq:g52}:
+%%% Thiago: cambalacho setcounter
+\[
+\tag{\ref{eq:g52}$^\prime$}
+\begin{aligned}
+\left\langle\hat{A} \otimes I_{2}\right\rangle 
+&= \sum_{n,n^\prime} A_{n,n\prime} \rho_{n^{\prime}n}^{(1)}
+ = \sum_{n,n^\prime} \bra{n}\hat{A}\ket{n^\prime}\bra{n^\prime}\Tr_2\hat{\rho}\ket{n}\\
+&= \sum_n \bra{n}\hat{A} \sum_{n^\prime}\op{n^\prime}{n^\prime}\Tr_2\hat{\rho}\ket{n}
+ = \sum_n \bra{n}\hat{A}\Tr_2\hat{\rho}\ket{n}\\
+&= \Tr_1\left(\hat{A}\rho^{(1)}\right)\checkmark
+\end{aligned}
+\]
+
+Probability of finding eigenvalue $a_n$ of $\hat{A}$: in $H_1 \otimes H_2$: $\hat{A} \to \hat{A} \otimes \mathbf{I}_2$
+\[
+\begin{aligned}
+\ev{\hat{A}} 
+&= \Tr_1
+\underbrace{\left(\hat{A}\rho^{(1)}\right)}%
+_{\mathrlap{\text{evaluate this in the eigenstates of }\hat{A}}}
+\equiv \sum_n a_n p(a_n)\\
+&=\sum_n \bra{\varphi_n}\hat{A}\rho^{(1)}\ket{\varphi_n} 
+=\sum_n a_n \underbrace{\bra{\varphi_n}\rho^{(1)}\ket{\varphi_n}}%
+_{p(a_n)}
+\end{aligned}
+\]
+%
+\[
+\begin{aligned}
+p(a_n) 
+&= \bra{\varphi_n}\rho^{(1)}\ket{\varphi_n}
+= \Tr_1 \hat{P}_n \rho^{(1)}\\
+&= \Tr_1 \hat{P}_n \Tr_2 \hat{\rho}
+= \Tr_1 \left[\Tr_2\left(\hat{P}_n \otimes\mathbf{I}_2\right)\hat{\rho}\right]
+\end{aligned}
+\]
+%%% 3 OK
+and therefore
+\be
+p(a_n) = \Tr_1\Tr_2 \left[\left(\hat{P}_n \otimes \mathbf{I}_2\right)\hat{\rho}\right]
+\ee
+\emph{Example:} $\ket{\psi}$ generic pure state of $H_1 \otimes H_2$:
+\be
+\ket{\psi} = \sum_{i=1}^{N} \sum_{j=1}^{M} C_{ij} \ket{\varphi_i \otimes \chi_j}
+\ee
+\be
+\hat{\rho} = \op{\psi}{\psi}
+\ee
+We write the reduced state operator $\hat{\rho}^(1)$:
+\[
+\rho^{(1)} = \Tr_2 \hat{\rho} =  \Tr_2 \op{\psi}{\psi} = \sum_{i,k=1}^{N} \sum_{j,l=1}^{M} C_{ij} C_{kl}^*
+\times \Tr_2 \op{\varphi_i \chi_j}{\varphi_k \chi_l}
+\]
+but
+\[
+\Tr_2 \op{\varphi_i \chi_j}{\varphi_k \chi_l} = 
+\op{\varphi_i}{\varphi_k} 
+\underbrace{\Tr\op{\chi_j}{\chi_l}}%
+_{\text{see below}}
+\]
+and using that
+\[
+\Tr\op{a}{b} = \sum_n\bra{n}\ket{a}\bra{b}\ket{n}
+=\bra{b}\sum_n\ket{n}\bra{n}\ket{a}
+=\bra{b}\ket{a}
+\]
+we have that
+\[
+\Tr\op{\chi_j}{\chi_l} = \bra{\chi_l}\ket{\chi_j} = \delta_{lj}\to\text{orthonormal} 
+\]
+so finally
+\be
+\rho^{(1)} = \sum_{i,k=1}^{N} \sum_{j=1}^{M} C_{ij} C_{kj}^* \op{\varphi_i}{\varphi_k} 
+\ee
+In the case that
+\(
+\ket{\psi} = \sum_{i=1}^{N} C_{i} \ket{\varphi_i \otimes \chi_i}:
+\)
+\be
+\rho^{(1)} = \sum_{i} |C_{i}|^2 
+\underbrace{\op{\varphi_i}{\varphi_i}}%
+_{\mathrlap{\text{again } \bra{\chi_j}\ket{\chi_i} = \delta_{ij}}}
+\ee
+
+Also, if $\ket{\psi} = \ket{\varphi\otimes\chi}$, then $\rho^{(1)}$ itself also describes a
+pure state:
+\be
+\begin{gathered}
+\rho^{(1)} = \Tr_2 \op{\varphi\chi}{\varphi\chi} = \ket{\varphi}
+\underbrace{\Tr\op{\chi}{\chi}}_{1}
+\bra{\varphi}\\
+%%% 4 OK
+\ket{\psi} = \ket{\varphi\otimes\chi} \Rightarrow \rho^{(1)} = \op{\varphi}{\varphi}
+\end{gathered}
+\ee
+
+\emph{Now}, if $\ket{\psi}$ \emph{is not a tensor product},
+$\rho^{(1)}$ (or $\rho^{(2)}$, of course) does not describe
+a pure state $\to$ \emph{not possible} to attribute a
+well-defined state to particle 1 (or 2).
+\[
+\ket{\psi} = \frac{1}{\sqrt{2}}\left(\ket{+-}-\ket{-+}\right)
+\]
+\be
+\begin{aligned}
+\Tr_2\hat{\rho} 
+&= \frac{1}{2}\Tr_2\left(
+\op{+-}{+-} - 
+\op{+-}{-+} -
+\op{-+}{+-} +
+\op{-+}{-+}
+\right)\\
+&=\frac{1}{2}\left(
+\op{+}{+} -0 -0 + \op{-}{-} 
+\right)
+=\frac{1}{2}\left(
+\op{+}{+} + \op{-}{-} 
+\right)\\
+&=\frac{1}{2}
+\begin{pmatrix}
+1 & 0\\0 & 1
+\end{pmatrix}
+\to\text{unpolarized state}
+\end{aligned}
+\label{eq:g60}
+\ee
+
+\emph{Conclusion:} Even when the two-particle state is
+a pure state, the state of an
+individual particle is in general
+a mixture.
+
+Eq.~\eqref{eq:g60}: an extreme case of a mixture, maximal
+disorder $\equiv$ minimal information.
+Disorder $\to$ measure of information? YES!
+%%% 5 OK
+
+\subsubsection{Entanglement entropy}
+
+Also know as von Neumann entropy (compare with Gibbs / Boltzmann entropy):
+\be
+S_E = -\Tr(\hat{\rho}\ln\hat{\rho})
+\ee
+in case of spin 1/2:
+\be
+\left\{
+\begin{aligned}
+&S_E \text{ maximum: }              & \ln2\\
+&S_E \text{ minimum (pure state): } & 0 
+\end{aligned}
+\right.
+\ee
+
+\begin{enumerate}
+\item Pure state: $\rho^2 = \rho$
+\be
+2\ln\rho = \ln\rho \to \ln\rho = 0  \Rightarrow S_E = 0
+\ee
+\item %
+\[
+\begin{gathered}
+\rho        = \frac{1}{2}\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix} \to
+\ln\rho     = \begin{pmatrix}\ln 1/2 & 0\\0 & \ln1/2\end{pmatrix}\\
+\rho\ln\rho = \begin{pmatrix}1/2 & 0\\0 & 1/2\end{pmatrix} 
+\begin{pmatrix}\ln 1/2 & 0\\0 & \ln1/2\end{pmatrix} = 
+\begin{pmatrix}1/2 \ln 1/2 & 0\\0 & 1/2 \ln1/2\end{pmatrix}
+\end{gathered}
+\]
+therefore
+\be
+S_E = -\Tr\begin{pmatrix}1/2 \ln 1/2 & 0\\0 & 1/2 \ln 1/2\end{pmatrix} = -\ln1/2 =\ln2
+\ee
+\end{enumerate}
+
+\emph{Note that:} Hilbert space has dim.\,$N$, the
+$\hat{\rho}$ corresponding to maximal disorder:
+\be
+\rho        = \frac{1}{N}\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix} \Rightarrow S_E = \ln N
+\ee
+
+\subsection{Time dependence of $\hat{\rho}$}
+
+%%% \setcounter
+\setcounter{equation}{64}
+First, consider a pure state:
+\be
+\hat{P}_\varphi(t) = \op{\varphi(t)}
+\ee
+%
+\be
+\begin{aligned}
+%%% 6 OK
+i\hbar\hat{P}_\varphi(t)
+&=i\hbar\frac{d}{dt}\left(\op{\varphi(t)}\right)\\
+&=i\hbar\underbrace{\ket{\frac{d\varphi(t)}{dt}}}%
+_{\ket{\frac{1}{i\hbar}\hat{H}\varphi}}
+\bra{\varphi(t)} + 
+  i\hbar\ket{\varphi(t)}\underbrace{\bra{\frac{d\varphi(t)}{dt}}}%
+_{\bra{\frac{1}{i\hbar}\hat{H}\varphi}}\\
+&= i\hbar\left[
+\frac{1}{i\hbar}
+\left(
+\hat{H}(t)\op{\varphi(t)} - \op{\varphi(t)}\hat{H}(t) 
+\right)
+\right]\\
+&=[\hat{H}(t),\hat{P}_\varphi(t)]
+\end{aligned}
+\ee
+
+We use this result in the derivation of $d\hat{\rho}/dt$:
+\[
+\begin{aligned}
+i\hbar \frac{d\hat{\rho}}{dt}
+&= \sum_\alpha p_\alpha \frac{d}{dt}\left(\op{\varphi_\alpha(t)}\right)
+= \sum_\alpha p_\alpha [\hat{H}(t),\op{\varphi_\alpha}]\\
+&= \left[\hat{H}(t),\sum_\alpha p_\alpha \op{\varphi_\alpha}\right]
+= \left[\hat{H}(t),\hat{\rho}(t)\right]
+\end{aligned}
+\]
+therefore
+\be
+\boxed{
+i\hbar \frac{d\hat{\rho}}{dt} = \left[\hat{H}(t),\hat{\rho}(t)\right]
+}-
+\ee
+so $\hat{\rho}(t)$ has 
+Hamiltonian evolution (unitary evolution),
+for which \(S_{E}\) is time-independent, as can
+be shown very easily.
+
+For a $\hat{\rho}$ corresponding to maximal disorder $\to$ that $\hat{\rho}$
+is a dynamical invariant, \textit{i.e.} $[\hat{H}(t),\hat{\rho}(t)] = 0$.
+
+%%% AULA 8: 1 OK
+\subsubsection{Time evolution of $\rho$ spin 1/2 in magnetic field $\vec{B}$}
+
+Let $\vec{B} = B\hat{z}$. Then
+\be
+\hat{H} = -\vec{\mu} \cdot \vec{B}=-\gamma B \hat{S_{z}}=-\gamma \frac{B \hbar}{2} \sigma_{z}
+\ee
+Recall that the state operator for a two-level system like a spin 1/2 is
+\[
+\rho = \frac{1}{2}(1+\vec{b}\cdot\vec{\sigma})
+\]
+so,
+
+\be
+\begin{aligned} 
+i \hbar \frac{d \hat{\rho}}{d t} 
+&=[\hat{H}, \hat{\rho}]=-\frac{\gamma B \hbar}{2}\left[\sigma_{z}, \frac{1}{2}(1+\vec{b} \cdot \vec{\sigma})\right] \\ 
+&=-\frac{\gamma B \hbar}{4}\left[\sigma_{z}, b_{x} \sigma_{x}+b_{y} \sigma_{y}\right]\left\{\left[\sigma_{i}, \sigma_{j}\right]=2 i \varepsilon_{i j k} \sigma_{k}\right.\\ 
+&=-\frac{\gamma B \hbar}{4}\left(2 i b_{x} \sigma_{y}-2 i b_{y} \sigma_{x}\right)\\
+&=-\frac{\gamma B}{2} i \hbar\left(b_{x} \sigma_{y}-b_{y} \sigma_{x}\right)
+\end{aligned}
+\ee
+therefore
+\[
+\begin{aligned}
+\cancel{i \hbar} \frac{1}{2} 
+&\frac{d \vec{b}}{d t} \cdot \vec{\sigma}=
+-\frac{\gamma B}{2} \cancel{i \hbar} \underbrace{\left(b_{x} \sigma_{y}-b_{y} \sigma_{x}\right)}%
+_{(\vec{b} \times \vec{\sigma})_{z}} \Rightarrow\\
+&\frac{d \vec{b}}{d t} \cdot \vec{\sigma} = \gamma \vec{B}\cdot(\vec{b} \times \vec{\sigma})
+= -\gamma \vec{B}\times\vec{b}\cdot\vec{\sigma}
+\end{aligned}
+\]
+and finally
+\be
+\boxed{
+\frac{d \vec{b}}{d t} = -\gamma \vec{B}\times\vec{b}
+} 
+\ee
+that is the classical equation of motion of a magnetic moment.
+
+\subsubsection{Creating coherences}
+
+Consider spins in contact with a fluctuating medium
+at temperature \(T\). What is \(\vec{b}\) in such a situation? Need
+to know \(\hat{\rho}\): Boltzmann distribution
+\be
+\hat{\rho}=\frac{1}{Z} e^{-\beta \hat{H}}, \quad
+\beta=\frac{1}{k_{B} T}, \quad 
+Z=\Tr e^{-\beta \hat{H}}
+\ee
+%%% AULA 8: 2 OK
+
+\be
+\begin{gathered}
+e^{-\beta \hat{H}}=e^{\beta \hbar \omega_{0} / 2 \sigma_{z}} \approx 1+\beta \frac{\hbar \omega_{0}}{2} \sigma_{z}\\
+\text{where } \omega_0 = \gamma\beta \text{ and we use the weak field approx. (high $T$)}\\
+\Tr e^{-\beta \hat{H}} \approx 2
+\end{gathered}
+\ee
+hence
+\be
+\hat{\rho} \simeq 1 / 2\left(I+\beta \frac{\hbar \omega_{0}}{2} \sigma_{z}\right) \Rightarrow b_{z}=\hbar \omega_{0} / 2
+\ee
+
+Note that:
+\[
+\begin{aligned}
+\hat{\rho} \sim e^{\lambda \beta \hbar \omega_{0} / 2 \sigma_z} (\op{+} + \op{-})\\
+\underbrace{e^{ \beta \hbar \omega_{0} / 2}}_{p_+} \op{+} + 
+\underbrace{e^{-\beta \hbar \omega_{0} / 2}}_{p_-} \op{-}
+\end{aligned}
+\]
+therefore
+\be
+p_{+}=e^{\beta \hbar \omega_{0} / 2} \simeq 1+\beta \hbar \omega_{0} / 2 \quad, \quad 
+p_{-} \simeq 1-\beta \hbar \omega_{0} / 2
+\ee
+so
+\be
+\begin{gathered}
+p_+ - p_- \equiv \delta p = \beta \hbar \omega_{0} \Rightarrow b_z = 1/2 \delta p\\
+\rho(t=0) \simeq 1/2 (I + 1/2 \delta p \sigma_z)
+\end{gathered}
+\ee
+
+Apply a transverse periodic field, \(\vec{B}_{1}(t)=B_{1}\left(\hat{x} \cos \omega t-\hat{y} \sin \omega t\right)\)
+\(\rightarrow\) at resonance, \(\omega=\omega_{0}\), the effect is equivalent to a
+rotation of the spin by angle \(-\theta\) (about $\hat{x}$), with \(\theta=\omega_{1} t\), where \(\omega_{1}=\gamma B_{1}\) (Rabi frequency).
+\be
+\begin{aligned} 
+\hat{\rho}(t) & \rightarrow \rho_{\theta}=
+\hat{U}\left[R_{x}(-\theta)\right] \hat{\rho}(0) \hat{U}^{\dagger}\left[R_{x}(-\theta)\right] \\ 
+& \hat{U}\left[R_{x}(-\theta)\right]=e^{+i \theta \sigma_{x} / 2} 
+\end{aligned}
+\ee
+therefore
+%%% AULA 8: 3 OK
+\be
+\begin{aligned}
+&e^{i \theta \sigma_{x} / 2} \sigma_{z} e^{-i \theta \sigma_{x} / 2}
+=\left(\cos \theta / 2+i \sigma_{x} \sin \theta / 2\right) \sigma_{z}
+ \left(\cos \theta / 2-i \sigma_{x} \sin \theta / 2\right)\\
+&=\cos ^{2} \theta / 2 \sigma_{z}-
+i \cos \theta / 2 \sin \theta / 2
+\underbrace{\left(\sigma_{z} \sigma_{x} -\sigma_{x} \sigma_{z}\right)}%
+_{2i\sigma_y}+
+\underbrace{\sigma_{x} \sigma_{z} \sigma_{x}}%
+_{-\sigma_z}
+\sin ^{2} \theta / 2 \\
+&=\left(\cos ^{2} \theta / 2-\sin ^{2} \theta / 2\right) \sigma_{z}+2 \cos \theta / 2 \sin \theta / 2 \sigma_{y}\\
+&=\cos \theta \sigma_{z}+\sin \theta \sigma_{y}
+\end{aligned}
+\ee
+and finally
+\be
+\hat{\rho}(t)=1 / 2\left[I+1 / 2 \delta p\left(\sigma_{z} \cos \omega_{1} t+\sigma_{y} \sin \omega_{1} t\right)\right]
+\ee
+For a time interval of $t = \pi/(2\omega_1)$:
+\be
+\hat{\rho}\left(t e^{\pi / 2 \omega_{1}}\right)=
+1 / 2\begin{pmatrix}1 & -\frac{i}{2} \delta p \\ \frac{i}{2} \delta p & 1\end{pmatrix}
+\ee
+where we can see that we \emph{created coherences}: started from a
+diagonal $\hat{\rho}$ and after a time $t = \pi/(2\omega_1)$
+obtained a $\hat{\rho}$ with off-diagonal
+terms.
+
+Return to equilibrium : introduce a relaxation-time
+factor in $b \rightarrow b e^{-t / T_{r}}$ (Exercise 6.5.6, where the relaxation time is called $T_2$).
+
+\subsection{General form of postulates}
+
+
+\emph{Postulate Ia}: state of a quantum system is represented
+%%% AULA 8: 4 OK
+by a state operator acting in a Hilbert space $H$;
+\(\hat{\rho}\) is a positive operator with unit trace.
+
+
+\emph{Postulate IIa}: probability $p_{\chi}$ of finding the quantum
+systen in state $|\chi\rangle$ is 
+\be
+p_{\chi}=\Tr(\hat{\rho}\op{\chi})=\Tr\left(\hat{\rho} \hat{P}_{\chi}\right)
+\ee
+
+
+\emph{Postulate IIIa} =  Postulate III: to a physical property
+$A$ there is an associated Hermitian operator \(\hat{A}\)
+in $H$.
+
+\emph{Postulate IVa}: the time evolution of the state operator
+is given by
+\be
+i\hbar \frac{d \hat{\rho}(t)}{d t}=[\hat{H}(t), \hat{\rho}(t)]
+\ee
+but this holds only for \emph{closed} systems.
+
+Supplementary WFC postulate becomes: when \(A\) is
+measured, the result is one of the eigenvalues $a_n$ of \(\hat{A}\)
+and the state operator right after the measurement is
+\be
+\hat{\rho} \rightarrow \hat{\rho}_{n}=
+\frac{\hat{P}_{n}\left(\hat{\rho} \hat{P}_{n}\right)}
+{\Tr\left(\hat{\rho} \hat{P}_{n}\right)}
+\ee
+
+
+
+
+
+
+\end{document}

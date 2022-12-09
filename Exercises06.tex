@@ -1,0 +1,76 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=1.8cm,bottom=2cm,right=2.7cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+
+\title{Advanced Quantum Mechanics\\Exercises Set 6\vspace{-1em}}
+%\author{The Author}
+\date{Due date: November 29\textsuperscript{th}, 2022}
+
+\begin{document}
+\maketitle
+
+\textbf{Textbook exercises:}
+
+\textbf{Exercises 1, 2, 3:} Problems 14.6.1 (items 2 to 4 only), 14.6.2 and 14.6.3 of M.~Le~Bellac.
+
+\textbf{Exercises 4, 5, 6, 7:} Problems 5.22, 5.23, 5.24, 5.26 of Sakurai \& Napolitano's \emph{Modern Quantum Mechanics (Second Edition)} -- problem numbers are the same as in Sakurai's \emph{Revised Edition}.
+
+\textbf{Exercise 8:} The Hamiltonian for two interacting spins
+(both $s=1 / 2$), $\sigma^{(1)}$ and $\sigma^{(2)}$, in a magnetic field $B$ directed along the $z$-axis is
+\[
+\hat{H}=B\left(a_{1} \sigma_{z}^{(1)}+a_{2} \sigma_{z}^{(2)}\right)+K \sigma^{(1)} \cdot \sigma^{(2)} \text {, }
+\]
+where $a_{1}$ and $a_{2}$ are the negatives of the magnetic moments (assumed to be unequal to avoid
+degeneracy), and $K$ is the interaction strength.
+
+\textbf{a)} Use second order perturbation theory to calculate the energy eigenvalues, assuming that
+$B$ is small.
+
+\textbf{b)} Use second order perturbation theory to calculate the energy eigenvalues, under the opposite assumption that $K$ is small.
+
+\textbf{c)} Find the exact energy eigenvalues for this Hamiltonian, and verify the correctness of your
+answers in parts a) and b).
+
+\textbf{Exercise 9:} The Hamiltonian matrix
+for a two-level system can be written as
+\[
+H=\begin{pmatrix}E_{1}^{0} & \lambda W \\ \lambda W & E_{2}^{0}\end{pmatrix}
+\]
+and the energy eigenvectors for the unperturbed ($\lambda=0$) system are given by
+\[
+\phi_{1}^{0}=\begin{pmatrix}1 \\ 0\end{pmatrix}, \quad \phi_{2}^{0}=\begin{pmatrix}0 \\ 1\end{pmatrix}.
+\]
+
+\textbf{a)} Solve this problem exactly to find the energy eigenfunctions $\psi_{1}$ and $\psi_{2}$ and the energy
+eigenvalues $E_{1}$ and $E_{2}$.
+
+\textbf{b)} Assuming that $\lambda W \ll\left|E_{1}^{0}-E_{2}^{0}\right|$, solve the same problem using time-independent perturbation theory up to $\mathcal{O}(\lambda)$ for the eigenvectors and up to $\mathcal{O}\left(\lambda^{2}\right)$ for the eigenvalues. Compare
+with the exact solutions obtained in a).
+
+\textbf{c)} Suppose the unperturbed energies are ``almost degenerate''; that is, $\left|E_{1}^{0}-E_{2}^{0}\right| \ll \lambda W$. Show
+that the exact results obtained in a) closely resemble what you would expect by applying
+degenerate perturbation theory with $E_{1}^{0}$ set exactly equal to $E_{2}^{0}$.
+
+\end{document}

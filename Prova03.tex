@@ -1,0 +1,108 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Mecânica Quântica Avançada\\%
+Prova 03\\%
+01 de dezembro -- 13 de dezembro}
+%\author{The Author}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace*{-4em}
+
+\textbf{Exercício 1:} 
+
+Considere o problema de duas partículas idênticas descritas pelo Hamiltoniano
+\[
+\hat{H}=\hat{H}_{0}(1)+\hat{H}_{0}(2)+\hat{H}_{I}(1,2)
+\]
+onde os números em parênteses identificam as partículas.
+Sejam $\varphi_1(\vec{r})$ e  $\varphi_2(\vec{r})$ as partes espaciais dos autoestados de $\hat{H}_{0}$
+(supostos independentes de spin):
+\[
+H_{0}(\vec{r}) \varphi_{1}(\vec{r})=E_{1}^{(0)} \varphi_{1}(\vec{r}), \quad H_{0}(r) \varphi_{2}(\vec{r})=E_{2}^{(0)} \varphi_{2}(\vec{r})
+\]
+onde $E_{1}^{(0)}$ e $E_{2}^{(0)}$ são as energias dos estados fundamental e primeiro estado excitado de
+$\hat{H}_{0}$, respectivamente.
+
+a) Suponha primeiro que $\hat{H}_{I}(1,2) = 0$. 
+Encontre a energia do estado fundamental do sistema supondo que as partículas são bósons.
+Repita o problema para férmions de spin-1/2, para os estados de singleto e tripleto.
+
+b) Suponha agora que  $\hat{H}_{I}(1,2) =\hat{H}_{I}\left(\left|\vec{r}_{1}-\vec{r}_{2}\right|\right) \neq 0$, mas independente de spin.
+Encontre, em primeira ordem em $\hat{H}_{I}(1,2)$, a energia do estado fundamental, supondo que as partículas são bósons.
+Repita o problema para férmions de spin-1/2, para os estados de singleto e tripleto.
+
+c) Repita o item b), para o caso de férmions de spin-1/2, supondo
+\[
+\hat{H}_{0}=\frac{\vec{p}^{\,2}}{2 m}+\frac{1}{2} m \omega^{\,2} \vec{r}^{\,2}
+\]
+e $\hat{H}_{I}(1,2)=g / \hbar^{2} \hat{\vec{S}}_{1} \cdot \hat{\vec{S}}_{2}$,
+onde $\hat{\vec{S}}$ é o operador de spin e $g$ é uma constante.
+
+\textbf{Exercício 2:} 
+
+Considere os operadores do espaço de Fock:
+\[
+\hat{\rho}(\vec{r})=\int d^{3} r^{\prime} \hat{\psi}^{\dagger}\left(\vec{r}^{\,\prime}\right) \delta\left(\vec{r}^{\,\prime}-\vec{r}\right) \hat{\psi}\left(\vec{r}^{\,\prime}\right)
+\]
+\[
+\hat{\vec{L}}(\vec{r})=\frac{\hbar}{2 m i} \int d^{3} r^{\prime} \hat{\psi}^{\dagger}\left(\vec{r}^{\,\prime}\right)\left[\vec{\nabla}_{r^{\prime}} \delta\left(\vec{r}^{\,\prime}-\vec{r}\right)+\delta\left(\vec{r}^{\,\prime}-\vec{r}\right) \vec{\nabla}_{r^{\prime}}\right] \hat{\psi}\left(\vec{r}^{\,\prime}\right)
+\]
+Calcule os valores esperados desses operadores no estado de uma partícula (bóson ou férmion).
+\[
+|\kappa\rangle=\hat{a}_{\kappa}^{\dagger}|0\rangle, \quad \hat{a}_{\kappa}^{\dagger}=\int d^{3} r \varphi_{\kappa}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r})
+\]
+
+\textbf{Exercício 3:} 
+
+Considere a representação no espaço de Fock do operator momento angular total
+(lembre-se que nós usamos ``chapéus'' para operadores no espaço de Fock, operadores de primeira quantização perdem seus chapéus)
+\[
+\hat{\vec{J}}=\int d^{3} r \hat{\psi}_{\kappa j m}^{\dagger}(\vec{r})\left\langle\kappa j m|\hat{\vec{J}}| \kappa^{\prime} j m^{\prime}\right\rangle \hat{\psi}_{\kappa^{\prime} j m^{\prime}}(\vec{r})
+\]
+onde estamos usando a convenção de que a soma sobre índices repetidos é implícita. Mostre que
+\[
+\left[\hat{J}_{i}, \hat{J}_{j}\right]=i \hbar \epsilon_{i j k} \hat{J}_{k}, \quad i, j, k=1,2,3
+\]
+é válido para bósons e férmions.
+
+\textbf{Exercício 4:}
+
+Mostre que o Hamiltoniano
+\begin{gather}
+\hat{H}=\sum_{m} \int d^{3} r \hat{\psi}_{m}^{\dagger}(\vec{r})\left(-\frac{h^{\,2}}{2 M} \nabla^{\,2}\right) \hat{\psi}_{m}(\vec{r})\\
++\frac{1}{2} \sum_{m_{1}, m_{1}^{\prime}} \sum_{m_{2}, m_{2}^{\prime}} \int d^{3} r d^{3} r^{\prime} \hat{\psi}_{m_{1}^{\prime}}^{\dagger}(\vec{r}) \hat{\psi}_{m_{2}^{\prime}}^{\dagger}\left(\vec{r}^{\,\prime}\right)\left[V_{2}\left(\left|\vec{r}-\vec{r}^{\,\prime}\right|, s\right)\right]_{m_{1}^{\prime} m_{2}^{\prime} ; m_{1} m_{2}} \hat{\psi}_{m_{2}}\left(\vec{r}^{\,\prime}\right) \hat{\psi}_{m_{1}}(\vec{r})
+\end{gather}
+conserva o número de partículas.
+
+\textbf{Exercício 5:}
+
+Considere o hamiltoniano:
+%
+\[
+\hat{H} = \sum _ { \alpha } T _ { \alpha } \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \alpha } + \sum _ { \alpha , \beta , \gamma } V _ { \alpha \beta \gamma } \left( \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \beta } \hat{a} _ { \gamma } + \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \beta } ^ { \dagger } \hat{a} _ { \gamma } \right)
+\]
+onde $T^*_\alpha = T_\alpha$, $V^*_{\alpha\beta\gamma} = V_{\alpha\beta\gamma}$ é simétrico em todos os índices, e os operadores $a_\alpha$ e $a_\alpha^\dagger$ satisfazem regras de comutação bosônicas.
+
+a) Este hamiltoniano é hermiteano? Prove sua resposta.
+
+b) Este hamiltoniano conserva o número de partículas $N = \sum_\alpha a_\alpha^\dagger  a_\alpha$?
+Prove sua resposta.
+
+\end{document}

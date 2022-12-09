@@ -1,0 +1,65 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Advanced Quantum Mechanics\\Exercise Set 01}
+%\author{The Author}
+\date{Due date: September 1\textsuperscript{st}, 2022}
+
+\begin{document}
+\maketitle
+
+\textbf{Exercise 1:} Do the following problems from M.~Le~Bellac's book:
+4.4.1,
+4.4.2,
+4.4.3,
+4.4.4,
+4.4.5,
+4.4.6,
+5.5.1, 
+5.5.2, 
+5.5.4, 
+5.5.5, 
+5.5.6.
+
+\textbf{Exercise 2: Avoided crossing, or level repulsion, or anticrossing.}
+
+Consider a two-level system, the energy levels being $E_1$ and $E_2$ and the corresponding eigenvectors being $\ket{1}$ and $\ket{2}$. 
+In the basis $\{\ket{1},\ket{2}\}$, the matrix representing the Hamiltonian, which we denote by $H^0$, is given by:
+\[
+H_{0}=\left(\begin{array}{cc}E_{1} & 0 \\ 0 & E_{2}\end{array}\right)
+\]
+
+Suppose now that the system is perturbed by some external field $\hat{V}$ , so that the Hamiltonian of the system becomes $\hat{H}=\hat{H}_{0}+\hat{V}, \text { with } \hat{V}^{\dagger}=\hat{V}$.
+In the basis $\{\ket{1},\ket{2}\}$, $\hat{H}$ has the matrix representation
+\[
+H=\left(\begin{array}{cc}E_{1} & 0 \\ 0 & E_{2}\end{array}\right)+\left(\begin{array}{ll}V_{11} & V_{12} \\ V_{21} & V_{22}\end{array}\right)
+\]
+where $V_{ij} = \bra{i}\hat{V}\ket{j}$, $i,j=1,2$.
+
+\textbf{2.1} Show that one can always choose $V_{21} = V_{12} = v$, where $v$ us a real number
+(see chapter 2 of Le~Bellac). Make this choice for answering the following two questions.
+
+\textbf{2.2} Let $E_\pm$ denote the eigenvalues of $H$. 
+Make a qualitative plot of $E_\pm$ as a function of $v$, by fixing the values of $E_1$, $E_2$, $V_{11}$ and $V_{22}$. 
+You should convince yourself that the curves $E_\pm(v)$ never cross for generic values of $E_1$, $E_2$, $V_{11}$, $V_{22}$.
+
+\textbf{2.3} Show that to have the levels crossing, one must have
+\[
+v=0 \quad \text { and } \quad E_{1}-E_{2}+V_{11}-V_{22}=0.
+\]
+
+\textbf{2.4} Prove the following assertion: the eigenvalues of a two-level system depending on $n$ continuous real parameters do not cross in general, except on a manifold (essentially a space) of $n − 2$ dimensions.
+
+\end{document}

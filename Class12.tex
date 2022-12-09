@@ -1,0 +1,370 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+
+\title{Advanced Quantum Mechanics\\Class 12}
+%\author{The Author}
+\date{September 15, 2022}                                           % Activate to display a given date or no date
+
+\setcounter{section}{5}
+\setcounter{subsection}{13}
+
+\begin{document}
+\maketitle
+
+%%% 01 OKAY
+
+\subsection{Quantum cryptography}
+
+We will discuss quantum key distribution (QKD),
+particularly the so-called \emph{BB84} protocol,
+using as example photon polarization.
+$\ket{x} \to 1,\,\ket{y} \to 0$: message in binary code
+(sequence of \emph{ones} and \emph{zeros}),
+\textit{e.g.} $100100 \to xyyxyy$.
+Alice: sender, Bob: receiver --
+uses \textit{e.g.}, birefringent
+plate to separate the
+photons of vertical and
+horizontal polarizations,
+to reconstruct the message.
+
+\emph{Not} good: a spy (Eve, for `` eavesdropper'') collects the
+photons, analyses them, and resends
+other photons in the same sequence
+to Bob: Bob has no way of telling
+that it was eve that sent the photons.
+\emph{QKD}: uses the features of incompatibility of two
+different bases of linear polarization.
+
+\begin{enumerate}
+\item Alice sends to Bob photons in four different
+different polarization states:
+%%% 02 OK
+\begin{itemize}
+\item polarization along $Ox (\updownarrow)$ and $Oy (\leftrightarrow)$,
+\item polarization along axes rotated by $45^\circ$ $Ox^\prime (\poldl)$ and $Oy\prime (\poldr)$,
+\item attribute bit 1 to states $\updownarrow$ and $\poldl$,
+      attribute bit 0 to states $\leftrightarrow$ and $\poldr$.
+\end{itemize}
+\item Bob uses analysers oriented as $+$ or $\times$. 
+Bob records 1 if photon has
+polarization $\updownarrow$ or $\poldl$, and 0 if
+photon has polarization $\leftrightarrow$ or $\poldr$.
+\item After recording $N \gg 1$ photons, Bob
+announces publicly the sequence of 
+analyzers he used, but he \emph{does not}
+announce his results (\textit{i.e.} his sequence of
+ones and zeros).
+\item Alice then compares what she has sent
+him and announces publicly those
+%%% 03 OK
+polarizers she used that are compatible
+with Bob's analysers, That is, Alice
+sends Bob a list of possible orientations
+that Bob should have gotten her bits.
+\item Example of a possible communication
+between Alice and Bob:
+
+\begin{tabular}{cccccccccc}
+\toprule
+Alice's polarizers & \polv & \polh & \poldr & \polv & \poldr & \poldr & \poldl & \polv & \poldl \\
+Sequence of bits & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 1\\
+Bob's analyzers & + & $\times$ & + & + & $\times$ & $\times$ & + & + & $\times$\\
+Bob's results & 1 & 1 & 0 & 1 & 0 & 0  & 1 & 1 & 1\\
+\midrule
+Alice's list & \\
+of compatible & Y & N & N & Y & Y & Y & N & Y & Y\\
+YES (Y), NO (N) & \\
+\midrule
+retain then the &\\
+compatible bits & 1 & -- & -- & 1 & 0 & 0 & -- & 1 & 1\\ 
+\bottomrule
+\end{tabular}
+\[
+\boxed{\text{Key} = 110011}
+\]
+\end{enumerate}
+Both, Alice and Bob will agree on a key at the end
+of the process \(\rightarrow\) they can use the key to \textit{e.g.}
+encrypt messages.
+
+%%% 04 OK
+Can Eve know the key? \emph{NO!}
+Suppose Alice sends \polv; if Eve detects it 
+using $\times$, she (Eve) will make a mistake
+supposing the photon had polarization \poldr or \poldl.
+If Eve sends to Bob \poldr, 50\% of
+the cases Bob will obtain the wrong result.
+Eve has a 50\% chance of getting it
+right, as she can use + or $\times$.
+Alice and Bob 
+%
+can compare a random subset of their shared key and
+%
+will register 
+a difference in 25\% of cases and
+conclude the message was intercepted.
+
+%%% A discussão sobre spin-1/2 ficou jogada aqui...
+
+%%% 05 OK
+
+\subsection{Quantum information, quantum computation}
+
+(A glimpse of)
+
+Theory of processing and transmitting of information
+using quantum mechanics features: among others,
+\emph{superposition} and \emph{entanglement}.
+
+Classical information theory: basic unit of infomation is
+the bit \(\leftarrow\) it takes two values: 0,1
+
+Quantum information theory: basic unit is the qubit
+e.g. spin \(1 / 2\).
+\be
+\text { Conventional: }
+\left\{
+\begin{aligned}  
+&|+\rangle \equiv|0\rangle \\ 
+&|-\rangle \equiv|1\rangle 
+\end{aligned}
+\right.
+\ee
+
+In contrast to a classical system (which exists
+in states 0,1 only), a quantum system can
+exist in \emph{linear superpositions}:
+\be
+|\varphi\rangle=\lambda|0\rangle+\mu|1\rangle
+\ee
+\fbox{qubit}: any two-level system,
+not necessarily spin-1/2 particles.
+
+%%% 06 OK
+
+A feature of linear superposition:
+- as seen in QKD example, it allows Alice and
+Bob to know when an eavesdropper (Eve)
+intercepts the exchanged message $\rightarrow$
+this is a consequence of the
+\emph{no cloning theorem}.
+
+Recall that one cannot get everything about a
+state \(|x\rangle\) in a single measurement:
+\begin{itemize}
+\item measurement of an observable \(A\) gives
+one of the eigenvalues of \(\hat{A}(\leftarrow\) represents $A$,
+independently of the state \(|\chi\rangle\) on which
+$A$ is measured.
+\item to reconstruct \(|x\rangle\) (or, more generally \(\hat{\rho}\),
+several values (likely of several other observables)
+must be obtained.
+This requires a statistics over
+many identically prepared
+systems (some \(|x\rangle\), or \(\hat{\rho}\)).
+\end{itemize}
+
+One way out: if ``cloning'' would be possible:
+%%% 07 OK
+\begin{itemize}
+\item make the system in the unknown state \(|x\rangle\)
+interact with many other systems previously
+prepared in states \(|\varphi\rangle\) -- the ``target state'' 
+to obtain many copies
+of the initial state,
+through the usage of a ``copy machine''(CM):
+\be
+\begin{aligned}
+|x\rangle \otimes
+\underbrace{|\varphi\rangle \otimes|\varphi\rangle \cdots \otimes|\varphi\rangle}_%
+{n}
+&\stackrel{\text{CM}}{\longrightarrow}&
+\underbrace{|x\rangle \otimes|x\rangle \otimes|x\rangle \cdots \otimes|x\rangle}_%
+{n+1}\\
+\underbrace{\hspace{10em}} & & \underbrace{\hspace{10em}}\\
+\ket{\text{in} (x)} \quad \quad \quad & \longrightarrow & \ket{\text{out} (x)} \quad \quad \quad 
+\end{aligned}
+\ee
+%
+\item  This would allow determination of $|x\rangle$ without even 
+measuring it $\rightarrow$ one could even measure the
+$n$ copies and leave the original
+untouched (the $n$ copies provide the
+required statistics).
+\item
+to preserve the QM unitarity \(\rightarrow\) the copy machine
+must operate unitarily:
+\[
+\boxed{\ket{\text{out} (x)} =  \hat{U} \ket{\text{in} (x)}}
+\]
+but this \emph{is impossible}.
+\end{itemize}
+Consider one copy:
+%%% 08 OK
+\be
+\begin{aligned}
+|\text{in}(x)\rangle
+&=|x\rangle \otimes|\varphi\rangle,\langle x | x\rangle=1=\langle\varphi | \varphi\rangle\\
+|\text{out}(x)\rangle
+&=|x\rangle \otimes|x\rangle
+\end{aligned}
+\ee
+This does not preserve the scalar product, because:
+if you take two states to be cloned, 
+\(\left|x_{1}\right\rangle\) and \(\left|x_{2}\right\rangle\):
+\be
+\begin{aligned}
+|\text{in}(x_{1})\rangle
+&=|x_{1}\rangle \otimes|\varphi\rangle \stackrel{\hat{U}}{\longrightarrow}|\text{out}(x_{1})\rangle=|x_{1}\rangle \otimes|x_{1}\rangle \\ 
+|\text{in}(x_{2})\rangle
+&=|x_{2}\rangle \otimes|\varphi\rangle \stackrel{\hat{U}}{\longrightarrow}|\text{out}(x_{2})\rangle=|x_{2}\rangle \otimes|x_{2}\rangle
+\end{aligned}
+\ee
+Suppose $\bra{\varphi}\ket{\varphi}| = 1$, then
+\be
+\begin{aligned}
+\langle\text{in} (x_{1}) | \text{in}(x_{2})\rangle
+&=\langle x_{1} | x_{2}\rangle \\ 
+\langle\text{out}(x_{1}) | \text{out}(x_{2})\rangle
+&=(\langle x_{1} | x_{2}\rangle)^{2}
+\end{aligned}
+\ee
+%
+\emph{BUT}, in general $(\bra{x_1}\ket{x_2})^2 \neq \bra{x_1}\ket{x_2}$.
+Equality happens only:
+\begin{itemize}
+\item \emph{either} $\bra{x_1}\ket{x_2} = 1$, but from Cauchy-Schwarz
+$\left|\left\langle x_{1} | x_{2}\right\rangle\right|^{2} \leqslant \sqrt{\left\langle x_{1} | x_{1}\right\rangle\left\langle x_{2} | x_{2}\right\rangle}$
+\item \emph{or} $\bra{x_1}\ket{x_2} = 0$ $\Rightarrow$ orthogonal states can be cloned.
+\end{itemize}
+
+\emph{QKD:} if one uses only the orthogonal states,
+\(\ket{\uparrow}=|0\rangle\) and \(\ket{\downarrow}=|1\rangle\), not good, they
+can be cloned. Need superpositions, which are not clonable.
+
+%%% 09 OK
+
+\emph{Example:} A generic qubit, \(|x\rangle=\lambda|0\rangle+\mu|1\rangle\):
+\(|\text{in}(x)\rangle=|x\rangle \otimes|\varphi\rangle \stackrel{\hat{U}}{\longrightarrow}|\text{out}(x)\rangle=\hat{U}|\text{in}(x)\rangle\)
+Evaluate this in two ways:
+\begin{enumerate}
+\item
+\be
+\begin{aligned}
+|\text{out}(x)\rangle 
+&=\hat{U}((\lambda|0\rangle+\mu|1\rangle) \otimes|\varphi\rangle) \\ 
+&=(\lambda|0\rangle+\mu|1\rangle) \otimes (\lambda|0\rangle+\mu|1\rangle) \\ 
+&=\lambda^{2}|00\rangle+\lambda \mu(|01\rangle+|10\rangle)+\mu^{2}|11\rangle 
+\end{aligned}
+\label{eq:g7}
+\ee
+%
+\item
+\be
+\begin{aligned}
+|\text{out}(x)\rangle 
+&=\hat{U}((\lambda|0\rangle+\mu|1\rangle) \otimes|x\rangle) \\ 
+&=\hat{U}(\lambda|0\rangle \otimes|\varphi\rangle+\mu|1\rangle \otimes|x\rangle) \\ 
+&=\lambda \hat{U}(|0\rangle \otimes|\varphi\rangle)+\mu \hat{U}(|1\rangle \otimes|\varphi\rangle) \\ 
+&=\lambda|00\rangle+\mu|11\rangle \end{aligned}
+\label{eq:g8}
+\ee
+\end{enumerate}
+But Eqs.~\eqref{eq:g7} and \eqref{eq:g8} cannot be equal for
+generic \(\lambda\) and \(\mu \Rightarrow \hat{U}\) cannot be
+unitary (linear).
+
+How about cloning of a state in contact with
+degrees of freedom of the cloning device?
+$\Rightarrow$ Also not possible: Le~Bellac, French edition.
+
+%%% 10 OK
+
+\[
+\begin{aligned}
+\left|x_{1}\right\rangle,\left|x_{2}\right\rangle \in H_{1} 
+&:\text { states to be cloned } \\ 
+|\varphi\rangle \in H_{2}
+&:\text { target state, on which we want to copy }\left|x_{1}\right\rangle \text { and }\left|x_{2}\right\rangle\\
+|m\rangle \in H_3
+&: \text { state of the machine (ancilla) }
+\end{aligned}
+\]
+Cloning in $H_1 \otimes H_2 \otimes H_3$:
+\[
+\begin{aligned}
+\left|\text{in}\left(x_{i}\right)\right\rangle
+&=\left|x_{i}\right\rangle \otimes|\varphi\rangle \otimes|m\rangle, i=1,2\\
+\left|\text{out}\left(x_{i}\right)\right\rangle
+&=\left|x_{i}\right\rangle \otimes\left|x_{i}\right\rangle \otimes\left|m\left(x_{i}\right)\right\rangle
+\end{aligned}
+\]
+\textit{i.e.}, the copy machine gets modified after the copy. Then,
+using that $\bra{\varphi}\ket{\varphi} = 1 = \bra{m}\ket{m}$,
+we again do the calculation two ways:
+\begin{enumerate}
+\item
+\be
+\begin{aligned}
+\left\langle\text{out}\left(x_{1}\right) \mid \text{out}\left(x_{2}\right)\right\rangle
+&=\left\langle\text{in}\left(x_{1}\right)
+\left|\hat{U}^{\dagger}\hat{U}\right| 
+\text{in}\left(x_{2}\right)\right\rangle \\ 
+&=\left\langle x_{1} \otimes \varphi \otimes m\left|\hat{U}^{\dagger} \hat{U}\right| x_{2} \otimes \varphi \otimes m\right\rangle\\
+&=\left\langle x_{1} | x_{2}\right\rangle
+\end{aligned}
+\ee
+%
+\item
+\be
+\begin{aligned}
+\left\langle\text{out}\left(x_{1}\right) \mid \text{out}\left(x_{2}\right)\right\rangle 
+&=\left\langle x_{1} \otimes x_{1} \otimes m\left(x_{1}\right) \mid x_{2} \otimes x_{2} \otimes m\left(x_{2}\right)\right\rangle \\ 
+&=\left(\left\langle x_{1} \mid x_{2}\right\rangle\right)^{2}\left(\left\langle m\left(x_{1}\right)\right| m\left(x_{2}\right\rangle\right)^{2} \end{aligned}
+\ee
+\end{enumerate}
+Again, for non-orthogonal states:
+\[
+1=\left|\left\langle x_{1} \mid x_{2}\right\rangle\right|\cdot\left|\left\langle m\left(x_{1}\right) \mid m\left(x_{2}\right)\right\rangle\right|
+\]
+and once again the Cauchy-Schwarz inequality shows that it is not possible unless
+$\ket{x_2} \sim \ket{x_1}$, $\ket{m(x_2)} \sim \ket{m(x_1)}$.
+
+%%% 11 OK
+
+No cloning theorem guarantees that there is no
+faster-than-light communication (Fig 6.1 of Le~Bellac): 
+if Bob could clone his spin-1/2,
+\textit{i.e.} make copies of it, he could reconstruct
+his state and immediately know Alice's
+axis (Alice's message), no matter how far apart
+their laboratories are.
+
+
+\emph{See problem in list of exercises.}
+
+\end{document}

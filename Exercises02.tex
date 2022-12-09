@@ -1,0 +1,122 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Mecânica Quântica Avançada\\Lista de Exercícios 2}
+%\author{The Author}
+\date{Data de entrega: 15 de setembro de 2022}
+
+\begin{document}
+\maketitle
+
+\textbf{Exercício 1:} Exercício 6.5.1 do Le Bellac.
+
+\textbf{Exercício 2:} \emph{Representação matricial de produtos tensoriais.} Usando a representação matricial para os vetores da base \(\{|+\rangle,|-\rangle\}\)
+\begin{equation}
+|+\rangle=\left(\begin{array}{l}1 \\ 0\end{array}\right), \quad|-\rangle=\left(\begin{array}{l}0 \\ 1\end{array}\right)
+\end{equation}
+o estado produto-tensorial de dois spins \(|++\rangle=|+\otimes+\rangle=|+\rangle \otimes|+\rangle\) é escrito na forma matricial
+nesta representação como
+\[
+|++\rangle=\left(\begin{array}{l}1 \\ 0\end{array}\right) \otimes\left(\begin{array}{l}1 \\ 0\end{array}\right)=\left(\begin{array}{l}1 \\ 0 \\ 0 \\ 0\end{array}\right)
+\]
+Escreva os outros estados de dois spins \(|+-\rangle,|-+\rangle\) e \(|--\rangle\), e a dos estados de três spins
+\(|+++\rangle,|+-+\rangle, \cdots,|--\rangle\) na forma matricial empregando a representação da Eq (1).
+
+\textbf{Exercício 3:} Exercícios 6.5.2 e 6.5.3 do Le Bellac.
+
+\textbf{Exercício 4:} Ao ter provado o item 2 do exercício \(6.5.3\) do Le Bellac, você provou que um operador de
+estado \(\hat{\rho}\) correspondente a um estado puro não pode ser escrito como combinação linear de
+dois outros operadores de estado genéricos \(\hat{\rho}_{1}\) e \(\hat{\rho}_{2}\) :
+\[
+\hat{\rho}=\lambda \hat{\rho}_{1}+(1-\lambda) \hat{\rho}_{2}, \quad 0 \leq \lambda \leq 1
+\]
+Esse resultado tem a ver com a seguinte observação: ``A preparação de um estado puro é única enquanto que a preparação de um estado misto é sempre ambígua". Você poderia explicar o que uma coisa tem a ver com a outra, isto é, o que o resultado que você provou tem a ver com a preparação de um estado físico e possíveis resultados de medida?
+
+\textbf{Exercício 5:} Considere a seguinte matriz densidade de um spin 1/2:
+\[
+\rho=\frac{1}{4} \mathbf{1}+\frac{1}{2}|+, \hat{a}\rangle\langle+, \hat{a}|
+\]
+onde \(|+, \hat{a}\rangle\) é o autoestado da projeção do operador de spin ao longo de um eixo \(a\) com
+autovalor \(+h / 2\). Calcule a probabilidade como função de \(\theta\) de encontrar o valor \(-h / 2\) ao se
+medir o spin ao longo de um eixo \(b\), em que \(\theta\) é o ângulo entre \(a\) e \(b\), i.e. \(\hat{a} \cdot \hat{b}=\cos \theta\).
+
+\textbf{Exercício 6:} Considere a seguinte matriz densidade de dois spins 1/2:
+\[
+\rho=\frac{1}{8} \mathbf{1}+\frac{1}{2}\left|\Psi_{-}\right\rangle\left\langle\Psi_{-}\right|
+\]
+onde \(\left|\Psi_{-}\right\rangle\)é o estado singleto (i.e. o estado de spin total igual a zero). Suponhamos que
+medimos um dos spins ao longo de um eixo \(a\) e o outro ao longo de um eixo \(b\), em que
+\(\hat{a} \cdot \hat{b}=\cos \theta\). Qual é a probabilidade (como função de \(\theta\)) de encontramos \(+\hbar / 2\) para ambos
+spins nestas medidas?
+
+\textbf{Exercício 7:} Considere um sistema bipartite descrito por um operador de estado \(\hat{\rho}^{(A B)}\) que evolui unitariamente:
+\[
+i \hbar \frac{d \hat{\rho}^{(A B)}}{d t}=\left[\hat{H}_{A B}, \hat{\rho}_{A B}\right]
+\]
+com
+\[
+\hat{H}_{A B}=\hat{H}_{A}+\hat{H}_{B}+\hat{V}_{A B}
+\]
+onde \(\hat{H}_{A}\) depende somente das coordenadas do subsistema \(A\), \(\hat{H}_{B}\) depende somente das
+coordenadas do subsistema \(B\) e \(\hat{V}_{A B}\) depende das coordenadas de ambos subsistemas. Mostre
+que o operador de densidade reduzido do sistema $A$, \textit{i.e.} \(\hat{\rho}^{(A)}=\operatorname{Tr}_{B} \hat{\rho}^{(A B)}\), obedece à seguinte
+equação de evolução temporal:
+\[
+i \hbar \frac{d \hat{\rho}^{(A)}}{d t}=\left[\hat{H}_{A}, \hat{\rho}^{(A)}\right]+\operatorname{Tr}_{B}\left[\hat{V}_{A B}, \hat{\rho}^{(A B)}\right]
+\]
+Você acabou de mostrar que enquanto o sistema bipartite evolui unitariamente, o subsistema $A$ não evolui unitariamente em geral. No curso de Física Estatística você, muito provavelmente, vai provar esse resultado novamente.
+
+\textbf{Exercício 8:} Mostre que sob evolução unitária (ou hamiltoniana, \textit{i.e.} quando o operador densidade
+evolui de acordo com a Eq. (6.37) do Le Bellac) a entropia de emaranhamento é conservada no
+tempo.
+
+\textbf{Exercício 9:} Considere os seguintes estados de dois spin-1/2:
+\[
+\begin{aligned}
+\left|\Phi_{+}\right\rangle=\frac{1}{\sqrt{2}}(|++\rangle+|--\rangle) \\ 
+\left|\Phi_{-}\right\rangle=\frac{1}{\sqrt{2}}(|++\rangle-|--\rangle) \\ 
+\left|\Psi_{+}\right\rangle=\frac{1}{\sqrt{2}}(|+-\rangle+|-+\rangle) \\ 
+\left|\Psi_{-}\right\rangle=\frac{1}{\sqrt{2}}(|+-\rangle-|-+\rangle)
+\end{aligned}
+\]
+Estes estados são conhecidos como \emph{estados de Bell}.
+
+\textbf{9.1} Escreva os estados de Bell e as correspondentes matrizes densidade na forma matricial na
+representação definida pela Eq. (1).
+
+\textbf{9.2 }Mostre que estes estados são maximamente emaranhados (ou desordenados), isto é, as
+entropias de emaranhamento correspondentes aos spins individuais assumem o valor máximo \(\ln 2\).
+
+\textbf{Exercício 10:} Considere o seguinte vetor de estado de dois spins \(1 / 2\) :
+\[
+|\Psi(1,2)\rangle=\cos \theta|+-\rangle-\sin \theta|-+\rangle
+\]
+onde \(0 \leq \theta \leq \pi / 2\). Obtenha a matriz densidade reduzida de um dos spins e calcule a correspondente entropia de emaranhamento. Para que valor de \(\theta\) essa entropia é máxima?
+
+\textbf{Exercício 11:} Exercício 6.5.4 do Le Bellac.
+
+\textbf{Exercício 12:} A dinâmica de um sistema de dois spins 1/2 é descrita pelo hamiltoniano:
+\[
+\hat{H}=-\frac{\hbar \omega}{2} \sigma_{1} \cdot \sigma_{2}
+\]
+onde \(\sigma_{1} \cdot \sigma_{2}=\sigma_{1 x} \sigma_{2 x}+\sigma_{1 y} \sigma_{2 y}+\sigma_{1 z} \sigma_{2 z}\), com \(\sigma_{x}, \cdots\) sendo as matrizes de Pauli, e \(\omega\) é uma
+constante. Supondo que em \(t=0\) o vetor de estado dos dois spins era \(|+-\rangle\), obtenha a
+entropia de emaranhamento de um dos elétrons nos instantes \(t=0\) e \(t=\pi /(2 \omega)\).
+
+\emph{Dica: use os resultados do exercício 6.5.4 do Le Bellac.}
+
+\end{document}

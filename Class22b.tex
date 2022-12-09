@@ -1,0 +1,348 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+
+\title{Advanced Quantum Mechanics\\Class 22 (b)}
+%\author{The Author}
+\date{October 27, 2022}                                           % Activate to display a given date or no date
+
+\setcounter{section}{6}
+\setcounter{subsection}{8}
+\setcounter{equation}{115}
+
+\begin{document}
+\maketitle
+
+%%% 12 OKAY
+\subsection{Time reversal (continued)}
+
+\par\noindent\rule{\textwidth}{1pt}
+\emph{Reminder from last class}
+
+Sometimes one needs to relate matrix elements of
+an operator between time-reversed states, \textit{e.g.} in
+scattering processes, where one often needs to relate
+an $i \rightarrow f$ process to its time-reversed motion $f \rightarrow i$.
+
+Let $\hat{A}$ be an arbitrary linear operator in $H$ and
+$|\varphi\rangle$ an arbitrary vector in $H$. From Eq.~(114),
+one has:
+\be
+\hat{\Theta} \hat{A} \ket{\varphi}=
+\begin{cases}
+\begin{aligned}
+\hat{\Theta}\!\left(\sum_n\op{n}\hat{A}\ket{\varphi}\right) 
+&= \sum_n \op{n_t}{n}\hat{A}\ket{\varphi}^*
+= \sum_n \op{n_t}{\varphi}\hat{A}^{\dagger}\ket{n}\\
+\text{also: }\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\hat{\Theta}\ket{\varphi} 
+&= \sum_n \op{n_t}{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}^*
+\end{aligned}
+\end{cases}
+\ee
+whence we identify
+\[
+\bra{\varphi}\hat{A}^{\dagger}\ket{n} = \bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}^*
+\]
+%
+Let $\ket{\psi}$ be another arbitrary state in $H$. We write 
+$\hat{A}_t = \hat{\Theta}\hat{A}\hat{\Theta}^{-1}$
+and
+$\hat{\Theta}\ket{\psi} = \ket{\psi_t}$.
+Then:
+\be
+\begin{gathered}
+\bra{\psi_t}\hat{A}_t\ket{\varphi_t} =
+\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}\\
+ = \bra{\psi_t}\hat{\Theta}\left(
+\sum_n\op{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}
+\right)
+ = \bra{\psi_t}\left(
+\sum_n\ket{n_t}(\bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t})^*
+\right)\\
+=\sum_n \bra{\psi_t}\ket{n_t} \bra{\varphi}\hat{A}^{\dagger}\ket{n}
+=\sum_n \bra{n}\ket{\psi} \bra{\varphi}\hat{A}^{\dagger}\ket{n}\\
+=\sum_n \bra{\varphi}\hat{A}^{\dagger} \ket{n}\!\!\bra{n}\ket{\psi}
+= \bra{\varphi}\hat{A}^{\dagger}\ket{\psi}
+\end{gathered}
+\label{eq:g117}
+\ee
+When $\hat{A}^{\dagger} = \hat{A}$ and time-reversal invariant:
+\be
+\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t} = 
+\bra{\psi_t}\hat{A}\ket{\varphi_t} =
+\bra{\varphi}\hat{A}\ket{\psi}
+\ee
+so
+\[
+(\varphi_t \to \psi_t) \leftarrow \text{ time reversal }\rightarrow (\psi \to \varphi).
+\]
+
+\par\noindent\rule{\textwidth}{1pt}
+
+%%% 13 OKAY
+
+\emph{Spinless particles}
+
+Representation of the time reversal for spinless particles:
+$\vec{S}=0 \Rightarrow \vec{J}=\vec{L}$.
+We assume a Hamiltonian $\hat{H}$ invariant under time-reversal.
+
+\emph{Coordinate representation}
+
+\[
+\begin{aligned}
+\varphi(\vec{r}, t)=    \langle\vec{r} | \varphi(t)\rangle, 
+|\varphi(t)\rangle    =e^{-i / \hbar \hat{H} t} | \varphi\rangle,
+&\text{ where } |\varphi\rangle = |\varphi(0)\rangle\\
+\varphi_{t}(\vec{r}, t)=\langle\vec{r} | \varphi_{t}(t)\rangle, 
+|\varphi_{t}(t)\rangle=e^{-i / \hbar \hat{H} t} |\varphi_{t}\rangle,
+&\text{ where } |\varphi_t\rangle = |\hat{\Theta}\varphi(0)\rangle\\ 
+\end{aligned}
+\]
+
+Since $\vec{r}$ is time-reversal invariant, Eq.~\eqref{eq:g117} %%% FIXME
+implies
+\be
+\begin{aligned}
+\varphi_{t}(\vec{r}, t)
+&=\left\langle\vec{r} | \varphi_{t}(t)\right\rangle=\left\langle\vec{r}_{t} | \varphi_{t}(t)\right\rangle\\
+&=\left\langle\vec{r}_{t}\left|e^{-i / \hbar \hat{H} t}\right| \varphi_{t}\right\rangle\\
+&=\left\langle\vec{r}_{t}\left|\left(\hat{\Theta} e^{i / \hbar \hat{H} t} \hat{\Theta}^{-1}\right)\right| \varphi_{t}\right\rangle\\
+&=\left\langle\varphi\left|e^{-i / \hbar H t}\right| \vec{r}\right\rangle=\left\langle e^{i / \hbar \hat{H} t} \varphi | \vec{r}\right\rangle\\
+&=\left\langle e^{-i / \hbar \hat{H}(-t)} \varphi | \vec{r}\right\rangle=\langle\varphi(-t) | \vec{r}\rangle\\
+&=\varphi^{*}(\vec{r},-t)
+\end{aligned}
+\ee
+For spin 0, time reversal is accomplished by
+complex conjugation and $t \to -t$:
+$\hat{\Theta} = \hat{\Theta}_0 + t\to-t$. 
+%%% 14 OKAY
+
+Spherical symmetry: $\varphi(\vec{r}) = R(r) Y^m_l(\theta),\phi)$,
+where the spherical harmonic factor is, in general, complex.
+Under $\hat{\Theta}$:
+\be
+Y_{l}^{m}(\theta, \phi) \rightarrow Y_{l}^{m *}(\theta, \phi)=(-1)^{m} Y_{l}^{- m}(\theta, \phi)
+\ee
+
+\emph{Momentum representation}
+
+Momentum eigenstates: $\ket{\vec{p}}$
+\be
+\begin{aligned}
+\hat{\Theta}\ket{\vec{p}} = \ket{\hat{\Theta}\vec{p}} 
+&= \ket{-\vec{p}} = \ket{\vec{p}_t}\\
+\hat{\Theta}\ket{-\vec{p}} = \ket{\hat{\Theta}(-\vec{p})} 
+&= \ket*{-\underbrace{\hat{\Theta}\vec{p}}%
+_{\vec{p}_t}
+} 
+= \ket{\vec{p}} \equiv \ket{-\vec{p}_t}
+\end{aligned}
+\ee
+Therefore the momentum space wave function
+\be
+\hat{\varphi}(\vec{p}, t)=\langle\hat{p} | \varphi(t)\rangle=\left\langle\hat{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi\right\rangle
+\ee
+transforms under time reversal as:
+\be
+\begin{aligned}
+\varphi_{t}(\vec{p}, t)
+&=\left\langle\vec{p} | \varphi_{t}(t)\right\rangle=\left\langle \vec{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi_{t}\right\rangle\quad\rightarrow(\varphi_{t} = \hat{\Theta} \varphi(0))\\
+&=\left\langle-\vec{p}_{t}\left|e^{-i / \hbar\hat{H} t}\right| \varphi_{t}\right\rangle\\
+&=\left\langle-\vec{p}_{t}\right|\left(\hat{\Theta} e^{i / \hbar \hat{H} t} \hat{\Theta}^{-1}\right)
+\left|\varphi_{t}\right\rangle
+\quad\text{ , using Eq.~\eqref{eq:g117}}\\
+&=\left\langle\varphi\left|e^{-i/ \hbar \hat{H} t}\right|-\vec{p}\right\rangle
+=\widetilde{\varphi}^{*}(-\vec{p},-t)
+\end{aligned}
+\ee
+
+%%% 15 OKAY
+
+\emph{Spin 1-2}
+
+Since $\hat{\Theta}\vec{J}\hat{\Theta}^{-1} = -\vec{J}$, one has for $j=1/2$:
+\be
+\hat{\Theta} \vec{\sigma} \hat{\Theta}^{-1} = -\vec{\sigma}
+\label{eq:g124}
+\ee
+Remembering that  
+$\hat{\Theta} = \hat{U}_t\hat{\Theta}_0$, Eq.~\eqref{eq:g124} implies
+\be
+\hat{U}_{t} \hat{\Theta}_{0} \vec{\sigma} \hat{\Theta}_{0} \hat{U}_{t}^{\dagger}=
+\hat{U}_{t} \vec{\sigma}^{*} \hat{U}_{t}=-\vec{\sigma}
+\ee
+which means the three conditions
+\[
+\begin{aligned}
+\hat{U}_{t} \sigma_{x} \hat{U}_{t}^{-1} &=-\sigma_{x} \\ 
+\hat{U}_{t} \sigma_{y} U_{t}^{-1}       &=+\sigma_{y} \\ 
+\hat{U}_{t} \sigma_{z} \hat{U}_{t}^{-1} &=-\sigma_{z}
+\end{aligned}
+\]
+Satisfied by choosing
+\be
+\hat{U}_{t}=e^{i \delta} e^{i \pi / 2 \sigma_{y}}
+\ee
+but this choice \emph{is not} unique ($\sigma_y$ is OK too).
+
+Therefore, when action on spin 1-2 states and operators:
+\be
+\hat{\Theta}e^{i \delta} e^{i \pi / 2 \sigma_{y}}\hat{\Theta}_0
+\ee
+With this choice, action of $\hat{\Theta}$ on $\ket{1/2,\pm1/2}$ in the
+conventional basis gives:
+\be
+\begin{gathered}
+\hat{\Theta} \ket{1/2,1/2} = \hat{\Theta}\begin{pmatrix}1\\0\end{pmatrix}
+= e^{i \delta} i \sigma_{y} \begin{pmatrix}1\\0\end{pmatrix} = -e^{i \delta} \begin{pmatrix}0\\1\end{pmatrix} = -e^{i \delta} \ket{1/2,-1/2}\\
+\hat{\Theta} \ket{1/2,-1/2} = + e^{i \delta} \ket{1/2,1/2}
+\end{gathered}
+\ee
+$\Rightarrow$ notice a possible phase convention here; so
+%%% 16 OKAY
+\be
+\hat{\Theta} \ket{1/2,m} = e^{i \delta} (-1)^{1/2+m} \ket{1/2,-m}
+\ee
+
+Consider now the action on $\ket{\vec{p}} \otimes \ket{m} = \ket{\vec{p}m}$ and
+$\ket{\vec{r}} \otimes \ket{m} = \ket{\vec{r}m}$:
+\be
+\begin{aligned}
+\hat{\Theta} \ket{\vec{p}m} &= e^{i \delta} (-1)^{1/2+m} \ket{-\vec{p}-m}\\
+\hat{\Theta} \ket{\vec{r}m} &= e^{i \delta} (-1)^{1/2+m} \ket{ \vec{r}-m}
+\end{aligned}
+\ee
+$\Rightarrow$ square of $\hat{\Theta}$ in coordinate/momentum representation.
+
+\emph{Spin 0:} (complex conjugaiton)
+\be
+\hat{\Theta}^2 = \hat{\Theta}(\hat{\Theta}_0+t\to-t) = 1
+\ee
+
+\emph{Spin 1/2:}
+\be
+\begin{gathered}
+\hat{\Theta}^2 =  \hat{\Theta}(e^{i \delta} i \sigma_y \hat{\Theta}_0)
+= e^{i \delta} i \sigma_y \hat{\Theta}_0 (e^{i \delta} i \sigma_y \hat{\Theta}_0)\\
+= e^{i \delta} (i \sigma_y) e^{-i \delta} (i \sigma_y) = -\sigma_y^2 = -1
+\end{gathered}
+\ee
+Note that $e^{i \delta}$ drops out in $\hat{\Theta}^2$ $\to$ actually $\hat{\Theta}^2$ has no dependence
+on the representation.
+
+Consider now a system of $N$ particles:
+\begin{itemize}
+\item if the particles have spin 0 $\Rightarrow$ $\hat{\Theta}^2 = 1$ for any $N$ $\to$ 
+nothing interesting happens.
+%%% 17 OKAY
+\item if the particles have spin 1/2: (neglecting the phase)
+\[
+\begin{gathered}
+\hat{\Theta} =
+(i \sigma_y \hat{\Theta}_0))_1 \otimes
+(i \sigma_y \hat{\Theta}_0))_2 \otimes
+\ldots \otimes
+(i \sigma_y \hat{\Theta}_0))_N\\
+\hat{\Theta}^2 =
+[(i \sigma_y \hat{\Theta}_0))_1]^2
+\ldots
+[(i \sigma_y \hat{\Theta}_0))_N]^2
+\end{gathered}
+\]
+and finally
+\be
+\boxed{\hat{\Theta}^2 = (-1)^N}
+\ee
+\end{itemize}
+Consequence of this result:
+\begin{itemize}
+\item let $\{\ket{E,N}\}$ be the stationary states of a
+system of $N$ spin 1-2 particles
+%
+\item assume
+\be
+[\hat{\Theta},\hat{H}] = 0
+\ee
+$\Rightarrow$ $\hat{\Theta}\ket{E,N}$ is also an eigenstate of $\hat{H}$
+%
+\item \emph{question:} is $\hat{\Theta}\ket{E,N}$ linearly independent of
+the state $\ket{E,N}$? $\Rightarrow$
+If it is linearly independent, then
+there is a degeneracy in the spectrum
+of the system.
+%%% 18 OKAY
+\item so, if $\hat{\Theta}\ket{E,N}$ \emph{is not} degenerate
+\be
+\hat{\Theta}\ket{E,N} = \lambda\ket{E,N}
+\ee
+therefore
+\be
+\begin{aligned}
+\underbrace{\hat{\Theta}^2}_{(-1)^N}\ket{E,N} = &\lambda^*\lambda \ket{E,N} &= (-1)^N\ket{E,N}\\
+\Rightarrow & \underbrace{|\lambda|^2}_{\text{positive}} &= \underbrace{(-1)^N}_{\text{negative if $N$ odd}}
+\end{aligned}
+\ee
+\item therefore, if $N$ is odd $\Rightarrow$ $\hat{\Theta}\ket{E,N}$ must be degenerate.
+\end{itemize}
+
+\emph{Kramer's theorem:} If the Hamiltonian of a system composed
+by \emph{an odd numbe}r of spin-1/2 porticles
+is time-reversal invariant, then all of its
+stationary states are degenerate.
+\emph{Exercise:} show that the degree of degeneracy is even.
+
+When a system with an odd number of spin-1/2
+particles is exposed to magnetic field (breaks
+time-reversal invariance), the energy levels will split
+into multiplets with an even number of members.
+
+\end{document}
+
+\hat{\Theta}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,617 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+
+\title{Advanced Quantum Mechanics\\Class 25}
+%\author{The Author}
+\date{November 22, 2022}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{6}
+
+\section{Approximation Methods}
+
+%%% 01 prime OKAY
+
+\setcounter{subsection}{2}
+\subsection{Adiabatic approximation (continued)}
+
+Suppose a quantum system in contact with a \emph{time-dependent}
+environment, \textit{e.g.} an external field, or the system
+is part of a larger system, etc. Let $R_{1}(t), R_{2}(t), \ldots$
+be parameters that characterize the environment.
+\begin{itemize}
+\item the Hamiltonian $\hat{H}$ and observables $\hat{A}$ of the quantum
+system depend on $\vec{R}(t)=\left(R_{1}(t), R_{2}(t), \ldots\right)$;
+\item each value of $\vec{R}(t)$ characterizes a particular
+configuration of the environment
+\item changes in $\vec{R}(t)$ describe a curve
+in some manifold $\Rightarrow$ ``parameter space'' $M$
+\end{itemize}
+
+\emph{Assumption:} $\hat{H}=\hat{H}(\vec{R})$ and $\hat{A}=\hat{A}(\vec{R})$ are \emph{smooth}
+and \emph{single-valued} functions of $\vec{R}$.
+
+%%% 01 OKAY
+
+\emph{Example:}
+\begin{itemize}
+\item System: quantum magnetic moment,
+ described by an operator $\hat{\vec{\mu}}$
+\item Environment: time-dependent magnetic field
+$\vec{B}(t)$, with constant magnitude $B=|\vec{B}|$
+\end{itemize}
+
+\setcounter{equation}{77}
+Hamiltonian of the system is then
+\be
+\hat{H}(t)=-\hat{\vec{\mu}} \cdot \vec{B}(t)=-g \underbrace{\frac{q}{2 m c}}_{\text{note the c}} \hat{\vec{J}} \cdot \vec{B}
+\ee	
+Defining the ``coordinates'' $\vec{R}(t)=B \hat{R}(t)$ and
+\be
+b=-g \frac{q}{2 m c} B
+\ee
+one can write $\hat{H}$ as
+\be
+\hat{H}(t)=\hat{H}(\vec{R}(t)) \equiv \hat{H}(R)=b \hat{R}(t) \cdot \hat{\vec{J}}
+\label{eq:g80}
+\ee
+$\hat{R}(t)$ is a unit vector $\rightarrow$ parameter space of the
+environment is \emph{unit sphere}.
+An example is the field precessing with
+frequency $\omega$ about the $\hat{z}$ direction:
+\be
+\vec{R}(t)=\hat{x} \sin \theta \cos (\phi+\omega t)+ \hat{y} \sin \theta \sin (\phi+\omega t)+\hat{z} \cos \theta
+\label{eq:g81}
+\ee
+(counter clockwise precession)
+
+%%% 02 OKAY
+
+The state of the system, $|\psi(t)\rangle$, is described by the
+Schrödinger equation:
+\be
+i\hbar \frac{d|\psi(t)\rangle}{d t}=\hat{H}(R)|\psi(t)\rangle
+\label{eq:g82}
+\ee
+We consider as the physical Hilbert space of states $H$,
+the space that contains the solution of Eq.~\eqref{eq:g82}
+for all possible values of $\vec{R}$ in the parameter
+space. Then, for any value of $\vec{R}$, one may
+choose an orthonormal basis of eigenvectors
+$\ket{n;R}$ of the parameter-dependent Hamiltonian:
+\be
+\begin{gathered}
+\hat{H}(R)|n ; R\rangle=E_{n}(R)|n ; R\rangle\\
+\langle m ; R \mid n ; R\rangle=\delta_{m n}
+\end{gathered}
+\label{eq:g83}
+\ee
+so
+\be
+\hat{H}(R)=\sum_{n} E_{n}(R) \hat{P}_{n}(R)
+\ee
+where
+\be
+\hat{P}_{n}(R)=|n ; R\rangle\langle n ; R|
+\ee
+Here and in the rest of the discussion, we assume that
+the Hamiltonian has a discrete spectrum.
+
+%%% 03 OKAY
+
+Given an environmental process along with a time
+parametrization, $R \rightarrow R(t)$, one obtains a time-dependent
+Hamiltonian, $\hat{H}(R) \rightarrow \hat{H}(t)$, with $\hat{H}(t)$ having a
+spectral representation
+\be
+\hat{H}(t)= \sum_n E_{n}(R(t)) \hat{P}_{n}(R(t))
+\ee
+with
+\be
+\hat{P}_{n}(R(t))=|n ; R(t)\rangle\langle n ; R(t)|
+\ee
+where $E_{n}(R(t)),\,|n ; R(t)\rangle$ are the instantaneous eigenvalues
+and eigenvectors.
+
+\emph{Note that:} Single-valuedness of $\hat{H}$ and $\hat{A}$ does not
+inply that $|h, R\rangle$ are single-valued functions
+of $\vec{R}$. For example: periodic environment, \textit{i.e}.
+$\vec{R}(0)=\vec{R}(T)$, a closed path $C$, one can have
+\be
+|n ; R(T)\rangle=e^{i \alpha}|n, R(0)\rangle
+\ee
+$\rightarrow$ example is rotation of spin-1/2.
+
+In general
+\be
+|n ; R\rangle \rightarrow|n, R\rangle^{\prime}=e^{i \phi_{n}(R)}|n, R\rangle
+\label{eq:g89}
+\ee
+Assumption: $\phi_{n}(R)$ are single-valued functions of $\vec{R}(t)$.
+
+%%% 04 OKAY
+
+The solution of the Schrödinger equation in Eq.~\eqref{eq:g82}
+\be
+|\psi(t)\rangle=\hat{U}(t)|\psi(0)\rangle
+\ee
+with
+\be
+\hat{U}(t) = T e^{-1 / \hbar \int_{0}^{t} d t^{\prime} \hat{H}(t)}, \quad \hat{H}(t)=\hat{H}(\vec{R}(t))
+\ee
+Now, if
+\be
+\left[\hat{H}(t), \hat{H}\left(t^{\prime}\right)\right]=0
+\label{eq:g92}
+\ee
+the $\hat{U}(t)$ can be written as
+\be
+\hat{U}(t)=e^{-i / \hbar \int_{0}^{t} d t^{\prime} \hat{H}(t^\prime)}
+\ee
+Suppose that $|\psi(0)\rangle=|n, R(0)\rangle$, \textit{i.e.} it is an
+eigenstate of $\hat{H}(R(0))$. Then:
+\be
+\ket{\psi(t)}=e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_n(R(t))}\ket{\psi(0)}
+\ee
+Eq.~\eqref{eq:g92}, in general, is a too drastic assumption
+(or approximation): the interaction with the environment,
+described by a time-dependent $\hat{H}(R(t))$ makes
+the system to jump from the $n$-th eigenstate
+$(n, R(0)\rangle\langle n, R(0)|$ at $t=0$ into any other eigenstate
+%%% 04 prime (faltando nas notas, tirei do vídeo)
+$|m, R(t)\rangle\langle m, R(t)|, m \neq n$, at a later time $t$.
+
+BUT, it might happen that the system
+remains an eigenstate of $\hat{H}(R(t))$ at all
+times with the same quantum number $n$,
+\textit{i.e.} it does not jump to another with $m$:
+\be
+\begin{aligned}
+t=0, \quad&|\psi(0)\rangle=|n, R(0)\rangle
+t=t, \quad&|\psi(t)\rangle=|n, R(t)\rangle
+\end{aligned}
+\ee
+so
+\be
+|\psi(t)\rangle\langle\psi(t)|=| n ; R(t)\rangle\langle n ; R(t)|=P_{n}(R(t))
+\label{eq:g96}
+\ee
+or
+\be
+\hat{\rho}(t)=P_{n}(R(t))
+\ee
+This is known as the \emph{adiabatic time development},
+which is a generalization of the condition that
+a state is \emph{stationary}, \textit{i.e.}
+\be
+\hat{\rho}(t)=|\psi(t)\rangle\langle\psi(t)|=| \psi(0)\rangle\langle\psi(0)|
+\ee
+\emph{But}, it should be clear that Eq.~\eqref{eq:g96} is an
+approximation, \textit{i.e.} it cannot be an exact
+statement, because:
+%%% 05 OKAY
+\[
+i \hbar \frac{d \hat{\rho}(t)}{d t}=[\hat{H}(R), \hat{\rho}(t)]
+\]
+which by the adiabatic assumption means
+\be
+i \hbar \frac{d \hat{\rho}(t)}{d t}=\left[\dot{H}(R), \dot{\rho}_{n}(R)\right]=0
+\label{eq:g99}
+\ee
+which means
+\be
+\hat{\rho}(t) = \text{ constant } = \hat{\rho}(0)
+\ee
+and \emph{not} Eq.~\eqref{eq:g96}.
+
+In particular, Eq.~\eqref{eq:g99} means that if
+$\hat{\rho}(t)=\hat{\rho}_{n}(t)$, the motion of the system cannot
+be cyclic (or periodic), \textit{i.e.} $\hat{\rho}(0) \neq \hat{\rho}(T)$, where
+$T$ is the time to come back to the same state.
+
+\emph{Conclusions:}
+\begin{enumerate}
+\item \emph{exact} adiabatic cyclic evolutions do not exist
+\item adiabaticity can only be an approximation
+\end{enumerate}
+
+\setcounter{subsubsection}{2}
+\subsubsection{Validity of the adiabatic approximation}
+
+\begin{quote}\emph{Skipped in class, jump straight to Eq.~\eqref{eq:g103}}\end{quote}
+
+Let as write $\ket{\psi(t)}$ in the basis $\{|n ; R(t)\rangle\}$:
+%%% 06 OKAY
+\be
+|\psi(t)\rangle=\sum_{m} C_{m}(t)|m ; R(t)\rangle
+\label{eq:g101}
+\ee
+and suppose $|\psi(0)\rangle=|n, R(0)\rangle$. Therefore, the
+adiabatic approximation is valid \textit{only if} one
+can ignore all $C_m(t)$ in \eqref{eq:g92}, with the exception
+of $m=n$:
+\be
+|\psi(t)\rangle=C_{n}(t)|n ; R(t)\rangle
+\ee
+where $C_n(0)=1$, because $|\psi(0)\rangle=|n, R(0)\rangle$.
+Use this $|\psi(t)\rangle$ in Schrödinger equation \eqref{eq:g82}:
+\[
+\left(i \hbar \frac{d}{d t} C_{n}(t)\right)
+|n ; R(t)\rangle+i \hbar C_{n}(t) \frac{d}{d t}|n ; R(t)\rangle=
+C_{n}(t) \underbrace{\hat{H}|n ; R\rangle}%
+_{E_n(R)\ket{n,R}}
+\]
+Project this onto $|m ; R\rangle, m \neq n$,
+leading to\\
+\rule{\textwidth}{1pt}
+\be
+\left\langle m ; R(t) \mid \frac{d}{d t} \mid n ; R(t)\right\rangle=0, \quad m \neq n
+\label{eq:g103}
+\ee
+that is the condition for validity of the adiabatic approximation.
+
+Note that the scalar product in Eq.~\eqref{eq:g103}, when
+referring to a problem in ordinary space where
+the coordinates of the system are denoted by $\vec{r}$,
+is given by
+%%% 07 OKAY
+\be
+\left\langle m ; R(t)\left|\frac{d}{d t}\right| n ; R(t)\right\rangle=\int d^{3} r\, \psi_{m}^{*}(\vec{r}, R(t)) \frac{d}{d t} \psi_{n}(\vec{r}, R(t))
+\ee
+$\rightarrow$
+important not to confuse the
+coordinates of the environment, $\vec{R}(t)$,
+with the ordinary coordinates $\vec{r}$.
+
+\begin{quote}\emph{Skipped in class, jump straight to Eq.~\eqref{eq:g108}}\end{quote}
+
+One can reexpress  Eq.~\eqref{eq:g103} in terms of the derivative
+of the Hamiltonian $\hat{H}(R(t))$ w.r.t. the time:
+\begin{enumerate}
+\item let us start differentiating the eigenvalue
+equation in Eq.~\eqref{eq:g83}, namely:
+\be
+\begin{gathered}
+\left(\frac{d \hat{H}(R(t))}{d t}\right)|n ; R(t)\rangle+\hat{H}(R(t)) \frac{d}{d t}|n ; R(t)\rangle= \\ 
+\frac{d E_{n}(R(t))}{d t}\left|n ; R(t)\right\rangle+E_{n}(R(t)) \frac{d}{d t}|n ; R(t)\rangle
+\end{gathered}
+\ee
+%
+\item project this out $\ket{m;R(t)}$, with $ m\neq m$:
+\be
+\begin{gathered}
+\left\langle m ; R\left|\frac{d}{d t} \hat{H}\right| n ; R\right\rangle+E_{m}(R)\left\langle m ; R\right| \frac{d}{d t}\left| n ; R\right\rangle \\ 
+=E_{n}(R)\langle m ; R| \frac{d}{d t}|n ; R\rangle, m \neq n 
+\end{gathered}
+\ee
+%%%% 08
+\item This then leads immediately to:
+\be
+\underbrace{\left\langle m ; R\left|\frac{d}{d t}\right| n ; R\right\rangle}%
+_{0\text{ by Eq.~\eqref{eq:g103}}}
+=\frac{\langle m ; R|d \hat{H} / d t| n ; R\rangle}{E_{n}(R)-E_{m}(R)},\,m \neq n
+\ee
+%
+\item This implies:\\
+\rule{\textwidth}{1pt}
+\be
+\frac{\langle m ; R|d \hat{H} / d t| n ; R\rangle}{E_{n}(R)-E_{m}(R)} = 0,\,m \neq n
+\label{eq:g108}
+\ee
+where we see the appearance of $d \hat{H} / d t$ $\rightarrow$ reason for the name ``adiabatic''.
+\end{enumerate}
+
+\subsubsection{Berry's phase}
+
+Suppose $|\psi(0)\rangle=|n ; R(0)\rangle$ and that the adiabatic
+approximation is valid; then
+\be
+|\psi(t)\rangle=\sum_m C_{m}(t)|m ; R(t)\rangle=C_{n}(t)|n ; R| t)\rangle
+\ee
+with $C_n(0) = 1$.
+Using this into the Schrödinger equation:
+%%% 09
+\be
+\begin{aligned}
+i \hbar \frac{d}{d t}|\psi(t)\rangle
+&=i \hbar \frac{d C_{n}(t)}{d t}|n ; R| t)\rangle+i \hbar C_{n} \mid t) \frac{d}{d t}|n ; R(t)\rangle\\
+&=E_{n}(R(t)) C_{n}(t)\left|n ; R(t)\right\rangle
+\end{aligned}
+\ee
+Projecting onto $\ket{n;R(t)}$:
+\be
+\frac{d C_{n}(t)}{d t}=-C_{n}(t)
+\left[i / \hbar E_{n}(t)+\langle n ; R(t)|\frac{d}{d t}|n ; R(t)\rangle\right]
+\label{eq:g111} 
+\ee
+Taking into account the initial condition $C_{n}(0)=1$, the
+integration of \eqref{eq:g111} leads to:
+\be
+C_{n}(t)=e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_{n}\left(t^{\prime}\right)} e^{i \gamma_{n}(t)}
+\ee
+where the phase angle $\gamma_n(t)$ is given by
+\be
+\gamma_{n}(t)=i \int_{0}^{t} d t^{\prime}\langle n ; R(t^{\prime})|\frac{d}{d t^{\prime}}|n ; R(t^{\prime})\rangle
+\ee
+Therefore, in the adiabatic approximation:
+\be
+\ket{\psi(t)} = e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_{n}\left(t^{\prime}\right)} e^{i \gamma_{n}(t)} \ket{n;R(t)}
+\ee
+where the first phase is the \emph{dynamical phase}, 
+and the second one is the \emph{geometric phase}.
+
+%%% 10
+$\gamma_{n}(t)$ has a striking property: it does not depend
+on the time dependence of the integrand; it depends 
+on the path $\vec{R}(0) \to \vec{R}(t)$  in parameter space.
+\be
+\frac{d}{d t^{\prime}}\left|n ; R\left(t^{\prime}\right)\right\rangle d t^{\prime}=\frac{\partial}{\partial R_{i}\left(t^{\prime}\right)}\left|n ; R\left(t^{\prime}\right)\right\rangle d R_{i}\left(t^{\prime}\right)
+\ee
+so
+\begin{align}
+\gamma_{n}(t)
+&=i \int_{R(0)}^{R(t)} d R_{i}\langle n ; R| \frac{\partial}{\partial R_{i}}\left|n ; R\right\rangle\nonumber\\
+&=i \int_{R(0)}^{R(t)} d \vec{R} \cdot\left\langle n ; R\left|\vec{\nabla}_{\!R}\right| n ; R\right\rangle\\
+&=i \int_{C} d \vec{R} \cdot \vec{A}_{n}(R)
+\end{align}
+where $C$ denotes the curve $C$ that extends from
+$\vec{R}(0)$ to $\vec{R}(t)$, and $\vec{A}_{n}(R)$ is the ``vector
+potential'':
+\be
+\vec{A}_{n}(R)=i\left\langle n ; R\left|\vec{\nabla}_{\!R}\right| n ; R\right\rangle
+\ee
+Can one get rid of such a phase? Yes, almost always:
+%%% 11 OKAY
+
+1) The eigenstates of $\hat{H}(R)$ are defined up to
+a phase. Therefore, under a gauge transformation,
+Eq.~\eqref{eq:g89}:
+\be
+\begin{aligned}
+|n ; R\rangle \rightarrow|n ; R\rangle^{\prime} 
+&=e^{i \phi_{n}(R)}|n ; R\rangle \\
+A_{n}(R) \rightarrow A_{n}^{\prime}(R) 
+&=i\langle n ; R| \vec{\nabla}_{\!R} |n ; R\rangle^{\prime} \\ 
+&=i\langle n ; R| e^{-i \phi_{n}(R)} \vec{\nabla}_{\!R}  e^{i \phi_{n}(R)}|n ; R\rangle\\ 
+&=\vec{A}_{n}(R)-\vec{\nabla}_{\!R}  \phi(R) 
+\end{aligned}
+\ee
+2) Under such a transformation, the phase angle $\gamma_{n}(t)$
+transforms as
+\be
+\begin{aligned} 
+\gamma_{n}(t) \rightarrow \gamma_{n}^{\prime}(t) 
+&=\int_{R(0)}^{R(t)} d \vec{R} \cdot \vec{A}_{n}^{\prime}(R) \\ 
+&=\gamma_{n}(t)-\int_{R(0)}^{R(t)} d \vec{R} \cdot \vec{\nabla}_{\!R}  \phi_{n}(R) \\
+&=\gamma_{n}(t)-\phi_{n}(R(t))+\phi_{n}(R(0))
+\end{aligned}
+\ee
+3) Therefore, had the initial condition being
+taken $|n, R\rangle^{\prime}$, one would have obtained:
+\be
+\begin{aligned} 
+|\psi_{n}(t)\rangle
+&=e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_{n}\left(t^{\prime}\right)} e^{i \gamma_{n}^{\prime}(t)}|n, R(t)\rangle^{\prime}\\
+%%% 12 OKAY
+&=e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_{n}\left(t^{\prime}\right)} e^{i \gamma_{n}^{\prime}(t)}e^{i\phi_n(R)}|n, R(t)\rangle
+\end{aligned} 
+\ee
+4) Since $\phi_{n}(R)$ is arbitrary, one can choose it
+to cancel $\gamma_{n}^{\prime}(t)$, \textit{i.e.}
+\be
+\phi_{n}(R)=-\gamma_{n}^{\prime}(R)
+\ee
+or, equivalently:
+\be
+\begin{gathered}
+\cancel{\phi_{n}(R)}=-\gamma_{n}(R)+\cancel{\phi_{n}(R)}-\phi_{n}(R(0))\\
+\Rightarrow \phi_{n}(R(0))=-\gamma_{n}(R)
+\end{gathered}
+\ee
+5) In the above we used the fact that
+$\phi_{n}(R(t))$ was arbitrary. \emph{But}, if after some
+time $T$ the environmental parameters return to
+their original values:
+\be
+R(0) \rightarrow R(t) \rightarrow R(T)=R(0)
+\label{eq:g124}
+\ee
+then one \emph{cannot} choose $\phi_{n}(R(t))$ freely to
+remove $\gamma_{n}(T)$, because $\gamma_{n}(t)$ does not change
+under \eqref{eq:g124} : from Stokes' theorem, one has
+%%% 13 
+\be
+\gamma_{n}(t)=\oint_{C} d \vec{R} \cdot \vec{A}_{n}(R)=\int_{S} d \vec{s}^{3} \cdot\left(\vec{\nabla}_{\!R}  \times \tilde{A}_{n}(R)\right)
+\ee
+where 
+$C$ is the closed curve from the
+evolution $\vec{R}(0)=\vec{R}(T)$
+and
+$S$ is the surface enclosed
+by $C$ during evolution.
+So, under the above gauge transformation:
+\be
+\begin{aligned}
+\gamma_{n}^{\prime}(t)
+&=\int_{S} d \vec{S} \cdot\left(\vec{\nabla}_{\!R}  \times \vec{A}_{n}^{\prime}(R)\right)\\
+&=\gamma_{n}(t)-\int_{S} d \vec{s} \cdot
+\cancelto{0}{\left[\vec{\nabla}_{\!R}  \times\left(\vec{\nabla}_{\!R}  \phi_{n}(R)\right)\right]}
+\end{aligned}
+\ee
+Therefore, $\gamma_{n}(t)$ is gauge invariant for a
+periodic adiabatic motion; no observable can
+depend on a gauge choice. So
+\emph{$\gamma_n(t)$ is an observable!}
+
+%%% We skip the whole "slow and fast hamiltonian"
+%%% And go directly to the example.
+
+%%% 20
+\setcounter{equation}{143}
+
+\emph{Example:} spin-1/2 particle in. magnetic field
+precessing around $\hat{z}$: Eq.~\eqref{eq:g81}.
+The Hamiltonian is  given by Eq.~\eqref{eq:g80}:
+\be
+\hat{H}(t) = 
+\frac{b\hbar}{2}
+\begin{pmatrix}
+ \cos\theta & \sin\theta e^{-i\phi(t)}\\
+\sin\theta e^{ i\phi(t)} & -\cos\theta
+\end{pmatrix},\,
+\phi(t) = \phi+\omega(t)
+\ee
+The eigenvalues are $\pm b \hbar / 2$; when $b=0$, there is
+degeneracy. The eigenvectors are
+\[
+\ket{+,\vec{R}} = \begin{pmatrix} \cos(\theta/2)\\\sin(\theta/2)e^{ i\phi(t)}\end{pmatrix},\quad
+\ket{-,\vec{R}} = \begin{pmatrix} -\sin(\theta/2)\\\cos(\theta/2)e^{ i\phi(t)}\end{pmatrix}
+\]
+The calculation of $\vec{B}_+$ or $\vec{B}_-$ is straightforward.
+%From Eq.~\eqref{eq:g134}
+\be
+\vec{\nabla}_{\!R}  \hat{H}(R)=\frac{b \hbar}{2 B} \vec{\sigma}
+\ee
+and one can write:
+\be
+\begin{aligned}
+\vec{B}_{\pm}(R)
+&=-\frac{(b \hbar / 2 B)^{2}}{(b \hbar)^{2}} 
+\underbrace{\Im \langle\mp, R|\vec{\sigma}| \pm, R \rangle \times
+    \langle\pm, R|\vec{\sigma}| \mp, R \rangle}%
+    _{\pm 2\hat{R}\to\text{ Exercise}}\\
+&=\mp \frac{(b \hbar / 2 B)^{2}}{(b \hbar)^{2}} 2 \hat{R}\\
+&=\mp \frac{\hat{R}}{2 B^{2}}=\mp \frac{\hat{R}}{2 R^{2}}
+\end{aligned}
+\ee
+where we can see the appearance of a ``magnetic monopole'' of strength $1 / 2$ located at the
+origin (at the place of degeneracy).
+%%% 21 OKAY
+The Berry phase in this case is given by:
+\be
+\gamma_{+}(R)=\int_{S} d \vec{s} \cdot \vec{B}_{+}(R)=-\frac{1}{2 R^{2}} \int_{S} d \vec{s} \cdot \hat{R}
+\ee
+
+\begin{minipage}{0.4\textwidth}
+Easier to compute:
+-- flux through $S$
+enclosed by $C$ is the
+same is through on $S^{\prime}$
+with solid angle $\Omega: d \vec{s}=R^{2} d \Omega \hat{R}$
+\end{minipage}%
+\hfill
+\begin{minipage}{0.6\textwidth}
+\[
+\begin{cases}
+\begin{aligned}
+&\text{Closed path $C$: for a given $\theta$, the}\\
+&\text{path is from $\theta, \phi$ to $\theta, \phi+2 \pi$ (period).}\\
+\end{aligned}
+\end{cases}
+\]
+\vspace{1em}
+\end{minipage}
+
+\be
+\begin{aligned}
+\gamma_{+}(R)
+&=-\frac{1}{2 R^{2}} \int R^{2} d \Omega=-\frac{1}{2 R^{2}} \int_{0}^{\theta} d \theta \sin \theta \int_{\phi}^{\phi+2 \pi} d \phi\\
+&=-\frac{1}{2}(1-\cos \theta) 2 \pi=-\pi(1-\cos \theta)
+\end{aligned}
+\ee
+We could have used opposite direction of $C$:
+\[
+\gamma_{\pm}(R)=\mp \frac{1}{2} \Omega, \quad \Omega=2 \pi(1-\cos \theta)
+\]
+where $\Omega$ is the
+solid angle subtended by the
+closed path as viewed by
+the monopole (origin of the
+parameter space).
+
+\emph{Experiment}: Beam of neutrons
+split into two
+components: 
+one transverses a constant
+magnetic field $R_{0} \hat{z}$,
+the other transverses a slowly-%
+varying magnetic field as above:
+$\theta$: constant, $\phi \rightarrow \phi+2 \pi$
+%%% 22 OKAY
+When the beams are recombined:
+\be
+I_{\pm} 
+=\frac{1}{2} I_{0}\left|1+e^{i \gamma_{\pm}}\right|^{2}=\frac{1}{2} I_{0}\left(2+2 \cos \gamma_{\pm}\right)
+=I_{0}\left(1+\cos \left(\frac{1}{2}\Omega\right)\right) 
+\ee
+
+%%% Inserir figura do Sakurai aqui
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
