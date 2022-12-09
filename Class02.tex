@@ -8,9 +8,29 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
-
+\usepackage{mathtools}
+\usepackage{physics}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\usepackage[thicklines]{cancel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{qcircuit}
+\usepackage{circledsteps}
+\usepackage{nicefrac}
 \usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xcolor}
+\usepackage{simplewick}
 \defaultfontfeatures{Mapping=tex-text}
+
+\newcommand{\polv}{\ensuremath{\updownarrow}}
+\newcommand{\polh}{\ensuremath{\leftrightarrow}}
+\newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\vecrp}{\ensuremath{\vec{r}^{\,\prime}}}
+\newcommand{\vecnr}{\ensuremath{\vec{\nabla}_{\!r}}}
 
 \title{Advanced Quantum Mechanics\\Class 02}
 %\author{The Author}
@@ -20,7 +40,7 @@
 \maketitle
 
 \setcounter{section}{3}
-\setcounter{equation}{16}
+\setcounter{equation}{15}
 
 %%% 1 OK
 
@@ -40,7 +60,7 @@ it is not possible in general to find states for which A and B are known exactly
 
 This, with
 \[
-p(x \rightarrow b)=|\langle b \mid a\rangle|^{2}
+p(x \rightarrow b)=|\langle b | a\rangle|^{2}
 \]
 implies that there will be a \emph{dispersion} in values of A and B.
 
@@ -123,15 +143,15 @@ which leads to the \emph{Heisenberg inequality}:
 \label{eq:heisenberineq}
 \end{equation}
 
-Equality in Eq.~\ref{eq:g23} $\to$ Eq.~\ref{eq:g25}: solve for $\lambda$ and replace in Eq.~\ref{eq:g23},
-then find Eq.~\ref{eq:heisenberineq} with equality.
+Equality in Eq.~\eqref{eq:g23} $\to$ Eq.~\eqref{eq:g25}: solve for $\lambda$ and replace in Eq.~\eqref{eq:g23},
+then find Eq.~\eqref{eq:heisenberineq} with equality.
 
 \emph{Exercise:} 
 $\Delta_\varphi \hat{A}=0 \textrm{ iff } \hat{A}|\varphi\rangle=a|\varphi\rangle$; 
 for finite-dimension $H$ that implies 
 $\langle\hat{C}\rangle_{\varphi}=0$.
 
-Correct interpretation of Eq.~\ref{eq:heisenberineq}:
+Correct interpretation of Eq.~\eqref{eq:heisenberineq}:
 $N$ measurements of A, B and C (measured in different
 experiments, of course), all prepared in same $|\varphi\rangle$,
 %%% 4 OK
@@ -139,7 +159,7 @@ one obtains (ideally) accurate experimental values for
 $\Delta_{\varphi} \hat{A}$ and 
 $\Delta_{\varphi} \hat{B}$ and
 $\langle\hat{C}\rangle_{\varphi}$,
-which then obey Eq.~\ref{eq:heisenberineq}. 
+which then obey Eq.~\eqref{eq:heisenberineq}. 
 Notice that this is in \emph{no way} related to experimental errors.
 If errors are $\delta A$ and $\delta B$, for an accurate
 determination of the dispersion, one needs
@@ -173,7 +193,7 @@ under the influence of a magnetic field);
 e.m field $\to$ $H = H_\textrm{atom} + H_\textrm{field}$. 
 \end{enumerate}
 
-Notice that Eq.~\ref{eq:schrodinger} is 1\textsuperscript{st} order in time, and evolution is deterministic: given \mbox{$|\varphi(t=0)\rangle$}, $|\varphi(t)\rangle$ is predictable with certainty. Evolution is reversible.
+Notice that Eq.~\eqref{eq:schrodinger} is 1\textsuperscript{st} order in time, and evolution is deterministic: given \mbox{$|\varphi(t=0)\rangle$}, $|\varphi(t)\rangle$ is predictable with certainty. Evolution is reversible.
 
 \bigskip
 
@@ -182,7 +202,7 @@ than ``characteristic time of the evolution''.
 
 Time evolution is unitary, since $\hat{H} = \hat{H}^{\dagger}$ $\to$ norm is conserved under the evolution.
 \begin{equation}
-\begin{aligned} \frac{d}{d t} \||\varphi(t)\rangle \|^{2} &=\frac{d}{d t}\langle\varphi(t) \mid \varphi(t)\rangle \\ &=\left\langle\frac{d \varphi}{d t} \mid \varphi\right\rangle+\left\langle\varphi \mid \frac{d \varphi}{d t}\right\rangle\\
+\begin{aligned} \frac{d}{d t} \||\varphi(t)\rangle \|^{2} &=\frac{d}{d t}\langle\varphi(t) | \varphi(t)\rangle \\ &=\left\langle\frac{d \varphi}{d t} | \varphi\right\rangle+\left\langle\varphi | \frac{d \varphi}{d t}\right\rangle\\
 %%% 6 OK
 &=\left\langle\varphi \left|\left(-\frac{i}{\hbar} \hat{H}\right)^{\dagger}\right|\varphi\right\rangle+\left\langle\varphi\left|\left(-\frac{i}{\hbar} \hat{H}\right)\right| \varphi\right\rangle
 =0
@@ -223,7 +243,7 @@ which leads to
 \subsection{Evolution operator}
 
 Instead of a \emph{differential} evolution equation,
-Eq.~\ref{eq:schrodinger}, one can postulate an integral equation
+Eq.~\eqref{eq:schrodinger}, one can postulate an integral equation
 for an evolution operator $\hat{U}(t,t_0)$.
 
 \emph{Postulate IV$\,^\prime$:} the state vector $|\varphi(t)\rangle$ at time $t$
@@ -242,7 +262,7 @@ Notice that $\hat{U} \hat{U}^{\dagger} = \hat{U}^{\dagger}\hat{U} = I \to$ at an
 \begin{equation}
 \begin{aligned}
 \langle\varphi(t) | \varphi(t)\rangle 
-&=\left\langle\hat{U} \varphi\left(t_{0}\right) \mid \hat{U} \varphi\left(t_{0}\right)\right\rangle \\ 
+&=\left\langle\hat{U} \varphi\left(t_{0}\right) | \hat{U} \varphi\left(t_{0}\right)\right\rangle \\ 
 &=\left\langle\varphi\left(t_{0}\right)\left|\hat{U}^{\dagger} \hat{U}\right| \varphi\left(t_{0}\right)\right\rangle \\ 
 &=\left\langle\varphi\left(t_{0}\right) | \varphi\left(t_{0}\right)\right\rangle 
 \end{aligned}
@@ -251,7 +271,7 @@ Also, from conservation of norm: $\hat{U} \hat{U}^{\dagger} = I$, but we need so
 
 %%% 8 OK
 
-\subsection{Properties of $\hat{U}$}
+\subsection{\texorpdfstring{Properties of $\hat{U}$}{Properties of U}}
 
 \begin{enumerate}
 \item group property
@@ -270,7 +290,7 @@ but also
 \[
 |\varphi(t)\rangle = \hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle
 \]
-leading to Eq.~\ref{eq:Ugroup}.
+leading to Eq.~\eqref{eq:Ugroup}.
 %
 \item identity: 
 \begin{equation}
@@ -281,7 +301,7 @@ leading to Eq.~\ref{eq:Ugroup}.
 \begin{equation}
 \hat{U}^{-1}\left(t, t_{0}\right)=\hat{U}\left(t_{0}, t\right)
 \end{equation}
-Since $t_1$ is arbitrary in Eq.~\ref{eq:Ugroup}:
+Since $t_1$ is arbitrary in Eq.~\eqref{eq:Ugroup}:
 \[
 |\varphi(t)\rangle=\hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle,
 \]
@@ -302,7 +322,7 @@ so
 \end{enumerate}
 
 
-\subsection{Dynamical equation for $\hat{U}$}
+\subsection{\texorpdfstring{Dynamical equation for $\hat{U}$}{Dynamical equation for U}}
 
 Postulates IV and IV$^\prime$ are not independent, one needs
 one of them only. What is the dynamical equation?
@@ -315,13 +335,13 @@ We postulate it is
 \label{eq:dynEqU}
 \end{equation}
 
-Is this correct? Differentiate Eq.~\ref{eq:postulate4prime} (make $t \to t^\prime, t_0\to t)$
+Is this correct? Differentiate Eq.~\eqref{eq:postulate4prime} (make $t \to t^\prime, t_0\to t)$
 \begin{equation}
 i \hbar \frac{d}{d t^\prime}|\varphi(t^\prime)\rangle =
 i \hbar\left(\frac{d}{d t^\prime} \hat{U}\left(t^{\prime},t\right) \right) |\varphi(t)\rangle	
 \label{eq:g40}
 \end{equation}
-but again, by Eq.~\ref{eq:postulate4prime} itself, we have
+but again, by Eq.~\eqref{eq:postulate4prime} itself, we have
 \begin{equation}
 \hat{H}\left(t^{\prime}\right)\left|\varphi\left(t^{\prime}\right)\right\rangle=
 \hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle
@@ -333,10 +353,10 @@ So, to be consistent with it, the right-hand sides should also be equal:
 \hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle = 
 i \hbar\left(\frac{d}{d t^\prime} \hat{U}\left(t^{\prime},t\right) \right) |\varphi(t)\rangle
 \]
-Since $|\varphi(t)\rangle$ is arbitrary, Eq.~\ref{eq:dynEqU} follows.
+Since $|\varphi(t)\rangle$ is arbitrary, Eq.~\eqref{eq:dynEqU} follows.
 
 
-Way back from Eq.~\ref{eq:dynEqU} to Schrödinger equation. Take the limit on the left-hand side of Eq.~\ref{eq:dynEqU}:
+Way back from Eq.~\eqref{eq:dynEqU} to Schrödinger equation. Take the limit on the left-hand side of Eq.~\eqref{eq:dynEqU}:
 \[
 \lim _{t^{\prime} \rightarrow t} 
 \hat{H} (t^{\prime}) \hat{U}(t^{\prime}, t)=\hat{H}(t) \hat{U}(t, t)=\hat{H}(t)
@@ -346,7 +366,7 @@ and therefore it reduces to
 \hat{H}(t)=\left.i \hbar \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)\right|_{t^{\prime}=t}
 \label{eq:g42}
 \end{equation}
-Again, differentiate Eq.~\ref{eq:postulate4prime} with respect to $t^\prime$, and take the limit $t^\prime \to t$:
+Again, differentiate Eq.~\eqref{eq:postulate4prime} with respect to $t^\prime$, and take the limit $t^\prime \to t$:
 \begin{equation}
 i \hbar \frac{d}{d t^\prime}|\varphi(t^\prime)\rangle = 
 \underbrace{i \hbar \lim _{t^{\prime} \rightarrow t} \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)}%
@@ -359,7 +379,7 @@ i \hbar \frac{d}{d t}|\varphi(t)\rangle=\hat{H}(t)|\varphi(t)\rangle
 \]
 as we said.
 
-Equation~\ref{eq:g41} is not easy to integrate in general,
+Equation~\eqref{eq:g41} is not easy to integrate in general,
 when $\hat{H}(t) \neq$ constant in time.
 %%% 10 OK
 When $\hat{H}(t)$ is constant:
@@ -373,15 +393,15 @@ as can be easily verified.
 
 When $\hat{H}(t)$ is not constant, it can be proved (left as exercise) that:
 \begin{equation}
-\hat{U}\left(t, t_{0}\right)=T e^{-i} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
+\hat{U}\left(t, t_{0}\right)=\mathcal{T} e^{-i} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
 \end{equation} 
-where T is the \emph{time ordering}.
+where $\mathcal{T}$ is the \emph{time ordering}.
 \begin{equation}
 \begin{gathered}
-T e^{-i \int_{t_{0}}^{t} d t^{\prime} \cdots} = 1 
+\mathcal{T} e^{-i \int_{t_{0}}^{t} d t^{\prime} \cdots} = 1 
 -i / \hbar \int_{t_{0}}^{t} dt^{\prime} \hat{H}\left(t^{\prime}\right)\\
 +
-\frac{1}{2 !}\left(\frac{i}{\hbar}\right)^{2} \int_{t_{0}}^{t} d t^{\prime} \int_{t_{0}}^{t} d t^{\prime \prime} T\left[\hat{H}\left(t^{\prime}\right) H\left(t^{\prime \prime}\right)\right]+\cdots
+\frac{1}{2 !}\left(\frac{i}{\hbar}\right)^{2} \int_{t_{0}}^{t} d t^{\prime} \int_{t_{0}}^{t} d t^{\prime \prime} \, \mathcal{T}\left[\hat{H}\left(t^{\prime}\right) H\left(t^{\prime \prime}\right)\right]+\cdots
 \end{gathered}
 \end{equation}
 
@@ -396,7 +416,7 @@ on the time origin, only time differences matter.
 
 %%% 11 OK
 
-Therefore, Eq.~\ref{eq:g42} implies:
+Therefore, Eq.~\eqref{eq:g42} implies:
 \begin{equation}
 \begin{aligned} 
 \hat{H}\left(t_{0}\right) 
@@ -407,7 +427,7 @@ Therefore, Eq.~\ref{eq:g42} implies:
 \end{aligned}
 \end{equation}
 So, $\hat{H}$ is independent of time.
-In this case, Eq.~\ref{eq:g44} applies:
+In this case, Eq.~\eqref{eq:g44} applies:
 \begin{equation}
 \hat{U}\left(t, t_{0}\right)=e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}
 \end{equation}
@@ -434,7 +454,7 @@ is simply: $\left.|\varphi(t_{0})\right\rangle=|n, r\rangle$ $\to$
 The probability of finding $|\varphi(t)\rangle$ in any
 state $|\chi\rangle$ is independent of time:
 \begin{equation}
-\begin{aligned}|\langle x \mid \varphi(t)\rangle|^{2} &=\left|e^{-i / \hbar\left(t-t_{0}\right) E_{n}}\langle x \mid n, r\rangle\right|^{2} \\ &=\left|\left.\langle x \mid n, r\rangle\right|^{2}=\left|\left\langle x \mid \varphi\left(t_{0}\right)\right\rangle\right|^{2}\right.
+\begin{aligned}|\langle x | \varphi(t)\rangle|^{2} &=\left|e^{-i / \hbar\left(t-t_{0}\right) E_{n}}\langle x | n, r\rangle\right|^{2} \\ &=\left|\left.\langle x | n, r\rangle\right|^{2}=\left|\left\langle x | \varphi\left(t_{0}\right)\right\rangle\right|^{2}\right.
 \end{aligned}
 \end{equation}
 Independent of time $\to$ ``stationary'' and we call
@@ -446,8 +466,14 @@ For the time evolution of expansion coefficients:
 \end{equation}
 evolves to
 \begin{equation}
-\mid \varphi(t)\rangle=\sum_{n, r}C_{n, r} e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}|n, r\rangle
+| \varphi(t)\rangle=\sum_{n, r}C_{n, r} e^{-i / \hbar\left(t-t_{0}\right) \hat{H}}|n, r\rangle
 \end{equation}
-where $\left\langle n, r\left|\varphi\left(t_{0}\right)\right\rangle \rightarrow C_{n, r}\left(t_{0}\right)\right.$.
+where $\left\langle n, r\left|\varphi\left(t_{0}\right)\right\rangle \rightarrow C_{n, r}\left(t_{0}\right)\right.$. So
+\begin{equation}
+\begin{gathered}
+\ket{\varphi(t)} = \sum_{n_r} C_{n, r}(t_0) e^{-i / \hbar\left(t-t_{0}\right)E_n}|n, r\rangle\\
+\text{with } C_{n, r}(t) = e^{-i / \hbar\left(t-t_{0}\right)E_n} C_{n, r}(t_0)
+\end{gathered}
+\end{equation}
 
 \end{document}  
