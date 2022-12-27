@@ -2,18 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 
 \documentclass[12pt]{article}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{a4paper,top=2cm}
-\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{physics}
-\newcommand{\be}{\begin{equation}}
-\newcommand{\ee}{\end{equation}}
-
-\usepackage{fontspec,xltxtra,xunicode}
-\defaultfontfeatures{Mapping=tex-text}
+\include{AQM.tex}
 
 \title{Advanced Quantum Mechanics\\Class 03}
 %\author{The Author}
@@ -30,20 +19,16 @@
 
 \subsection{Temporal Heisenberg inequalities}
 
-%\[
-%\Delta E \Delta t \geqslant \hbar / 2
-%\]
-
 Evolution equation for the expectation value
 \be
-\langle\hat{A}(t)\rangle=\langle\varphi(t) \mid \hat{A}(\varphi \mid t)\rangle
+\langle\hat{A}(t)\rangle=\langle\varphi(t) | \hat{A} | \varphi(t)\rangle
 \ee
 where $\hat{A}$ represents a physics property $A$
 assumed to be independent of time.
 \[
 \begin{aligned} \frac{d}{d t}\langle\varphi(t)|\hat{A}| \varphi(t)\rangle 
 &=\langle d \varphi / d t|\hat{A}| \varphi\rangle+\langle\varphi|\hat{A}| d \varphi / d t\rangle \\ &=\left\langle\frac{1}{i \hbar} \hat{H} \varphi|\hat{A}| \varphi\right\rangle+\left\langle\varphi|\hat{A}| \frac{1}{i \hbar} \hat{A} \varphi\right) \\ 
-&=\frac{1}{1 \hbar}\langle\varphi(t)|
+&=\frac{1}{i \hbar}\langle\varphi(t)|
 \underbrace{(\hat{A}\hat{H}-\hat{H}\hat{A})}%
 _{[\hat{A},\hat{H}]}
 |\varphi(t)\rangle
@@ -59,7 +44,7 @@ and here we use the Heisenberg inequality with $\hat{B} \to \hat{H}$
 %%% 2 OK
 \[
 \left(\Delta_{\varphi} \hat{H}\right)\left(\Delta_{\varphi} \hat{A}\right) \geqslant 
-1 / 2|-i
+\frac{1}{2}|-i
 \underbrace{\langle[\hat{A}, \hat{H}]\rangle_{\varphi}}%
 _{i \hbar \frac{d}{d t}\langle\hat{A}\rangle_{\varphi}(t)}
 |
@@ -82,7 +67,7 @@ has dimension of inverse of time.
 We can call $\tau_\varphi(A)$ a characteristic time for the
 expectation value of $\hat{A}$ to change 
 by $\Delta_{\varphi} A$.
-So we go back to Eq.~\ref{eq:g57} and write
+So we go back to Eq.~\eqref{eq:g57} and write
 \be
 \boxed{
 \left(\Delta_{\varphi} \hat{H}\right) \tau_{\varphi}(\hat{A}) \geq \hbar / 2
@@ -114,12 +99,12 @@ interact with an e.m. field.
 So the atom, or nucleus, emits a \emph{photon}
 after some time interval $\Delta t$:
 \be
-{{\text{lifetime of the}}\atop{\text{excited state}}} \to \Delta t \equiv \tau
+\genfrac{}{}{0pt}{0}{\text{lifetime of the}}{\text{excited state}} \to \Delta t \equiv \tau
 \ee
 The energy of the final \emph{photon} has
 a spread of energy $\Delta E$:
 \be
-{{\text{width of the}}\atop{\text{excited state}}} \to \Delta E \equiv \hbar \Gamma
+\genfrac{}{}{0pt}{0}{\text{width of the}}{\text{excited state}} \to \Delta E \equiv \hbar \Gamma
 \ee
 
 %%% 4 OK
@@ -215,7 +200,7 @@ where we define $\hat{A}_H(t)$, the operator $\hat{A}$ in the Heisenberg picture
 \be
 \begin{aligned} 
 \hat{A}_{H}(t) &=e^{i / \hbar\left(t-t_{0}\right) \hat{H}} \hat{A} e^{-i / \hbar\left(t-t_{0}\right) \hat{H}} \\ 
-&=\hat{U}\left(t, t_{0}\right) \hat{A} \hat{U}\left(t, t_{0}\right)
+&=\hat{U}^{\dagger}\left(t, t_{0}\right) \hat{A} \, \hat{U}\left(t, t_{0}\right)
 \end{aligned}
 \ee
 and hence the time-dependent expected value is
@@ -235,7 +220,7 @@ i \hbar \frac{d}{d t} \hat{A}_{H}(t)=\left[\hat{A}_{H}(t), \hat{H}_{H}(t)\right]
 \ee
 where $\hat{H}_{H}(t)$ and $\left(\frac{\partial A(t)}{\partial t}\right)_{H}$ are obtained 
 from $\hat{H}(t)$ and $\left(\frac{\partial A(t)}{\partial t}\right)$ by the transformation
-law in Eq.~\ref{eq:g70}.
+law in Eq.~\eqref{eq:g70}.
 
 %%% 7 OK
 
@@ -301,7 +286,7 @@ E=\frac{\mathbf{p}^{2}}{2 m}+V\left(\mathbf{r}\right)
 and it is a very good approach to the hydrogen atom
 if using Coulomb potential
 for $V(\mathbf{r})$.
-If the proton is infinitely heavy $\to$ $m$ in Eq.~\ref{eq:g74} is $m_e$.
+If the proton is infinitely heavy $\to$ $m$ in Eq.~\eqref{eq:g74} is $m_e$.
 If the proton has finite mass $\to$
 \be
 m = \frac{m_{p} m_{e}}{m_{p}+m_{e}}=\mu

@@ -2,19 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 
 \documentclass[12pt]{article}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{a4paper,top=2cm}
-\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{physics}
-\newcommand{\be}{\begin{equation}}
-\newcommand{\ee}{\end{equation}}
-\usepackage[thicklines]{cancel}
-
-\usepackage{fontspec,xltxtra,xunicode}
-\defaultfontfeatures{Mapping=tex-text}
+\include{AQM.tex}
 
 \title{Advanced Quantum Mechanics\\Class 05}
 %\author{The Author}
@@ -39,7 +27,7 @@ they have magnetic moment $\vec{\mu}$ $\to$ operator in QM:
 \gamma=\bar{\gamma} \frac{q_{p}}{2 m_{p}}\left\{\begin{array}{l}\bar{\gamma} \text { proton: } 5.59 \\ \bar{\gamma} \, { }^{13} C: 1.40\end{array}\right.
 \ee
 
-Nuclear spin in a $\vec{B_{0}}=B_{0} \hat{z}$:
+Nuclear spin in a $\vec{B}_0=B_{0} \hat{z}$:
 \be
 \begin{aligned} 
 H_{0} &=-\vec{\mu} \cdot \vec{B}=-\frac{1}{2} \gamma \hbar B_{0} \sigma_{z} 
@@ -175,7 +163,7 @@ Solution:
 \end{aligned}
 \label{eq:g38}
 \ee
-and therefore, for $\ket{\varphi(t)}$, from Eq.~\eqref{eq:g31}
+and therefore, for $\ket{\psi(t)}$, from Eq.~\eqref{eq:g31}
 \be
 |\psi(t)\rangle=\gamma_{+}(t) e^{i \omega_{0} t / 2}|+\rangle+\gamma_{-}(t) e^{-i \omega_{0} t / 2}|-\rangle
 \ee
