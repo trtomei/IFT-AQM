@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 05}
 %\author{The Author}
-\date{August 23, 2022}                                           % Activate to display a given date or no date
+\date{March 28, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{4}
+\setcounter{section}{2}
 \setcounter{subsection}{2}
 \setcounter{equation}{22}
 
@@ -90,7 +90,7 @@ The Schrödinger equation (matrix form)
 \[
 \begin{aligned} 
 i \hbar \frac{d}{d t}|\psi(t)\rangle 
-&=i \hbar\left(\dot{c}_{+}(t)|+\rangle+c_{-}(t)|-\rangle\right) \\ 
+&=i \hbar\left(\dot{c}_{+}(t)|+\rangle+\dot{c}_{-}(t)|-\rangle\right) \\ 
 &=-\frac{1}{2} \hbar
 \begin{pmatrix}
 \omega_{0} & \omega_{1} e^{i \omega t} \\ 
@@ -327,7 +327,10 @@ Propose solution in the form
 \left(\delta \pm \sqrt{\delta^{2}+\omega_{1}^{2}}\right)
 \]
 \be
-\Omega \equiv \sqrt{\delta^{2}+\omega_{1}^{2}}=\sqrt{\left(\omega-\omega_{0}\right)^{2}+\omega_{1}^{2}}
+\Omega \equiv \sqrt{\delta^{2}+\omega_{1}^{2}}=
+\sqrt{\left(\omega-\omega_{0}\right)^{2}+\omega_{1}^{2}}
+\Rightarrow
+\Omega_+ - \Omega_- = \Omega
 \ee
 finally leading to
 \be
@@ -346,10 +349,11 @@ e^{-i \delta t}
 \ee
 %%% 8
 \be
-\gamma_{-}(t)=\frac{2 \Omega_{+}}{\omega_{1}} \lambda e^{i\left(\Omega_{+}-\delta\right) t}+\frac{2 \Omega_{-}}{\omega_{1}} e^{i\left(\Omega_{-}-\delta\right) t}
+\gamma_{-}(t)=\frac{2 \Omega_{+}}{\omega_{1}} \lambda e^{i\left(\Omega_{+}-\delta\right) t}+
+              \frac{2 \Omega_{-}}{\omega_{1}} \mu     e^{i\left(\Omega_{-}-\delta\right) t}
 \ee
 
-Suppose $t=0$: $\ket{\psi(0}) = \ket{+}$
+Suppose that, at $t=0$, $\ket{\psi(0)} = \ket{+}$
 \[
 \ket{+}=
 \underbrace{\gamma_+(0)}_{1} \ket{+}+ 
@@ -367,7 +371,7 @@ Now have to solve for $\lambda$ and $\mu$.
 \therefore\left(1-\frac{\Omega_{-}}{\Omega_{+}}\right) \mu=1
 \]
 \be
-\underbrace{(\Omega_{+} + \Omega_{-})}%
+\underbrace{(\Omega_{+} - \Omega_{-})}%
 _{\Omega}
 \mu = \Omega_{+}
 \therefore
@@ -376,16 +380,16 @@ _{\Omega}
 and
 \be
 \lambda=-\frac{\Omega_{-}}{\Omega_{+}} \mu=-\frac{\Omega_{-}}{\Omega_{+}} \frac{\Omega_{+}}{\Omega}=
-\frac{\Omega_{-}}{\Omega}
+- \frac{\Omega_{-}}{\Omega}
 \ee
 Finally
 \be
 \lambda=-\frac{\Omega_{-}}{\Omega}=-\frac{1}{2 \Omega}(\delta-\Omega)=\frac{1}{2}-\frac{\delta}{2 \Omega}
 \ee
 \be
-\lambda=-\frac{\Omega_{+}}{\Omega}= \frac{1}{2 \Omega}(\delta+\Omega)=\frac{1}{2}+\frac{\delta}{2 \Omega}
+\mu    =\frac{\Omega_{+}}{\Omega}= \frac{1}{2 \Omega}(\delta+\Omega)=\frac{1}{2}+\frac{\delta}{2 \Omega}
 \ee
-and therefore
+and therefore, substituting $\Omega_\pm = \nicefrac{1}{2}(\delta \pm \Omega)$ in the exponents: 
 \[
 \begin{aligned}
 \gamma_{+}(t)
@@ -473,8 +477,8 @@ $A$: what causes the N atom to cross the plane.
 \be
 \left\{\left|\varphi_{1}\right\rangle,\left|\varphi_{2}\right\rangle\right\} 
 \text { eigenstates of } H_{0},
-\left|\varphi_{1}\right\rangle=\left(\begin{array}{l}1 \\ 0\end{array}\right), 
-\left|\varphi_{2}\right\rangle=\left(\begin{array}{l}0 \\ 1\end{array}\right)
+\left|\varphi_{1}\right\rangle=\begin{pmatrix}1 \\ 0\end{pmatrix}, 
+\left|\varphi_{2}\right\rangle=\begin{pmatrix}0 \\ 1\end{pmatrix}
 \ee
 %
 \[
@@ -494,7 +498,7 @@ leading to
 %%% Pra ficar igual às notas do Gastão
 \setcounter{equation}{62}
 
-\emph{Apply an electric field:} $\vec{\epsilon} = |\vec{\epsilon}|\hat{z}$.
+\emph{Apply an electric field:} $\vec{\epsilon} = |\vec{\epsilon}\,|\hat{z}$.
 \[
 \text { Empirical fact }\left\{\begin{array}{ll}\left|\varphi_{1}\right\rangle & \text { has } \vec{d} \sim-\hat{z} \\ \left|\varphi_{2}\right\rangle & \text { has } \vec{d} \sim+\hat{z}\end{array}\right.
 \]
@@ -544,7 +548,7 @@ E_{\pm}=
 \includegraphics[width=0.8\textwidth]{Figures/ammoniaLevels.pdf}
 \end{center}
 
-$E+\rightarrow\left|\chi_{+}\right\rangle \quad E_{-} \rightarrow\left|\chi_{-}\right\rangle$ up to terms
+$E_+\rightarrow\left|\chi_{+}\right\rangle \quad E_{-} \rightarrow\left|\chi_{-}\right\rangle$ up to terms
 of order $d\epsilon/2A$ $\to$ $\ket{\chi_+^{\prime}} =
 \begin{pmatrix}
 1-d\epsilon/2A\\1+d\epsilon/2A
@@ -611,9 +615,9 @@ with
 
 %%% 15
 
-For $\varepsilon = 0$, propose
+For $\varepsilon \neq 0$, propose
 \be
-c_{\pm}(t)=\gamma_{\pm}(t) e^{-i \omega \pm t}
+c_{\pm}(t)=\gamma_{\pm}(t) e^{-i \omega_\pm t}
 \ee
 Substituting these in, similar to NMR:
 \be

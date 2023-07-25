@@ -6,10 +6,10 @@
 
 \title{Advanced Quantum Mechanics\\Class 19 (b)}
 %\author{The Author}
-\date{October 18, 2022}                                           % Activate to display a given date or no date
+\date{May 04, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{6}
+\setcounter{section}{4}
+\setcounter{subsection}{8}
 \setcounter{equation}{155}
 
 \begin{document}
@@ -19,30 +19,37 @@
 
 \subsection{Spherical tensors (continued)}
 
-\subsubsection{Brief reminder}
+Reminder: \emph{spherical tensors} are operators that transform in a well-defined way by rotations (via the Wigner $D$-matrix).
+Alternatively, they can be defined by their commutation relations with the $\hat{J}_0$ and $\hat{J}_\pm$
+operators.
 
+\begin{small}
 \setcounter{equation}{74}
 \be
 \bra{\tau^\prime,j^\prime m^\prime}
-\ket{\tau,j m} = \delta_{\tau\tau^\prime}\delta_{jj^\prime},\,
+\ket{\tau,j m} = \delta_{\tau\tau^\prime}\delta_{jj^\prime}\delta_{mm^\prime},\,
 \sum_{m=-j}^{+j}\op{\tau,j m} = \mathbf{1}
 \label{eq:g76}
 \ee
-
 \setcounter{equation}{133}
 \be
 D_{m_{1} m_{1}^{\prime}}^{\left(j_{1}\right)} D_{m_{2} m_{2}^{\prime}}^{\left(j_{2}\right)}=\sum_{m, m^{\prime}=-j}^{+j} C_{m_{1} m_{1}^{\prime} ; j m}^{j_{1} j_{2}} C_{m_{2} m_{2}^{\prime} ; j m^{\prime}}^{j_{1} j_{2}} D_{m m^{\prime}}^{(j)}
 \label{eq:g134}
 \ee
-
+\be
+\setcounter{equation}{137}
+[\hat{\vec{J}},\hat{S}\,] = 0
+\ee
+\be
+\setcounter{equation}{142}
+[\hat{J_{i}}, \hat{V_{j}}]=i \hbar \varepsilon_{i j k} V_{k}
+\ee
 \setcounter{equation}{151}
-
 \begin{align} 
 {\left[\hat{J}_{0}, \hat{T}_{q}^{(k)}\right] } &=\hbar q \hat{T}_{q}^{(k)} \label{eq:g152}\\ 
 {\left[\hat{J}_{\pm}, \hat{T}_{q}^{(k)}\right] } &=\hbar \sqrt{k(k+1)-q(q \pm 1)} \hat{T}_{q \pm 1}^{(k)}  \label{eq:g153}
 \end{align}
-
-
+\end{small}
 
 \setcounter{equation}{155}
 
@@ -82,7 +89,7 @@ and
 \ee
 then, summing these two
 \be
-\left[\hat{J}_{0}\left(\hat{V}_{x} \pm i \hat{V}_{y}\right)\right]=\pm \hbar\left(\hat{V}_{x} \pm i \hat{V}_{y}\right)
+\left[\hat{J}_{0}, \left(\hat{V}_{x} \pm i \hat{V}_{y}\right)\right]=\pm \hbar\left(\hat{V}_{x} \pm i \hat{V}_{y}\right)
 \ee
 Defining:
 \be
@@ -100,6 +107,7 @@ On the other hand, the commutation relations
 \]
 are equivalent to
 \be
+\left[\hat{J}_\pm, \, \hat{V}_{0}\right] = 
 \left[\hat{J}_{x} \pm i \hat{J}_{y}, \, \hat{V}_{0}\right]=\hbar \sqrt{2} \hat{V}_{\pm}
 \ee
 so, remembering that \emph{$k=1$} from Eq.~\eqref{eq:g153}
@@ -224,7 +232,7 @@ To see this, let us consider the previous example,
 in that the cartesian components of \(\vec{U}\) and \(\vec{V}\) were used:
 \setcounter{equation}{183}
 \be
-T^{\hat{ij}}=\hat{U}_{i} \hat{V}_{j}
+\hat{T}_{ij}=\hat{U}_{i} \hat{V}_{j}
 \ee
 This product can be rewritten as:
 %%% 23 OKAY

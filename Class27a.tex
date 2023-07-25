@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 27 (a)}
 %\author{The Author}
-\date{December 01, 2022}                                           % Activate to display a given date or no date
+\date{June 20, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{8}
+\setcounter{section}{5}
 
 %%% 01 OKAY
 
@@ -45,8 +45,8 @@ Let us consider first the Hermitian operator
 which is easier to work with -- same for bosons and fermions -- and examine its action on a many particle state:
 \be
 \begin{aligned}
-\hat{\rho}(\vec{r})\ket{\vec{r}_{1} \ldots \vec{r}_{n}}
-&=\hat{\rho}(\vec{r}) \hat{\psi}^{\dagger}\left(\vec{r}_{1}\right) \ldots \hat{\psi}^\dagger\left(\vec{r}_{1}\right)|0\rangle\to\\
+\hat{\rho}(\vec{r})\ket{\vec{r}_{1} \ldots \vec{r}_{N}}
+&=\hat{\rho}(\vec{r}) \hat{\psi}^{\dagger}\left(\vec{r}_{1}\right) \ldots \hat{\psi}^\dagger\left(\vec{r}_{N}\right)|0\rangle\to\\
 &\to\text{move $\hat{\psi}$ until it hits }\ket{0}\to\\
 &\left([\hat{\rho}(\vec{r}), \hat{\psi}^{\dagger}(\vec{r}_{1})]+
 \hat{\psi}^{\dagger}(\vec{r}_{1}) \hat{\rho}(\vec{r})\right) 
@@ -133,6 +133,7 @@ Also (exercise):
 We will verify that the operator
 \be
 \hat{\vec{P}}=\int d^{3}\vec{r} \hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r})
+\label{eq:g68}
 \ee
 satisfies the common properties one expects from the
 momentum operator. First, we show that $\hat{\vec{P}}$ is Hermitean: $\hat{\vec{P}}^\dagger = \hat{\vec{P}}$
@@ -156,67 +157,7 @@ _{\mathrlap{\text{zero for localized systems}}\quad}%
 &=\int d^{3}\vec{r} \hat{\psi}^{\dagger}(\vec{r})\left(-i \hbar \vecnr\right) \hat{\psi}(\vec{r}) = \hat{\vec{P}}
 \end{aligned}
 \ee
-In addition, we have to calculate the following commutator:
-\[
-\begin{gathered}
-\left[\hat{\psi}(\vec{r}),\hat{P}\right] = 
-\int d^3r^\prime
-\left[
-\hat{\psi}(\vec{r}),\hat{\psi}^\dagger(\vecrp)(-i\hbar\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp))
-\right]\\
-=-i\hbar \int d^3r^\prime
-\bigg[
-\underbrace{\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp)}_{\Circled{1}} \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) -
-\hat{\psi}^\dagger (\vecrp)\vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) 
-\bigg]
-\end{gathered}
-\]
-but 
-\[
-\Circled{1}=\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp) =
-\left[
-\hat{\psi}(\vec{r}), \hat{\psi}^\dagger(\vecrp)
-\right]_\mp \pm  \hat{\psi}^\dagger(\vecrp)\hat{\psi}(\vec{r})
-\]
-so
-%%% 06
-\[
-\begin{gathered}
-\left[\hat{\psi}(\vec{r}),\hat{P}\right] = -i\hbar \int d^3r^\prime \times
-\bigg\{
-    \delta(\vec{r}-\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right)\\ 
-	\pm \underbrace{\hat{\psi}^{\dagger}(\vecrp) \hat{\psi}(\vec{r}) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right)}%
-	_{\Circled{2}}
-	- \underbrace{\hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r})}%
-	_{\Circled{3}}
-\bigg\}\\
-\end{gathered}
-\]
-but $\Circled{2} = \pm \hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r}) = \pm\Circled{3}$; so, the two $\pm$ signs combine, and we are left only with the subtraction in the middle,
-\textit{i.e.} $\pm \Circled{2} - \Circled{3} = 0$. So
-\[
-\begin{gathered}
-\left[\hat{\psi}(\vec{r}),\hat{P}\right]
-= -i\hbar \int d^3r^\prime \delta(\vec{r}-\vecrp) \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) = 
--i\hbar \vecnr \hat{\psi}(\vec{r})
-\end{gathered}
-\]
-therefore %
-\setcounter{equation}{70}
-\be
-\left[\hat{\psi}(\vec{r}),\hat{P}\right] = -i\hbar \vecnr \hat{\psi}(\vec{r})
-\ee
-and that also implies
-\be
-\left[\hat{\psi}^\dagger(\vec{r}),\hat{P}\right] = -i\hbar \vecnr \hat{\psi}^\dagger(\vec{r})
-\ee
-Since $\hat{\psi}\ket{0} = 0$, one has that the zero-particle
-state, the ``vacuum'', has zero momentum:
-\be
-\boxed{\vec{P}\ket{0}=0}
-\ee
-
-\emph{Exercise:}
+Then, we would like to show that (\emph{Exercise}):
 \be
 \begin{gathered}
 \bra{\vec{r}_1\ldots\vec{r}_N} \hat{\vec{P}}\ket{\Psi} =
@@ -231,7 +172,67 @@ state, the ``vacuum'', has zero momentum:
 =\sum_{a=1}^{N}\left(-i \hbar \vec{\nabla}_{r_{a}}\right) \Psi\left(\vec{r}_{1}, \ldots, \vec{r}_{N}\right)
 \end{gathered}
 \ee
-that is, the first-quantized the total momentum of an $N$-particle system.
+that is, the first-quantized the total momentum of an $N$-particle system. 
+The approach to do this calculation is the same as we did for the density operator $\hat{\rho}(\vec{r})$:
+use the commutation relations to move the momentum all the way to the right, next to the vacuum state $\ket{0}$.
+$\hat{\psi}\ket{0} = 0$, so one has that the zero-particle
+state, the ``vacuum'', has zero momentum:
+\be
+\boxed{\hat{\vec{P}}\ket{0}=0}
+\ee
+The only thing left to do is to calculate the following commutator:
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{\vec{P}}\right] = 
+\int d^3r^\prime
+\left[
+\hat{\psi}(\vec{r}),\hat{\psi}^\dagger(\vecrp)(-i\hbar\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp))
+\right]\\
+=-i\hbar \int d^3r^\prime
+\bigg[
+\underbrace{\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp)}_{\Circled{1}} \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) -
+\hat{\psi}^\dagger (\vecrp)\vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) \hat{\psi}(\vec{r}) 
+\bigg]
+\end{gathered}
+\]
+but 
+\[
+\Circled{1}=\hat{\psi}(\vec{r}) \hat{\psi}^\dagger(\vecrp) =
+\left[
+\hat{\psi}(\vec{r}), \hat{\psi}^\dagger(\vecrp)
+\right]_\mp \pm  \hat{\psi}^\dagger(\vecrp)\hat{\psi}(\vec{r})
+\]
+so
+%%% 06
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{\vec{P}}\right] = -i\hbar \int d^3r^\prime \times
+\bigg\{
+    \delta(\vec{r}-\vecrp) \left(\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp)\right)\\ 
+	\pm \underbrace{\hat{\psi}^{\dagger}(\vecrp) \hat{\psi}(\vec{r}) \left(\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp)\right)}%
+	_{\Circled{2}}
+	- \underbrace{\hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla}_{r^\prime}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r})}%
+	_{\Circled{3}}
+\bigg\}\\
+\end{gathered}
+\]
+but $\Circled{2} = \pm \hat{\psi}^{\dagger}(\vecrp) \left(\vec{\nabla_{r^\prime}}\hat{\psi}(\vecrp)\right) \hat{\psi}(\vec{r}) = \pm\Circled{3}$; so, the two $\pm$ signs combine, and we are left only with the subtraction in the middle,
+\textit{i.e.} $\pm \Circled{2} - \Circled{3} = 0$. So
+\[
+\begin{gathered}
+\left[\hat{\psi}(\vec{r}),\hat{\vec{P}}\right]
+= -i\hbar \int d^3r^\prime \delta(\vec{r}-\vecrp) \vec{\nabla}_{r^\prime} \hat{\psi}(\vecrp) = 
+-i\hbar \vecnr \hat{\psi}(\vec{r})
+\end{gathered}
+\]
+therefore %
+\be
+\left[\hat{\psi}(\vec{r}),\hat{\vec{P}}\right] = -i\hbar \vecnr \hat{\psi}(\vec{r})
+\ee
+and that also implies
+\be
+\left[\hat{\psi}^\dagger(\vec{r}),\hat{\vec{P}}\right] = -i\hbar \vecnr \hat{\psi}^\dagger(\vec{r})
+\ee
 
 %%% 07 OKAY
 \subsection{Fock space -- one-body operators}
@@ -252,9 +253,9 @@ In Fock space the second-quantized operator is then represented by
 \be
 \begin{aligned}
 \hat{O}_1
-&=\int d^3r^\prime d^3r\, \psi^\dagger(\vecrp)
-\bra{\vecrp}\hat{O}_1(\hat{\vec{r}})\ket{\vec{r}}\psi{\vec{r}}\\
-&=\int d^3r\, \psi^\dagger(\vec{r}) O_1(\vec{r}) \psi(\vec{r})
+&=\int d^3r^\prime d^3r\, \hat{\psi}^\dagger(\vecrp)
+\bra{\vecrp}\hat{O}_1(\hat{\vec{r}})\ket{\vec{r}}\hat{\psi}(\vec{r})\\
+&=\int d^3r\, \hat{\psi}^\dagger(\vec{r}) O_1(\vec{r}) \hat{\psi}(\vec{r})
 \end{aligned}
 \ee
 Note that  the momentum operator, introduced
@@ -274,7 +275,7 @@ _{-i\hbar\vec{\nabla}_{\vec{r}^{\,\prime}}\delta(\vecrp-\vec{r})}
 \hat{\psi}^\dagger(\vec{r})\left(-i\hbar\vecnr\right)\hat{\psi}(\vec{r})
 \end{aligned}
 \]
-which is the same expression as given in Eq.~\eqref{eq:g62}.
+which is the same expression as given in Eq.~\eqref{eq:g68}.
 
 %%% 08 OKAY
 
@@ -337,7 +338,7 @@ $\to$ Hermitian, symmetric in $\vecrp \leftrightarrow \vec{r}$.
 
 Matrix elements in first quantization is
 \be
-\bra{\vec{r}_1^{\,\prime} \vec{r}_1^{\,\prime}} \hat{V}_2(\vecrp,\vec{r})\ket{\vec{r}_1 \vec{r}_2}
+\bra{\vec{r}_1^{\,\prime} \vec{r}_2^{\,\prime}} \hat{V}_2(\vecrp,\vec{r})\ket{\vec{r}_1 \vec{r}_2}
 \delta(\vec{r}_1^{\,\prime} - \vec{r}_1)\delta(\vec{r}_2^{\,\prime} - \vec{r}_2) V_2(\vec{r}_1, \vec{r}_2)
 \ee 
 where $V_2(\vec{r}_1, \vec{r}_2)$ is real. 
@@ -416,7 +417,7 @@ that is, the first-quantized version is:
 \]
 
 \begin{quote}
-Note that one has to do large calculation to get to the first-quantized version shown above. 
+Note that one has to do a large calculation to get to the first-quantized version shown above. 
 This is left as an exercise.
 \end{quote}
 

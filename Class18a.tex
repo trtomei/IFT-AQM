@@ -4,434 +4,424 @@
 \documentclass[12pt]{article}
 \include{AQM.tex}
 
-\title{Advanced Quantum Mechanics\\Class 17}
+\title{Advanced Quantum Mechanics\\Class 18 (a)}
 %\author{The Author}
-\date{October 04, 2022}                                           % Activate to display a given date or no date
+\date{April 20, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{4}
+\setcounter{section}{4}
+\setcounter{subsection}{5}
 \setcounter{equation}{44}
 
 \begin{document}
 \maketitle
 
 %%% 01 OKAY
-\subsection{Conservation laws (continued)}
+\subsection{Lie algebra associated with rotation group}
 
-\subsubsection{Translations}
- 
-Start with one-dimensional coordinate space, x-axis.
-Let $\hat{X}$ be position operator, and $\ket{\varphi}$ a state
-that describes a particle \emph{localized} in the neighborhood
-of a point $x_0$ on the x-axis with a \emph{dispersion} $\Delta x$:
-\begin{gather}
-\bra{\varphi}\hat{X}\ket{\varphi} = \ev*{\hat{X}} = x_0\\
-\bra{\varphi}(\hat{X}-x_0)^2\ket{\varphi} = (\Delta x)^2
-\end{gather}
+Let us consider the rotation of a vector $\vec{V}$ by an angle $\theta$
+about an arbitrary axis $\hat{n}$\\%Force this linebreak
+\be
+g \to R_{\hat{n}}(\theta) = e^{-i\theta(\hat{n}\cdot\hat{\vec{T}})}
+\label{eq:g45}
+\ee
+where $R$ is a $3\times3$ matrix, so $\vec{T}$ is a vector $(T_1, T_2, T_3)$ of $3\times3$ matrices.
+
+\begin{minipage}{0.5\textwidth}
+\hspace{8ex}\includegraphics[width=0.6\textwidth]{Figures/detailedRotation-crop.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+\begin{tabular}{ll}
+$\|$ :    & parallel to $\hat{n}$\\
+$\perp$ : & perpendicular to $\hat{n}$\\[0.5ex]
+\end{tabular}\\
+\be
+\left.
+\begin{aligned}
+\vec{V} = \vec{V_\|} + \vec{V_\perp}\\
+\vec{V}^{\prime} = \vec{V_\|}^\prime + \vec{V_\perp}^\prime
+\end{aligned}
+\right\}
+\|\vec{V}^{\prime}\| = \|\vec{V}\|
+\ee
+\be
+\begin{aligned}
+\vec{V_\|} &= (\hat{n} \cdot \vec{V})\,\hat{n}\\
+\vec{V_\perp} &= \vec{V} - (\hat{n} \cdot \vec{V})\,\hat{n}
+\end{aligned}
+\ee
+\end{minipage}%
+
+Rotation does not change the component parallel to $\hat{n}$:
+\be
+\vec{V_\|}^\prime = \vec{V}_{\|} = (\vec{V} \cdot \hat{n}) \hat{n}
+\ee 
 
 %%% 02 OKAY
-\begin{center}
-\includegraphics[width=0.5\textwidth]{Figures/translation.pdf}
-\end{center}
-Let us apply to $\ket{\varphi}$ a translation by $a$:
-\begin{align}
-\ket{\varphi} \rightarrow \ket{\varphi_a} 
-&= e^{-i/\hbar a \hat{P}} \ket{\varphi},\, \hat{P} = \hat{P}_x \rightarrow \text{ momentum}\\
-&= \hat{U}(a) \ket{\varphi}
-\end{align}
-%
-$\hat{U}(a)$ is unitary:
-\be
-\hat{U}^{-1}(a) = \hat{U}(-a) 
-= \hat{U}^{\dagger}(a) = e^{i/\hbar a \hat{P}}
-\ee
+Look then in the transverse direction to $\hat{n}$:
+\setcounter{equation}{47}
 
-After the translation, particle is localized around the
-point $x_0 + a$, with dispersion $\Delta x$.
-We use the correspondence principle:
+\includegraphics[width=0.4\textwidth]{Figures/transverseRotation-crop.pdf}
+\raisebox{2cm}{\begin{tabular}{c}
+in the\\
+$(n_1,n_2)$ plane\\
+$-\hspace{-0.5em}-\hspace{-0.5em}-\hspace{-0.5em}\longrightarrow$\\
+\end{tabular}}
+\raisebox{1.5em}{\includegraphics[width=0.3\textwidth]{Figures/transverseRotation2-crop.pdf}}
+
 \be
 \begin{aligned}
-\ev*{\hat{X}}_a
-&= x_0+a = \ev*{\hat{X}} + a 
-= \bra{\varphi}\hat{X}+a\ket{\varphi}\\
-&=\bra*{\hat{U}(a)\varphi}\hat{X}\ket*{\hat{U}(a)\varphi}\\
-&=\bra{\varphi}\hat{U}^{-1}(a)\hat{X}\hat{U}(a)\ket{\varphi}
+(\vec{V_\perp}^\prime)_1 
+&= \vec{V_\perp}^\prime \cos(\alpha+\theta) = \underbrace{V_\perp^\prime \cos\alpha}%
+_{(\vec{V_\perp})_1} \cos\theta -  \underbrace{V_\perp^\prime \sin\alpha}%
+_{(\vec{V_\perp})_2}\sin\theta\\
+&=(\vec{V_\perp})_1 \cos\theta - (\vec{V_\perp})_2 \sin\theta
 \end{aligned}
+\label{eq:g48}
 \ee
-but $\ket{\varphi}$ is arbitrary,
-\be
-\hat{U}^{-1}(a)\hat{X}\hat{U}(a) = \hat{X} + a
-\label{eq:g51}
-\ee
-Expanding $\hat{U}(a)$ for $a \to 0$:
-\be
-\hat{U}(a) \simeq I - \frac{i}{\hbar} a \hat{P}
-\ee
-
-%%% 03 OKAY
-\be
-\begin{aligned}
-\left(I - \frac{i}{\hbar} a \hat{P}\right)
-&\hat{X}
-\left(I - \frac{i}{\hbar} a \hat{P}\right)\\
-&\Downarrow \text{canonical commutation relation}\\
-&[\hat{X},\hat{P}] = i\hbar I
-\end{aligned}
-\ee
-
-From~\eqref{eq:g51}
-, one also has:
-\be
-\begin{aligned}
-\hat{U}^{-1}(a)\hat{X}^n\hat{U}(a) 
-&=\hat{U}^{-1}(a)\hat{X}\hat{X}\ldots\hat{X}\hat{U}(a)\\
-&=\underbrace{\hat{U}^{-1}(a)\hat{X}\hat{U}(a)}%
-_{\hat{X}+a}
-\hat{U}^{-1}(a)\hat{X}\hat{U}(a)
-\ldots
-\underbrace{\hat{U}^{-1}(a)\hat{X}\hat{U}(a)}%
-_{\hat{X}+a}\\
-&=(\hat{X}+a)^n
-\end{aligned}
-\ee
-from which follows the result
-\be
-\begin{aligned}
-\hat{U}^{-1}(a)f(\hat{X})\hat{U}(a) 
-&= \hat{U}^{-1}(a)
-[f(0) + f^\prime(0)\hat{X}^2 + \ldots]
-\hat{U}(a)\\
-&=f(0) + f^\prime(0)(\hat{X}+a)^2 + \ldots\\
-&=f(\hat{X}+a)
-\end{aligned}
-\label{eq:g55}
-\ee
-For $a \to 0$, expanding both sides of \eqref{eq:g55}
-to first order:
-\[
-\left(I + \frac{i}{\hbar} a \hat{P}\right) f(\hat{X}) \left(I - \frac{i}{\hbar} a \hat{P}\right) = 
-f(\hat{X}) + a \frac{\partial f}{\partial\hat{X}}
-\]
-whence
-\be
-[\hat{P},f(\hat{X})] = -i\hbar\frac{\partial}{\partial\hat{X}}f(\hat{X})
-\ee
-%%% 04 OKAY
-\setcounter{equation}{53}
-Taking $f(\hat{X}) = e^{i\beta\hat{X}}$, $\beta$ real, Eq.~\eqref{eq:g55}
-implies
-\be
-\begin{aligned}
-e^{i/\hbar a\hat{P}} e^{i\beta\hat{X}} e^{-i/\hbar a\hat{P}}
-&= e^{i\beta(\hat{X}+a)}\\
-&= e^{i\beta\hat{X}} e^{i\beta a}
-\end{aligned}
-\ee
-know as \emph{Weyl form} of the canonical
-commutation relation; involves only the
-bound operators $e^{i/\hbar a\hat{P}}$ and $e^{i\beta\hat{X}}$.
-
-From the result
-\be
-(\Delta_\varphi \hat{A})(\Delta_\varphi \hat{B})
-\geq \frac{1}{2} |\ev*{\hat{C}}_\varphi|
-\ee
-whence
-\[
-\begin{aligned}
-\Delta_\varphi \hat{A} 
-&\to \Delta x = \ev*{\hat{X}^2}_\varphi - 
-\underbrace{\ev*{\hat{X}}}%
-_{x}{^2_\varphi} = \ev*{(\hat{X}-x)^2}_\varphi\\
-\Delta_\varphi \hat{B} 
-&\to \Delta p = \ev*{\hat{P}^2}_\varphi - 
-\underbrace{\ev*{\hat{P}}}%
-_{p}{^2_\varphi} = \ev*{(\hat{P}-p)^2}_\varphi\\
-\hat{C} 
-&= \hbar I \to \ev*{\hat{C}} = \hbar
-\end{aligned}
-\]
-and finally
-\be
-\boxed{\Delta x \Delta p \geq \frac{\hbar}{2}}
-\ee
-\emph{Exercise:} show that the canonical commutation
-relations are preserved under a unitary transformation $\hat{U}$:
-\be
-\hat{X} \to \hat{X}^\prime = \hat{U}^{-1}\hat{X}\hat{U},\quad
-\hat{P} \to \hat{P}^\prime = \hat{U}^{-1}\hat{P}\hat{U}
-\ee
-
-%%% 05 OKAY
-
-\emph{Explicit realization} of $[\hat{X},\hat{P}] = i\hbar$ in $L^{2}(\mathbb{R})$, \textit{i.e.}
-in the space of differentiable functions $\varphi(x)$ which are
-square-integrable in the real line $[-\infty,\infty]$:
-\begin{align}
-\ket{\hat{X}\varphi} 
-&\to \varphi(x) \label{eq:g58p}\\
-\ket{\hat{X}\varphi} = \ket{\chi} 
-&\to (\hat{X}\varphi)(x) = \chi(x) = x\varphi(x)\label{eq:g59p}\\
-\ket{\hat{P}\varphi} = \ket{\psi} 
-&\to \underbrace{(\hat{P}\varphi)}_{\psi}(x) = \psi(x)
-= -i\hbar\frac{\partial\varphi}{\partial x}\label{eq:g60p}
-\end{align}
-%
-Verification:
 %
 \be
 \begin{aligned}
-\left(
-(\hat{X}\hat{P}-\hat{P}\hat{X})\varphi
-\right)(x)
-&=(\hat{X}\underbrace{\hat{P}\varphi}_{\psi})(x) - (\hat{P}\underbrace{\hat{X}\varphi}_{\chi})(x)\\
-&=(\hat{X}\psi)(x) - (\hat{P}\chi)(x)\\
-&=x\psi(x) - i\hbar\frac{\partial}{\partial x}(\chi(x)\\
-&=x\left(- i\hbar\frac{\partial\varphi}{\partial x}\right) - 
-i\hbar\frac{\partial}{\partial x}\left(x\varphi(x)\right)\\
-&=i\hbar\varphi(x)\\
+(\vec{V_\perp}^\prime)_2 
+&= \vec{V_\perp} \sin(\alpha+\theta) = \underbrace{V_\perp \sin\alpha}%
+_{(\vec{V_\perp})_2} \cos\theta -  \underbrace{V_\perp \cos\alpha}%
+_{(\vec{V_\perp})_1}\sin\theta\\
+&=(\vec{V_\perp})_2 \cos\theta + (\vec{V_\perp})_1 \sin\theta
 \end{aligned}
+\label{eq:g49}
 \ee
-%
-Unitary equivalence theorem of von Neumann
--- all representations of the canonical commutation
-relation of the Weyl form are \emph{unitarily equivalent}
-to the representation in $L^{2}(\mathbb{R})$ 
-Eqs.~\eqref{eq:g58p}--\eqref{eq:g60p}.
-Moreover, any operator in $H$ can be written as a
-function of $\hat{X}$ and $\hat{P}$, \textit{i.e.} representation \eqref{eq:g58p} and
-%%% 06 OKAY
-\eqref{eq:g59p} is irreducible. Any operator that commutes
-with $\hat{X}$ ($\hat{P}$) is a function of $\hat{X}$ ($\hat{P}$). Any operator that commutes with $\hat{X}$ \emph{and} $\hat{P}$ is a multiple 
-of the identity operator.
-
-Generalization to three dimensions: $x\to x,y,z$ 
+Eqs.~\eqref{eq:g48}--\eqref{eq:g49} can be summarized as
 \be
-[\hat{X}_i, \hat{P}_j] - i\hbar \delta_{ij} I,\quad i,j = x,y,z
-\ee
-
-\subsubsection{Galilean invariance in one dimension}
-
-Start with \emph{one spatial} dimension ($D=1$). In nonrelativistic
-physics, when changing from one reference frame to another
-moving with speed $v$ with respect to the first one,
-the coordinates $x$ and $x^\prime$ in the respective frames
-are related by (in the passive point of view):
-\be
-x^\prime = x-vt
-\ee
-In the active point of view: particles in a reference
-frame are ``boosted'' by an amount $v$, \textit{i.e.} the speeds
-of all particles are modified by $v$:
-\be
-\text{initial state: } x,\dot{x},\quad p = m\dot{x}, K = \frac{1}{2} m \dot{x}^2
-\ee
-where $m$ is the mass and $K$ is the kinetic energy,
-\be
-\text{boosted state: } x^\prime=x+vt,\dot{x}^\prime = \dot{x}+v,\quad p^\prime = m\dot{x}^\prime, K^\prime = \frac{1}{2} m \dot{x}^{\prime2}
-\label{eq:g65}
-\ee
-%%% 07 OKAY
-Classical physics: form of the equations o motion
-remains invariant under boosts.\\
-Quantum physics: Galilean boost is represented in
-Hilbert space by a unitary operator. So
-\be
-\hat{U}(v) = e^{-i/\hbar v \hat{G}},\quad \hat{G} = \hat{G}^\dagger
-\ee
-from Stone's theorem, $\hat{G}$ is the
-generator of infinitesimal
-boosts. Hence
-\be
-\ket{\varphi} \stackrel{v}{\to} \ket{\varphi_v} = \hat{U}(v)\ket{\varphi}
-\ee
-%
-\be
-\ev*{\hat{A}}_\varphi = 
-\bra{\varphi_v}\hat{A}\ket{\varphi_v} = 
-\bra{\varphi}\hat{U}^{-1}(v)\hat{A}\hat{U}(v)\ket{\varphi} = 
-\ee
-From Eq.~\eqref{eq:g65},
-one expects, for $t = 0$:
-\begin{align}
-\ev*{\hat{X}}_v &= \ev*{\hat{X}} \label{eq:g69}\\
-\ev*{\hat{\dot{X}}}_v &= \ev*{\hat{\dot{X}}} + v \label{eq:g70}\\
-\ev*{\hat{P}}_v &= \ev*{\hat{P}} + mv \label{eq:g71}
-\end{align}
-Since in QM, we have Heisenberg's equation:
-\be
-\dot{X} = \frac{i}{\hbar} [\hat{H},\hat{X}]
-\ee
-imposition of \eqref{eq:g70}
-leads to strong constraints on
-%%% 08 OKAY
-the possible Hamiltonians.
-
-Eqs.~\eqref{eq:g69}--\eqref{eq:g71} are valid for any $\ket{\varphi}$ $\to$ valid at the
-operator level. Eq.~\eqref{eq:g71} $\to$
-%
-\be
-e^{i/\hbar v \hat{G}} \hat{P} e^{-i/\hbar v \hat{G}} =
-\hat{P} + m v I
-\label{eq:g73}
-\ee	
-so when $v \to 0$:
-\be
-[\hat{G},\hat{P}] = -i\hbar m I
-\ee
-so it is possible to choose
-\be
-\hat{G} = -m \hat{X}
-\ee
-From Eq.~\eqref{eq:g70}
-\be
-e^{i/\hbar v \hat{G}} \hat{P} e^{-i/\hbar v \hat{G}} =
-\hat{\dot{X}} + v I
-\ee
-and subtracting \eqref{eq:g73} from this
-\be
-e^{i/\hbar v \hat{G}}
-\left(\hat{\dot{X}} - \frac{\hat{P}}{m}\right) 
-e^{-i/\hbar v \hat{G}} =
-\hat{\dot{X}} - \frac{\hat{P}}{m}
-\ee
-so $\hat{\dot{X}} - \frac{\hat{P}}{m}$ commutes with $\hat{G}$ and, due to
-Eq.~(75), it commutes also with $\hat{X}$.
-
-Using the von Neumann theorem:
-\be
-\hat{\dot{X}} - \frac{\hat{P}}{m} = \frac{1}{m} f(\hat{X})
-\ee
-where we made the $1/m$ factor explicit. Finally:
-%%% 09 OKAY
-\setcounter{equation}{77}
-\be
-\hat{P} = m\hat{\dot{X}} - f(\hat{X})
-\ee
-
-\fbox{\emph{(Valid in one spatial dimension only.)}} \emph{Exercise:} show that $f(\hat{X})$ can be
-be eliminated by a unitary transformation 
-($\equiv$ local gauge transformation).
-So, without loss of generality, one can choose
-\be
-\hat{P} = m \hat{\dot{X}}
-\label{eq:g79}
-\ee
-
-Now, let us use these results to determine the
-most general form of the Hamiltonian compatible
-with Galilean invariance:
-\begin{itemize}
-\item $\hat{K}$: kinetic energy operator, use classical physics
-correspondence
-\be
-\hat{K} = \frac{1}{2} m \hat{\dot{X}}^2
-\stackrel{\text{Eq.\,}\eqref{eq:g79}}{=} \frac{1}{2m} \hat{P}^2
-\ee
-\item the commutator of $\hat{K}$ with $\hat{X}$ is:
-\be
-[\hat{K},\hat{X}] = \frac{1}{2m}
-[\hat{P}^2,\hat{X}] = -i\hbar\frac{\hat{P}}{m}
+\begin{aligned}
+\vec{V_\perp}^\prime 
+&= \vec{V_\perp} \cos\theta + (\hat{n} \times \vec{V}) \sin\theta\\
+&=[\vec{V} - (\hat{n}\cdot\vec{V})\hat{n}] \cos\theta + (\hat{n} \times \vec{V}) \sin\theta
+\end{aligned}
 \ee
 so
 \be
-\frac{\hat{P}}{m} = \frac{i}{\hbar} [\hat{K},\hat{X}]
-\stackrel{\text{Eq.\,\eqref{eq:g79}}}{=}
-\hat{\dot{X}} = \frac{i}{\hbar}[\hat{H},\hat{X}]
+\vec{V}^{\,\prime}  = (1-\cos\theta)(\hat{n}\cdot\vec{V})\hat{n} + \cos\theta\,\vec{V} + \sin\theta (\hat{n} \times \vec{V})
+\label{eq:fullExpressionRotation}
 \ee
-therefore
+For $\theta$ infinitesimal, $\theta \to 0$: Eqs.~\eqref{eq:g45} and \eqref{eq:fullExpressionRotation} lead to
 \be
-[\hat{K}-\hat{H},\hat{X}] = 0
+ R_{\hat{n}}(\theta) \simeq I -i\theta(\hat{n}\cdot\hat{\vec{T}})
+\label{eq:g52}
 \ee
+\be
+\vec{V}^{\,\prime} = \vec{V} + \theta(\vec{n} \times \vec{V})
+\label{eq:g53}
+\ee
+%%% 03 OKAY
+From Eqs.~\eqref{eq:g52} and \eqref{eq:g53}: (implicit sum over repeated indices)
+\be
+V_i^\prime = [\delta_{ij} - i\theta(\hat{n}\cdot \hat{T})_{ij}] V_j
+		   = [\delta_{ij} +  \theta(\hat{n}\times\vec{V})_{ij}] V_j
+\ee
+whence
+\be
+-i(\hat{n}\cdot\overleftrightarrow{T})_{ij} V_j 
+= (\hat{n}\times\vec{V})_i
+= \epsilon_{ijk} \hat{n}_j V_k
+\ee
+which means
+\be
+\begin{aligned}
+-i(\hat{n}\cdot\hat{\overleftrightarrow{T}})\vec{V} =
+\begin{cases}
+0 V_x -n_z V_y +n_y V_z\\
+n_z V_x + 0 V_y -n_x V_z\\
+-n_y V_x + n_x V_y + 0 V_z
+\end{cases}\\[1ex]
+=\begin{pmatrix}
+0 & -n_z & n_y\\
+n_z & 0 & -n_x\\
+-n_y & n_x & 0\\
+\end{pmatrix}
+\begin{pmatrix}
+V_x \\ V_y \\ V_z
+\end{pmatrix}
+\end{aligned}
+\ee
+Writing:
+\be
+(\hat{n}\cdot\hat{\overleftrightarrow{T}})_{ij} = 
+(n_x \hat{T}_x + n_y \hat{T}_y + n_z \hat{T}_z)_{ij}
+\ee
+\be
+T_x = \begin{pmatrix} 0 & 0 &  0\\ 0 & 0 & -i\\ 0 & i &  0\end{pmatrix},\quad
+T_y = \begin{pmatrix} 0 & 0 &  i\\ 0 & 0 &  0\\-i & 0 &  0\end{pmatrix},\quad
+T_z = \begin{pmatrix} 0 &-i &  0\\ i & 0 &  0\\ 0 & 0 &  0\end{pmatrix},\quad
+\ee
+which are the matrices that generate the rotation in \emph{real} space.
+%%% 04 OKAY
+By direct calculation, one can verify that these
+matrices satisfy the following commutation relations:
+\be
+[T_i,T_j] = i\,\epsilon_{ijk}\,T_k
+\label{eq:g59}
+\ee
+\rule{\textwidth}{1pt}
+A more direct way to derive this:
+\begin{enumerate}
+\item Choose a frame in which $\hat{n}$ is contained in the $y O z$ plane.
+Then you can decompose $R_{\hat{n}(\phi)}(\theta) = e^{-i\theta \hat{n}(\phi)\cdot T}$ in:\\[0.6em]
+\begin{minipage}{0.35\textwidth}
+\includegraphics[width=\textwidth]{Figures/simpleRotation-crop.pdf}
+\end{minipage}%
+\begin{minipage}{0.65\textwidth}
+\be
+R_{\hat{n}(\phi)}(\theta) \equiv R_x(\phi)\, R_y(\theta)\, R_x(-\phi)	
+\ee
+\end{minipage}\\[0.6em]%
+where 
+$R_x(-\phi)  = e^{ i\phi T_x}$ brings $\hat{n}$ to the $Oy$ axis,
+$R_y(\theta) = e^{-i\theta T_y}$ gets the aimed rotation, and
+$R_x( \phi)  = e^{-i\phi T_x}$ puts $\hat{n}$ back to its original direction. 
+Now, for $\theta \to 0$:
+\[
+\begin{gathered}
+(1 - i\theta \hat{n}(\phi)\cdot T) = e^{-i\phi T_x} (1 - i\theta T_y) e^{ i\phi T_x}\\
+\cancel{-i} \theta \hat{n}(\phi)\cdot T = \cancel{-i} e^{-i\phi T_x} T_y e^{ i\phi T_x}\\
+\cos \phi T_y + \sin \phi T_z = e^{-i\phi T_x} T_y e^{ i\phi T_x}
+\end{gathered}
+\]
+and for $\phi \to 0$
+\[
+\begin{aligned}
+T_y + \phi T_z 
+&= (1 - i\phi T_x) T_y (1 + i\phi T_x)\\
+&= T_y + i\phi T_y T_x - i\phi T_x T_y\Rightarrow\\
+T_z = i[T_y,T_x] &\rightarrow [T_x,T_y] = iT_z
+\end{aligned}
+\]
+for the $yOz$ plane.
+\item and 3. $\rightarrow$ Exercises: derive the remaining relations \eqref{eq:g59}
+by taking $\hat{n}(\phi)$ in $zOx$ and $xOy$.
+\end{enumerate}
+%%% 05 OKAY
+This was for the physical object, next we need to
+represent the rotation in Hilbert space, \textit{i.e.} find
+the algebra associated with the generators $\hat{\vec{J}}$ :
+\be
+\hat{U}_{\hat{n}}(\theta) = e^{-i/\hbar \hat{n}\cdot \hat{\vec{J}}}
+\ee
+By repeating the procedure of choosing appropriately the
+$\hat{n}$ axis, \textit{e.g.} $\hat{n}(\phi)$ in $yOz$, and taking into account
+that $\hat{U}(g) = \hat{U}(g_1)\hat{U}(g_2)$, one can write\\[0.6em]
+\begin{minipage}{0.35\textwidth}
+\includegraphics[width=\textwidth]{Figures/simpleRotation-crop.pdf}
+\end{minipage}%
+\begin{minipage}{0.65\textwidth}
+\be
+\hat{U}[R_{\hat{n}(\phi)}(\theta)] = 
+\hat{U}[R_x( \phi)] \hat{U}[R_y( \theta)] \hat{U}[R_x(-\phi)]   
+\ee
+\end{minipage}\\[0.6em]%
+Expanding all the $\hat{U}$'s for $\theta\to 0$ and $\phi\to 0$,
+one finds:
+\be
+\hat{J}_z/\hbar = i [\hat{J}_y/\hbar, \hat{J}_x/\hbar]
+\ee
+Repeating the procedure for the $zOx$ and $xOy$,
+one obtains the commutation relations $[J_y, J_z]$ and
+$[J_z, J_x]$, which can be summarized by
+\be
+[\hat{J}_i, \hat{J}_j] = i\hbar \epsilon_{ijk}\hat{J}_k
+\label{eq:g64}
+\ee
+%%% 06 OKAY
+The algebra of the generators (Eq.~\eqref{eq:g64}) allows us to find eigenvalues
+and eigenvectors of $\hat{\vec{J}}$: one can \emph{diagonalize} $\hat{\vec{J}}$.
+Since $\hat{J}_i$ do not commute with each other $\rightarrow$ they
+\emph{can not} be diagonalized simultaneously.
+
+One can, however, diagonalize one of the $\hat{J}_i$
+simultaneously with $\hat{\vec{J}} \cdot \hat{\vec{J}} = \hJtwo$, as the latter
+is a scalar under rotation and, therefore,
+commutes with any of the $\hat{J}_i$:
+\be
+[\hat{J}_i, \hJtwo] = 0
+\ee
+Let us define
+\be
+\hat{J}_\pm = \hat{J}_x \pm i \hat{J}_y,\quad \hat{J}_0 = \hat{J}_z
+\ee
+One can show (\emph{Exercise}) the following results using Eq.~\eqref{eq:g64}:
+\begin{align}
+[\hat{J}_0, \hat{J}_\pm] = \pm \hbar \hat{J}_\pm,\quad [\hat{J}_+,\hat{J}_-] = 2\hbar \hat{J}_0\\
+\hJtwo = 1/2 (\hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+) + \hat{J}_0^2\\
+\hat{J}_\pm \hat{J}_\mp = \hJtwo - \hat{J}_0(\hat{J}_0+1)
+\end{align}
+With the help of these relationships, one can show that:
+\begin{itemize}
+\item Let $\ket{jm}$ be the simultaneous eigenvectors of $\hJtwo$ and $\hat{J}_0$.
+Starting from any $\ket{jm}$, one can construct a set
+%%% 07 OKAY
+of $2j+1$ orthogonal vectors by repeated application
+of $\hat{J}_\pm$ $\rightarrow$ these vectors span a subspace of $(2j+1)$
+dimensions of $H$: $\epsilon(j)$
+\item The eigenvectors $\ket{jm}$ are such that:
+\be
+\begin{aligned}
+\hJtwo    \ket{jm} &= j(j+1)\hbar^2 \ket{jm}\\
+\hat{J}_0 \ket{jm} &=   m   \hbar  \ket{jm}
+\end{aligned}
+\ee
+with
+\be
+j = 0,\,1/2,\,1,\,3/2,\ldots
+\ee
+and
+\be
+m = -j, -j+1, -j+2,\ldots,j-2,j-1,j
+\ee
+
+\begin{center}
+\textcolor{red}{\fbox{
+\begin{tabular}{l}
+If you \emph{have not} derived the above results before,\\
+I urge you to take this opportunity to derive them\\
+now: see Le~Bellac
+\end{tabular}
+}}
+\end{center}
+
 \end{itemize}
-%%% 10 OKAY
-From von Neumann theorem:
-\be
-\hat{K}-\hat{H} = f(\hat{X}) \equiv -V(\hat{X})
-\ee
-or
-\be
-\hat{H} = \frac{1}{2m} \hat{P}^2 + V(\hat{X})
-\ee
-that is same result if one would have used correspondence
-principle, starting from the expression for the
-classical analog of the energy:
-\be
-E = \frac{1}{2m} p^2 + V(x)
-\ee
 
-Galilean invariance:
-\[
-H = \frac{1}{2m} \hat{P}^2 + V(\hat{X}) \xrightarrow{v}
-= \frac{1}{2m} (
-\underbrace{\hat{P}+mv}_{P_v})^2 + V(\hat{X})
-= \frac{1}{2m} P_v^2 + V(X_v)
-\]
-where we used that $\hat{X} = X_v$, since we are working at $t=0$.
-So the \emph{form} of the Hamiltonian is preserved
+In general, one needs further quantum numbers to specify
+completely the state of the system $\rightarrow$ \textit{e.g.} energy, parity,
+etc. They cam be discrete or continuous; let us denote
+the quantum number collectively by $\tau$, so that
 \be
-H(X,P) \to H(X_v,P_v)
+\ket{jm} \to \ket{\tau,jm}
+\ee
+with
+\be
+\bra{\tau^\prime,j^\prime m^\prime}\ket{\tau,jm} \equiv 
+\delta_{\tau^\prime\tau} \delta_{j^\prime j} \delta_{m^\prime m}
+\ee
+where the $\delta_{\tau^\prime\tau}$ is Kronecker or Dirac, 
+whether $\tau$ is discrete or continuous.
+%%% 08 OKAY
+The important properties of a standard $\ket{\tau,jm}$ basis are:
+\be
+\begin{gathered}
+\hJtwo\ket{\tau,jm} = j(j+1)\hbar^2\ket{\tau,jm},\quad \hat{J}_0\ket{\tau,jm} = m\hbar\ket{\tau,jm}\\
+\hat{J}_\pm\ket{\tau,jm} = \hbar[j(j+1)-m(m\pm 1)]^{1/2}\ket{\tau,jm\pm1}\\
+\hat{J}_+\ket{\tau,j,j} = 0,\quad \hat{J}_-\ket{\tau,j,-j} = 0\\
+\bra{\tau^\prime, j^\prime m^\prime}\ket{\tau, j m} = \delta_{\tau^\prime\tau}\delta_{j^\prime j}\delta_{m^\prime m},\quad
+\sum_{m=-j}^{+j} \bra{\tau, jm}\ket{\tau, jm} = \mathbf{1}
+\end{gathered}
 \ee
 
-\subsubsection{Galilean invariance in three dimensions}
-
-\emph{Three spatial dimensions:} $D = 3$
-
+Finally, using the above, one can obtain the matrix
+representation $\bra{j m^\prime}\hat{J}_i\ket{j m}$.
+We need a convention to construct such a matrix --
+remember it is a square matrix with $(2j+1)\times(2j+1)$ components.
+It is common to use the following:
 \be
-\frac{d\hat{X}}{dt} = \frac{\hat{P}}{m} - \frac{1}{m} f(\hat{X}) \to
-\frac{d\hat{\vec{R}}}{dt} = \frac{\hat{\vec{P}}}{m} - \frac{1}{m} \vec{f}(\hat{\vec{R}}) 
-\ee
-%%% 11 OKAY
-In $D = 3$, $\vec{f}(\hat{\vec{R}})$ can be eliminated if one can
-find a unitary transformation such that
-$\grad \times \vec{f}(\hat{\vec{R}})= 0$ $\to$ try to show that!
-
-Repeating now the same steps used in the
-case of $D=1$, but now carrying along the
-function $\vec{f}(\hat{\vec{R}})$, one obtains that the most
-general form of the Hamiltonian in QM is
-\be
-\hat{H} = \frac{1}{2m}
+  \begin{BMAT}{cc}{cc}
+m\setminus m^\prime
+&
+\begin{BMAT}(b){ccccc}{c}
+ j\quad\quad	& 	j-1 	& 	\cdots 	& 	-j+1 	& 	\quad\quad-j
+\end{BMAT}
+\\
+\begin{BMAT}(b)[4.5pt]{c}{ccccc}
+j\\j-1\\\ldots\\-j+1\\-j  
+\end{BMAT}
+&
 \left(
-\hat{\vec{P}} - \vec{f}(\hat{\vec{R}})
-\right)^2
-+V(\hat{\vec{R}})
+\begin{BMAT}(b){ccccc}{ccccc}
+    (jj) 	&	(jj-1)	&	\cdots	&	\cdots	& (j-j)	 \\
+    \cdots	&			&	\cdots	&			& \cdots \\ 
+	\vdots	&	\vdots	&	\vdots	&	\vdots	& \vdots \\	
+	\cdots	&			&	\cdots	&			& \cdots \\ 
+	(-jj)	&	\cdots	&	\cdots	&	\cdots	& (-j-j) 
+\end{BMAT}
+\right)
+ \end{BMAT}
 \ee
 
-\emph{Note that:} now, in general:
+%%% 09 OKAY
+
+\emph{Examples:} $j=\nicefrac{1}{2}$ and $j=1$
+
+$j=\nicefrac{1}{2}$:
 \be
-\frac{\vec{P}}{m} \neq \frac{d\vec{R}}{dt}
+J_x = \frac{\hbar}{2}\begin{pmatrix}0 & 1\\1 & 0 \end{pmatrix},\quad
+J_y = \frac{\hbar}{2}\begin{pmatrix}0 & -i\\i & 0\end{pmatrix},\quad
+J_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}
 \ee
-\emph{Example} where $\vec{f}(\vec{R})$ is realized:
-\[
-\vec{f} = q\vec{A}\quad,\quad\vec{B} = \grad\times\vec{A}
-\]
-where $q$ is the electric charge, $\vec{B}$ is the magnetic field.
-In this case $V(\vec{R} = q \varphi(\vec{R})$, $\grad\varphi = -\vec{E}$, where $\vec{E}$ is the electric field.
+Pauli matrices: $J_i=\frac{\hbar}{2}\sigma_i$
 
-If $\vec{f}(\vec{R})$  could be eliminated by a local gauge
-transformation $\rightarrow$ $\vec{B} = 0$.
+$j=1$:
+\be
+J_x = \frac{\hbar}{\sqrt{2}}\begin{pmatrix}0 & 1 & 0\\1 & 0 & 1\\0 & 1 & 0  \end{pmatrix},\quad
+J_y = \frac{\hbar}{\sqrt{2}}\begin{pmatrix}0 & -i & 0\\i & 0 & -i\\0 & i & 0\end{pmatrix},\quad
+J_z =       \hbar           \begin{pmatrix}1 & 0 & 0\\0 & 0 & 0\\0 & 0 & -1 \end{pmatrix}
+\ee
 
-%%% 12 OKAY
+\clearpage
 
-\emph{Important:} one should \emph{not} conclude that
-$\vec{f}(\vec{R})$ is necessarily associated with electromagnetism;
-they are arbitrary functions that \emph{do not} need to
-obey Maxwell's equations.
+\subsection{Rotation matrices in Hilbert Space}
+\setcounter{equation}{79}
 
+$\rightarrow$ meaning a representation of $\hat{U}[R]$\footnote{Change of notation $(\quad)\to[\quad]$} in the basis $\ket{jm}$.
 
-\emph{Summing up:} assumed that expectation values
-of physical properties (Hermitian operators) transform
-in the same manner as the corresponding classical quantities
-$\Rightarrow$ commutation relations + general form of $\hat{H}$.
+Since $\hat{U}[R]$ commutes with $\hJtwo$ and other compatible
+operators (represented by $\tau$):
+\be
+\bra{\tau^\prime,j^\prime m^\prime} \hat{U}[R] \ket{\tau,jm} \sim \delta_{\tau^\prime \tau} \delta_{j^\prime j}
+\ee
+one needs to consider one $j$ at a time.
 
+To lighten the notation, we suppress for now the index $\tau$:
+\be
+D^{(j)}_{m^\prime m}[R] \equiv \bra{j^\prime m^\prime} \hat{U}[R] \ket{jm}
+\ee
+where the $D^{(j)}_{m^\prime m}[R]$ are the \emph{Wigner matrices}.
+%%% 10 OKAY
+These matrices form \emph{irreducible representations} of the
+rotation group.
 
+\rule{\textwidth}{1pt}
 
+For a group $G$ with elements $g = \{g_1,g_2,\ldots\}$, a
+set of $n$-dimensional matrices $D^{(n)}(g)$ that satisfy
+the group composition law:
+\be
+D^{(n)}(g_2)D^{(n)}(g_1) = D^{(n)}(g_2 g_1)
+\ee
+form an $n$-dimensional \emph{representation} of the group $G$.
+If there exists a unitary transformation $U$
+that \emph{does not} depend on $g$ and which for \emph{all}
+$g$ reduces $D^{(n)}$ to block diagonal form,
+\be
+U^{-1} D^{(n)} U =
+\begin{pmatrix}
+D^{(n_1)} & \mathbf{0}\\
+\mathbf{0} & D^{(n_2)}\\
+\end{pmatrix},\quad n_1+n_2=n
+\label{eq:g83}
+\ee
+the representation is called \emph{reducible}; if there is
+no such $U$, the representation is \emph{irreducible}.
 
+\rule{\textwidth}{1pt}
 
-
-
-
-
+\begin{itemize}
+\item Eq.~\eqref{eq:g83} implies that any transformation of $G$ can be
+constructed from its irreducible representations (of known).
+\item Any of the $2j+1$ vectors $\ket{jm}$ of $\epsilon(j)$ can be obtained from
+an arbitrary $\ket{jm^\prime}$ by application of $D^{(j)}$, and any
+matrix that commutes with all $D^{(j)}$ must be proportional
+to the identity.
+\end{itemize}
+%%% 11 OKAY
+\emph{For example}, knowing $D^{\nicefrac{1}{2}}(\theta,\phi)$, which is an irreducible
+representation of the rotation group for $j=1/2$, all higher
+$D^{(j)}(\theta,\phi)$ can be constructed from $D^{\nicefrac{1}{2}}(\theta,\phi)$ by using
+addition of angular momentum.
 
 \end{document}

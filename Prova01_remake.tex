@@ -25,17 +25,38 @@ Prova 01 (REMAKE)\\%
 \maketitle
 \vspace*{-4em}
 
-\textbf{Exercício 1:} para cada estado de dois spins-$\frac{1}{2}$ abaixo, escrito em termos dos autovetores de $S_z$, diga se o estado é emaranhado ou não (justificando sua resposta) e calcule sua matriz densidade explicitamente (\textit{i.e.} uma matriz $4\times4$).
+\textbf{Exercício 1:} considere uma molécula constituída de três átomos idênticos nos vértices de um triângulo equilátero, conforme mostrado na figura.
+Vamos considerar que o íon desta molécula é formado adicionando-se um único elétron a ela;
+como vimos em aula, deve haver um efeito de delocalização, e o elétron deve se acomodar em um estado distribuído ao redor dos sítios.
+Suponha que o elemento de matriz da Hamiltoniana para o elétron em dois sítios adjacentes $i,j$ é $\langle i|H|j \rangle = -a, a>0$, para $i \neq j$.
+
+\begin{center}
+\includegraphics[width=0.3\textwidth]{Figures/EquilateralTriangleMolecule.drawio.pdf}
+\end{center}
+
+\textbf{(a)} Escreva a Hamiltoniana na forma matricial e calcule os níveis de energia.
+
+\textbf{(b)} Suponha que um campo elétrico na direção $z$ é aplicado, 
+de modo que a energia potencial para o elétron na posição rotulada por ``1'' diminui por uma parcela $b$ ($b > 0$).
+Calcule os níveis de energia e os autoestados de energia.
+
+\textbf{(c)} Suponha que, no caso do item (b), o elétron está no estado fundamental.
+Quase-instantaneamente, o campo roda de 120\textsuperscript{o} e passa a apontar na direção rotulada como ``2''.
+Calcule a probabilidade do elétron permanecer no estado fundamental.
+
+\textbf{Exercício 2:} para cada estado de dois spins-$\frac{1}{2}$ abaixo, escrito em termos dos autovetores de $S_z$, 
+diga se o estado é emaranhado ou não (justificando sua resposta) e
+calcule sua matriz densidade explicitamente (\textit{i.e.} uma matriz $4\times4$).
 
 \textbf{(a)} $\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{+-}-\ket{-+})$.
 
-\textbf{(b)} $\ket{\psi} = \ket{++}$.
+\textbf{(b)} $\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{++}+\ket{--})$.
 
 \vspace*{1em}
 
-\textbf{Exercício 2:} Considere um \emph{ensemble} estatístico de sistemas de spin-$\frac{1}{2}$.
+\textbf{Exercício 3:} Considere um \emph{ensemble} estatístico de sistemas de spin-$\frac{1}{2}$.
 
-\textbf{(a)} Considere que o ensemble é um estado puro, apontando em uma direção $\hat{n}$ (ver figura), e descrito por um ket $\alpha$. Suponha que os valores esperados $\ev{S_x}$ e $\ev{S_z}$ são conhecidos, mas apenas o \emph{sinal} de $\ev{S_y}$ é conhecido. Construa explicitamente a matriz densidade $2\times2$ que descreve o sistema. Porque é desnecessário saber a magnitude de $\ev{S_y}$?
+\textbf{(a)} Considere que o ensemble é um estado puro, apontando em uma direção $\hat{n}$ (ver figura), e descrito por um ket $\alpha$. Suponha que os valores esperados $\ev{S_x}$ e $\ev{S_z}$ são conhecidos, mas apenas o \emph{sinal} de $\ev{S_y}$ é conhecido. Construa explicitamente a matriz densidade $2\times2$ que descreve o sistema.
 
 \medskip
 
@@ -51,12 +72,14 @@ Estado puro apontando na direção $\hat{n}$:
 
 \medskip
 
-\textbf{(b)} Considere agora que o ensemble é misturado, de uma maneira genérica. Suponha agora que os três valores médios
+\textbf{(b)} Considere agora que o ensemble é misturado, de uma maneira genérica 
+(note que não estamos dizendo que ele é o estado de máxima entropia!). 
+Suponha agora que os três valores médios
 $\ev{S_x}$, $\ev{S_y}$, $\ev{S_z}$ são todos conhecidos. Construa explicitamente a matriz densidade $2\times2$ que descreve o sistema.
 
 \vspace*{1em}
 
-\textbf{Exercício 3:} Considere a seguinte matriz densidade de dois spins-$\frac{1}{2}$:
+\textbf{Exercício 4:} Considere a seguinte matriz densidade de um ensemble de dois spins-$\frac{1}{2}$:
 \[
 \rho=\frac{1}{8} \mathbf{1}+\frac{1}{2}\left|\Psi_{-}\right\rangle\left\langle\Psi_{-}\right|
 \]
@@ -65,7 +88,7 @@ medimos um dos spins ao longo de um eixo \(a\) e o outro ao longo de um eixo \(b
 \(\hat{a} \cdot \hat{b}=\cos \theta\). Qual é a probabilidade (como função de \(\theta\)) de encontramos \(+\hbar / 2\) para ambos
 spins nestas medidas?
 
-\textbf{Exercício 4: Interferometria de Ramsey.} Suponha que um sistema de dois níveis tem estados $\ket{+}$ e $\ket{-}$.
+\textbf{Exercício 5: Interferometria de Ramsey.} Suponha que um sistema de dois níveis tem estados $\ket{+}$ e $\ket{-}$.
 
 \textbf{(a)} Vamos considerar a chamada interação de \textit{beam splitter (BS).} Suponha que o sistema é sujeito a um Hamiltoniano $H = \epsilon \sigma_y$ por um tempo $\tau$ tal que $\epsilon \tau /\hbar = \pi/4$.
 Mostre que se o sistema estava inicialmente em $\ket{+}$ ou $\ket{-}$, então ele é levado (a menos uma fase global) para os estados:
@@ -93,8 +116,11 @@ P_- = |\bra{-}\ket{\psi}|^2 = \sin^2(\phi/2).
 Essa é a ideia principal por trás da interferometria de Ramsey: a probabilidade oscila
 dependendo da fase do phase shift.
 
+\end{document}
+
 \vfill
 \par\noindent\rule{\textwidth}{0.4pt}
+
 
 \textbf{Formulário}
 

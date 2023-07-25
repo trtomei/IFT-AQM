@@ -6,10 +6,10 @@
 
 \title{Advanced Quantum Mechanics\\Class 19 (a)}
 %\author{The Author}
-\date{October 13, 2022}                                           % Activate to display a given date or no date
+\date{April 27, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{5}
+\setcounter{section}{4}
+\setcounter{subsection}{7}
 \setcounter{equation}{107}
 
 \begin{document}
@@ -42,7 +42,7 @@ commutation relations:
 From this algebra alone:
 \be
 \begin{aligned}
-\vec{J}^{2}|j m\rangle
+\hJtwo|j m\rangle
 &=j(j+1) \hbar^{2}|j m\rangle \\ 
 \hat{J}_{0}|j m\rangle
 &=m \hbar|j m\rangle,\quad j \leqslant m \leqslant j
@@ -59,7 +59,8 @@ its connections with the states $\ket{j_1m_1}$ and $\ket{j_2m_2}$ -- can have at
 This basis corresponds to the complete set of
 commuting operators
 \be
-\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \hat{J}_{1z}, \hat{J}_{2z}\right\}
+%\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \hat{J}_{1z}, \hat{J}_{2z}\right\}
+\left\{\hJtwo_1, \hJtwo_2, \hat{J}_{1z}, \hat{J}_{2z}\right\}
 \ee
 %
 \item
@@ -68,7 +69,8 @@ commuting operators
 \ee
 which corresponds to
 \be
-\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \vec{J}^{2}, \hat{J}_{z}\right\}
+%\left\{\vec{J}_{1}^{2}, \vec{J}_{2}^{2}, \vec{J}^{2}, \hat{J}_{z}\right\}
+\left\{\hJtwo_1, \hJtwo_2, \hJtwo, \hat{J}_{z}\right\}
 \ee
 \end{enumerate}
 The analysis of these bases leads to the following results:
@@ -196,7 +198,7 @@ representation.
 
 %% 07 OKAY
 
-\subsubsection{Kronecker product}
+\subsubsection{Kronecker product of representations}
 \setcounter{equation}{125}
 
 Let us consider the unitary representation of a spatial
@@ -287,7 +289,7 @@ with elements of the kind
 \be
 \langle j=j_{1}+j_{2}|
 \underbrace{\cdots}%
-_{\mathrlap{\text{commutes with } \hat{\vec{J}}^2}\quad}
+_{\mathrlap{\text{commutes with } \hJtwo}\quad}
 | j \neq j_{1}+j_{2}\rangle=0
 \ee
 %
@@ -306,7 +308,7 @@ $\Rightarrow$
 Each of such blocks is a matrix with
 elements of an operator
 \be
-e^{-i / \hbar \phi \tilde{J}_{x}} e^{-i / \hbar \theta \tilde{J_{y}}}
+e^{-i / \hbar \phi \tilde{J}_{z}} e^{-i / \hbar \theta \tilde{J_{y}}}
 \label{eq:g133}
 \ee
 %%% 10 OKAY
@@ -325,7 +327,7 @@ of the rotation \(R\), \textit{i.e.} it does not depend
 on \(\theta\) and \(\phi\).
 \end{itemize}
 
-To conclude this discussion, that Eq.~\eqref{eq:g127} can be inverted,
+To conclude this discussion, we remark that Eq.~\eqref{eq:g127} can be inverted,
 \(D^{(j_{1})} \otimes D^{(j_{2})}\) can be expressed in terms of \(D^{(j)}\):
 \be
 D_{m_{1} m_{1}^{\prime}}^{\left(j_{1}\right)} D_{m_{2} m_{2}^{\prime}}^{\left(j_{2}\right)}=\sum_{m, m^{\prime}=-j}^{+j} 
@@ -356,7 +358,7 @@ then, invariance of $\hat{S}$ under rotation means
 \ee
 which implies (for, \textit{e.g.} rotation angle $\theta$ around $\hat{n}$)
 \be
-e^{i / \hbar \theta \hat{n} \cdot \vec{J}} \hat{S} e^{-i / \hbar \theta \hat{n} \cdot \hat{J}}=\hat{S}
+e^{i / \hbar \theta \hat{n} \cdot \hat{\vec{J}}} \hat{S} e^{-i / \hbar \theta \hat{n} \cdot \hat{\vec{J}}}=\hat{S}
 \ee
 therefore
 \be
@@ -375,7 +377,7 @@ counterpart, \textit{i.e.}
 \ee
 so, with a rotation $\theta$ around $\hat{n}$
 \be
-e^{i / \hbar \theta \hat{n} \cdot \vec{J}} \hat{V_i} e^{-i / \hbar \theta \hat{n} \cdot \hat{J}}=
+e^{i / \hbar \theta \hat{n} \cdot \hat{\vec{J}}} \hat{V_i} e^{-i / \hbar \theta \hat{n} \cdot \hat{vec{J}}}=
 [R_{\hat n}(\theta)]_{ij}\hat{V_j}
 \ee
 $\theta \to 0$:
@@ -385,7 +387,7 @@ $\theta \to 0$:
 \ee
 \[
 \begin{gathered}
-\left(I+i / \hbar \theta \hat{n}_{k} \hat{J}_{k}\right) \hat{V}_{i}\left(I-i / \hbar \theta \hat{n}_{l} \hat{J}_{l}\right) \simeq V_{i}+\theta \varepsilon_{i j k} \hat{n}_{j} \cdot \hat{V}_{l} \to\\
+\left(I+i / \hbar \theta \hat{n}_{k} \hat{J}_{k}\right) \hat{V}_{i}\left(I-i / \hbar \theta \hat{n}_{l} \hat{J}_{l}\right) \simeq V_{i}+\theta \varepsilon_{i j k} \hat{n}_{j} \cdot \hat{V}_{k} \to\\
 i / \hbar\left(\hat{n}_{k} \hat{J}_{k} V_{i}-\hat{V}_{i} \hat{n}_{l} \hat{J}_{l}\right)=\varepsilon_{i j k} n_{j} \hat{V}_{k} \to\\
 \hat{J}_{j} \hat{V}_{i}-V_{i} \hat{J}_{j}=-i \hbar \varepsilon_{i j k} V_{k} \xrightarrow{{i\leftrightarrow j}}
 \end{gathered}
@@ -453,9 +455,9 @@ D_{q^\prime q}^{(k)}
 &= \bra{kq^\prime}e^{-i\hbar\theta\hat{n}\cdot\vec{J}}[R]\ket{kq}\\
 \end{aligned}
 \]
-where $\ket{kq}$ are the eigenstates of $\hat{\vec{J}}^2$ and $\hat{J_0}$
+where $\ket{kq}$ are the eigenstates of $\hJtwo$ and $\hat{J_0}$
 \begin{align}
-\hat{\vec{J}}^2 \ket{kq} &= k(k+1) \hbar^2 \ket{kq}\\
+\hJtwo \ket{kq} &= k(k+1) \hbar^2 \ket{kq}\\
 \hat{J_0} \ket{kq} &= q\hbar \ket{kq}
 \end{align}
 \textit{i.e.} $k \sim j $ and $q \sim m$. 

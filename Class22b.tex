@@ -6,10 +6,10 @@
 
 \title{Advanced Quantum Mechanics\\Class 22 (b)}
 %\author{The Author}
-\date{October 27, 2022}                                           % Activate to display a given date or no date
+\date{May 16, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{8}
+\setcounter{section}{4}
+\setcounter{subsection}{12}
 \setcounter{equation}{115}
 
 \begin{document}
@@ -25,10 +25,11 @@ Sometimes one needs to relate matrix elements of
 an operator between time-reversed states, \textit{e.g.} in
 scattering processes, where one often needs to relate
 an $i \rightarrow f$ process to its time-reversed motion $f \rightarrow i$.
+Of course, this happens because we only have access to the final state process $f$.
 
 Let $\hat{A}$ be an arbitrary linear operator in $H$ and
-$|\varphi\rangle$ an arbitrary vector in $H$. From Eq.~(114),
-one has:
+$|\varphi\rangle$ an arbitrary vector in $H$. We remember that
+we have:
 \be
 \hat{\Theta} \hat{A} \ket{\varphi}=
 \begin{cases}
@@ -41,27 +42,24 @@ one has:
 \end{aligned}
 \end{cases}
 \ee
-whence we identify
-\[
-\bra{\varphi}\hat{A}^{\dagger}\ket{n} = \bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}^*
-\]
-%
 Let $\ket{\psi}$ be another arbitrary state in $H$. We write 
-$\hat{A}_t = \hat{\Theta}\hat{A}\hat{\Theta}^{-1}$
-and
+the time-reversed operator $\hat{A}_t = \hat{\Theta}\hat{A}\hat{\Theta}^{-1}$
+and the time-reversed states
 $\hat{\Theta}\ket{\psi} = \ket{\psi_t}$.
 Then:
 \be
 \begin{gathered}
 \bra{\psi_t}\hat{A}_t\ket{\varphi_t} =
-\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}\\
+\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}
  = \bra{\psi_t}\hat{\Theta}\left(
-\sum_n\op{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}
-\right)
- = \bra{\psi_t}\left(
-\sum_n\ket{n_t}(\bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t})^*
+\sum_n\op{n}\hat{A}\underbrace{\hat{\Theta}^{-1}\ket{\varphi_t}}_{\ket{\varphi}}
 \right)\\
+= \bra{\psi_t} \hat{\Theta} \left( \sum_n \ket{n} \bra{n}\hat{A}\ket{\varphi} \right), 
+%
+\hat{\Theta} \text{ acts on $\ket{n}$ and conjugates everything},\\
+%
 =\sum_n \bra{\psi_t}\ket{n_t} \bra{\varphi}\hat{A}^{\dagger}\ket{n}
+=\sum_n \bra{\hat{\Theta}\psi}\ket{\hat{\Theta}n} \bra{\varphi}\hat{A}^{\dagger}\ket{n}
 =\sum_n \bra{n}\ket{\psi} \bra{\varphi}\hat{A}^{\dagger}\ket{n}\\
 =\sum_n \bra{\varphi}\hat{A}^{\dagger} \ket{n}\!\!\bra{n}\ket{\psi}
 = \bra{\varphi}\hat{A}^{\dagger}\ket{\psi}
@@ -74,7 +72,9 @@ When $\hat{A}^{\dagger} = \hat{A}$ and time-reversal invariant:
 \bra{\psi_t}\hat{A}\ket{\varphi_t} =
 \bra{\varphi}\hat{A}\ket{\psi}
 \ee
-so
+so the matrix element transition $\psi \to \varphi$, mediated by $\hat{A}$,
+is the same as that obtained by exchanging final and initial state, 
+but between the time-reversed states. So:
 \[
 (\varphi_t \to \psi_t) \leftarrow \text{ time reversal }\rightarrow (\psi \to \varphi).
 \]
@@ -107,7 +107,7 @@ implies
 \be
 \begin{aligned}
 \varphi_{t}(\vec{r}, t)
-&=\left\langle\vec{r} | \varphi_{t}(t)\right\rangle=\left\langle\vec{r}_{t} | \varphi_{t}(t)\right\rangle\\
+&=\left\langle\vec{r} \,| \varphi_{t}(t)\right\rangle=\left\langle\vec{r}_{t} | \varphi_{t}(t)\right\rangle\\
 &=\left\langle\vec{r}_{t}\left|e^{-i / \hbar \hat{H} t}\right| \varphi_{t}\right\rangle\\
 &=\left\langle\vec{r}_{t}\left|\left(\hat{\Theta} e^{i / \hbar \hat{H} t} \hat{\Theta}^{-1}\right)\right| \varphi_{t}\right\rangle\\
 &=\left\langle\varphi\left|e^{-i / \hbar H t}\right| \vec{r}\right\rangle=\left\langle e^{i / \hbar \hat{H} t} \varphi | \vec{r}\right\rangle\\
@@ -120,7 +120,7 @@ complex conjugation and $t \to -t$:
 $\hat{\Theta} = \hat{\Theta}_0 + t\to-t$. 
 %%% 14 OKAY
 
-Spherical symmetry: $\varphi(\vec{r}) = R(r) Y^m_l(\theta),\phi)$,
+Spherical symmetry: $\varphi(\vec{r}) = R(r) Y^m_l(\theta,\phi)$,
 where the spherical harmonic factor is, in general, complex.
 Under $\hat{\Theta}$:
 \be
@@ -143,13 +143,13 @@ _{\vec{p}_t}
 \ee
 Therefore the momentum space wave function
 \be
-\hat{\varphi}(\vec{p}, t)=\langle\hat{p} | \varphi(t)\rangle=\left\langle\hat{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi\right\rangle
+\widetilde{\varphi}(\vec{p}, t)=\langle\vec{p} | \varphi(t)\rangle=\left\langle\vec{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi\right\rangle
 \ee
 transforms under time reversal as:
 \be
 \begin{aligned}
-\varphi_{t}(\vec{p}, t)
-&=\left\langle\vec{p} | \varphi_{t}(t)\right\rangle=\left\langle \vec{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi_{t}\right\rangle\quad\rightarrow(\varphi_{t} = \hat{\Theta} \varphi(0))\\
+\widetilde\varphi_{t}(\vec{p}, t)
+&=\left\langle\vec{p} \,| \varphi_{t}(t)\right\rangle=\left\langle \vec{p}\left|e^{-i / \hbar \hat{H} t}\right| \varphi_{t}\right\rangle\quad\rightarrow(\varphi_{t} = \hat{\Theta} \varphi(0))\\
 &=\left\langle-\vec{p}_{t}\left|e^{-i / \hbar\hat{H} t}\right| \varphi_{t}\right\rangle\\
 &=\left\langle-\vec{p}_{t}\right|\left(\hat{\Theta} e^{i / \hbar \hat{H} t} \hat{\Theta}^{-1}\right)
 \left|\varphi_{t}\right\rangle
@@ -172,7 +172,7 @@ Remembering that
 $\hat{\Theta} = \hat{U}_t\hat{\Theta}_0$, Eq.~\eqref{eq:g124} implies
 \be
 \hat{U}_{t} \hat{\Theta}_{0} \vec{\sigma} \hat{\Theta}_{0} \hat{U}_{t}^{\dagger}=
-\hat{U}_{t} \vec{\sigma}^{*} \hat{U}_{t}=-\vec{\sigma}
+\hat{U}_{t} \,\vec{\sigma}^{*}\, \hat{U}_{t}^{-1}=-\vec{\sigma}
 \ee
 which means the three conditions
 \[
@@ -182,15 +182,19 @@ which means the three conditions
 \hat{U}_{t} \sigma_{z} \hat{U}_{t}^{-1} &=-\sigma_{z}
 \end{aligned}
 \]
-Satisfied by choosing
+Satisfied by choosing, for instance
 \be
-\hat{U}_{t}=e^{i \delta} e^{i \pi / 2 \sigma_{y}}
+\hat{U}_{t}=e^{i \delta} e^{i \frac{\pi}{2} \sigma_{y}}\,\sim
+\text{rotation of $-\pi/2$ around $\hat{y}$}
 \ee
-but this choice \emph{is not} unique ($\sigma_y$ is OK too).
+with $\delta$ an arbitrary phase, but this choice \emph{is not} unique.
+Notice: $e^{i \frac{\pi}{2} \sigma_{y}} = i\sigma_y$.
 
-Therefore, when action on spin 1-2 states and operators:
+Therefore, when acting on spin 1-2 states and operators:
 \be
-\hat{\Theta}e^{i \delta} e^{i \pi / 2 \sigma_{y}}\hat{\Theta}_0
+\hat{\Theta} = e^{i \delta} %e^{i \frac{\pi}{2} \sigma_{y}}
+i\sigma_{y}
+\hat{\Theta}_0
 \ee
 With this choice, action of $\hat{\Theta}$ on $\ket{1/2,\pm1/2}$ in the
 conventional basis gives:
@@ -217,7 +221,7 @@ $\ket{\vec{r}} \otimes \ket{m} = \ket{\vec{r}m}$:
 \ee
 $\Rightarrow$ square of $\hat{\Theta}$ in coordinate/momentum representation.
 
-\emph{Spin 0:} (complex conjugaiton)
+\emph{Spin 0:} (complex conjugation)
 \be
 \hat{\Theta}^2 = \hat{\Theta}(\hat{\Theta}_0+t\to-t) = 1
 \ee
@@ -289,7 +293,7 @@ therefore
 \end{itemize}
 
 \emph{Kramer's theorem:} If the Hamiltonian of a system composed
-by \emph{an odd numbe}r of spin-1/2 porticles
+by \emph{an odd number} of spin-1/2 particles
 is time-reversal invariant, then all of its
 stationary states are degenerate.
 \emph{Exercise:} show that the degree of degeneracy is even.

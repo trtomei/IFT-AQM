@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 02}
 %\author{The Author}
-\date{August 11, 2022}                                           % Activate to display a given date or no date
+\date{March 16, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{3}
+\setcounter{section}{1}
 \setcounter{equation}{15}
 \setcounter{subsection}{1}
 
@@ -276,21 +276,26 @@ leading to Eq.~\eqref{eq:Ugroup}.
 \end{equation}
 Since $t_1$ is arbitrary in Eq.~\eqref{eq:Ugroup}:
 \[
-|\varphi(t)\rangle=\hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle,
+|\varphi(t)\rangle    =\hat{U}\left(t, t_{0}\right)\left|\varphi\left(t_{0}\right)\right\rangle,
+\text{ and }
+|\varphi(t_{0})\rangle=\hat{U}\left(t_{0}, t\right)|\varphi(t)\rangle
 \]
-and
-\[
-\left|\varphi\left(t_{0}\right)\right\rangle=\hat{U}\left(t_{0}, t\right)|\varphi(t)\rangle
-\]
-but
+but that means
 \[
 |\varphi(t_0)\rangle = \underbrace{\hat{U}\left(t, t_{0}\right) \hat{U}\left(t_{0}, t\right)}%
 _{I}%
-|\varphi(t)\rangle
+|\varphi(t_0)\rangle
 \]
-so
+so multiply 
+$I = \hat{U}\left(t, t_{0}\right) \hat{U}\left(t_{0}, t\right)$
+by $\hat{U}^{-1}\left(t, t_{0}\right)$ from the left:
 \[
-\hat{U}^{-1}\left(t, t_{0}\right) I=\hat{U}\left(t_{0}, t\right) \rightarrow \hat{U}^{-1}\left(t, t_{0}\right)=\hat{U}\left(t_{0}, t\right)
+\hat{U}^{-1}\left(t, t_{0}\right) I = 
+\cancel{\hat{U}^{-1}\left(t, t_{0}\right)}\,%
+\cancel{\hat{U}\left(t, t_{0}\right)}
+\hat{U}\left(t_{0}, t\right) 
+\Rightarrow \hat{U}^{-1}\left(t, t_{0}\right)
+=\hat{U}\left(t_{0}, t\right)
 \]
 \end{enumerate}
 
@@ -320,7 +325,7 @@ but again, by Eq.~\eqref{eq:postulate4prime} itself, we have
 \hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle
 \label{eq:g41}
 \end{equation}
-The Schrödinger equation says that the the left-hand sides of Eqs.~\ref{eq:g40} and \ref{eq:g41} are the same.
+The Schrödinger equation says that the the left-hand sides of Eqs.~\eqref{eq:g40} and \eqref{eq:g41} are the same.
 So, to be consistent with it, the right-hand sides should also be equal:
 \[
 \hat{H}(t^\prime) \hat{U}\left(t^{\prime}, t\right)|\varphi(t)\rangle = 
@@ -344,7 +349,7 @@ Again, differentiate Eq.~\eqref{eq:postulate4prime} with respect to $t^\prime$, 
 i \hbar \frac{d}{d t^\prime}|\varphi(t^\prime)\rangle = 
 \underbrace{i \hbar \lim _{t^{\prime} \rightarrow t} \frac{d}{d t^{\prime}} \hat{U}\left(t^{\prime}, t\right)}%
 _{\hat{H}(t)}%
-|\varphi(t^\prime)\rangle
+|\varphi(t)\rangle
 \end{equation}
 therefore
 \[
@@ -352,26 +357,28 @@ i \hbar \frac{d}{d t}|\varphi(t)\rangle=\hat{H}(t)|\varphi(t)\rangle
 \]
 as we said.
 
-Equation~\eqref{eq:g41} is not easy to integrate in general,
+Equation~\eqref{eq:dynEqU} is not easy to integrate in general,
 when $\hat{H}(t) \neq$ constant in time.
 %%% 10 OK
 When $\hat{H}(t)$ is constant:
 \begin{equation}
 i \hbar \frac{d U\left(t, t_{0}\right)}{d t}=\hat{H} \hat{U}\left(t, t_{0}\right)
 \to
-\hat{U}\left(t, t_{0}\right)=e^{-i \hat{H}\left(t-t_{0}\right) / t}
+\hat{U}\left(t, t_{0}\right)=e^{-i \hat{H}\left(t-t_{0}\right) / \hbar}
 \label{eq:g44}
 \end{equation}
 as can be easily verified.
 
 When $\hat{H}(t)$ is not constant, it can be proved (left as exercise) that:
 \begin{equation}
-\hat{U}\left(t, t_{0}\right)=\mathcal{T} e^{-i} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
+\hat{U}\left(t, t_{0}\right)=\mathcal{T} \exp\left(
+-\frac{i}{\hbar} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
+\right)
 \end{equation} 
 where $\mathcal{T}$ is the \emph{time ordering}.
 \begin{equation}
 \begin{gathered}
-\mathcal{T} e^{-i \int_{t_{0}}^{t} d t^{\prime} \cdots} = 1 
+\mathcal{T} e^{-i/\hbar \int_{t_{0}}^{t} d t^{\prime} \hat{H}(t^\prime)} = 1 
 -i / \hbar \int_{t_{0}}^{t} dt^{\prime} \hat{H}\left(t^{\prime}\right)\\
 +
 \frac{1}{2 !}\left(\frac{i}{\hbar}\right)^{2} \int_{t_{0}}^{t} d t^{\prime} \int_{t_{0}}^{t} d t^{\prime \prime} \, \mathcal{T}\left[\hat{H}\left(t^{\prime}\right) H\left(t^{\prime \prime}\right)\right]+\cdots

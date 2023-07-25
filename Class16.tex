@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 16}
 %\author{The Author}
-\date{September 22, 2022}                                           % Activate to display a given date or no date
+\date{April 13, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{5}
+\setcounter{section}{3}
 %\setcounter{subsection}{14}
 %\setcounter{equation}{12}
 
@@ -146,7 +146,7 @@ to be a symmetry, one must have
 \left|(\widetilde{\chi}_{g} | \widetilde{\varphi}_{g})\right|^{2}=|(\chi | \varphi)|^{2}
 \label{eq:symmetry1}
 \ee
-where \((\widetilde{\chi}_{g}|\widetilde{\varphi}_{g})\) 
+where \((\widetilde{\chi}|\widetilde{\varphi})\) 
 denotes the scalar product of
 one of the state vectors in the set \(\widetilde{\varphi}\) and one
 of the state vectors of the set \(\widetilde{\chi}\).
@@ -166,8 +166,8 @@ state vector \(|\varphi\rangle \in H\) :
 \be
 \left|\varphi_{g}\right\rangle=\hat{U}(g)|\varphi\rangle
 \ee
-where \(U(g)\) is unitary or antiunitary, with
-\(\hat{O}(z)\) being unique up to a phase.
+where \(\hat{U}(g)\) is unitary or antiunitary, with
+\(\hat{U}(g)\) being unique up to a phase.
 
 \emph{$\hat{U}(g)$ unitary}:
 \be
@@ -235,7 +235,7 @@ g^{-1} g=gg^{-1}=I
 \subsection{Vector and spinor representations}
 
 Vector and spinor representations of $g$ in $H$.
-Choice of phases of \(|\varphi\rangle\) and \(\left|\varphi_{g}\right\rangle\) such that \(\left|\varphi_{g}\right\rangle=\hat{U}(3)|\varphi\rangle\)
+Choice of phases of \(|\varphi\rangle\) and \(\left|\varphi_{g}\right\rangle\) such that \(\left|\varphi_{g}\right\rangle=\hat{U}(g)|\varphi\rangle\)
 %
 \be
 g=g_{2} g_{1}
@@ -282,8 +282,8 @@ Example: rotation group \(S O(3)\), group of orthogonal
 matrices \(R^{T} R=RR^{T} =I\), where  \(T\) is transpose,
 is a \emph{3-parameter group}.
 The 3 parameters can be, \textit{e.g.}
-\(n\) rotation axis
-2 angles in \(O_{xyz}\) + 
+\(\hat{n}\) rotation axis,
+which is determined by 2 angles in \(O_{xyz}\), + 
 rotation angle about \(\hat{n}\).
 
 Rotation group has 3 Abelian subgroups,
@@ -324,7 +324,7 @@ $\hat{T}_h$: infinitesimal generator, Hermitian: associated with a physical prop
 %
 \item Space rotation by $\theta$ about a direction $\hat{n}$:
 \be
-\hat{U}_{\hat{n}}(\theta)=e^{-i / \hbar \theta \hat{J}_{\hat{n}}} \quad,\quad \hat{T}=\hat{n} \cdot \vec{J} \rightarrow \text{ ang. momentum}
+\hat{U}_{\hat{n}}(\theta)=e^{-i / \hbar \theta \hat{J}_{\hat{n}}} \quad,\quad \hat{T}=\hat{n} \cdot \hat{\vec{J}} \rightarrow \text{ ang. momentum}
 \ee
 %
 \item Spatial boosts, Galilean transformation of the velocity $\vec{v}$:
@@ -348,6 +348,7 @@ g(\theta=0)=I
 Composition law:
 \be
 g(\overline{\theta}) g(\theta)=g(f(\overline{\theta}, \theta))
+\label{eq:t:composition}
 \ee
 notation:
 \be
@@ -374,7 +375,7 @@ For $\overline\theta = 0$:
 \begin{aligned} 
 g(\overline{\theta}) g(\theta) &=g(f(\overline{\theta}, \theta)) \\ 
 \downarrow \quad\quad\quad\\
-I\quad\quad\quad& \rightarrow f(0, \overline{\theta})=\theta 
+I\quad\quad\quad& \rightarrow f(0, \theta)=\theta 
 \end{aligned}
 \ee
 %
@@ -391,15 +392,21 @@ Taylor expanding $f(\overline\theta,\theta)$ up to second order in $\theta,\over
 \begin{gathered}
 f_a(\overline{\theta}, \theta)=0+\overline{\theta}_{a}+\theta_{a}+\left.\frac{1}{2} \frac{\partial^{2} f_{a}}{\partial \overline{\theta}_{b} \partial \overline{\theta}_{c}}\right|_{0} \overline{\theta}_{b} \overline{\theta}_{c}\\
 %%% 10 OKAY
-+\left.\frac{1}{2} \frac{\partial^{2} f_{a}}{\partial \theta_{b} \partial \theta_{c}}\right|_{0} \theta_{b} \theta_{c}+
-\frac{\partial^{2} f_{a}}{\partial \theta_{c} \partial \theta_{b}} \theta_{c} \theta_{b}+\cdots
++\left.\frac{1}{2} \frac{\partial^{2} f_{a}}{\partial \theta_{b} \partial \theta_{c}}\right|_{0} \theta_{b} \theta_{c}
++\left.   \frac{\partial^{2} f_{a}}{\partial \overline\theta_{c} \partial \theta_{b}}\right|_{0} \overline\theta_{c} \theta_{b}+\cdots
 \end{gathered}
 \ee
-with
+where we now define
 \be
-\frac{\partial^{2} f_{a}}{\partial \theta_{c} \partial \theta_{b}}  = f_{abc}
+\left.   \frac{\partial^{2} f_{a}}{\partial \overline\theta_{c} \partial \theta_{b}}\right|_{0}  = f_{abc}
 \ee
-and a sum over repeated indices is implied. Since
+and a sum over repeated indices is implied. 
+Be careful here: while the partial derivatives are symmetric, we must keep tracks of the indices!
+The middle index ($b$ in the above case) refers to the derivative w.r.t. $\theta$, which are the parameters of the transformation that comes \emph{first} in the composition. 
+Conversely, the rightmost index ($c$ in the above case) refers to the derivative w.r.t. $\overline\theta$, which are the parameters of the transformation that comes \emph{second} in the composition.
+Of course, $\theta_i$ and $\overline\theta_j$ are just real numbers that commute.
+
+Since
 \be
 \left.
 \frac{\partial^{2} f_{a}}{\partial \overline\theta_{c} \partial \overline\theta_{b}}
@@ -411,7 +418,7 @@ and a sum over repeated indices is implied. Since
 \right|_{\overline\theta=0}
 = 0 
 \ee
-and similarly for $\partial^{2} f_{a} /\left.\partial \theta_{b} \partial \theta_{c}\right|_{0}=0$. Therefore
+and similarly for $\partial^{2} f_{a} /\left.\partial \theta_{b} \partial \theta_{c}\right|_{0}=0$. Therefore only the cross-term $(\overline\theta\theta)$ survives:
 \be
 f(\overline{\theta}, \theta)=\overline{\theta}_{a}+\theta_{a}+f_{abc} \overline{\theta}_{b} \theta_{c}+\ldots
 \ee
@@ -426,7 +433,7 @@ with
 \[
 \left.\frac{\partial^{2} \hat{U}}{\partial \theta_{a} \partial \theta_{b}}\right|_{0} = \hat{T}_{ab} = \hat{T}_{ba}
 \]
-and we use in the composition law Eq.~\eqref{eq:symmetries3}
+and we use in the composition law in Eq.~\eqref{eq:symmetries3}
 \be
 \begin{gathered}
 \hat{U}(\overline{\theta}) \hat{U}(\theta) \simeq\left(I-i \overline{\theta}_{b} \hat{T}_{b}-1 / 2 \overline{\theta}_{b} \overline{\theta}_{c} \hat{T}_{b c}\right) \\ 
@@ -485,10 +492,17 @@ C_{a b c}=f_{a b c}-f_{a c b}=-C_{a c b}
 \label{eq:structureconstants}
 \ee
 the structure constants of $G$.
+Notice that $C_{a b c}=0$ means that $f_{a b c}=f_{a c b}$, 
+which in turn means that it doesn't matter which transformation comes first in
+Eq.~\eqref{eq:t:composition}.
+In other words, that means that the group is Abelian,
+and its generators commute.
 
 Commutation relations in Eq.~\eqref{eq:structureconstants} define the
 \emph{Lie algebra} of the group defined by \(f(\overline{\theta}, \theta)\).
+\end{document}
 
+%%% Thiago: Enviado para a próxima aula!
 \subsection{Conservation laws}
 
 Conservation laws in QM refer to expectation values.
@@ -531,12 +545,5 @@ and since $\ket{\varphi}$ is arbitrary, this means
 \be
 [\hat{\vec{J}}, \hat{H}] = 0
 \ee
-
-
-
-
-
-
-
 
 \end{document}

@@ -9,9 +9,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 08--09}
 %\author{The Author}
-\date{September 01, 2022}                                           % Activate to display a given date or no date
+\date{April 06, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{5}
+\setcounter{section}{3}
 \setcounter{subsection}{7}
 \setcounter{equation}{81}
 
@@ -37,7 +37,7 @@ propagation of the two particles).
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/EPR_illustration.pdf}
 \end{center}
-\item  Suppose, first \(\hat{a}=b=\hat{z}\). Results: if \(A\) finds
+\item  Suppose, first \(\hat{a}=\hat{b}=\hat{z}\). Results: if \(A\) finds
 \(+\hbar / 2, B\) finds \(-\hbar / 2\); if \(A\) finds \(-\hbar / 2, B\) finds \(+\hbar / 2\)
 $\rightarrow$
 that is: the correlation of the measurements
@@ -53,10 +53,10 @@ angular momentum conservation, is
 We observe that this state is an eigenstate of
 $S_{z}^{a} \otimes S_{z}^{b}$:
 \be
-S_{z}^{a} \otimes S_{z}^{b}\ket{\Phi} = \frac{\hbar^2}{4} \ket{\Phi}
+S_{z}^{a} \otimes S_{z}^{b}\ket{\Phi} = -\frac{\hbar^2}{4} \ket{\Phi}
 \ee
 therefore correlation  of the measurements of $A$ and $B$
-\emph{must} give $\frac{\hbar^2}{4}$.
+\emph{must} give $-\frac{\hbar^2}{4}$.
 
 Le Bellac's two travellers \(a\) and \(b\) are given a
 suitcase each, one containing a red ball and
@@ -71,10 +71,8 @@ are made.
 
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item Suppose now \(\vec{a}=\hat{b}=\hat{x}\). Nothing changes with
+\item Suppose now \(\hat{a}=\hat{b}=\hat{x}\). Nothing changes with
 respect to outcomes of measurements, since $\ket{\Phi}$ is
-rotationally invariant (as seen before), \((\Phi)\) is an
-eigenstate of \(\hat{S}_{x}^{(a)} \otimes \hat{S}_{x}^{(b)}\) with eigenvalue \(-\hbar^{2} / 4\):
 %%% 7, aula 08 OK
 rotationally invariant (as seen before), $\ket{\Phi}$ is an
 eigenstate of $S_{x}^{a} \otimes S_{x}^{b}$ with eigenvalue $-\hbar^2/4$:
@@ -86,7 +84,7 @@ S_{x}^{a} \otimes S_{x}^{b}\ket{\Phi} = -\frac{\hbar^2}{4} \ket{\Phi}
 ``realism'' + ``locality principle''
 \begin{itemize}
 \item\emph{Realism:} microscopic systems possess intrinsic
-properties which most have a counterpart
+properties which must have a counterpart
 in the physical theory.
 ``If the value of a physical property can be predicted
 with certainty without disturbing the system in any
@@ -95,7 +93,7 @@ this property'' -- \textit{e.g.} $\hat{S}_x$ and $\hat{S}_y$ have simultaneously
 \item\emph{Locality principle:} if \(A\) and \(B\) make their measurements
 in local regions of spacetime which cannot be
 causally connected, then it is not possible that
-an experimental parameter chosen by \(A, e . g\). The
+an experimental parameter chosen by \(A, e . g\) the
 orientation of her Stern-Gerlach apparatus, can affect
 the properties of particle b.
 \end{itemize}
@@ -132,8 +130,8 @@ and ``local realism'' $\to$ Bell inequalities.
 %%% 1, aula 09
 
 Local realism: even if an experiment cannot
-measure (due to e.g. a technical problem)
-simultaneously \(S_{x}^{(b)}\) and \(S_{y}^{b)}\), these two
+measure (due to \textit{e.g.} a technical problem)
+simultaneously \(S_{x}^{(b)}\) and \(S_{y}^{(b)}\), these two
 quantities \emph{do have} a simultaneous physical
 reality in the local region of spacetime
 attached to particle b $\rightarrow$
@@ -152,9 +150,9 @@ correlations given this hypothesis.
 \right.
 \]
 
-To avoid \(\hbar / 2\) factors, instead of \(\vec{s}\) use \(\vec{\sigma}\)
-\(A(\hat{a})\) : result of measurement \(\vec{\sigma}\) in direction \(\hat{a}\) by \(A\)
-same for \(B(\vec{b})\) )
+To avoid \(\hbar / 2\) factors, instead of \(\vec{s}\) use \(\vec{\sigma}\). Then, 
+\(A(\hat{a})\) : result of measurement \(\vec{\sigma}\) in direction \(\hat{a}\) by \(A\) and
+same for \(B(\vec{b})\),
 \be
 \begin{aligned}
 \vec{\sigma}^{(a)}_{\hat{a}}&=

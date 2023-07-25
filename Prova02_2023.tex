@@ -1,0 +1,151 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+
+\title{Mecânica Quântica Avançada\\%
+Prova 02\\%
+28 de junho -- 07 de julho}
+%\author{The Author}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace*{-4em}
+
+\textbf{Exercício 1:} 
+
+Os boosts de Galileu formam um subgrupo de um grupo maior,
+de 10 dimensões chamado grupo de Galileu de transformações de espaço-tempo:
+
+\[
+\begin{aligned}
+\vec{x} \rightarrow \vec{x}^{\,\prime}&=R \vec{x}+\vec{a}+\vec{v} t \\ 
+t \rightarrow t^{\prime}&=t+s
+\end{aligned}
+\]
+
+onde além do deslocamento \(\vec{a}\) e da velocidade do boost \(\vec{v}\) já estudados, também temos
+uma rotação espacial \(R\) e um deslocamento temporal \(s\). Seja \(g=(R, \vec{a}, \vec{v}, s)\) uma transformação desse tipo.
+
+Mostre que a lei de composição para \(g_{3}=g_{2} g_{1}\), com \(g_{3}=\left(R_{3}, a_{3}, v_{3}, s_{3}\right)\) é:
+\[
+\begin{aligned} 
+R_{3} &=R_{2} R_{1} \\ 
+\vec{a}_{3} &=\vec{a}_{2}+R_{2} \vec{a}_{1}+\vec{v}_{2} s_{1} \\ 
+\vec{v}_{3} &=\vec{v}_{2}+R_{2} \vec{v}_{1} \\ 
+s_{3} &=s_{2}+s_{1} 
+\end{aligned}
+\]
+
+
+\textbf{Exercício 2:}
+
+(a) Use as relações
+\[
+\begin{aligned}
+\langle j^{\prime} m^{\prime}|\vec{J}^{\,2}| j m\rangle &=j(j+1) \hbar^2 \,\delta_{j^{\prime} j} \delta_{m^{\prime} m} \\
+\langle j^{\prime} m^{\prime}|J_{0}| j m\rangle &=m \hbar \, \delta_{j^{\prime} j} \,\delta_{m^{\prime} m} \\
+\langle j^{\prime} m^{\prime}|J_{\pm}| j m\rangle &=\sqrt{j(j+1)-m(m\pm1)}\,\delta_{j^{\prime} j} \delta_{m^{\prime}, m \pm 1}
+\end{aligned}
+\]
+para encontrar os operadores $S_{x}, S_{y}$, and $S_{z}$ para spin $1 / 2$ 
+-- obviamente nós sabemos a resposta de cor, mas \textbf{calcule explicitamente}!
+
+(b) Novamente usando essas relações, calcule as representações de matriz $3 \times 3$ 
+de $J_{x}, J_{y}$, e $J_{z}$ para momento angular $j=1$.
+
+(c) Mostre que para $j=1$, $J_{x}, J_{y}$, and $J_{z}$ estão relacionados aos geradores infinitesimais $T_{x}, T_{y}$, e $T_{z}$ 
+\[
+T_{x}=\left(\begin{array}{ccc}0 & 0 & 0 \\ 0 & 0 & -\mathrm{i} \\ 0 & \mathrm{i} & 0\end{array}\right), \quad 
+T_{y}=\left(\begin{array}{ccc}0 & 0 & \mathrm{i} \\ 0 & 0 & 0 \\ -\mathrm{i} & 0 & 0\end{array}\right), \quad 
+T_{z}=\left(\begin{array}{ccc}0 & -\mathrm{i} & 0 \\ \mathrm{i} & 0 & 0 \\ 0 & 0 & 0\end{array}\right)
+\]
+por uma transformação unitária que leva as componentes Cartesianas do vetor unitário $\hat{r}$ às suas componentes esféricas
+\[
+\begin{array}{c}
+\hat{r}=(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta) \\ 
+Y_{1}^{0}=\sqrt{\frac{3}{4 \pi}} \hat{r}_{0}, \quad Y_{1}^{\pm}=\mp \sqrt{\frac{3}{4 \pi}} \frac{\hat{r}_{x} \pm \mathrm{i} \hat{r}_{y}}{\sqrt{2}}=\sqrt{\frac{3}{4 \pi}} \hat{r}_{\pm 1}
+\end{array},
+\]
+\textit{i.e.} $J_{i}=U^{\dagger} T_{i} U$ com
+\[
+U=\frac{1}{\sqrt{2}}\left(\begin{array}{ccc}-1 & 0 & 1 \\ -\mathrm{i} & 0 & -\mathrm{i} \\ 0 & \sqrt{2} & 0\end{array}\right)
+\]
+
+(d) Calcule a matriz de rotação $d^{(1)}(\theta)$:
+\[
+d^{(1)}(\theta)=\exp \left(-\mathrm{i} \theta J_{y}\right)
+\]
+e verifique que ela tem a forma.
+\[
+d^{(1)}(\theta)=\left(\begin{array}{ccc}\frac{1}{2}(1+\cos \theta) & -\frac{1}{\sqrt{2}} \sin \theta & \frac{1}{2}(1-\cos \theta) \\ \frac{1}{\sqrt{2}} \sin \theta & \cos \theta & -\frac{1}{\sqrt{2}} \sin \theta \\ \frac{1}{2}(1-\cos \theta) & \frac{1}{\sqrt{2}} \sin \theta & \frac{1}{2}(1+\cos \theta)\end{array}\right).
+\]
+Dica: Mostre que $J_{y}^{3}=J_{y}$.
+
+
+\textbf{Exercício 3:}
+
+Considere o oscilador harmônico quântico unidimensional, com potencial
+\[
+V(x) = \frac{1}{2} m\omega^2 x^2.
+\]
+No limite não-relativístico, sabemos que a energia cinética $T$ e o momento $p$ são relacionados como
+\[
+T = \frac{p^2}{2M},
+\]
+os autoestados são bem conhecidos,
+e a energia do estado fundamental é $\frac{1}{2}\hbar\omega$.
+Lembrando agora que a energia cinética relativística $T = E-mc^2$, 
+faça uma correção relativística na relação entre $T$ e $p$,
+e use teoria de perturbação para calcular a mudança $\Delta E$ na energia do estado fundamental até ordem $1/c^2$.
+
+
+\textbf{Exercício 4:}
+
+Considere três partículas idênticas, não-interagentes, de spin-1.
+
+(a) Suponha que a parte espacial do vetor de estado seja simétrica sob troca de qualquer par.
+Vamos usar a notação $\ket{m}$ para um estado de uma partícula, 
+com  a projeção $m = \{+,0,-\}$
+Se possível, construa o estado de três partículas nos seguintes casos:
+
+\hspace{2em}(i) Todas as partículas no estado $\ket{+}$. 
+Este estado pode ser escrito como um autoestado do spin total $\vec{S}^2$? Se sim, construa esse autoestado e diga qual o spin total.
+
+\hspace{2em}(ii) Duas partículas no estado $\ket{+}$ e uma no estado $\ket{0}$. 
+Este estado pode ser escrito como um autoestado do spin total $\vec{S}^2$? Se sim, construa esse autoestado e diga qual o spin total.
+
+\hspace{2em}(iii) As três partículas em estados de spin diferentes.
+Este estado pode ser escrito como um autoestado do spin total $\vec{S}^2$? Se sim, construa esse autoestado e diga qual o spin total.
+
+(b) Repita o item (a), mas agora suponha que a parte espacial do vetor de estado seja antissimétrica sob troca de qualquer par.
+
+
+\textbf{Exercício 5:}
+
+Considere o hamiltoniano:
+%
+\[
+\hat{H} = \sum _ { \alpha } T _ { \alpha } \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \alpha } + \sum _ { \alpha , \beta , \gamma } V _ { \alpha \beta \gamma } \left( \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \beta } \hat{a} _ { \gamma } + \hat{a} _ { \alpha } ^ { \dagger } \hat{a} _ { \beta } ^ { \dagger } \hat{a} _ { \gamma } \right)
+\]
+onde $T^*_\alpha = T_\alpha$, $V^*_{\alpha\beta\gamma} = V_{\alpha\beta\gamma}$ é simétrico em todos os índices, e os operadores $a_\alpha$ e $a_\alpha^\dagger$ satisfazem regras de comutação bosônicas.
+
+(a) Este hamiltoniano é hermiteano? Prove sua resposta.
+
+(b) Este hamiltoniano conserva o número de partículas $N = \sum_\alpha a_\alpha^\dagger  a_\alpha$?
+Prove sua resposta.
+
+\end{document}

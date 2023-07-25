@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 06}
 %\author{The Author}
-\date{August 25, 2022}                                           % Activate to display a given date or no date
+\date{March 30, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{4}
+\setcounter{section}{2}
 %\setcounter{subsection}{2}
 %\setcounter{equation}{22}
 
@@ -136,8 +136,8 @@ Acts on $|\varphi \otimes \chi\rangle$ by definition as
 \begin{gathered}
 \hat{C}|\varphi \otimes \chi\rangle=
 |\hat{C}(\varphi \otimes \chi)\rangle=
-|(\hat{A} \otimes \hat{B})(\varphi \otimes x)\rangle\\
-=|\hat{A} \varphi \otimes \hat{B} x\rangle
+|(\hat{A} \otimes \hat{B})(\varphi \otimes \chi)\rangle\\
+=|\hat{A} \varphi \otimes \hat{B} \chi\rangle
 \end{gathered}
 \ee
 Matrix elements of $\hat{C}$ in $\{|n \otimes m\rangle\}$ basis of $H_{1}^{N} \otimes H_{2}^{M}$:
@@ -158,8 +158,8 @@ its elements in $\{(n \times m)\}$ are denoted by
 \item $\hat{A} = I_1$ (identity in $H_{1}^{N}$)
 \be
 \begin{gathered}
-\hat{A} \otimes \hat{B}|\varphi \otimes x\rangle = \left(I_{1} \otimes \hat{B}\right)|\varphi \otimes x\rangle = |\varphi \otimes \hat{B} \chi\rangle \\ 
-\left\langle n^{\prime} \otimes m^{\prime}|\hat{A} \otimes \hat{B}| n \otimes m\right\rangle=\left\langle n^{\prime}|I| n\right\rangle\left\langle n^{\prime}|\hat{B}| m\right\rangle\\
+\hat{A} \otimes \hat{B}|\varphi \otimes \chi\rangle = \left(I_{1} \otimes \hat{B}\right)|\varphi \otimes \chi\rangle = |\varphi \otimes \hat{B} \chi\rangle \\ 
+\left\langle n^{\prime} \otimes m^{\prime}|\hat{A} \otimes \hat{B}| n \otimes m\right\rangle=\left\langle n^{\prime}|I| n\right\rangle\left\langle m^{\prime}|\hat{B}| m\right\rangle\\
 = \delta_{n^{\prime}n} B_{m^{\prime}m}
 \end{gathered}
 \ee
@@ -470,17 +470,19 @@ Physical interpretation of $\vec{b}$:
 \left[
  \frac{1}{2} (I + \vec{b}\cdot\vec{\sigma}) \sigma_i
 \right]\\
-&=\frac{1}{2} \hbar\left[1 / 2 \underbrace{\Tr \sigma_{i}}_0
-+1 / 2 b_{j} \underbrace{\Tr \sigma_{j} \sigma_{i}}%
-_{\delta_{ji} + i \epsilon_{ijk}\sigma_k}
-\right]\\
+&=\frac{1}{2} \hbar\left[\frac{1}{2} \underbrace{\Tr \sigma_{i}}_0
++\frac{1}{2} b_{j} \Tr \sigma_{j} \sigma_{i}
+\right]%
+\quad,\text{but } \sigma_{j} \sigma_{i} = 
+\underbrace{\delta_{ji}}_{I} \,+ 
+\underbrace{\epsilon_{ijk}\sigma_k}_{\text{trace is null}}\\
 &=\frac{1}{2} \hbar \frac{1}{2} b_{i} \Tr I=\frac{1}{2} \hbar b_{i}
 \end{aligned}
 \ee
 which means
 \be
 \boxed{
-\langle\vec{S}\rangle = \frac{1}{2} \hbar \vec{b}
+\langle\vec{S}\,\rangle = \frac{1}{2} \hbar \vec{b}
 }
 \ee
 so
@@ -492,10 +494,10 @@ so
 \end{gathered}
 \]
 
-\emph{Bloch sphere:} sphere of unit radius, $\vec{b} = \vec{OP}$.
-Let two other arbitrary unit vectors in that sphere $\hat{n_1}$, $\hat{n_2}$:
+\emph{Bloch sphere:} sphere of unit radius, $\vec{b} = \overrightarrow{OP}$.
+Let two other arbitrary unit vectors in that sphere $\hat{n}_1$, $\hat{n}_2$:
 \be
-\hat{n_1} = \vec{OP_1}, \hat{n_2} = \vec{OP_2}
+\hat{n}_1 = \overrightarrow{OP_1}, \hat{n}_2 = \overrightarrow{OP_2}
 \ee
 Can always write $\vec{b}$ in terms of the two unitary vectors (\emph{Exercise}):
 \be
@@ -516,8 +518,8 @@ $|\vec{b}| \leqslant 1$ (more on that later).
 
 In terms of $\hat{n}_1$ and $\hat{n}_2$, $\rho$ matrix can be written as:
 \be
-\begin{aligned} p=1 / 2(1+\vec{b} \cdot \vec{\sigma}) 
-&=1 / 2\left[1+(1-\lambda) \hat{n}_{1} \cdot \vec{\sigma}+\lambda \hat{n_{2}} \cdot \vec{\sigma}\right] \\ 
+\begin{aligned} \rho = 1 / 2(1+\vec{b} \cdot \vec{\sigma}) 
+&=1 / 2\left[1+(1-\lambda) \hat{n}_{1} \cdot \vec{\sigma}+\lambda \hat{n}_{2} \cdot \vec{\sigma}\right] \\ 
 &=(1-\lambda) \frac{1}{2}\left(1+\hat{n}_{1} \cdot \vec{\sigma}\right)+\lambda \frac{1}{2}\left(1+\hat{n}_{2}\cdot \vec{\sigma}\right) \end{aligned}
 \ee
 $\frac{1}{2}(1+\hat{n}_{1}\cdot\vec{\sigma})$: pure state (polarized), since $\hat{n}_{1}$ is a unit vector.
@@ -537,7 +539,7 @@ state described by $\rho=\frac{1}{2}(1+\vec{b} \cdot \vec{\sigma})$.
 Important to distinguish \emph{pure} and \emph{mixture} states.
 Example: single-spin state, eigenstate of $\hat{S}_x$
 \be
-|x\rangle=\frac{1}{\sqrt{2}}[|+\rangle+|-\rangle]=|+, \hat{x}\rangle
+|\chi\rangle=\frac{1}{\sqrt{2}}[|+\rangle+|-\rangle]=|+, \hat{x}\rangle
 \ee
 \be
 \rho=\frac{1}{2}
@@ -581,7 +583,7 @@ When $\vec{B} = B\hat{z}$ in Stern-Gerlach apparatus:
 50\% $\uparrow(+\hat{z})$ and 50\% $\downarrow(-\hat{z})$
 When $\vec{B} = B\hat{n}$, \emph{again}
 50\% $(+\hat{n})$ and 50\% $(-\hat{n})$;
-trivially $\vec{b}=1 / 2 \hat{n}+1 / 2(-\hat{n})$
+trivially if $\vec{b}=1 / 2 \hat{n}+1 / 2(-\hat{n})$
 \be
 1/2\times
 \underbrace{1/2(1+\hat{n} \cdot \vec{\sigma})}%
@@ -604,7 +606,7 @@ $1/2
 $ (unpolarized).
 The former is a \emph{coherent} superposition $\ket{+}$, $\ket{-}$ with
 well-defined phase for finding $\ket{+}$, $\ket{-}$.
-The latter is an \emph{incoherent},
+The latter is an \emph{incoherent} mixture,
 phase is lost.
 \emph{Phase information} $\to$ in the \emph{off-diagonal} elements of $\rho$,
 which are called coherences of the state vector.

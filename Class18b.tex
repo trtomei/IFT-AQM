@@ -6,20 +6,17 @@
 
 \title{Advanced Quantum Mechanics\\Class 18 (b)}
 %\author{The Author}
-\date{October 11, 2022}                                           % Activate to display a given date or no date
+\date{April 25, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{4}
-\setcounter{subsubsection}{3}
+\setcounter{section}{4}
+\setcounter{subsection}{6}
 \setcounter{equation}{81}
 
 \begin{document}
 \maketitle
 
 %%% 11 OKAY
-\subsection{Conservation laws (continued)}
-
-\subsubsection{Rotation matrices in Hilbert Space (continued)}
+\subsection{Rotation matrices in Hilbert Space (continued)}
  
 Under $R$, $\ket{jm}$ transforms to $\ket{jm}_R$ as
 \be
@@ -46,14 +43,14 @@ in the basis $\ket{jm}$ this is given by
 \hat{U}[R_1]\ket{jm}=\\
 \sum_{m^{\prime\prime}} 
 D^{(j)}_{m^\prime m^{\prime\prime}}[R_2]
-D^{(j)}_{m^{\prime\prime m}}[R_1] =
+D^{(j)}_{m^{\prime\prime} m}[R_1] =
 \pm D^{(j)}_{m^\prime m}[R_2R_1]
 \end{gathered}
 \ee
 
 Let us consider now the matrices \(D^{(j)}[R]\) for a generic \(R\).
 In principle, one needs three parameters to characterize \(R\):
-- usually they are taken to  be the Euler angles \(\alpha, \beta, \gamma\)
+-- usually they are taken to  be the Euler angles \(\alpha, \beta, \gamma\)
 %%% 12 OKAY
 (see \textit{e.g.} Toledo Piza, Sakurai). But it is possible
 to simplify the discussion by considering a rotation
@@ -63,7 +60,7 @@ parameters, the angles \(\theta\) and \(\phi\), and it can be obtained
 by two sequential rotations:
 \begin{enumerate}
 \item rotation by $\theta$ about $y$: \(\hat{z} \stackrel{R_{y}(\theta)}{\longrightarrow} \hat{z}^{\prime}\)
-\item rotation by $\phi$   about $y$: \(\hat{z}^{\prime}\stackrel{R_{z}(\phi)}{\longrightarrow} \hat{n}\)
+\item rotation by $\phi$   about $z$: \(\hat{z}^{\prime}\stackrel{R_{z}(\phi)}{\longrightarrow} \hat{n}\)
 \end{enumerate}
 \be
 R(\theta, \phi)=e^{-i / \hbar \phi \hat{J_{z}}} e^{-i / \hbar \theta \hat{J}_{y}}
@@ -191,7 +188,7 @@ and only one for \(j\) integer.
 
 \emph{Example:} $j=1/2$
 \[
-d^{1 / 2}(\theta)=e^{-i \theta / 2 \sigma_{y}}=\cos \theta / 2-i \sin \theta / 2
+d^{1 / 2}(\theta)=e^{-i \theta / 2 \sigma_{y}}= \mathbf{1} \cos \theta / 2-i \sigma_y \sin \theta / 2
 \]
 and its representation in the basis
 $\ket{jm} = \ket{1/2,\pm1/2} \to \{\ket{+},\ket{-}\}$

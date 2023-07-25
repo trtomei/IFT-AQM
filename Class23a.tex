@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 23 (a)}
 %\author{The Author}
-\date{November 1, 2022}                                           % Activate to display a given date or no date
+\date{May 23, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
+\setcounter{section}{4}
 
 \begin{document}
 \maketitle
@@ -32,7 +32,7 @@ where $\lambda$ is a parameter.
 Let $\{\ket*{\varphi_{n}^{(0)}}\}$ be a complete set of eigenstates of $\hat{H}_{0}$,
 with eigenvalues $E_{n}^{(0)}$ :
 \be
-\left(H_{0}-E_{n}^{(0)}\right)\left|\varphi_{n}^{(0)}\right\rangle= 0
+\left(\hat{H}_{0}-E_{n}^{(0)}\right)\left|\varphi_{n}^{(0)}\right\rangle= 0
 \ee
 The aim is to find the eigenstates $\left\{\left|\varphi_{N}\right\rangle\right\}$ and eigenvalues
 $E_{N}$ of the complete Hamiltonian:
@@ -158,7 +158,7 @@ E_{N} &=E_{n}^{(0)}+\lambda\left\langle\varphi_{n}^{(0)}|\hat{W}| \varphi_{n}^{(
 }
 \ee
 This is a typical characteristic of perturbation theory: using the same matrix elements
--- $\bra*{\varphi_{n}^{(0)}}\hat{W}\ket*{\varphi_{n}^{(0)}}$ in this case --,
+-- $\bra*{\varphi_{m}^{(0)}}\hat{W}\ket*{\varphi_{n}^{(0)}}$ in this case --,
 one can determine the eigenvalues to one order better than the eigenstates:
 $\mathcal{O}(\lambda^2)$ in the former, $\mathcal{O}(\lambda)$ in the latter.
 
@@ -267,8 +267,9 @@ on a state $\bar{n}^\prime$ in $\overline{H}^{(n)}$:
 \be
 \begin{gathered}
 c_{\bar{n}}\left(E_{\bar{n}}^{(0)}-E_{N}\right)+
-\sum_{\bar{m}} c_{\bar{m}}\left(\lambda\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle\right.\\
-\left.+\lambda^{2} \sum_{m \neq \bar{m}} \frac{\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{m}^{(0)}\right\rangle\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle}{\overline{E}-E_{m}^{(0)}}\right)=0
+\sum_{\bar{m}} c_{\bar{m}} \times \\
+\left(\lambda\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle
+	 +\lambda^{2} \sum_{m \neq \bar{m}} \frac{\left\langle\varphi_{\bar{n}}^{(0)}|\hat{W}| \varphi_{m}^{(0)}\right\rangle\left\langle\varphi_{m}^{(0)}|\hat{W}| \varphi_{\bar{m}}^{(0)}\right\rangle}{\overline{E}-E_{m}^{(0)}}\right)=0
 \end{gathered}
 \label{eq:g32}
 \ee
@@ -285,6 +286,7 @@ form, $\hat{H}_{\text{eff}}$ can be written as:
 \hat{H}_{\text{eff}} = \lambda \hat{\overline{P}} \hat{W} \hat{\overline{P}} +
 \lambda^{2}  \hat{\overline{P}} \hat{W} \frac{\hat{\overline{Q}}}{\overline{E} - \hat{H}_0} \hat{W}
 \hat{\overline{P}}
+\label{eq:g34}
 \ee
 with 
 \be
@@ -299,7 +301,7 @@ From this, one obtains the sought
 perturbed eigenvalues $E_a$.
 
 \emph{Simplest situation:} $W$ only has matrix elements
-within $\overline{H}^{(n)}$: the $\mathcal{O}(\lambda^2)$ term in (34) is zero, and the
+within $\overline{H}^{(n)}$: the $\mathcal{O}(\lambda^2)$ term in \eqref{eq:g34} is zero, and the
 calculation amounts to diagonalizing the
 perturbation with $\overline{H}^{(n)}$.
 
@@ -321,22 +323,82 @@ Example:
 
 $|1\rangle,|2\rangle, |3\rangle$ unperturbed eigenvectors.
 
+\medskip
+
+(a) \emph{Correction to} $E_3^{(0)}$, $\ket{\varphi_3^{0}} = \ket{3}$:
+
+\[
+E_{3}=E_{3}^{(0)}+\sum_{m=1}^{3}\left\langle\varphi_{m}^{(0)}|\lambda \hat{W}| \varphi_{m}^{(0)}\right\rangle+\sum_{m \neq 3} \frac{\left|\left\langle\varphi_{m}^{(0)}|\lambda \hat{W}| \varphi_{3}^{(0)}\right\rangle\right|^{2}}{E_{m}^{(0)}-E_{3}^{(0)}}
+\]
+with
+\[
+\hat{W} = w\left(\Vstrut\op{1}{3} + \op{2}{3} + \op{3}{1} + \op{3}{2}\right)
+\]
+the second term is zero, so for the perturbed energy we have
+\[
+E_3=E_{0}+0-\frac{1}{E_{0}}\left(\lambda^{2} w^{2}+\lambda^{2} w^{2}\right)=E_{0}-2 \frac{\lambda^{2} w}{E_{0}}
+\]
+while for the perturbed state
+\[
+\begin{aligned}\left|\varphi_{3}\right\rangle 
+& =|3\rangle+\sum_{m \neq 3} \frac{\left\langle\varphi_{m}^{(0)}|\lambda \hat{W}| 3\right\rangle}{E_{3}^{(0)}-E_{m}^{(0)}}\left|\varphi_{m}^{(0)}\right\rangle \\ 
+& =|3\rangle+\frac{1}{E_{0}}(\lambda w|1\rangle+\lambda w|2\rangle) \\ 
+\end{aligned}
+\]
+
+\medskip
+
+(b) \emph{Correction to} $E_1^{(0)}, E_2^{(0)}$ and $\ket{1}, \ket{2}$ 
+$\rightarrow$ these are degenerated, $E_1^{(0)} = E_2^{(0)} = 0$
+-- need to solve exact eigenvalue
+problem in subspace of $\ket{1} and \ket{2}$.
+\[
+\hat{H}_{\text{eff}} = \lambda \hat{\overline{P}} \hat{W} \hat{\overline{P}} +
+\lambda^{2}  \hat{\overline{P}} \hat{W} \frac{\hat{\overline{Q}}}{\overline{E} - \hat{H}_0} \hat{W} \hat{\overline{P}}
+\]
+writing the $\hat{\overline{P}}$ and $\hat{\overline{Q}}$ operators
+\[
+\hat{\overline{P}} = \op{1} + \op{2},\quad \hat{\overline{Q}} = \op{3}
+\]
+so
+\[
+\begin{aligned}
+\hat{\overline{P}} \hat{W} \hat{\overline{P}} 
+&= w\left(\Vstrut\op{1}+\op{2}\right)\cdot \left(\Vstrut\op{1}{3}+\ldots+\op{3}{2}\right) \cdot\left(\Vstrut\op{1}+\op{2}\right)\\
+&= 0
+\end{aligned}
+\]
+but
+\[
+\begin{aligned}
+&\hat{\overline{P}} \hat{W} \frac{\hat{\overline{Q}}}{\overline{E} - \hat{H}_0} \hat{W} \hat{\overline{P}}\\
+&=\hat{\overline{P}}\left(\Vstrut|1\rangle\langle 3|+\cdots+| 3\rangle\langle 2|\right) \frac{|3\rangle\langle 3|}{0-E_{0}}
+\left(\Vstrut|1\rangle\langle 3|+\cdots+(3\rangle\langle 2|\right) \hat{\overline{P}}  w^{2}\\
+&=-\frac{w^2}{E_0}\hat{\overline{P}} \left(\Vstrut\ket{1}+\ket{2}\right)\left(\Vstrut\bra{1}+\bra{2}\right) \hat{\overline{P}}\\
+&=-\frac{w^2}{E_0}\left(\Vstrut\op{1}+\op{2}+\op{1}{2}+\op{2}{1}\right)
+\end{aligned}
+\]
+so we finally have the expression for $\hat{H}_{\text{eff}}$
+\[
+\hat{H}_{\text{eff}} = -\frac{w^2}{E_0} \begin{pmatrix}1&1\\1&1\end{pmatrix}
+\]
+which we now diagonalize. 
+The eigenvalues are $E_{\text{eff}} = 0$ and $ -2\frac{\lambda^2w^2}{E_0}$
+and the eigenvectors are:
+\[
+\begin{aligned}
+E_{\text{eff}} = 0
+\Rightarrow \ket{\psi_0} = \frac{1}{\sqrt{2}}(\ket{1}-\ket{2})\\
+E_{\text{eff}} = -2\frac{\lambda^2w^2}{E_0}
+\Rightarrow \ket{\psi_-} = \frac{1}{\sqrt{2}}(\ket{1}+\ket{2})
+\end{aligned}
+\]
+So, for the complete solution:
+\[
+\begin{aligned}
+\ket{\varphi_1} &= \frac{1}{\sqrt{2}}(\ket{1}-\ket{2}),               \quad E_1 = 0 \quad\checkmark\\
+\ket{\varphi_2} &= \frac{1}{\sqrt{2}}(\ket{1}+\ket{2}),               \quad E_2 = -2\frac{\lambda^2w^2}{E_0} \quad\checkmark\\
+\ket{\varphi_3} &=\ket{3} + \frac{\lambda w}{E_{0}}(\ket{1}+\ket{2}), \quad E_3 = E_{0}-2 \frac{\lambda^{2} w}{E_{0}} \quad\checkmark
+\end{aligned}
+\]
 \end{document}
-
-
-$\overline{H}^{(n)}$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

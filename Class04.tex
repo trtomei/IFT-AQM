@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 04}
 %\author{The Author}
-\date{August 18, 2022}                                           % Activate to display a given date or no date
+\date{March 23, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{3}
+\setcounter{section}{1}
 
 \section{Systems with a finite number of levels}
 
@@ -33,7 +33,7 @@ First, consider the $\pi$ electrons do not interact with each
 other or with those $\sigma$ or with C; consider \emph{one} of the electrons
 
 \begin{center}
-$\pi$-bond: (C\textsubscript{2}H\textsubscript{2})\textsuperscript{++}\\[2ex]
+$\pi$-bond: (C\textsubscript{2}H\textsubscript{2})\textsuperscript{++} + e\textsuperscript{$-$}\\[2ex]
 \quad
 \includegraphics[width=0.4\textwidth]{Figures/electronAroundCAtom1.pdf}\hfill
 \includegraphics[width=0.4\textwidth]{Figures/electronAroundCAtom2.pdf}
@@ -47,7 +47,7 @@ Right: $\ket{\varphi_2}$ state, in which the electron is around C atom 2.
 $H$ is two dimensional, $\{\ket{\varphi_1},\ket{\varphi_2}\}$ basis of the
 noninteracting part $\hat{H}_0$:
 \be
-\hat{H}_{0}=\left(\begin{array}{cc}E_{0} & 0 \\ 0 & E_{0}\end{array}\right), 
+\hat{H}_{0}=\begin{pmatrix}E_{0} & 0 \\ 0 & E_{0}\end{pmatrix}, 
 \quad 
 \hat{H}_{0}\left|\varphi_{1,2}\right\rangle=E_{0}\left|\varphi_{1,2}\right\rangle
 \ee
@@ -55,11 +55,11 @@ noninteracting part $\hat{H}_0$:
 Next, include interaction with C $\to$ electron can jump
 \be
 \hat{H}=\hat{H}_{0}+\hat{H}_{\text {int}}=
-\left(\begin{array}{cc}E_{0} & -A \\ -A & E_{0}\end{array}\right),\quad A>0
+\begin{pmatrix}E_{0} & -A \\ -A & E_{0}\end{pmatrix},\quad A>0
 \ee
 
 $\ket{\varphi_1}$, $\ket{\varphi_2}$ are \emph{not} eigenstates of $\hat{H}$, but can
-be used to expand the eigenstates $\to$ $\ket{\chi_{\pm}}$; can be seen in Chapter 2, Sec. 2.3.2 of Le~Bellac's book.
+be used to expand the eigenstates $\to$ $\ket{\chi_{\pm}}$; can be seen in Chapter 2, Sec.~2.3.2 of Le~Bellac's book.
 The symmetric $(1\leftrightarrow2)$ state:
 \be
 \begin{array}{l}
@@ -140,7 +140,7 @@ A better approximation is made when taking into
 account delocalization over the entire chain.
 
 Generalization: $6 \to N$ $C$ atoms.
-$\ket{\varphi_n}$: (noninteracting) state near $n$-th atom,
+Let $\ket{\varphi_n}$: (noninteracting) state near $n$-th atom,
 $n=0,1,\ldots,N-1$.
 Impose periodic boundary conditions: atoms $n$ and $n+N$
 are identical. Let
@@ -203,16 +203,20 @@ _{|\varphi_{n}\rangle}
 \quad\therefore\quad
 \left(\hat{U}_{p}\right)^{N}=I
 \ee
-so
+On the other hand, if we act $N$ times on a posited eigenvector $|\chi\rangle$ of $\hat{U}_p$
 \be
-e^{i N \delta}=1 \quad N \delta=2 \pi s \quad s=0,1, \ldots, N-1
+\begin{gathered}
+\left(\hat{U}_{p}\right)^{N} |\chi\rangle = e^{i N \delta} |\chi\rangle = |\chi\rangle \Rightarrow\\
+e^{i N \delta} = 1 \Rightarrow N \delta=2 \pi s, \quad s=0,1, \ldots, N-1
+\end{gathered}
 \ee
-and
+and we label the eigenvalues and eigenvalues by the values of $s$
 \be
 \delta \rightarrow \delta_{s}=\frac{2\pi}{N} s, \quad s=0, \ldots, N-1
 \ee
 are $N$ distinct eigenvalues.
-So $\hat{U}_{p}+\hat{U}_{p}^{\dagger}$ is Hermitian, orthonormal basis in $H$.
+$\hat{U}_{p}+\hat{U}_{p}^{\dagger}$ is Hermitian, 
+so its eigenvectors form an orthonormal basis in $H$.
 
 Let $\ket{\chi_s}$ be a common eigenvector of $\hat{H}$ and $\hat{U}_p$:
 \be
@@ -254,10 +258,9 @@ C_{n}=e^{i n \delta_{s}} C_{0}
 and the eigenvector corresponding to
 eigenvalue $e^{i\delta_s}$ is:
 \[
-\begin{aligned}
-|\chi_{s}\rangle &=\sum_{n=0}^{N-1} C_{n} 
-|\varphi_{n}\rangle=\sum_{n=0}^{N-1} C_{0} e^{i n \delta_{s}}\left|\varphi_{n}\right\rangle \\ &=C_{0} \sum_{n=0}^{N-1} e^{i n \delta_{s}}\left|\varphi_{n}\right\rangle 
-\end{aligned}
+|\chi_{s}\rangle =\sum_{n=0}^{N-1} C_{n} 
+|\varphi_{n}\rangle=\sum_{n=0}^{N-1} C_{0} e^{i n \delta_{s}}\left|\varphi_{n}\right\rangle
+=C_{0} \sum_{n=0}^{N-1} e^{i n \delta_{s}}\left|\varphi_{n}\right\rangle 
 \]
 where
 \be

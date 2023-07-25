@@ -24,51 +24,53 @@
 \newcommand{\poldr}{\rotatebox[origin=c]{45}{\ensuremath{\leftrightarrow}}}
 \newcommand{\poldl}{\rotatebox[origin=c]{-45}{\ensuremath{\leftrightarrow}}}
 
-\title{Advanced Quantum Mechanics\\Exercises Set 3\vspace{-0.5em}}
+\title{Advanced Quantum Mechanics\\Exercises Set 2$^{\,\prime}$\\(Fill the gaps)\vspace{-0.5em}}
 %\author{The Author}
-\date{Due date: September 29\textsuperscript{th}, 2022}
+\date{Due date: June 30\textsuperscript{th}, 2023}
 
 \begin{document}
 \maketitle
 
 
-\textbf{Exercise 1:} Show that a state \(|\Psi\rangle\) of a bipartite system is a product state if and only if it has Schmidt number 1.
+\textbf{Exercise 1:} Show that a state \(|\Psi\rangle\) of a bipartite system is a product state if and only if it has Schmidt number $n_s$ =  1.
 
 
-\textbf{Exercise 2:} Show that a state \(|\Psi(1,2)\rangle\) of a bipartite system is a product state if and only if \(\rho^{(1)}=\)
-\(\operatorname{Tr}_{2}|\Psi(1,2)\rangle\) (and thus also \(\left.\rho^{(2)}=\operatorname{Tr}_{1}|\Psi(1,2)\rangle\right)\) is a pure state.
+\textbf{Exercise 2:} Show that a state \(|\Psi(1,2)\rangle\) of a bipartite system is a product state if and only if \(\hat{\rho}^{(1)}=\)
+\(\operatorname{Tr}_{2}|\Psi(1,2)\rangle\) (and thus also \(\left.\hat{\rho}^{(2)}=\operatorname{Tr}_{1}|\Psi(1,2)\rangle\right)\) is a pure state.
 
 
-\textbf{Exercise 3:} Let \(\rho^{(1)}\) be a state operator in Hilbert space \({H}_{1}\) written in terms of normalized state vectors
+\textbf{Exercise 3:} Let \(\hat{\rho}^{(1)}\) be a state operator in Hilbert space \({H}_{1}\) written in terms of normalized state vectors
 \(\left\{\left|\varphi_{i}\right\rangle, i=1, \cdots, n\right\}\) as
 \be
-\rho^{(1)}=\sum_{i=1}^{n} p_{i}\left|\varphi_{i}\right\rangle\left\langle\varphi_{i}\right| \quad \text{ with }\quad p_{i} \geq 0 \quad \text{ and } \quad \sum_{i=1}^{n} p_{i}=1
+\hat{\rho}^{(1)}=\sum_{i=1}^{n} p_{i}\left|\varphi_{i}\right\rangle\left\langle\varphi_{i}\right| \quad \text{ with }\quad p_{i} \geq 0 \quad \text{ and } \quad \sum_{i=1}^{n} p_{i}=1
 \ee
 Use a set of mutually orthogonal and normalized vectors \(\left\{\left|\chi_{i}\right\rangle, i=1, \cdots, n\right\}\) from a Hilbert space
 \({H}_{2}\) to construct an entangled pure bipartite state \(|\Psi(1,2)\rangle\) in \({H}_{1} \otimes {H}_{2}\) such that
 \be
-\hat{\rho}^{(1)}=\operatorname{Tr}_{2} \rho^{(12)}, \quad \text { with } \quad \rho^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|
+\hat{\rho}^{(1)}=\operatorname{Tr}_{2} \hat{\rho}^{(12)}, \quad \text { with } \quad \hat{\rho}^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|
 \ee
-\(\rho^{(12)}\) is then an extension of \(\rho^{(1)}\).
+\(\hat{\rho}^{(12)}\) is then an extension of \(\hat{\rho}^{(1)}\).
 
 
 \textbf{Exercise 4:} Show that two purifications \(|\Psi(1,2)\rangle\) and \(|\Phi(1,2)\rangle\) in \({H}_{1} \otimes {H}_{2}\) differ by a unitary operator.
 
 
 \textbf{Exercise 5:} Let \(\hat{\rho}^{(12)}\) be a general state operator (\emph{not necessarily pure}) in a tensor-product Hilbert space
-\({H}_{1} \otimes {H}_{2}\). Show that if \(\hat{\rho}^{(1)}\) is a pure state, then \(\hat{\rho}^{(12)}\) is a product \(\rho^{(1)} \otimes \hat{\rho}^{(2)}\), with \(\rho^{(2)}\) in \({H}_{2}\)
-(where \(\rho^{(2)}\) can be mixed). Hint: Choose an arbitrary purification of \(\hat{\rho}^{(12)}\) and make use of
+\({H}_{1} \otimes {H}_{2}\). Show that if \(\hat{\rho}^{(1)}\) is a pure state, then \(\hat{\rho}^{(12)}\) is a product \(\hat{\rho}^{(1)} \otimes \hat{\rho}^{(2)}\), with \(\hat{\rho}^{(2)}\) in \({H}_{2}\)
+(where \(\hat{\rho}^{(2)}\) can be mixed). Hint: Choose an arbitrary purification of \(\hat{\rho}^{(12)}\) and make use of
 the result of Exercise 2.
 
 
 \textbf{Exercise 6 (Monogamy of entanglement):} 
-Suppose that \(\rho^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|\) is an entangled state of
-particles 1 and 2 . Use the result of Exercise 5 to show that an extension \(\rho^{(123)}\) of \(\rho^{(12)}\) would imply
+Suppose that \(\hat{\rho}^{(12)}=|\Psi(1,2)\rangle\langle\Psi(1,2)|\) is an entangled state of
+particles 1 and 2 . Use the result of Exercise 5 to show that an extension \(\hat{\rho}^{(123)}\) of \(\hat{\rho}^{(12)}\) would imply
 that particles 1 and 2 are both uncorrelated with particle 3, that is, if particles 1 and 2 are
 entangled, each of then cannot be entangled with particle 3.
 
-Monogamy of entanglement is valid even when \(\rho^{(12)}\) is not pure; but we will not deal with
+Monogamy of entanglement is valid even when \(\hat{\rho}^{(12)}\) is not pure; but we will not deal with
 entanglement for general quantum states (\textit{i.e.} not necessarily pure).
+
+\end{document}
 
 \textbf{Exercise 7 -- No faster-than-light communication, no-cloning theorem:}
 

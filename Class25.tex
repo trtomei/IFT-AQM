@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 25}
 %\author{The Author}
-\date{November 24, 2022}                                           % Activate to display a given date or no date
+\date{June 13, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{6}
+\setcounter{section}{4}
 
 \section{Approximation Methods}
 
@@ -61,17 +61,17 @@ frequency $\omega$ about the $\hat{z}$ direction:
 
 Adiabatic time development:
 \be
-|\psi(t)\rangle\langle\psi(t)|=| n ; R(t)\rangle\langle n ; R(t)|=P_{n}(R(t))
+|\psi(t)\rangle\langle\psi(t)|=| n ; R(t)\rangle\langle n ; R(t)|=\hat{P}_{n}(R(t))
 \label{eq:g96}
 \ee
 or
 \be
-\hat{\rho}(t)=P_{n}(R(t))
+\hat{\rho}(t)_{\text{adiab.}}=\hat{P}_{n}(R(t)) = |n, R(t)\rangle\langle n, R(t)|
 \ee
 a generalization of the condition that
 a state is \emph{stationary}, \textit{i.e.}
 \be
-\hat{\rho}(t)=|\psi(t)\rangle\langle\psi(t)|=| \psi(0)\rangle\langle\psi(0)|
+\hat{\rho}(t)_{\text{stat.}}=|\psi(t)\rangle\langle\psi(t)|=| \psi(0)\rangle\langle\psi(0)|
 \ee
 \emph{But}, it should be clear that Eq.~\eqref{eq:g96} is an
 approximation, \textit{i.e.} it cannot be an exact
@@ -82,7 +82,7 @@ i \hbar \frac{d \hat{\rho}(t)}{d t}=[\hat{H}(R), \hat{\rho}(t)]
 \]
 which by the adiabatic assumption means
 \be
-i \hbar \frac{d \hat{\rho}(t)}{d t}=\left[\hat{H}(R), \hat{\rho}_{n}(R)\right]=0
+i \hbar \frac{d \hat{\rho}(t)}{d t}=\left[\hat{H}(R), \hat{P}_{n}(R)\right]=0
 \label{eq:g99}
 \ee
 which means
@@ -92,7 +92,7 @@ which means
 and \emph{not} Eq.~\eqref{eq:g96}.
 
 In particular, Eq.~\eqref{eq:g99} means that if
-$\hat{\rho}(t)=P_{n}(t)$, the motion of the system cannot
+$\hat{\rho}(t)=\hat{P}_{n}(t)$, the motion of the system cannot
 be cyclic (or periodic), \textit{i.e.} $\hat{\rho}(0) \neq \hat{\rho}(T)$, where
 $T$ is the time to come back to the same state.
 
@@ -171,7 +171,7 @@ so:
 \end{gathered}
 \ee
 %
-\item project this out $\ket{m;R(t)}$, with $ m\neq m$:
+\item project this out $\ket{m;R(t)}$, with $ m\neq n$:
 \be
 \begin{gathered}
 \left\langle m ; R\left|\frac{d}{d t} \hat{H}\right| n ; R\right\rangle+E_{m}(R)\left\langle m ; R\right| \frac{d}{d t}\left| n ; R\right\rangle \\ 
@@ -189,7 +189,9 @@ _{=0\text{ by Eq.~\eqref{eq:g103}}}
 \item This implies:\\
 \rule{\textwidth}{1pt}
 \be
-\frac{\langle m ; R|d \hat{H} / d t| n ; R\rangle}{E_{n}(R)-E_{m}(R)} = 0,\,m \neq n
+\frac{\left\langle m ; R\left|\frac{d\hat{H}}{d t}\right| n ; R\right\rangle}%
+{E_{n}(R)-E_{m}(R)}
+ = 0,\,m \neq n
 \label{eq:g108}
 \ee
 where we see the appearance of $d \hat{H} / d t$ $\rightarrow$ reason for the name ``adiabatic''.
@@ -246,11 +248,11 @@ so
 \gamma_{n}(t)
 &=i \int_{R(0)}^{R(t)} d R_{i}\langle n ; R| \frac{\partial}{\partial R_{i}}\left|n ; R\right\rangle\nonumber\\
 &=i \int_{R(0)}^{R(t)} d \vec{R} \cdot\left\langle n ; R\left|\vec{\nabla}_{\!R}\right| n ; R\right\rangle\\
-&=i \int_{C} d \vec{R} \cdot \vec{A}_{n}(R)
+&= \int_{C} d \vec{R} \cdot \vec{A}_{n}(R)
 \end{align}
 where $C$ denotes the curve $C$ that extends from
 $\vec{R}(0)$ to $\vec{R}(t)$, and $\vec{A}_{n}(R)$ is the ``vector
-potential'':
+potential'' (the reason for this name will become apparent later):
 \be
 \vec{A}_{n}(R)=i\langle n ; R|\vec{\nabla}_{\!R}| n ; R\rangle
 \label{eq:g118}
@@ -265,7 +267,7 @@ a phase. Therefore, under a gauge transformation:
 \begin{aligned}
 |n ; R\rangle \rightarrow|n ; R\rangle^{\prime} 
 &=e^{i \phi_{n}(R)}|n ; R\rangle \\
-A_{n}(R) \rightarrow A_{n}^{\prime}(R) 
+\vec{A}_{n}(R) \rightarrow \vec{A}_{n}^{\prime}(R) 
 &=i\langle n ; R| \vec{\nabla}_{\!R} |n ; R\rangle^{\prime} \\ 
 &=i\langle n ; R| e^{-i \phi_{n}(R)} \vec{\nabla}_{\!R}  e^{i \phi_{n}(R)}|n ; R\rangle\\ 
 &=\vec{A}_{n}(R)-\vec{\nabla}_{\!R}  \phi(R) 
@@ -317,7 +319,7 @@ R(0) \rightarrow R(t) \rightarrow R(T)=R(0)
 \ee
 then one \emph{cannot} choose $\phi_{n}(R(t))$ freely to
 remove $\gamma_{n}(T)$, because $\gamma_{n}(t)$ does not change
-under \eqref{eq:g124} : from Stokes' theorem, one has
+under \eqref{eq:g124}: from Stokes' theorem, one has
 %%% 13 
 \be
 \gamma_{n}(t)=\oint_{C} d \vec{R} \cdot \vec{A}_{n}(R)=\int_{S} d \vec{s} \cdot\left(\vec{\nabla}_{\!R}  \times \vec{A}_{n}(R)\right)
@@ -356,6 +358,7 @@ field:
 
 %%% 20
 \setcounter{equation}{143}
+\rule{\textwidth}{1pt}
 
 \emph{Example:} spin-1/2 particle in magnetic field
 precessing around $\hat{z}$ (see beginning of the class):
@@ -385,7 +388,7 @@ degeneracy. The eigenvectors are
 The calculation of $\vec{B}_+$ or $\vec{B}_-$ is straightforward, but a bit tedious, from Eq.~\eqref{eq:g118}.
 Suffice to say that it can be shown that one can write:
 \[
-\vec{B}_{n}(\vec{R})=-\Im \sum_{m \neq n} \frac{\left\langle m ; R\left|\left[\vec{\nabla}_{R} \hat{H}(R)\right]\right| n ; R\right\rangle \times\left\langle n ; R\left|\left[\vec{\nabla}_{R} \hat{H}(R)\right]\right| m ; R\right\rangle}{\left(E_{n}(R)-E_{n}(R)\right)^{2}}
+\vec{B}_{n}(\vec{R})=-\Im \sum_{m \neq n} \frac{\left\langle m ; R\left|\left[\vec{\nabla}_{R} \hat{H}(R)\right]\right| n ; R\right\rangle \times\left\langle n ; R\left|\left[\vec{\nabla}_{R} \hat{H}(R)\right]\right| m ; R\right\rangle}{\left(E_{m}(R)-E_{n}(R)\right)^{2}}
 \]
 so the key is to calculate
 \be
@@ -468,7 +471,7 @@ while we know the value of $\Omega$ from the field configuration ($\Omega = 2\pi
 Bitter and Dubbers (1987) experiment results are shown below,
 where their $\Delta\phi$ is equivalent to a difference in the two Berry phases $\Delta\gamma = |\gamma_+-\gamma_-| = \Omega$:
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Figures/BerryPhase.pdf}
+\includegraphics[width=0.5\textwidth]{Figures/BerryPhase.pdf}
 \end{center}
 \end{document}
 

@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 24}
 %\author{The Author}
-\date{November 22, 2022}                                           % Activate to display a given date or no date
+\date{May 30, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{6}
+\setcounter{section}{4}
 %\setcounter{equation}{35}
 
 \section{Approximation Methods}
@@ -72,7 +72,7 @@ $\Rightarrow$ Results are simple in two limiting situations:
 \item When $T \rightarrow 0$, rapid (sudden) passage: the dynamical
 state of the system remains unchanged:
 \be
-\lim _{T \rightarrow 0} U_{T}(s)=1
+\lim _{T \rightarrow 0} \hat{U}_{T}(s)=1
 \ee
 %%% 03 OKAY
 \item When $T \rightarrow \infty$, slow (adiabatic) passage: the system
@@ -112,15 +112,15 @@ t^\prime = t_0 \to s^\prime = 0
 \]
 so finally
 \be
-\hat{U}_{T}(s)=1-\frac{i}{\hbar} T \int_{0}^{s} d s^{\prime} \hat{H}\left(s^{\prime}\right) U_{T}\left(s^{\prime}\right)
+\hat{U}_{T}(s)=1-\frac{i}{\hbar} T \int_{0}^{s} d s^{\prime} \hat{H}\left(s^{\prime}\right) \hat{U}_{T}\left(s^{\prime}\right)
 \label{eq:g9}
 \ee
 
 %%% 04 OKAY
 
 For a sudden change in $\hat{H}$, the state of the system
-remains unchanged: the second term in Eq.~\eqref{eq:g9}
-goes to zero and
+remains unchanged at a state $\ket{\psi_0}$ at $s=0$: 
+the second term in Eq.~\eqref{eq:g9} goes to zero and
 \be
 \lim_{T \rightarrow 0} \hat{U}_{T}(s)=1
 \label{eq:g10}
@@ -128,8 +128,8 @@ goes to zero and
 Now, for a nonzero $T$, Eq.~\eqref{eq:g10} can be considered
 as the zeroth order approximation to a perturbative
 expansion of $U_{T}(s)$ in which the expansion parameter
-is $T$. That is, the system evolves from a state $\left|\psi_{0}\right\rangle$
-at $s=0$ under the influence of a ``perturbation'' $\hat{H}(s)$
+is $T$. That is, the system evolves from the state $\ket{\psi_0}$
+under the influence of a ``perturbation'' $\hat{H}(s)$
 that is turned on at $s=0$, namely:
 \be
 \begin{gathered}
@@ -143,35 +143,36 @@ truncating the series in Eq.~\eqref{eq:g11} to a finite
 power in $T$. Here, let us examine the error
 %%% 05 OKAY
 made in truncating Eq.~\eqref{eq:g11} to $O\left(T^{2}\right)$, \textit{i.e.}
-in using $U_{T}(s) \simeq 1$ for $T \neq 0$ $\Leftarrow$ \fbox{sudden approximation.}
+in using $\hat{U}_{T}(s) \simeq 1$ for $T \neq 0$ $\Leftarrow$ \fbox{sudden approximation.}
 
-The error can be estimated by calculating the
+So, let $\ket{\psi_1} = U_{T}(1) \ket{\psi_0}$ the state the system is in
+after the Hamiltonian has finished evolving, at $s=1$.
+The error in the sudden approximation can be estimated by calculating the
 probability $\omega_{1}=\left\langle\overline{\psi}_{1} \mid \overline{\psi}_{1}\right\rangle$ of finding the system
-at $s=1$ in a state $\left|\overline{\psi}_{1}\right\rangle$ \emph{other than $\left|\psi_{0}\right\rangle$},
-\textit{i.e.} in the state
-\be
-\left|\overline{\psi}_{1}\right\rangle=\hat{Q}_{0}\left|\psi_{1}\right\rangle=\hat{Q}_{0} \hat{U}_{T}(1)\left|\psi_{0}\right\rangle
-\ee
-where
+at $s=1$ in a state $\left|\overline{\psi}_{1}\right\rangle$ \emph{other than $\left|\psi_{0}\right\rangle$}.
+So we define the operator $\hat{Q}_{0}$:
 \be
 \hat{Q}_{0}=1-\left|\psi_{0}\right\rangle\left\langle\psi_{0}\right|
 \ee
-projects out $\left|\psi_{0}\right\rangle$ from $U_{T}(1)\left|\psi_{0}\right\rangle=\left|\psi_{1}\right\rangle$,
-and
-we are supposing $\left\langle\psi_{0} \mid \psi_{0}\right\rangle=1$.
+that projects out $\left|\psi_{0}\right\rangle$ from $\left|\psi_{1}\right\rangle$.
+The state ``anything other that $\ket{\psi_{0}}$'' is then written as:
+\be
+\left|\overline{\psi}_{1}\right\rangle=\hat{Q}_{0}\left|\psi_{1}\right\rangle=\hat{Q}_{0} \hat{U}_{T}(1)\left|\psi_{0}\right\rangle
+\ee
+and we are supposing $\bra{\psi_0}\ket{\psi_0}=1$.
 
 First, let us note that the lowest order term of $\omega_{1}$
 is of $\mathcal{O}\left(T^{2}\right)$, given by
 \[
 \begin{aligned} 
 \omega_{1}=\left\langle\overline{\psi}_{1} \mid \overline{\psi}_{1}\right\rangle 
-&=\left\langle\psi_{1}\left|\hat{Q}_{0} \hat{Q}_{0}\right| \psi_{1}\right\rangle=\left\langle\psi_{1}\left|Q_{0}\right| \psi_{1}\right\rangle \\
+&=\left\langle\psi_{1}\left|\hat{Q}_{0} \hat{Q}_{0}\right| \psi_{1}\right\rangle=\left\langle\psi_{1}\left|\hat{Q}_{0}\right| \psi_{1}\right\rangle \\
 &=\left\langle\psi_{0}\left|U_{T}^{\dagger}(1) \hat{Q}_{0} U_{T}(1)\right| \psi_{0}\right\rangle
 \end{aligned}
 \]
 so
 \[
-U_{T}(1)=1-\frac{i}{h} T \int_{0}^{1} d s \hat{H}(s) \hat{U}_{T}(s)+(i / h)^{2} \int_{0}^{1} d s \int_{0}^{s} d s^{\prime} \hat{H}(s) \hat{H}\left(s^{\prime}\right)+\ldots
+\hat{U}_{T}(1)=1-\frac{i}{h} T \int_{0}^{1} d s \hat{H}(s) \hat{U}_{T}(s)+(i / h)^{2} \int_{0}^{1} d s \int_{0}^{s} d s^{\prime} \hat{H}(s) \hat{H}(s^{\prime})+\ldots
 \]
 and
 %%% 06 OKAY
@@ -182,13 +183,13 @@ and
 &= \cancelto{0}{\bra{\psi_0}\underbrace{\hat{Q}_{0}\ket{\psi_0}}_{=0}}
 -i/\hbar \cancelto{0}{T \int_0^1 \underbrace{\bra{\psi_0}\hat{Q}_{0}}_{=0}\hat{H}(s)\ket{\psi_0}}\\
 &+i/\hbar \cancelto{0}{T \int_0^1 \bra{\psi_0}\hat{H}(s)\underbrace{\hat{Q}_{0}\ket{\psi_0}}_{=0}}\\
-&+\frac{T^{2}}{\hbar^{2}} \int_{0}^{1} d s \int_{0}^{1} d s^{3}\bra{\psi_{0}}\hat{H}(s) \hat{Q}_{0} \hat{H}s^{\prime}\ket{\psi_{0}}
+&+\frac{T^{2}}{\hbar^{2}} \int_{0}^{1} d s \int_{0}^{1} d s^{\prime}\bra{\psi_{0}}\hat{H}(s) \hat{Q}_{0} \hat{H}(s^{\prime})\ket{\psi_{0}}
 \label{eq:g14}
 \end{aligned}
 \ee
 If we define
 \be
-\overline{H}=\int_{0}^{s} d s H(s)=\frac{1}{T} \int_{t_{0}}^{t} d t^{\prime} \hat{H}\left(t^{\prime}\right)
+\overline{H}=\int_{0}^{s} d s^\prime \hat{H}(s^\prime)=\frac{1}{T} \int_{t_{0}}^{t} d t^{\prime} \hat{H}(t^{\prime})
 \label{eq:g15}
 \ee
 one can write Eq.~\eqref{eq:g14} as
@@ -257,10 +258,10 @@ E_{n}(s) \neq E_{m}(s), \forall\, n, m
 defined and piece-wise continuous in $T=t-t_0$
 \end{enumerate}
 %
-In terms of the variable $s$, the Schrödinger equation
+In terms of $s$, the Schrödinger equation
 for $\hat{U}\left(t, t_{0}\right)$ in Eq.~\eqref{eq:g6} is given by
 \be
-i \hbar \frac{d U_{T}(s)}{d s}=T \hat{H}(s) \hat{U}_{T}(s)
+i \hbar \frac{d \hat{U}_{T}(s)}{d s}=T \hat{H}(s) \hat{U}_{T}(s)
 \label{eq:g20}
 \ee
 and the Hamiltonian can be written as
@@ -276,6 +277,7 @@ The adiabatic theorem states that, under assumptions 1), 2), 3):
 \ee
 
 %%% 09 OKAY
+\enlargethispage{\baselineskip}
 
 Meaning of the theorem: suppose at $s=0$ $(t=t_0)$ the
 state of the system is $\ket{n,0}$, an eigenstate of $\hat{H}_0$. At time
@@ -291,15 +293,20 @@ $s$ for $T \to \infty$, the state $\displaystyle\ket{\psi(s)}_\infty = \lim_{T\t
 That is, $\ket{\psi(s)}_\infty$ is an eigenstate of $\hat{H}(s)$ with eigenvalue
 $E_n(s)$: under an \emph{infinitely slow evolution} (\textit{i.e.} $T\to\infty$)
 the system remains in an instantaneous eigenstate
-of $\hat{H}(s)$. Since the evolution is unitary, the norm is
+of $\hat{H}(s)$. 
+
+Since the evolution is unitary, the norm is
 preserved, $|{}_\infty\!\bra{\psi(s)}\ket{\psi(s)}_\infty\!|$ = $|\bra{n,0}\ket{n,0}|$ = 1. Therefore
 \be
 \lim_{T\to\infty} \bra{n,s}U_{T}(s)\ket{n,0} = e^{-i\varphi_n(s)}
 \ee
-and
+and that phases cancels out in the projector
 \be
 \lim_{T\to\infty} \op{\psi(s)} = \op{n,s} = \hat{P}_n(s)
 \ee
+%%% BEGIN EXAMPLE
+\rule{\textwidth}{1pt}
+\small
 
 \emph{Trivial example:} $\hat{P}_n(s) = \op{n,s} \overset{(!!!)}{=} \op{n,0} = \hat{P}_n(0)$.
 In this case, the instantaneous Hamiltonian is given by:
@@ -368,7 +375,7 @@ $\Rightarrow$
 If, at $t=t_{0}$, $|\psi(t_{0})\rangle$ is an eigenstate of $\hat{H}(t_{0})$
 $|n, t_{0}\rangle$ with eigenvalue $E_{n}(t_{0})$, at $t=t_{1}$ $|\psi(t)\rangle$
 is an eigenstate from $H(t_{1}),|n, t_{1}\rangle$, which differs
-from $|n, 0\rangle$ by a phase factor
+from $|n, 0\rangle$ only by a phase factor
 %
 \be
 e^{-i / \hbar \int_{t_{0}}^{t_{1}} d t^{\prime} \hat{H}\left(t^{\prime}\right)}
@@ -378,8 +385,11 @@ e^{-i / \hbar \int_{t_{0}}^{t_{1}} d t^{\prime} \hat{H}\left(t^{\prime}\right)}
 $\Rightarrow$\emph{Recall:} this is valid under the 
 \emph{(drastic)} assumption
 $[\hat{H}(t), \hat{H}(t^{\prime})]=0$
-\end{quote}
+\end{quote}%
+\rule{\textwidth}{1pt}
+%%% END EXAMPLE
 
+\normalsize
 \setcounter{equation}{65}
 Now, for \emph{$T$ finite}, setting
 \be
@@ -413,7 +423,11 @@ in some manifold $\Rightarrow$ ``parameter space'' $M$
 
 %%% 01 OKAY
 
-\emph{Example:}
+%%% BEGIN EXAMPLE
+\rule{\textwidth}{1pt}
+
+\small
+\emph{Example:} (to be used later)
 \begin{itemize}
 \item System: quantum magnetic moment,
  described by an operator $\hat{\vec{\mu}}$
@@ -446,10 +460,14 @@ environment is \emph{unit sphere}.
 An example is the field precessing with
 frequency $\omega$ about the $\hat{z}$ direction:
 \be
-\vec{R}(t)=\hat{x} \sin \theta \cos (\phi+\omega t)+ \hat{y} \sin \theta \sin (\phi+\omega t)+\hat{z} \cos \theta
+\hat{R}(t)=\hat{x} \sin \theta \cos (\phi+\omega t)+ \hat{y} \sin \theta \sin (\phi+\omega t)+\hat{z} \cos \theta
 \label{eq:g81}
 \ee
-(counter clockwise precession)
+(counter clockwise precession).
+
+\normalsize
+\rule{\textwidth}{1pt}
+%%% END EXAMPLE
 
 %%% 02 OKAY
 
@@ -500,7 +518,7 @@ where $E_{n}(R(t)),\,|n ; R(t)\rangle$ are the instantaneous eigenvalues
 and eigenvectors.
 
 \emph{Note that:} Single-valuedness of $\hat{H}$ and $\hat{A}$ does not
-inply that $|h, R\rangle$ are single-valued functions
+imply that $|n, R\rangle$ are single-valued functions
 of $\vec{R}$. For example: periodic environment, \textit{i.e}.
 $\vec{R}(0)=\vec{R}(T)$, a closed path $C$, one can have
 \be
@@ -523,7 +541,7 @@ The solution of the Schrödinger equation in Eq.~\eqref{eq:g82}
 \ee
 with
 \be
-\hat{U}(t) = T e^{-1 / \hbar \int_{0}^{t} d t^{\prime} \hat{H}(t)}, \quad \hat{H}(t)=\hat{H}(\vec{R}(t))
+\hat{U}(t) = \mathcal{T} e^{-i / \hbar \int_{0}^{t} d t^{\prime} \hat{H}(t)}, \quad \hat{H}(t)=\hat{H}(\vec{R}(t))
 \ee
 Now, if
 \be
@@ -539,7 +557,7 @@ eigenstate of $\hat{H}(R(0))$. Then:
 \be
 \ket{\psi(t)}=e^{-i / \hbar \int_{0}^{t} d t^{\prime} E_n(R(t))}\ket{\psi(0)}
 \ee
-Eq.~\eqref{eq:g92}, in general, is a too drastic assumption
+Remember that Eq.~\eqref{eq:g92}, in general, is a too drastic assumption
 (or approximation): the interaction with the environment,
 described by a time-dependent $\hat{H}(R(t))$ makes
 the system to jump from the $n$-th eigenstate
@@ -560,18 +578,19 @@ t=t, \quad&|\psi(t)\rangle=|n, R(t)\rangle
 \ee
 so
 \be
-|\psi(t)\rangle\langle\psi(t)|=| n ; R(t)\rangle\langle n ; R(t)|=P_{n}(R(t))
+|\psi(t)\rangle\langle\psi(t)|=| n ; R(t)\rangle\langle n ; R(t)|=\hat{P}_{n}(R(t))
 \label{eq:g96}
 \ee
 or
 \be
-\hat{\rho}(t)=P_{n}(R(t))
+\hat{\rho}(t)_{\text{adiab.}}=\hat{P}_{n}(R(t)) = |n, R(t)\rangle\langle n, R(t)|
 \ee
 This is known as the \emph{adiabatic time development},
 which is a generalization of the condition that
-a state is \emph{stationary}, \textit{i.e.}
+a state is \emph{stationary} we studied at the beginning of the course.
+Remember, a stationary state has
 \be
-\hat{\rho}(t)=|\psi(t)\rangle\langle\psi(t)|=| \psi(0)\rangle\langle\psi(0)|
+\hat{\rho}(t)_{\text{stat.}}=|\psi(t)\rangle\langle\psi(t)|=| \psi(0)\rangle\langle\psi(0)|
 \ee
 
 \emph{Next:} we will see that 

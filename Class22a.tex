@@ -6,10 +6,10 @@
 
 \title{Advanced Quantum Mechanics\\Class 22 (a)}
 %\author{The Author}
-\date{October 25, 2022}                                           % Activate to display a given date or no date
+\date{May 11, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
-\setcounter{subsection}{7}
+\setcounter{section}{4}
+\setcounter{subsection}{11}
 \setcounter{equation}{85}
 
 \begin{document}
@@ -21,13 +21,13 @@
 
 Parity reverses the sign of the coordinates:
 \be
-P: \vec{r} \to \vec{r}^\prime = P\vec{r} = -\vec{r}
+P: \vec{r} \to \vecrp = P\vec{r} = -\vec{r}
 \ee
 $P$ can be viewed as:\\
  -- Reflection with respect to a plane.\\
  \phantom{ -- Reflection with}+\\
  -- Rotation by $\pi$ about an axis $\perp$ to this plane.\\
-Take as example the $xOy$ plane and $M$ the reflexion 
+Take as example the $xOy$ plane and $M$ the reflection 
 with respect to this plane, and $R_z(\pi)$ the rotation
 about $O_z$:
 \be
@@ -72,6 +72,10 @@ the electrons were emitted preferentially
 in a direction opposite of the
 nuclear spin.
 \end{displayquote}
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{Figures/Parity_transformation.png}
+\end{center}
 
 In real space $P$ together with the identity:
 \be
@@ -232,6 +236,8 @@ magnetic field $\to$ \emph{NOT} invariant under
 time reversal.
 \end{minipage}%
 
+\medskip
+
 \emph{Quantum mechanics}:\\
 Let $\hat{\Theta}$ denote the operator that implements time
 reversal in $H$:
@@ -314,17 +320,32 @@ Nothing of this happens if $\hat{\Theta}$ is antiunitary:
 \emph{BUT} $\hat{\Theta}$ \emph{does not} lead to a conserved quantity,
 since
 \be
-\frac{d}{d t}\langle\hat{A}\rangle_{\varphi}=\frac{i}{\hbar}\langle[\hat{H}, \hat{\Theta}]\rangle
+\frac{d}{d t}\langle\hat{A}\rangle_{\varphi}=\frac{i}{\hbar}\langle[\hat{H}, \hat{A}]\rangle_{\varphi}
 \ee
 applies to an $\hat{A} = \hat{A}^{\dagger}$.
 $\hat{\Theta}$ is a good symmetry for all fundamental interactions,
 but its breaking has been observed in $K^0$-$\overline{K}^0$ meson
 system (and also in B mesons) $\leftarrow$ actually CP violation.
 
-Double time reversal $\sim I$: $\hat{\Theta}^2\varphi\sim\varphi$ up to a phase:
+By consistency, we want that a \emph{double time reversal} is $\sim$ the identity $I$: that means that $\hat{\Theta}^2\varphi\sim\varphi$ up to a phase. So, let's consider that:
 \begin{itemize}
-\item $\varphi$,$\psi$ two arbitrary states
-\item $\hat{\Theta}^2 = cI$, $[(\hat{U}\varphi,\hat{U}\chi) = (\chi,\varphi)]$ since it is antiunitary.
+\item $\varphi$, $\psi$ two arbitrary states
+\item $\hat{\Theta}^2 = cI$; 
+\end{itemize}
+
+\fbox{\begin{minipage}[t]{1.0\linewidth}
+\setcounter{equation}{8}
+\emph{Remember that:} 
+\be
+(\hat{\Theta}\varphi,\hat{\Theta}\chi) = (\chi,\varphi)
+\label{eq:antiunitary}
+\ee
+since $\hat{\Theta}$ is antiunitary.
+\setcounter{equation}{108}
+\end{minipage}%
+}
+ 
+So, now we consider a scalar product $(\hat{\Theta} \varphi, \psi)$, and apply Eq.~\eqref{eq:antiunitary}:
 \be
 \begin{aligned}
 (\hat{\Theta} \varphi, \psi) 
@@ -333,19 +354,18 @@ Double time reversal $\sim I$: $\hat{\Theta}^2\varphi\sim\varphi$ up to a phase:
 \end{aligned}
 \label{eq:g109}
 \ee
-\end{itemize}
 
-In general, the action of $\hat{\Theta}$ on state vectors and
+In general, it can be shown that the action of $\hat{\Theta}$ on state vectors and
 operators can be made in two steps: complex conjugation
 followed by a unitary transformation.
 %%% 10 OKAY
 Let us see how this comes about.
 
 Let $\{\ket{n}\}$ (discrete or continuous) be an orthonormal basis in $H$, and
-$\{\ket{n_t}\} = \{\ket*{\hat{\Theta}n}\}$ The two bases are related by
+$\{\ket{n_t}\} \equiv \{\ket*{\hat{\Theta}n}\}$ The two bases are, as usual, related by
 a \emph{unitary} transformation:
 \be
-\hat{U}_{t}=\sum_{n}|n_{t}\rangle\langle n|=\sum_{n}| \hat{\Theta} n\rangle\langle n|
+\hat{U}_{t}\equiv\sum_{n}|n_{t}\rangle\langle n|=\sum_{n}| \hat{\Theta} n\rangle\langle n|
 \label{eq:g110}
 \ee
 therefore
@@ -354,7 +374,6 @@ therefore
 \ee
 (the sum is to be substituted by an integral in the case of a continuous basis).
 
-\clearpage
 \par\noindent\rule{\textwidth}{1pt}
 Before proceeding, let us prove that $\hat{U}_t$ is really unitary.
 Use Eq.~\eqref{eq:g110} for the expression of $\hat{U}_t$:
@@ -365,9 +384,9 @@ Use Eq.~\eqref{eq:g110} for the expression of $\hat{U}_t$:
  = \sum_{n,m} \bra{\varphi} \ket{\hat{\Theta}n} \bra{n}\ket{m} \bra{\hat{\Theta}m} \ket{\varphi}\\
 & = \sum_{n} \bra{\varphi} \ket{\hat{\Theta}n} \bra{\hat{\Theta}n} \ket{\varphi}
  = \sum_{n} \bra{\hat{\Theta}^2 n} \ket{\hat{\Theta}\varphi} \bra{\hat{\Theta}\varphi} \ket{\hat{\Theta}^2 n},\text{ use Eq.~\eqref{eq:g109}} \\
-& = \sum_{n} \bra{n} \ket{\hat{\Theta}\varphi} \bra{\hat{\Theta}\varphi} \ket{n}
+& = \sum_{n} \bra{n} \ket{\hat{\Theta}\varphi} \underbrace{c^*c}_{1} \bra{\hat{\Theta}\varphi} \ket{n}
  = \sum_{n} \bra{\hat{\Theta}\varphi} \ket{n}\bra{n} \ket{\hat{\Theta}\varphi}\\
-& = \bra{\hat{\Theta}\varphi} \ket{\hat{\Theta}\varphi} = \bra{\varphi}\ket{\varphi}
+& = \bra{\hat{\Theta}\varphi} \ket{\hat{\Theta}\varphi} = \bra{\varphi}\ket{\varphi},\text{ by Eq.~\eqref{eq:antiunitary}}.
 \end{aligned}
 \ee
 Since $\ket{\varphi}$ is arbitrary:
@@ -384,29 +403,33 @@ Coming back to the main discussion, since $\hat{\Theta}$ is antiunitary:
 \begin{aligned}
 |\hat{\Theta} \varphi\rangle 
 &=\hat{\Theta}|\varphi\rangle=|\varphi_{t}\rangle \\ 
-&=\hat{\Theta} \sum_{n}|n\rangle\langle n | \varphi\rangle=\sum_{n}\left|n_{t}\right\rangle\langle n | \varphi\rangle^{*} \\
+&=\hat{\Theta} \sum_{n}|n\rangle\langle n | \varphi\rangle=\sum_{n}\left|n_{t}\right\rangle\langle n | \varphi\rangle^{*},\text{use Eq.~\eqref{eq:g110}} \\
 &=\sum_{n} \hat{U}_{t}|n\rangle\langle n | \varphi\rangle^{*} =\hat{U}_{t} \sum_{n}|n\rangle\langle n | \varphi\rangle^{*} \\ 
-&=\hat{U}_{t} \sum_{n}\langle n | \varphi\rangle^{*}|n\rangle
+&=\hat{U}_{t} \sum_{n}\langle n | \varphi\rangle^{*}|n\rangle = \hat{U}_{t} \sum_n c_n^* \ket{n}
 \end{aligned}
 \label{eq:g114}
 \ee
-%
-%.    \hat{\Theta}
-%
-Action of $\hat{\Theta}$ on $\ket{\varphi}$ can be written equivalently as
+where the $c_n$ are the coefficients of the state $\ket{\varphi}$ in the basis $\{\ket{n}\}$;
+we can see that they were complex conjugated by the action of $\hat{U}_t$.
+So we can see that the action of $\hat{\Theta}$ on $\ket{\varphi}$ can be written equivalently as
 \be
 \hat{\Theta} = \hat{U}_t \hat{\Theta}_0,\,\hat{\Theta}_0:\text{ complex conjugation}
 \ee
+where this complex conjugation acts on anything to the right of it.
 \emph{Note that:} $\hat{U}_t$ depends on the basis; \textit{e.g.} $\hat{U} = \mathbf{1}$ in
-coordinate repres., in momentum repr. $\hat{U}: \ket{\vec{p}} \to \ket{-\vec{p}}$.
+coordinate representation, in momentum representation $\hat{U}: \ket{\vec{p}} \to \ket{-\vec{p}}$,
+and when there's spin involved things are again different.
 We will now want to build this unitary transformation $\hat{U}_t$.
 
 %%% 12 OKAY
+
+\subsubsection{Matrix-elements between time-reversed states}
 
 Sometimes one needs to relate matrix elements of
 an operator between time-reversed states, \textit{e.g.} in
 scattering processes, where one often needs to relate
 an $i \rightarrow f$ process to its time-reversed motion $f \rightarrow i$.
+Of course, this happens because we only have access to the final state process $f$.
 
 Let $\hat{A}$ be an arbitrary linear operator in $H$ and
 $|\varphi\rangle$ an arbitrary vector in $H$. From Eq.~\eqref{eq:g114},
@@ -423,27 +446,29 @@ one has:
 \end{aligned}
 \end{cases}
 \ee
-whence we identify
-\[
-\bra{\varphi}\hat{A}^{\dagger}\ket{n} = \bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}^*
-\]
+%whence we identify
+%\[
+%\bra{\varphi}\hat{A}^{\dagger}\ket{n} = \bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}^*
+%\]
 %
 Let $\ket{\psi}$ be another arbitrary state in $H$. We write 
-$\hat{A}_t = \hat{\Theta}\hat{A}\hat{\Theta}^{-1}$
-and
+the time-reversed operator $\hat{A}_t = \hat{\Theta}\hat{A}\hat{\Theta}^{-1}$
+and the time-reversed states
 $\hat{\Theta}\ket{\psi} = \ket{\psi_t}$.
 Then:
 \be
 \begin{gathered}
 \bra{\psi_t}\hat{A}_t\ket{\varphi_t} =
-\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}\\
+\bra{\psi_t}\hat{\Theta}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}
  = \bra{\psi_t}\hat{\Theta}\left(
-\sum_n\op{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t}
-\right)
- = \bra{\psi_t}\left(
-\sum_n\ket{n_t}(\bra{n}\hat{A}\hat{\Theta}^{-1}\ket{\varphi_t})^*
+\sum_n\op{n}\hat{A}\underbrace{\hat{\Theta}^{-1}\ket{\varphi_t}}_{\ket{\varphi}}
 \right)\\
+= \bra{\psi_t} \hat{\Theta} \left( \sum_n \ket{n} \bra{n}\hat{A}\ket{\varphi} \right), 
+%
+\hat{\Theta} \text{ acts on $\ket{n}$ and conjugates everything},\\
+%
 =\sum_n \bra{\psi_t}\ket{n_t} \bra{\varphi}\hat{A}^{\dagger}\ket{n}
+=\sum_n \bra{\hat{\Theta}\psi}\ket{\hat{\Theta}n} \bra{\varphi}\hat{A}^{\dagger}\ket{n}
 =\sum_n \bra{n}\ket{\psi} \bra{\varphi}\hat{A}^{\dagger}\ket{n}\\
 =\sum_n \bra{\varphi}\hat{A}^{\dagger} \ket{n}\!\!\bra{n}\ket{\psi}
 = \bra{\varphi}\hat{A}^{\dagger}\ket{\psi}
@@ -455,42 +480,11 @@ When $\hat{A}^{\dagger} = \hat{A}$ and time-reversal invariant:
 \bra{\psi_t}\hat{A}\ket{\varphi_t} =
 \bra{\varphi}\hat{A}\ket{\psi}
 \ee
-so
+so the matrix element transition $\psi \to \varphi$, mediated by $\hat{A}$,
+is the same as that obtained by exchanging final and initial state, 
+but between the time-reversed states. So:
 \[
 (\varphi_t \to \psi_t) \leftarrow \text{ time reversal }\rightarrow (\psi \to \varphi).
 \]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 11}
 %\author{The Author}
-\date{September 08, 2022}                                           % Activate to display a given date or no date
+\date{April 11, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{5}
+\setcounter{section}{3}
 \setcounter{subsection}{11}
 \setcounter{equation}{127}
 
@@ -29,7 +29,7 @@ are pure (not mixed).
 
 If \(\hat{\rho}^{(1)}\) and \(\hat{\rho}^{(2)}\) corresponding to a pure state
 \(|\Psi(1,2)\rangle\) are pure \(\Rightarrow|\Psi(1,2)\rangle\) is a product state
-\(\rightarrow\) if \(\hat{\rho}^{(1)}, \hat{\rho^{(2)}}\) are mixed \(\Rightarrow\) entanglement.
+\(\rightarrow\) if \(\hat{\rho}^{(1)}, \hat{\rho}^{(2)}\) are mixed \(\Rightarrow\) entanglement.
 
 \emph{Statement:} For a pure state \(|\Psi(1,2)\rangle\) of a
 Tensor-product Hilbert space \(H_{1}\otimes H_{2}\)
@@ -98,7 +98,7 @@ Next, change basis in $H_2$ as follows:
 _{\in H_2}
 \label{eq:g136}
 \ee
-\emph{Exercise:} show that $\{\chi_n\}$ are orthonormal:
+\emph{Exercise:} show that $\{\chi_n\}$ are orthonormal.
 
 Use of Eq.~\eqref{eq:g136} into Eq.~\eqref{eq:g132}
 \be
@@ -274,36 +274,38 @@ continuation of \(n \rightarrow\) integer to real so that
 \be
 S=\lim _{n \rightarrow 1} S_{n} \rightarrow \text{ replica trick }
 \ee
+but that is not immediately from the expression of the n-Rényi entropy.
+We now proceed to prove that it is the case.
 
 \emph{Proof:}
 \begin{enumerate}
-\item
+\item We consider first only the $\Tr \hat{\rho}^n$ piece
 \be
-\begin{aligned} \Tr \rho^{n} 
+\begin{aligned} \Tr \hat{\rho}^{n} 
 &=\Tr\left(\hat{\rho} \hat{\rho}^{n-1}\right)
  =\Tr\left(\hat{\rho} e^{\ln \hat{\rho}^{n-1}}\right) \\ 
-&=\Tr\left[\hat{\rho} e^{(n-1) \ln \rho}\right] \end{aligned}
+&=\Tr\left[\hat{\rho} e^{(n-1) \ln \hat{\rho}}\right] \end{aligned}
 \ee
-\item for \(n \rightarrow 1\)
+\item for \(n \rightarrow 1\), we can expand the exponential
 \be
 \begin{aligned}
 \Tr \hat{\rho}^{n}
 &=\Tr[\hat{\rho}(1+(n-1) \ln \hat{\rho})]\\
 %%% 09 OK
-&=\Tr \hat{\rho}+(n-1) \Tr \hat{\rho} \ln \hat{\rho}\\
-&=1+(n-1) \Tr \hat{\rho} \ln \hat{\rho}
+&=\Tr \hat{\rho}+(n-1) \Tr [\hat{\rho} \ln \hat{\rho}]\\
+&=1+(n-1) \Tr [\hat{\rho} \ln \hat{\rho}]
 \end{aligned}
 \ee
-\item
+\item now we take the logarithm, and again expand it
 \be
 \begin{aligned} 
 \ln \left(\Tr \hat{\rho}^{n}\right) 
-&=\ln [1+(n-1) \Tr \hat{\rho} \ln \hat{\rho}] \\ 
+&=\ln [1+(n-1) \Tr [\hat{\rho} \ln \hat{\rho}]] \\ 
 &\stackrel{n\to1}{=}(n-1) \Tr \hat{\rho} \ln \hat{\rho} \end{aligned}
 \ee
-\item
+\item and finally we consider the full expression and $n\to1$ limit
 \be
-\lim _{n \rightarrow 1}\left[\frac{1}{1-n}(n-1) \Tr \hat{\rho} \ln \hat{\rho}\right]=\underbrace{-\Tr \hat{\rho} \ln \hat{\rho}}_{S}
+\lim _{n \rightarrow 1}\left[\frac{1}{1-n}(n-1) \Tr \hat{\rho} \ln \hat{\rho}\right]=\underbrace{-\Tr \hat{\rho} \ln \hat{\rho}}_{S} \checkmark
 \ee
 \end{enumerate}
 \emph{Note that:}

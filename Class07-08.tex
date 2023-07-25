@@ -6,9 +6,9 @@
 
 \title{Advanced Quantum Mechanics\\Class 07--08}
 %\author{The Author}
-\date{August 30, 2022}                                           % Activate to display a given date or no date
+\date{April 04, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{5}
+\setcounter{section}{3}
 \setcounter{subsection}{4}
 \setcounter{equation}{49}
 
@@ -24,7 +24,7 @@ which depends only on particle 1: \(\hat{C}=\hat{A} \otimes I_{2}\).
 
 We want to find a \(\hat{\rho}_{1}\) such that
 \be
-\ev{A} = \Tr(\hat{\rho}_{1}\hat{A})
+\ev{\hat{A}} = \Tr(\hat{\rho}_{1}\hat{A})
 \ee
 %%% \setcounter
 \setcounter{equation}{51}
@@ -47,10 +47,10 @@ _{\mathrlap{\text{Traced over particle 2 ($m$ indices): }\left(\rho^{(1)}\right)
 \end{aligned}
 \label{eq:g52}
 \ee
-We can rearrange the $\rho^{(1)}$ expression to make it more clear:
+We can rearrange the $(\rho^{(1)})_{n^\prime n}$ expression to make it more clear:
 \[
 \begin{aligned}
-\left(\rho^{(1)}\right)
+\left(\rho^{(1)}\right)_{n^\prime n}
 &=\sum_{m}\left\langle n^{\prime} m|\hat{\rho}| n m\right\rangle
 = \sum_{m}     \langle n^{\prime} \otimes m |\hat{\rho}| 
 \underbrace{n \otimes m \rangle}%
@@ -69,7 +69,7 @@ so we define the \emph{reduced} state operator of particle 1:
 \hat{\rho}^{(1)} = \Tr_2 \hat{\rho}
 }\to\,\text{partial trace, trace on }H_2
 \ee
-Substitute back in Eq.~\ref{eq:g52}:
+Substitute back in Eq.~\eqref{eq:g52}:
 %%% Thiago: cambalacho setcounter
 \[
 \tag{\ref{eq:g52}$^\prime$}
@@ -118,7 +118,7 @@ p(a_n) = \Tr_1\Tr_2 \left[\left(\hat{P}_n \otimes \mathbf{I}_2\right)\hat{\rho}\
 \be
 \hat{\rho} = \op{\psi}{\psi}
 \ee
-We write the reduced state operator $\hat{\rho}^(1)$:
+We write the reduced state operator $\hat{\rho}^{(1)}$:
 \[
 \rho^{(1)} = \Tr_2 \hat{\rho} =  \Tr_2 \op{\psi}{\psi} = \sum_{i,k=1}^{N} \sum_{j,l=1}^{M} C_{ij} C_{kl}^*
 \times \Tr_2 \op{\varphi_i \chi_j}{\varphi_k \chi_l}
@@ -169,7 +169,8 @@ pure state:
 \emph{Now}, if $\ket{\psi}$ \emph{is not a tensor product},
 $\rho^{(1)}$ (or $\rho^{(2)}$, of course) does not describe
 a pure state $\to$ \emph{not possible} to attribute a
-well-defined state to particle 1 (or 2).
+well-defined state to particle 1 (or 2). 
+Example, the singlet state of two spin-1/2:
 \[
 \ket{\psi} = \frac{1}{\sqrt{2}}\left(\ket{+-}-\ket{-+}\right)
 \]
@@ -182,6 +183,12 @@ well-defined state to particle 1 (or 2).
 \op{-+}{+-} +
 \op{-+}{-+}
 \right)\\
+&=\frac{1}{2}\left[
+\op{+}{+}\underbrace{\Tr(\op{-}{-})}_1 -
+\op{+}{-}\underbrace{\Tr(\op{-}{+})}_0 -
+\op{-}{+}\underbrace{\Tr(\op{+}{-})}_0 +
+\op{-}{-}\underbrace{\Tr(\op{+}{+})}_1
+\right]\\
 &=\frac{1}{2}\left(
 \op{+}{+} -0 -0 + \op{-}{-} 
 \right)
@@ -250,7 +257,7 @@ $\hat{\rho}$ corresponding to maximal disorder:
 \rho        = \frac{1}{N}\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix} \Rightarrow S_E = \ln N
 \ee
 
-\subsection{Time dependence of $\hat{\rho}$}
+\subsection{\texorpdfstring{Time dependence of $\hat{\rho}$}{Time dependence of rho}}
 
 %%% \setcounter
 \setcounter{equation}{64}
@@ -262,7 +269,7 @@ First, consider a pure state:
 \be
 \begin{aligned}
 %%% 6 OK
-i\hbar\hat{P}_\varphi(t)
+i\hbar \frac{d}{dt} \hat{P}_\varphi(t)
 &=i\hbar\frac{d}{dt}\left(\op{\varphi(t)}\right)\\
 &=i\hbar\underbrace{\ket{\frac{d\varphi(t)}{dt}}}%
 _{\ket{\frac{1}{i\hbar}\hat{H}\varphi}}
@@ -283,7 +290,7 @@ We use this result in the derivation of $d\hat{\rho}/dt$:
 \[
 \begin{aligned}
 i\hbar \frac{d\hat{\rho}}{dt}
-&= \sum_\alpha p_\alpha \frac{d}{dt}\left(\op{\varphi_\alpha(t)}\right)
+&= \sum_\alpha p_\alpha \cdot i\hbar \frac{d}{dt}\left(\op{\varphi_\alpha(t)}\right)
 = \sum_\alpha p_\alpha [\hat{H}(t),\op{\varphi_\alpha}]\\
 &= \left[\hat{H}(t),\sum_\alpha p_\alpha \op{\varphi_\alpha}\right]
 = \left[\hat{H}(t),\hat{\rho}(t)\right]
@@ -293,7 +300,7 @@ therefore
 \be
 \boxed{
 i\hbar \frac{d\hat{\rho}}{dt} = \left[\hat{H}(t),\hat{\rho}(t)\right]
-}-
+}
 \ee
 so $\hat{\rho}(t)$ has 
 Hamiltonian evolution (unitary evolution),
@@ -304,7 +311,10 @@ For a $\hat{\rho}$ corresponding to maximal disorder $\to$ that $\hat{\rho}$
 is a dynamical invariant, \textit{i.e.} $[\hat{H}(t),\hat{\rho}(t)] = 0$.
 
 %%% AULA 8: 1 OK
-\subsubsection{Time evolution of $\rho$ spin 1/2 in magnetic field $\vec{B}$}
+\subsubsection{%
+\texorpdfstring{Time evolution of $\rho$ spin 1/2 in magnetic field $\vec{B}$}%
+{Time evolution of rho spin 1/2 in magnetic field B}%
+}
 
 Let $\vec{B} = B\hat{z}$. Then
 \be
@@ -346,7 +356,7 @@ that is the classical equation of motion of a magnetic moment.
 
 \subsubsection{Creating coherences}
 
-Consider spins in contact with a fluctuating medium
+Consider spins in a field $\vec{B} = B\hat{z}$ in contact with a fluctuating medium
 at temperature \(T\). What is \(\vec{b}\) in such a situation? Need
 to know \(\hat{\rho}\): Boltzmann distribution
 \be
@@ -359,19 +369,21 @@ Z=\Tr e^{-\beta \hat{H}}
 \be
 \begin{gathered}
 e^{-\beta \hat{H}}=e^{\beta \hbar \omega_{0} / 2 \sigma_{z}} \approx 1+\beta \frac{\hbar \omega_{0}}{2} \sigma_{z}\\
-\text{where } \omega_0 = \gamma\beta \text{ and we use the weak field approx. (high $T$)}\\
+\text{where } \omega_0 = \gamma B \text{ and we use the weak field approx. (high $T$)}\\
 \Tr e^{-\beta \hat{H}} \approx 2
 \end{gathered}
 \ee
 hence
 \be
-\hat{\rho} \simeq 1 / 2\left(I+\beta \frac{\hbar \omega_{0}}{2} \sigma_{z}\right) \Rightarrow b_{z}=\hbar \omega_{0} / 2
+\hat{\rho} \simeq 1 / 2\left(I+\beta \frac{\hbar \omega_{0}}{2} \sigma_{z}\right) \Rightarrow 
+b_{z}= \beta \frac{\hbar \omega_{0}}{2}
 \ee
 
 Note that:
 \[
 \begin{aligned}
-\hat{\rho} \sim e^{\lambda \beta \hbar \omega_{0} / 2 \sigma_z} (\op{+} + \op{-})\\
+\hat{\rho} &\,\sim e^{\lambda \beta \hbar \omega_{0} / 2 \sigma_z} (\op{+} + \op{-}),\text{ $\lambda$ is the eigenvalue of $\sigma_z$,}\\
+&=
 \underbrace{e^{ \beta \hbar \omega_{0} / 2}}_{p_+} \op{+} + 
 \underbrace{e^{-\beta \hbar \omega_{0} / 2}}_{p_-} \op{-}
 \end{aligned}
@@ -384,8 +396,8 @@ p_{-} \simeq 1-\beta \hbar \omega_{0} / 2
 so
 \be
 \begin{gathered}
-p_+ - p_- \equiv \delta p = \beta \hbar \omega_{0} \Rightarrow b_z = 1/2 \delta p\\
-\rho(t=0) \simeq 1/2 (I + 1/2 \delta p \sigma_z)
+p_+ - p_- \equiv \delta p = \beta \hbar \omega_{0} \Rightarrow b_z = 1/2 \, \delta p\\
+\rho(t=0) \simeq 1/2 (I + 1/2 \, \delta p \, \sigma_z)
 \end{gathered}
 \ee
 
@@ -423,7 +435,7 @@ and finally
 \ee
 For a time interval of $t = \pi/(2\omega_1)$:
 \be
-\hat{\rho}\left(t e^{\pi / 2 \omega_{1}}\right)=
+\hat{\rho}\left( \frac{\pi}{2 \omega_{1}}\right)=
 1 / 2\begin{pmatrix}1 & -\frac{i}{2} \delta p \\ \frac{i}{2} \delta p & 1\end{pmatrix}
 \ee
 where we can see that we \emph{created coherences}: started from a
@@ -451,7 +463,7 @@ p_{\chi}=\Tr(\hat{\rho}\op{\chi})=\Tr\left(\hat{\rho} \hat{P}_{\chi}\right)
 
 
 \emph{Postulate IIIa} =  Postulate III: to a physical property
-$A$ there is an associated Hermitian operator \(\hat{A}\)
+$\mathcal{A}$ there is an associated Hermitian operator \(\hat{A}\)
 in $H$.
 
 \emph{Postulate IVa}: the time evolution of the state operator
@@ -461,7 +473,7 @@ i\hbar \frac{d \hat{\rho}(t)}{d t}=[\hat{H}(t), \hat{\rho}(t)]
 \ee
 but this holds only for \emph{closed} systems.
 
-Supplementary WFC postulate becomes: when \(A\) is
+Supplementary WFC postulate becomes: when \(\mathcal{A}\) is
 measured, the result is one of the eigenvalues $a_n$ of \(\hat{A}\)
 and the state operator right after the measurement is
 \be

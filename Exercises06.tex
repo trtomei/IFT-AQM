@@ -26,18 +26,18 @@
 
 \title{Advanced Quantum Mechanics\\Exercises Set 6\vspace{-1em}}
 %\author{The Author}
-\date{Due date: November 29\textsuperscript{th}, 2022}
+\date{Due date: June 29\textsuperscript{th}, 2023}
 
 \begin{document}
 \maketitle
 
 \textbf{Textbook exercises:}
 
-\textbf{Exercises 1, 2, 3:} Problems 14.6.1 (items 2 to 4 only), 14.6.2 and 14.6.3 of M.~Le~Bellac.
+\textbf{Exercises 1, 2:} 14.6.2 and 14.6.3 of M.~Le~Bellac.
 
-\textbf{Exercises 4, 5, 6, 7:} Problems 5.22, 5.23, 5.24, 5.26 of Sakurai \& Napolitano's \emph{Modern Quantum Mechanics (Second Edition)} -- problem numbers are the same as in Sakurai's \emph{Revised Edition}.
+\textbf{Exercises 3, 4, 5, 6:} Problems 5.22, 5.23, 5.24, 5.26 of Sakurai \& Napolitano's \emph{Modern Quantum Mechanics (Second Edition)} -- problem numbers are the same as in Sakurai's \emph{Revised Edition}.
 
-\textbf{Exercise 8:} The Hamiltonian for two interacting spins
+\textbf{Exercise 7:} The Hamiltonian for two interacting spins
 (both $s=1 / 2$), $\sigma^{(1)}$ and $\sigma^{(2)}$, in a magnetic field $B$ directed along the $z$-axis is
 \[
 \hat{H}=B\left(a_{1} \sigma_{z}^{(1)}+a_{2} \sigma_{z}^{(2)}\right)+K \sigma^{(1)} \cdot \sigma^{(2)} \text {, }
@@ -53,10 +53,11 @@ $B$ is small.
 \textbf{c)} Find the exact energy eigenvalues for this Hamiltonian, and verify the correctness of your
 answers in parts a) and b).
 
-\textbf{Exercise 9:} The Hamiltonian matrix
+\textbf{Exercise 8:} The Hamiltonian matrix
 for a two-level system can be written as
 \[
-H=\begin{pmatrix}E_{1}^{0} & \lambda W \\ \lambda W & E_{2}^{0}\end{pmatrix}
+H=\begin{pmatrix}E_{1}^{0} & \lambda W \\ \lambda W & E_{2}^{0}\end{pmatrix},
+\quad \lambda W\text{ real}
 \]
 and the energy eigenvectors for the unperturbed ($\lambda=0$) system are given by
 \[
@@ -71,6 +72,36 @@ with the exact solutions obtained in a).
 
 \textbf{c)} Suppose the unperturbed energies are ``almost degenerate''; that is, $\left|E_{1}^{0}-E_{2}^{0}\right| \ll \lambda W$. Show
 that the exact results obtained in a) closely resemble what you would expect by applying
-degenerate perturbation theory with $E_{1}^{0}$ set exactly equal to $E_{2}^{0}$.
+degenerate perturbation theory with the value of $E_{1}^{0}$ set exactly equal to $E_{2}^{0}$.
+
+%%% Exercises of Many-Particle Systems
+
+\textbf{Exercise 9:} 
+
+Consider the Fock space operators:
+\[
+\hat{\rho}(\vec{r})=\int d^{3} r^{\prime} \hat{\psi}^{\dagger}\left(\vec{r}^{\,\prime}\right) \delta\left(\vec{r}^{\,\prime}-\vec{r}\right) \hat{\psi}\left(\vec{r}^{\,\prime}\right)
+\]
+\[
+\hat{\vec{L}}(\vec{r})=\frac{\hbar}{2 m i} \int d^{3} r^{\prime} \hat{\psi}^{\dagger}\left(\vec{r}^{\,\prime}\right)\left[\vec{\nabla}_{r^{\prime}} \delta\left(\vec{r}^{\,\prime}-\vec{r}\right)+\delta\left(\vec{r}^{\,\prime}-\vec{r}\right) \vec{\nabla}_{r^{\prime}}\right] \hat{\psi}\left(\vec{r}^{\,\prime}\right)
+\]
+Calculate the expected values of those operators in the one-state particle (boson or fermion).
+\[
+|\kappa\rangle=\hat{a}_{\kappa}^{\dagger}|0\rangle, \quad \hat{a}_{\kappa}^{\dagger}=\int d^{3} r \varphi_{\kappa}(\vec{r}) \hat{\psi}^{\dagger}(\vec{r})
+\]
+
+\textbf{Exercise 10:} 
+
+Consider the Fock space representation of the total angular momentum
+(remember that we use ``hats'' for Fock space operators, while first-quantization operators lose their hats)
+\[
+\hat{\vec{J}}=\int d^{3} r \hat{\psi}_{\kappa j m}^{\dagger}(\vec{r})\left\langle\kappa j m|\hat{\vec{J}}| \kappa^{\prime} j m^{\prime}\right\rangle \hat{\psi}_{\kappa^{\prime} j m^{\prime}}(\vec{r})
+\]
+where we are using the convention that there is an implicit sum over repeated indices. Show that
+\[
+\left[\hat{J}_{i}, \hat{J}_{j}\right]=i \hbar \epsilon_{i j k} \hat{J}_{k}, \quad i, j, k=1,2,3
+\]
+is valid for bosons and fermions.
+
 
 \end{document}

@@ -6,17 +6,58 @@
 
 \title{Advanced Quantum Mechanics\\Class 17}
 %\author{The Author}
-\date{October 04, 2022}                                           % Activate to display a given date or no date
+\date{April 18, 2023}                                           % Activate to display a given date or no date
 
-\setcounter{section}{6}
+\setcounter{section}{4}
 \setcounter{subsection}{4}
-\setcounter{equation}{44}
+\setcounter{equation}{39}
 
 \begin{document}
 \maketitle
 
 %%% 01 OKAY
-\subsection{Conservation laws (continued)}
+\subsection{Conservation laws}
+
+Conservation laws in QM refer to expectation values.
+Suppose $\hat{A} = \hat{A}(t)$ a time-dependent physical property
+(there is an extra term in Eq.~(4.26) of Le~Bellac):
+\be
+i\hbar \frac{d}{d t}\langle\varphi(t)|\hat{A}| \varphi(t)\rangle=\langle[\hat{A}, \hat{H}]\rangle_{\varphi}+\left\langle\frac{\partial \hat{A}}{\partial t}\right\rangle_{\varphi}
+\ee
+which means
+\be
+\text{if }\frac{\partial \hat{A}}{\partial t}=0, \frac{d}{d t}\langle\hat{A}\rangle_{\varphi}=0 \Leftrightarrow[\hat{H}, \hat{A}]=0
+\ee
+$\hat{A}$ $\rightarrow$ generator of the symmetry in $H$.
+Symmetry: expectation values of $\hat H$ in $\ket{\varphi}$ and in
+the transformed state $\ket{\varphi_T} = \exp(-i\alpha\hat{T})\ket{\varphi}$ are the same, $\bra{\varphi}\hat{H}\ket{\varphi} = \bra{\varphi_T}\hat{H}\ket{\varphi_T}$.
+
+\emph{Example:} spatial translation by a vector $\vec{a}$, $\hat{T} \sim \hat{\vec{P}}$
+\be
+|\varphi\rangle_{\vec{a}}=e^{-i / \hbar \vec{a} \cdot \vec{p}}|\varphi\rangle
+\ee
+so
+%%% 13 OKAY
+\[
+\begin{aligned}
+\left\langle\varphi_{\vec{a}}|\hat{H}| \varphi_{\vec{a}}\right\rangle 
+&=\left\langle\varphi\left|e^{i / \hbar \vec{a} \cdot \hat{\vec{p}}} \hat{H} e^{-i / \hbar \vec{a} \cdot \hat{\vec{p}}}\right| \varphi\right\rangle \\ 
+& \stackrel{\vec{a} \rightarrow 0}{\simeq}
+\langle\varphi|
+(1+i / \hbar \vec{a} \cdot \hat{\vec{p}}) \hat{H}
+(1-i / \hbar \vec{a} \cdot \hat{\vec{p}})|\varphi\rangle\\
+&=\langle\varphi|\hat{H}| \varphi\rangle+i / \hbar \vec{a} \cdot\langle\varphi|[\hat{\vec{P}}, \hat{H}]| \varphi\rangle
+\end{aligned}
+\]
+and since $\ket{\varphi}$ is arbitrary, this means
+\be
+[\hat{\vec{P}}, \hat{H}] = 0
+\ee
+
+\emph{Exercise:} invariance under spatial rotations:
+\be
+[\hat{\vec{J}}, \hat{H}] = 0
+\ee
 
 \subsubsection{Translations}
  
@@ -107,7 +148,7 @@ from which follows the result
 \label{eq:g55}
 \ee
 For $a \to 0$, expanding both sides of \eqref{eq:g55}
-to first order:
+to first order in $a$:
 \[
 \left(I + \frac{i}{\hbar} a \hat{P}\right) f(\hat{X}) \left(I - \frac{i}{\hbar} a \hat{P}\right) = 
 f(\hat{X}) + a \frac{\partial f}{\partial\hat{X}}
@@ -168,7 +209,7 @@ relations are preserved under a unitary transformation $\hat{U}$:
 in the space of differentiable functions $\varphi(x)$ which are
 square-integrable in the real line $[-\infty,\infty]$:
 \begin{align}
-\ket{\hat{X}\varphi} 
+\ket{\varphi} 
 &\to \varphi(x) \label{eq:g58p}\\
 \ket{\hat{X}\varphi} = \ket{\chi} 
 &\to (\hat{X}\varphi)(x) = \chi(x) = x\varphi(x)\label{eq:g59p}\\
@@ -186,8 +227,8 @@ Verification:
 \right)(x)
 &=(\hat{X}\underbrace{\hat{P}\varphi}_{\psi})(x) - (\hat{P}\underbrace{\hat{X}\varphi}_{\chi})(x)\\
 &=(\hat{X}\psi)(x) - (\hat{P}\chi)(x)\\
-&=x\psi(x) - i\hbar\frac{\partial}{\partial x}(\chi(x)\\
-&=x\left(- i\hbar\frac{\partial\varphi}{\partial x}\right) - 
+&=x\psi(x) + i\hbar\frac{\partial}{\partial x}(\chi(x))\\
+&=x\left(+ i\hbar\frac{\partial\varphi}{\partial x}\right) + 
 i\hbar\frac{\partial}{\partial x}\left(x\varphi(x)\right)\\
 &=i\hbar\varphi(x)\\
 \end{aligned}
@@ -282,10 +323,11 @@ so when $v \to 0$:
 so it is possible to choose
 \be
 \hat{G} = -m \hat{X}
+\label{eq:g75}
 \ee
 From Eq.~\eqref{eq:g70}
 \be
-e^{i/\hbar v \hat{G}} \hat{P} e^{-i/\hbar v \hat{G}} =
+e^{i/\hbar v \hat{G}} \hat{\dot{X}} e^{-i/\hbar v \hat{G}} =
 \hat{\dot{X}} + v I
 \ee
 and subtracting \eqref{eq:g73} from this
@@ -296,7 +338,7 @@ e^{-i/\hbar v \hat{G}} =
 \hat{\dot{X}} - \frac{\hat{P}}{m}
 \ee
 so $\hat{\dot{X}} - \frac{\hat{P}}{m}$ commutes with $\hat{G}$ and, due to
-Eq.~(75), it commutes also with $\hat{X}$.
+Eq.~\eqref{eq:g75}, it commutes also with $\hat{X}$.
 
 Using the von Neumann theorem:
 \be
@@ -362,15 +404,15 @@ E = \frac{1}{2m} p^2 + V(x)
 
 Galilean invariance:
 \[
-H = \frac{1}{2m} \hat{P}^2 + V(\hat{X}) \xrightarrow{v}
+\hat{H} = \frac{1}{2m} \hat{P}^2 + V(\hat{X}) \xrightarrow{v}
 = \frac{1}{2m} (
-\underbrace{\hat{P}+mv}_{P_v})^2 + V(\hat{X})
-= \frac{1}{2m} P_v^2 + V(X_v)
+\underbrace{\hat{P}+mv}_{\hat{P}_v})^2 + V(\hat{X})
+= \frac{1}{2m} \hat{P}_v^2 + V(\hat{X}_v)
 \]
 where we used that $\hat{X} = X_v$, since we are working at $t=0$.
 So the \emph{form} of the Hamiltonian is preserved
 \be
-H(X,P) \to H(X_v,P_v)
+\hat{H}(\hat{X},\hat{P}) \to H(\hat{X}_v,\hat{P}_v)
 \ee
 
 \subsubsection{Galilean invariance in three dimensions}
@@ -407,7 +449,7 @@ general form of the Hamiltonian in QM is
 \vec{f} = q\vec{A}\quad,\quad\vec{B} = \grad\times\vec{A}
 \]
 where $q$ is the electric charge, $\vec{B}$ is the magnetic field.
-In this case $V(\vec{R} = q \varphi(\vec{R})$, $\grad\varphi = -\vec{E}$, where $\vec{E}$ is the electric field.
+In this case $V(\vec{R}) = q \varphi(\vec{R})$, $\grad\varphi = -\vec{E}$, where $\vec{E}$ is the electric field.
 
 If $\vec{f}(\vec{R})$  could be eliminated by a local gauge
 transformation $\rightarrow$ $\vec{B} = 0$.
@@ -420,18 +462,9 @@ they are arbitrary functions that \emph{do not} need to
 obey Maxwell's equations.
 
 
-\emph{Summing up:} assumed that expectation values
+\emph{Summing up:} assuming that expectation values
 of physical properties (Hermitian operators) transform
 in the same manner as the corresponding classical quantities
 $\Rightarrow$ commutation relations + general form of $\hat{H}$.
-
-
-
-
-
-
-
-
-
 
 \end{document}

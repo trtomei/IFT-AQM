@@ -1,0 +1,92 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper,top=2cm}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese}
+%\usepackage{brazil}{babel}
+
+\title{Mecânica Quântica Avançada}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace*{-4em}
+
+\textbf{Exercício 1:} considere o sistema de dois níveis, os quais chamaremos\\ 
+$|+\rangle = \begin{pmatrix}1\\0\end{pmatrix}$ e $|-\rangle = \begin{pmatrix}0\\1\end{pmatrix}$, regido por uma hamiltoniana que tem a expressão geral:
+%
+\[
+\hat{H}(t) = -\frac{1}{2} \hbar\left(\begin{array}{cc}\omega_{A} & \omega_{1} e^{i \omega t} \\ \omega_{1} e^{-i \omega t} & \omega_{B}\end{array}\right)
+\]
+
+\textbf{(a):} considere primeiro o caso particular em que $\omega = 0$, \textit{i.e.} o caso estático -- a hamiltoniana não depende do tempo.
+Como é o caso estático, use a seguinte parametrização:
+\[
+\omega_1 = \frac{2A}{\hbar},\quad
+\omega_A = -\frac{2}{\hbar}(E_0 + d),\quad
+\omega_B = -\frac{2}{\hbar}(E_0 - d),\quad
+\]
+e calcule os autovalores de energia.
+Esboce o gráfico dos níveis de energia, considerando tanto os limites $d/A \gg 1$ e $d/A \ll 1$.
+
+\textbf{(b):} considere agora o caso particular em que $\omega \neq 0$, mas $\omega_A = \omega_0$ e $\omega_B = -\omega_0$.
+Considerando que a solução geral para o sistema de dois níveis pode ser dada por
+\[
+|\psi(t)\rangle = c_+(t)|+\rangle + c_-(t)|-\rangle
+\]
+com $c_\pm(t)$ coeficientes complexos arbitrários,
+resolva a equação de Schrödinger para calcular esses coeficientes.
+Pode ser útil definir a quantidade $\delta = \omega - \omega_0$.
+
+
+
+\textbf{Exercício 2:} considere a descrição do espalhamento Thomson em termos de \emph{fótons}, \textit{i.e.} o processo
+\[
+\gamma + P \to \gamma^\prime + P^\prime
+\]
+onde $P$ é a partícula que está sendo atingida pelo fóton, com massa $M$, carga $Q$ e momento $\vec{p}$.
+Uma parte fundamental dessa descrição é, então, a quantização do campo eletromagnético.
+Nessa descrição, podemos considerar que o operador quântico correspondente ao potencial vetor $\vec{A}$ é dado por
+\[
+\hat{\vec{A}}(\vec{r},t) = 
+\sqrt{\frac{1}{L^{3}}} \sum_{\lambda} \sqrt{\frac{2 \pi \hbar c}{k}} \vec{\epsilon}_{\lambda}\left[\hat{a}_{\lambda} e^{i\left(\vec{k} \cdot \vec{r}-\omega_{\lambda} t\right)}+\hat{a}_{\lambda}^{\dagger} e^{-i\left(\vec{k} \cdot \vec{r}-\omega_{\lambda} t\right)}\right]
+\]
+onde todas as ondas planas estão definidas em caixas quadradas de volume $L^3$.
+O índice $\lambda$ representa conjuntamente o vetor de onda do fóton $\vec{k}$ e o seu estado de polarização $\alpha$
+(e portanto $\alpha=1,2$ apenas).
+O vetor $\vec{\epsilon}_{\lambda}$ é o vetor de polarização do campo (e portanto $\vec{\epsilon}_{\lambda} \cdot \vec{k} = 0$).
+Então temos
+\[
+\lambda \equiv\{\vec{k}, \alpha\}, \quad-\lambda \equiv\{-\vec{k}, \alpha\}, \quad \mathrm{e} \quad \omega_{k} \equiv \omega_{\lambda}=\omega_{-\lambda}
+\]
+
+\textbf{(a):} considerando o referencial em que a partícula inicial está em repouso, escreva as condições de conservação de energia e momento para esse espalhamento. Use a aproximação não-relativística para a energia da partícula, mas não esqueça o termo de energia de repouso!
+
+\textbf{(b):} o espalhamento Thomson é de baixa energia, \textit{i.e.} a energia do fóton é muito menor que a massa da partícula.
+O que isto implica para este espalhamento?
+
+\textbf{(c):} escreva os estados inicial $|i\rangle$ e final $|f\rangle$ do sistema fóton--partícula, 
+em termos da função de onda da partícula e do estado de vácuo do campo eletromagnético.
+
+\textbf{(d):} a hamiltoniana que rege o processo é:
+\[
+\hat{H} = \frac{\hat{\vec{p}}^{\,2}}{2M}
++ \hat{H}_{\text{rad}} 
+\underbrace{- \frac{Q}{Mc} \hat{\vec{A}} \cdot \hat{\vec{p}} 
+- \frac{Q^2}{2Mc^2} \hat{\vec{A}}^{\,2}}%
+_{\hat{H}_{\text{int}}}
+\]
+e uma parte fundamental do estudo é o cálculo do elemento de matriz
+\[
+\langle f|\hat{H}_{\text{int}}|i\rangle
+\]
+
+Realize este cálculo.
+
+\end{document}

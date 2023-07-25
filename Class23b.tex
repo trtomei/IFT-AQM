@@ -6,13 +6,13 @@
 
 \title{Advanced Quantum Mechanics\\Class 23 (b)}
 %\author{The Author}
-\date{November 8, 2022}                                           % Activate to display a given date or no date
+\date{May 25, 2022}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
 %%% 16 OKAY
-\setcounter{section}{6}
+\setcounter{section}{4}
 \setcounter{equation}{35}
 
 \section{Approximation Methods}
@@ -20,13 +20,22 @@
 \setcounter{subsection}{1}
 \subsection{Time-dependent perturbation theory}
 
-$\Rightarrow$ Fermi's Golden Rule
+$\Rightarrow$ We will use it to derive \emph{Fermi's Golden Rule} -- a formula that describes
+the transition rate (the probability of a transition per unit time) 
+from one energy eigenstate of a quantum system 
+to a group of energy eigenstates in a continuum, as a result of a weak perturbation.
+This transition rate is effectively \emph{independent of time} 
+(so long as the strength of the perturbation is independent of time) 
+and is proportional 
+to the strength of the coupling between the initial and final states of the system 
+(described by the square of the matrix element of the perturbation) 
+as well as the density of states.
 
 Statement of the problem: let $\hat{H} = \hat{H}(t)$ be a time-dependent Hamiltonian,
 that can be split as
 %%% 17 OKAY
 \be
-\hat{H}(t) = \hat{H}_0 + \lambda W(t)
+\hat{H}(t) = \hat{H}_0 + \lambda \hat{W}(t)
 \label{eq:g36}
 \ee
 $\hat{H}_0$ time-independent, with a known spectrum, given
@@ -39,7 +48,7 @@ which is one of the eigenstates of $\hat{H}_0$
 \be
 \hat{H}_0 \ket{i} = E_i \ket{i}
 \ee
-We want to know the probability $p_{i \rightarrow f}(t)$ of finding
+We want to know the transition probability $p_{i \rightarrow f}(t)$ of finding
 the system in the eigenstate $|f\rangle$ of $\hat{H}_{0}$:
 \be
 \hat{H}_0 \ket{f} = E_f \ket{f}
@@ -68,7 +77,7 @@ $|\varphi_{0}^{(n)}\rangle \equiv |n\rangle$, one obtains:
 \bra{n}\hat{H}_0\ket{\psi(t)} 
 &= \sum_l \bra{n}\hat{H}_0\ket{l} C_l(t) = E_n C_n(t) \Rightarrow\\
 \underbrace{E_n^{0}}_{\equiv E_n} \bra{n}\ket{\psi(t)}  
-&= \quad\quad\quad\! (\hat{H}_0)_{nl} \, C_l(t) =  E_n C_n(t)
+&= \sum_l (\hat{H}_0)_{nl} \, C_l(t) =  E_n C_n(t)
 \end{aligned}
 \]
 therefore
@@ -80,7 +89,7 @@ The $C_l(t)$ are solutions of a coupled set of differential
 equations obtained from the Schrödinger equation
 for $\ket{\psi(t)}$, namely
 \be
-i\hbar \frac{d}{d t}|\psi(t)\rangle=\left[\hat{H}_{0}+\lambda \hat{W}(t)\right](\psi(t)\rangle
+i\hbar \frac{d}{d t}|\psi(t)\rangle=\left[\hat{H}_{0}+\lambda \hat{W}(t)\right]|\psi(t)\rangle
 \ee
 $\Rightarrow$ projecting onto $\ket{n}$:
 %%% 19 OKAY
@@ -173,7 +182,7 @@ Eq.~\eqref{eq:g40}, given by
 \begin{aligned}
 \bra{f}\ket{\psi(t)}
 &= \sum_l C_l(t) \bra{f}\ket{l}\\
-&= e^{-i/\hbar E_f t} \gamma_f^{1}(t)
+&= e^{-i/\hbar E_f t} \gamma_f^{(1)}(t)
 \end{aligned}
 \ee
 where $C_l(t) = e^{-i/\hbar E_l t}$.
@@ -198,23 +207,28 @@ situations, namely:
 \ee
 $\Rightarrow$ system absorbs ($+$) or emits ($-$) a photon
 of energy $\hbar \omega$.
+
 Consider the case of absorption:
 the time-dependent transition probability is
 \setcounter{equation}{56}
 \be
 \begin{aligned}
 p_{i \rightarrow f}(t)
-&=\left|\gamma^{(n}(t)\right|^{2}\\
+&=\left|\gamma^{(n)}(t)\right|^{2}\\
 &=\frac{\lambda^{2}}{\hbar^{2}} \frac{\left|A_{f i}\right|^{2}}{\left(\omega-\omega_{0}\right)^{2}}
 \left(e^{-i\left(\omega-\omega_{0}\right) t}-1\right)\left(e^{i\left(\omega-\omega_{0}\right) t}-1\right)\\
 &=\frac{\lambda^{2}}{\hbar^{2}} \frac{\left|A_{f i}\right|^{2}}{\left(\omega-\omega_{0}\right)^{2}}
-\left[2-2\cos(\omega-\omega_0)(t)\right]\\
+\left[2-2\cos(\omega-\omega_0) t \right]\\
 &=\frac{\lambda^{2}}{\hbar^{2}} \left|A_{f i}\right|^{2} t^2 \times
 \underbrace{\frac{\sin^2\left[(\omega-\omega_0)(t/2)\right]}{\left[(\omega-\omega_{0})(t/2)\right]^{2}}}%
 _{f(\omega-\omega_0,t)}
 \end{aligned}
 \ee
-where $f(\omega-\omega_0,t) \xrightarrow{\omega\,\approx\,\omega_0} \frac{2\pi}{t} \delta(\omega-\omega_0)$.
+where, for $\omega\,\approx\,\omega_0$, $f(\omega-\omega_0,t)$ behaves like a delta function divided by $t$
+(assuming of course that an integral will be done over $\omega$ at some point); see the figure.
+\begin{center}\includegraphics[width=0.5\textwidth]{Figures/fomegaomega0.pdf}\end{center}
+
+So we consider that $f(\omega-\omega_0,t) \xrightarrow{\omega\,\approx\,\omega_0} \frac{2\pi}{t} \delta(\omega-\omega_0)$.
 Therefore
 \be
 p_{i \rightarrow f}(t) = \frac{\lambda^{2}}{\hbar^{2}}\left|A_{f i}\right|^{2} t^2 f(\omega-\omega_0,t)
@@ -256,7 +270,7 @@ so finally
 \be
 \Gamma  = \frac{2\pi}{\hbar} \lambda^2 \left|A_{f i}\right|^{2} D(E_f)
 \ee
-This is Fermi's Golden Rule. 
+This is Fermi's Golden Rule: transition probability rate is independent of time and proportional to the square of the matrix element of the perturbation -- as promised.
 
 %%% 24 OKAY
 
@@ -315,7 +329,7 @@ For three-dimensions:
 %%% 26 OKAY (SKIPPED STEPS)
 \setcounter{equation}{67}
 \be
-\psi(\vec{r}) = e^{i(k_x x + k_y y + k_z z)} = e^{i \vec{k} \cdot \vec{r}}
+\psi(\vec{r}\,) = e^{i(k_x x + k_y y + k_z z)} = e^{i \vec{k} \cdot \vec{r}}
 \ee
 Imposing the p.b.c:
 \[
@@ -346,15 +360,15 @@ D(\vec{k}) = \frac{V}{8\pi^3}
 \[
 \vec{p} = \hbar \vec{k} \therefore 
 \int d^{3} k \frac{V}{(2 \pi)^{3}} f(\vec{k}) = 
-\int d^{3} p \underbrace{\frac{1}{\hbar^3}\frac{V}{(2 \pi)^{3}}}_{D(\vec{p})} f(\vec{p})
+\int d^{3} p \underbrace{\frac{1}{\hbar^3}\frac{V}{(2 \pi)^{3}}}_{D(\vec{p}\,)} f(\vec{p}\,)
 \]
 therefore
 \be
-D(\vec{p}) = \frac{V}{(2 \pi \hbar)^{3}}=\frac{V}{h^{3}}
+D(\vec{p}\,) = \frac{V}{(2 \pi \hbar)^{3}}=\frac{V}{h^{3}}
 \label{eq:g72}
 \ee
 
-\emph{Energy} density of states: useful when $f(\vec{p}) = f(p)$
+\emph{Energy} density of states: useful when $f(\vec{p}\,) = f(p)$
 \[
 \int d^{3} p \frac{V}{(2 \pi \hbar)^{3}} f(p)=\int d p \underbrace{4 \pi p^{2} \frac{V}{(2 \pi \hbar)^{3}}}%
 _{D(p)} f(p)

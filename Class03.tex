@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 03}
 %\author{The Author}
-\date{August 16, 2022}                                           % Activate to display a given date or no date
+\date{March 23, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{3}
+\setcounter{section}{1}
 \setcounter{subsection}{7}
 \setcounter{equation}{54}
 
@@ -27,7 +27,7 @@ where $\hat{A}$ represents a physics property $\mathcal{A}$
 assumed to be independent of time.
 \[
 \begin{aligned} \frac{d}{d t}\langle\varphi(t)|\hat{A}| \varphi(t)\rangle 
-&=\langle d \varphi / d t|\hat{A}| \varphi\rangle+\langle\varphi|\hat{A}| d \varphi / d t\rangle \\ &=\left\langle\frac{1}{i \hbar} \hat{H} \varphi|\hat{A}| \varphi\right\rangle+\left\langle\varphi|\hat{A}| \frac{1}{i \hbar} \hat{A} \varphi\right) \\ 
+&=\langle d \varphi / d t|\hat{A}| \varphi\rangle+\langle\varphi|\hat{A}| d \varphi / d t\rangle \\ &=\left\langle\frac{1}{i \hbar} \hat{H} \varphi|\hat{A}| \varphi\right\rangle+\left\langle\varphi|\hat{A}| \frac{1}{i \hbar} \hat{H} \varphi\right\rangle \\ 
 &=\frac{1}{i \hbar}\langle\varphi(t)|
 \underbrace{(\hat{A}\hat{H}-\hat{H}\hat{A})}%
 _{[\hat{A},\hat{H}]}
@@ -296,15 +296,27 @@ m = \frac{m_{p} m_{e}}{m_{p}+m_{e}}=\mu
 
 Relativistic effects $\to$ complications
 \begin{itemize}
-\item Dirac equation, 1\textsuperscript{st} step
-\item QFT, effects like Lamb shift. In particular, this leads to 
-QED: no position operator.
+\item Dirac equation, 1\textsuperscript{st} step: 
+relativistic correction to the kinetic energy,
+spin-orbit coupling (with Thomas precession, frame shift from nucleus frame to electron frame),
+Darwin term.
+\item QFT, effects like Lamb shift and anomalous magnetic dipole moment.
+In particular, this leads to QED: no position operator.
 \end{itemize}
-But QED is an approximation!
+But QED is also an approximation!
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/1280px-Hydrogen-fine-structure2.png}
+\\Bohr model, Dirac corrections. The Lamb shift is the difference between the 
+$2s_{1/2}$ (dotted purple)
+and
+$2p_{1/2}$ (solid black) in the right.
+\end{center}
 
 \emph{Bottom line:} quantising a classical theory
 using the correspondence principle has
-only heuristic value (Isham $\to$ see ref. in Le~Bellac).
+only heuristic value (Isham $\to$ see ref. in Le Bellac 
+or \href{https://isbnsearch.org/isbn/9781860940019}{click here}).
 In the end, the approximations based 
 on this principle or other heuristic
 approach must be validated by confronting
@@ -316,6 +328,7 @@ differentiation, unless explicitly stated.
 \emph{BUT:} property and operator by capital 
 letters $\hat{H}$, $\hat{\mathbf{R}}$, $\hat{\mathbf{P}}$ with a hat.
 Eigenvalues $\hat{H} \to E$, $\hat{\mathbf{R}} \to \mathbf{r}$, $\hat{\mathbf{P}} \to \mathbf{p}$.
+
 
 
 

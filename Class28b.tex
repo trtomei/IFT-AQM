@@ -6,12 +6,12 @@
 
 \title{Advanced Quantum Mechanics\\Class 28 (b)}
 %\author{The Author}
-\date{December 08, 2022}                                           % Activate to display a given date or no date
+\date{June 27, 2023}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
 
-\setcounter{section}{9}
+\setcounter{section}{6}
 \setcounter{subsection}{6}
 \setcounter{equation}{136}
 
@@ -48,12 +48,12 @@ Eq.~\eqref{eq:g137} can be written as
 \begin{gathered}
 V_2(k_1^\prime m_1^\prime, k_2^\prime m_2^\prime, k_1 m_1, k_2 m_2)
 = 
-\int \frac{d^3r\,d^3r^\prime}{L^3}
+\int \frac{d^3r\,d^3r^\prime}{L^6}
 \exp(-i\vec{k}_1^\prime\cdot\vec{r})
 \exp(-i\vec{k}_2^\prime\cdot\vecrp)\\
 [V_2(\vec{r}-\vecrp),s]_{m_1^\prime m_2^\prime, m_1 m_2}
-\exp(-i\vec{k}_2       \cdot\vecrp)
-\exp(-i\vec{k}_1       \cdot\vec{r})
+\exp(+i\vec{k}_2       \cdot\vecrp)
+\exp(+i\vec{k}_1       \cdot\vec{r})
 \end{gathered}
 \ee
 %
@@ -97,8 +97,8 @@ Putting all together, the equation for the second-quantized two-body interaction
 \begin{gathered}
 \hat{V}_2 = \frac{1}{2}
 \sum_{m_1m_1^\prime}\sum_{m_2m_2^\prime}
-\frac{1}{L^3} \delta_{\vec{k}_1^\prime + \vec{k}_2^\prime, \vec{k}_1+\vec{k}_2}
-\sum_{k_1k_1^\prime}\sum_{k_2k_2^\prime}\\
+\sum_{k_1k_1^\prime}\sum_{k_2k_2^\prime}
+\frac{1}{L^3} \delta_{\vec{k}_1^\prime + \vec{k}_2^\prime, \vec{k}_1+\vec{k}_2}\\
 \times
 [\widetilde{V}_2(\vec{k}_1^\prime - \vec{k}_1, s)]_{m_1^\prime m_2^\prime, m_1 m_2}
 \times 
@@ -139,18 +139,18 @@ over $\vec{k}_{2}^{\prime}$, so that $\vec{k}_{2}^{\prime}=\vec{k}_{1}+\vec{k}_{
 \ee
 and renaming $\vec{k}_{1} \to \vec{k}$, $\vec{k}_{2} \to \vec{p}$, one has
 \be
-\vec{k}_{1}^{\prime} = \vec{q}+\vec{k}_{1} = 
+\vec{k}_{1}^{\prime} = \vec{k}_{1}+\vec{q} = 
 \vec{k}+\vec{q},\quad
-\vec{k}_{2}^{\prime} = \vec{k}_{1}+\vec{k}_{2} - \vec{k}_{1}^{\prime} =
-\vec{p}+\vec{q}
+\vec{k}_{2}^{\prime} = \vec{k}_{2} - (\vec{k}_{1}^{\prime}-\vec{k_1}) =
+\vec{p}-\vec{q}
 \ee
 %%% 06 OKAY
-and $\hat{V}_2$ can be rewritten as
+and $\hat{V}_2$ can be rewritten as (renaming $m_1 \to m,\,m_2 \to m^\prime$)
 \be
 \hat{V}_2 = \frac{1}{2L^3}
 \sum_{kpq} \sum_{mm^\prime}
 \widetilde{V}_2(\vec{q})
-\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p+q, m^{\prime}} 
+\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p-q, m^{\prime}} 
 \hat{a}_{p, m^{\prime}} \hat{a}_{k,m}
 \ee
 
@@ -170,7 +170,7 @@ The matrix element $\bra{f}\hat{V}_2\ket{i}$ is given by:
 =
 \frac{1}{2L^3}\sum_q \widetilde{V}_2(\vec{q}) \sum_{kp,mm^\prime}
 \bra{0}\hat{a}_{k_2^\prime m_2^\prime}\hat{a}_{k_1^\prime m_1^\prime}
-\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p+q, m^{\prime}} 
+\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p-q, m^{\prime}} 
 %\times
 \hat{a}_{p, m^{\prime}} \hat{a}_{k,m}
 \hat{a}^\dagger_{k_1m_1}\hat{a}^\dagger_{k_2m_2}\ket{0}
@@ -182,9 +182,9 @@ The matrix element $\bra{f}\hat{V}_2\ket{i}$ is given by:
 =
 \frac{1}{2L^3}\sum_q \widetilde{V}_2(\vec{q}) \sum_{kp,mm^\prime}
 \bra{0}\hat{a}_{k_2^\prime m_2^\prime}\hat{a}_{k_1^\prime m_1^\prime}
-\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p+q, m^{\prime}}\ket{0}\\
+\hat{a}^\dagger_{k+q,m} \hat{a}^\dagger_{p-q, m^{\prime}}\ket{0}\\
 \left(
-	\delta_{k k_{1}} \delta_{k k_{2}} \delta_{m m_{1}} \delta_{m^{\prime} m_{2}} \pm 
+	\delta_{k k_{1}} \delta_{p k_{2}} \delta_{m m_{1}} \delta_{m^{\prime} m_{2}} \pm 
 	\delta_{k k_{2}} \delta_{p k_{1}} \delta_{m m_{2}} \delta_{m^{\prime} m_{1}}
 	\right)
 \end{gathered}
@@ -197,11 +197,11 @@ The matrix element $\bra{f}\hat{V}_2\ket{i}$ is given by:
 \big(
 	\delta_{k+q, k_{1}^{\prime}} \delta_{p-q, k_{2}^{\prime}} \delta_{m m_{1}^{\prime}} \delta_{m^{\prime} m_{2}^{\prime}}
 \\
-\pm	\delta_{k+q, k_{2}^{\prime}} \delta_{p-q, k_{1}^{\prime}} \delta_{m m_{2}}^{\prime} \delta_{m^{\prime} m_{1}^{\prime}}
+\pm	\delta_{k+q, k_{2}^{\prime}} \delta_{p-q, k_{1}^{\prime}} \delta_{m m_{2}^{\prime}} \delta_{m^{\prime} m_{1}^{\prime}}
 \big)
 \times
 \left(
-	\delta_{k k_{1}} \delta_{k k_{2}} \delta_{m m_{1}} \delta_{m^{\prime} m_{2}} \pm 
+	\delta_{k k_{1}} \delta_{p k_{2}} \delta_{m m_{1}} \delta_{m^{\prime} m_{2}} \pm 
 	\delta_{k k_{2}} \delta_{p k_{1}} \delta_{m m_{2}} \delta_{m^{\prime} m_{1}}
 	\right)
 \end{gathered}
@@ -223,9 +223,9 @@ so finally, using the deltas that involves $\vec{q}$,
 \bra{f}\hat{V}_2\ket{i} = 
 \delta_{k_{1}+k_{2}, k_{1}^{\prime} + k_{2}^{\prime}}
 \left[
-\widetilde{V}_2(k_{1}^{\prime}-k_{1})\delta_{m_{1}^{\prime} m_{1}}\delta_{m_{2}^{\prime} m_{2}}
+\widetilde{V}_2(\vec{k}_{1}^{\prime}-\vec{k}_{1})\delta_{m_{1}^{\prime} m_{1}}\delta_{m_{2}^{\prime} m_{2}}
 \pm
-\widetilde{V}_2(k_{1}^{\prime}-k_{2})\delta_{m_{1}^{\prime} m_{2}}\delta_{m_{2}^{\prime} m_{1}}
+\widetilde{V}_2(\vec{k}_{1}^{\prime}-\vec{k}_{2})\delta_{m_{1}^{\prime} m_{2}}\delta_{m_{2}^{\prime} m_{1}}
 \right]\\
 \Rightarrow \text{rewriting }
 \delta_{k_{1}+k_{2}, k_{1}^{\prime} + k_{2}^{\prime}}
@@ -254,8 +254,7 @@ quantum numbers, \textit{e.g}. $nlsjm$, so that
 \be
 \hat{a}_{k m}=\hat{a}_{n l s j m} \equiv \hat{a}_{\alpha}
 \ee
-In either case, the (anti) commutation relations are summari-
-zed by:
+In either case, the (anti) commutation relations are summarized by:
 \be
 \left[\hat{a}_{\alpha}, \hat{a}_{\beta}\right]_{\mp}=0,\quad
 \left[\hat{a}_{\alpha}, \hat{a}_{\beta}\right]_{\mp}=\delta_{\alpha \beta}
@@ -435,7 +434,7 @@ meaning that
 %%% 15 OKAY
 $\hat{a}^\dagger_{\beta}$ fills the hole dug by $\hat{a}_{\delta}$ and
 $\hat{a}^\dagger_{\alpha}$ fills the hole dug by $\hat{a}_{\gamma}$.
-\item The ``exchange'' order is the nve in which
+\item The ``exchange'' order is the one in which
 $\hat{a}^\dagger_{\beta}$ fills the hole dug by $\hat{a}_{\gamma}$ and
 $\hat{a}^\dagger_{\alpha}$ fills the hole dug by $\hat{a}_{\delta}$.
 In this case, there is a relative
